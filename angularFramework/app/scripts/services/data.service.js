@@ -1,16 +1,9 @@
-'use strict';
+ο»Ώangular.module('angularFrameworkApp')
+.factory('dataService', function () {
+    //Χ¤Χ•Χ Χ§Χ¦Χ™Χ” Χ’ΧΧ•Χ‘ΧΧ™Χª Χ©ΧªΧΆΧ‘Χ•Χ“ ΧΧ ΧΧ•Χ Χ“Χ¤Χ™Χ Χ©Χ•Χ Χ™Χ
+    var data = {};
 
-/**
- * @ngdoc function
- * @name angularFrameworkApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the angularFrameworkApp
- */
-angular.module('angularFrameworkApp')
-  .controller('MainCtrl', function ($scope) {
-      
-      $scope.myCasesActivities = [
+    data.activities = [
           {
               activitycode: 100,
               type: "iFrame",
@@ -32,10 +25,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰϊςμν", scenario: 2 },
-                                    { text: "ΰαγεχ μωμεξε", scenario: 4 }
+                                    { text: "ΧΧªΧΆΧΧ", scenario: 2 },
+                                    { text: "ΧΧ‘Χ“Χ•Χ§ ΧΧ©ΧΧ•ΧΧ•", scenario: 4 }
                                 ]
                             }
                         ]
@@ -50,10 +43,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰςζεα", scenario: 3 },
-                                    { text: "ΰητω ςζψδ", scenario: 5 }
+                                    { text: "ΧΧΆΧ–Χ•Χ‘", scenario: 3 },
+                                    { text: "ΧΧ—Χ¤Χ© ΧΆΧ–Χ¨Χ”", scenario: 5 }
                                 ]
                             }
                         ]
@@ -86,10 +79,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰητω ςζψδ", scenario: 5 },
-                                    { text: "ΰϊχωψ μξβο γεγ ΰγεν", scenario: 6 }
+                                    { text: "ΧΧ—Χ¤Χ© ΧΆΧ–Χ¨Χ”", scenario: 5 },
+                                    { text: "ΧΧªΧ§Χ©Χ¨ ΧΧΧ’Χ Χ“Χ•Χ“ ΧΧ“Χ•Χ", scenario: 6 }
                                 ]
                             }
                         ]
@@ -122,10 +115,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰϊηιμ δηιιΰδ", scenario: 8 },
-                                    { text: "ΰφΰ ξγςϊι", scenario: 7 }
+                                    { text: "ΧΧªΧ—Χ™Χ Χ”Χ—Χ™Χ™ΧΧ”", scenario: 8 },
+                                    { text: "ΧΧ¦Χ ΧΧ“ΧΆΧªΧ™", scenario: 7 }
                                 ]
                             }
                         ]
@@ -140,10 +133,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰϊηιμ δηιιΰδ", scenario: 8 },
-                                    { text: "ΰςζεα", scenario: 3 }
+                                    { text: "ΧΧªΧ—Χ™Χ Χ”Χ—Χ™Χ™ΧΧ”", scenario: 8 },
+                                    { text: "ΧΧΆΧ–Χ•Χ‘", scenario: 3 }
                                 ]
                             }
                         ]
@@ -158,10 +151,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰξωικ δηιιΰδ", scenario: 9 },
-                                    { text: "ΰωϊξω αγτιαψιμθεψ", scenario: 10 }
+                                    { text: "ΧΧΧ©Χ™Χ Χ”Χ—Χ™Χ™ΧΧ”", scenario: 9 },
+                                    { text: "ΧΧ©ΧªΧΧ© Χ‘Χ“Χ¤Χ™Χ‘Χ¨Χ™ΧΧΧ•Χ¨", scenario: 10 }
                                 ]
                             }
                         ]
@@ -176,10 +169,10 @@ angular.module('angularFrameworkApp')
                         questions: [
                             {
                                 type: "singleSelection",
-                                text: "ξδ ϊςωδ?",
+                                text: "ΧΧ” ΧªΧΆΧ©Χ”?",
                                 answers: [
-                                    { text: "ΰητω ςζψδ", scenario: 5 },
-                                    { text: "ΰωϊξω αγτιαψιμθεψ", scenario: 10 }
+                                    { text: "ΧΧ—Χ¤Χ© ΧΆΧ–Χ¨Χ”", scenario: 5 },
+                                    { text: "ΧΧ©ΧªΧΧ© Χ‘Χ“Χ¤Χ™Χ‘Χ¨Χ™ΧΧΧ•Χ¨", scenario: 10 }
                                 ]
                             }
                         ]
@@ -204,42 +197,8 @@ angular.module('angularFrameworkApp')
                     } //finish mov - next scenario 
               ]
           }
-      ];
+    ];
 
-      $scope.checkActivitycode = function () {
-         // if ($scope.myCaseCode == $scope.myCasesActivities.activitycode) {
-              $scope.checkCodeResult = "δφμηϊι";
-              $scope.myInput = "δφμηϊι";
-         // }
-          };
-      
+    return data;
 
-    //$scope.shavit = "this is shavit";
-
-    //$scope.duplicate = function (a, b) {
-    //    return a * b;
-    //}
-
-    //$scope.clearInputs = function () {
-    //    $scope.myInput = "";
-    //    $scope.myInput = "";
-    //}
-    
-
-
-
-      $scope.clicktoOpen = function () {
-          ngDialog.open({template:'openDiagId'});
-      };
-
-
-
-  });
-
-//angular.module('angularFrameworkApp')
-//  .controller('aaaCtrl', function ($scope) {
-//      $scope.shavit = "shavitaaaaaa";
-
-
-//  });
-
+});

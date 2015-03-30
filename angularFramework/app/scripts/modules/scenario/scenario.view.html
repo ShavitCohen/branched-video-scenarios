@@ -1,0 +1,7 @@
+﻿<div>
+     <button class="btn btn-success" ng-click="openMovDialog(scenario)">{{scenario.myMovName}} </button>
+    <br/>
+    <ul>
+        <li ng-repeat ="distractor in scenario.questions[0].answers">{{distractor.text}}</li>
+    </ul>
+</div>
