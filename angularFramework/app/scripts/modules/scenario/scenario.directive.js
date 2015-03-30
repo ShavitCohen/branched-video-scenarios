@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-.directive("scenario", function ($modal) {
+.directive("scenario", function () {
     return {
         restrict: 'E',
         templateUrl: "scripts/modules/scenario/scenario.view.html",

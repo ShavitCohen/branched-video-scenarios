@@ -15,9 +15,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'ui.bootstrap.modal',
-    'ui.bootstrap.transition'
+    'ngTouch'
+    //'ui.bootstrap.modal',
+    //'ui.bootstrap.transition'
   ])
   .config(function ($routeProvider) {
     $routeProvider
