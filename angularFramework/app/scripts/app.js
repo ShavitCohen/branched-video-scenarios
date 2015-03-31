@@ -15,9 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-    //'ui.bootstrap.modal',
-    //'ui.bootstrap.transition'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -32,11 +31,11 @@ angular
 
       .when('/MainPage', {
           templateUrl: 'views/main.html',
-          controller: "MainCtrl"          
+          controller: "MainCtrl"
       })
 
       .when('/SummaryPage', {
-         templateUrl: 'views/SummaryPage.html'  
+         templateUrl: 'views/SummaryPage.html'
       })
 
          .when('/EditorPage', {
