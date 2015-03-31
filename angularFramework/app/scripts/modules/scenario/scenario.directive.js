@@ -11,7 +11,14 @@
         scope.shavit = JSON.stringify(scope.data);
         scope.openMovDialog = function (scenario) {
 
-
+          var modalInstance = $modal.open({
+            template: '<div>This is just an example</div>',
+            resolve: {
+              scenario: function () {
+                return scope.scenario;
+              }
+            }
+          });
 
         }
       }
