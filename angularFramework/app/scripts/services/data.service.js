@@ -5,8 +5,9 @@
 
     data.activities = [
           {
+              activitycodeName:"עזרה ראשונה",
               activitycode: 100,
-              type: "iFrame",
+               type: "iFrame",
               quality: "default",
               volume: "unmute",
               height: 580,
@@ -21,14 +22,14 @@
                         id: "XIsXgNFGTJQ",
                         StartTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
+                        movieLink: "https://www.youtube.com/watch?v=",
                         questions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 answers: [
                                     { text: "אתעלם", scenario: 2 },
-                                    { text: "אבדוק לשלומו", scenario: 4 }
+                                    { text: "אבדוק לשלומו", scenario: 4, isRightAnswer: true }
                                 ]
                             }
                         ]
@@ -48,6 +49,7 @@
                                     { text: "אעזוב", scenario: 3 },
                                     { text: "אחפש עזרה", scenario: 5 }
                                 ]
+
                             }
                         ]
                     }, //finish mov - next scenario 
@@ -82,7 +84,7 @@
                                 text: "מה תעשה?",
                                 answers: [
                                     { text: "אחפש עזרה", scenario: 5 },
-                                    { text: "אתקשר למגן דוד אדום", scenario: 6 }
+                                    { text: "אתקשר למגן דוד אדום", scenario: 6, isRightAnswer: true }
                                 ]
                             }
                         ]
@@ -117,7 +119,7 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 answers: [
-                                    { text: "אתחיל החייאה", scenario: 8 },
+                                    { text: "אתחיל החייאה", scenario: 8, isRightAnswer: true },
                                     { text: "אצא מדעתי", scenario: 7 }
                                 ]
                             }
@@ -154,7 +156,7 @@
                                 text: "מה תעשה?",
                                 answers: [
                                     { text: "אמשיך החייאה", scenario: 9 },
-                                    { text: "אשתמש בדפיברילטור", scenario: 10 }
+                                    { text: "אשתמש בדפיברילטור", scenario: 10, isRightAnswer: true }
                                 ]
                             }
                         ]
@@ -190,7 +192,8 @@
                                 text: "null",
                                 answers: [
                                     { text: "null", scenario: "tryAgain_3" },
-                                    { text: "null", scenario: "null" }
+                                    { text: "null", scenario: "null" },
+                                { text: "null", scenario: "null" }
                                 ]
                             }
                         ]
@@ -198,6 +201,11 @@
               ]
           }
     ];
+
+
+    data.isSelectRelationship = false;
+    data.isBtnState = false;
+
 
     return data;
 

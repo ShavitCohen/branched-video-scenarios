@@ -1,0 +1,51 @@
+﻿
+
+<div class="modal-content" ng-init="checkIfExist(scenario)">
+
+    <div class="modal-header">
+
+        <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <label class="col-md-12">שם הסצינה</label>
+        </div>
+        <div class="row">
+
+            <input class="col-md-8 col-md-offset-1 form-control" id="SceneName" type="text" ng-model="myscenarioName" />
+        </div>
+        <div class="row">
+            <label class="col-md-12">קישור לסרטון ב-Youtube</label>
+        </div>
+        <div class="row">
+            <input id="youtubeURL" class="col-md-8 col-md-offset-1 form-control" type="text" ng-model="myUrl" />
+            <input class="col-md-1 btn btn-info" id="Button1" type="button" value="טען" ng-click="youtube_parser(myUrl)" />
+
+        </div>
+        <div class="row">
+            <div>
+                <div id="player" class="myYoutubeIfreamPreview col-md-8 col-md-offset-1"></div>
+            </div>
+        </div>
+        <div class="row">
+            <input id="myEndTimeTXT" class="col-md-1 col-md-offset-1 form-control" type="text" ng-model="myEndTime" />
+
+            <input id="myStartTimeTXT" class="col-md-1 col-md-offset-6 form-control" type="text" ng-model="myStartTime" />
+
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-md-4 col-md-offset-8">
+
+            <!--<div>{{scenario.myMovName}}</div>-->
+            <input class="btn btn-warning"  type="button" value="מחק"  />
+
+            <input class="btn btn-primary" type="button" value="שמור והמשך"  ng-click="addToJason()" />
+
+           
+        </div>
+    </div>
+
+</div>

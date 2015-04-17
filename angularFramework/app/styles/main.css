@@ -1,3 +1,217 @@
+
+
+.glyphicon.glyphicon-one-fine-full-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-full-dot:before {
+    content:"\25cf";
+    font-size: 3em;
+}
+.glyphicon.glyphicon-one-fine-empty-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-empty-dot:before {
+    content:"\25cb";
+    font-size: 3em;
+}
+.myDeleyeglyphicon {
+          /*background-image: url('../images/delete_ico.png');*/
+    /*width: 17px;
+    height: 19px;*/
+    /*background-repeat:no-repeat;*/
+    cursor:pointer;
+    font-size:20px;
+      margin-top: 8px;
+  margin-right: 5px;
+}
+.myDeleyeglyphicon:hover {
+color:#58585A;
+}
+.myYoutubeIfreamPreview
+{
+border:1px #58585A solid;
+        margin-right:89px;
+             width:400px;
+    height:200px;
+}
+/*.ScenarioBTNClass:hover {
+    float:left;
+      background-image: url('../images/addScenarioBTNH.png');
+    width: 120px;
+    height: 110px;
+}*/
+.playBtnClass {
+    background-image:url('../images/playPriv.png');
+        width:120px;
+    height:90px;
+    position: absolute;
+  margin-top: -90px;
+  cursor:pointer;
+}
+.playBtnClass:hover {
+    background-image: url('../images/playPriv_H.png');
+    width: 120px;
+    height: 90px;
+}
+.scenarioHolder {
+width:120px;
+  overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+.youtubeoHolder
+{
+background-color:#58585A;
+color:white;
+text-align:center;
+ cursor:pointer;
+
+}
+.circle{
+    /*width:14px;
+    height:14px;
+    background-repeat:no-repeat;
+    background-image:url('../images/distractorBTN.png');*/
+    position:absolute;
+    z-index:2;
+      /*margin-top: 20px;*/
+
+  /*font-size:20px;*/
+     margin-right: -18px;
+}
+
+.isTrue .circle{
+    /*background-image:url('../images/distractorFullBTN.png');
+background-repeat:no-repeat;
+ width:14px;
+    height:14px;
+ border-style:none;*/
+ position:absolute;
+    z-index:2;
+     /*font-size:20px;*/
+     color:#E9C001;
+  margin-right: -18px;
+}
+.myAnswersSpanClass {
+    border:1px solid #A8A8B7;
+    color:black;
+    position:absolute;
+    width:90px;
+   white-space: nowrap; 
+  height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  margin-top: 21px;
+  cursor: pointer;
+  margin-right: 8px;
+  padding-right:5px;
+}
+.myMovTumb {
+margin-right:36px;
+cursor:pointer;
+z-index:3;
+  position:absolute;
+  margin-top:-13px;
+
+}
+.myPancilGlyphicon {
+background-color: white;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  padding-top: 9px;
+  padding-right: 8px;
+  margin-right: 34px;
+  margin-top: -11px;
+  display: block;
+  border: 2px solid;
+  border-radius: 20px 20px 20px 20px;
+  cursor:pointer;
+}
+    .myPancilGlyphicon:hover {
+    
+    color:#58585A;
+    }
+.myLinkGlyphicon {
+background-color: black;
+color:white;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  padding-top: 9px;
+  padding-right: 8px;
+  margin-right: 34px;
+  margin-top: -11px;
+  display: block;
+  border: 2px solid black;
+  border-radius: 20px 20px 20px 20px;
+    cursor:pointer;
+}
+.myAnswersLinkSpanClass {
+        cursor:pointer;
+           position:absolute;
+    z-index:3;
+      border:1px solid #A8A8B7;
+    /*background-color:orange;*/
+   margin-right: 97px;
+  margin-top: 21px;
+       background-image:url('../images/linkBTN.png');
+        width: 22px;
+  height: 22px;
+   background-repeat:no-repeat;
+  
+}
+.myDistractorBTNClass {
+cursor:pointer;
+list-style:none;
+margin-right:20px;
+ margin-top:5px;
+ 
+}
+.myDistractorPollClass {
+  width: 2px;
+  background-color: #A8A8B7;
+  position: absolute;
+  margin-top: -25px;
+  margin-right: -2px;
+  z-index: 0;
+}
+.lilachTraying {
+width:1432px;
+        white-space: nowrap;
+
+
+
+}
+.freezLine {
+background-color:#EBEBEB;
+  padding-top: 19px;
+  height: 188px;
+
+}
+.mainMoviesDiv> li {
+    display:inline-block;
+    /*background-color:blue;*/
+    width:116px;
+    margin-right:10px;
+   
+}
+
+.addScenarioBTNClass {
+    float:left;
+      background-image: url('../images/addScenarioBTN.png');
+    width: 120px;
+    height: 110px;
+     cursor:pointer;
+     margin-top:-160px;
+}
+    .addScenarioBTNClass:hover {
+          background-image: url('../images/addScenarioBTNH.png');
+    width: 120px;
+    height: 110px;
+    }
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -7,7 +221,7 @@
 
 body {
   padding: 0;
- 
+ /*direction:rtl;*/
  
 }
 
@@ -61,10 +275,13 @@ body {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
+ /*Responsive: Portrait tablets and up*/ 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    /*max-width: 730px;*/
+    width:100%;
+        /*white-space: nowrap;*/
+
   }
 
   /* Remove the padding we set earlier */

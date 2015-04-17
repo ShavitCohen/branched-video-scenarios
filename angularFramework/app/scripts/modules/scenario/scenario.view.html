@@ -1,7 +1,45 @@
 ﻿<div>
-     <button class="btn btn-success" ng-click="openMovDialog(scenario)">{{scenario.myMovName}} </button>
+   
+    <div class="scenarioHolder">
+      
+        <div class="youtubeoHolder" ng-click="openAddMovieDialog(scenario)">{{scenario.myMovName}}</div>
+            <img ng-src="http://img.youtube.com/vi/{{scenario.id}}/1.jpg" alt="" />
+        <div ng-click="openMovDialog(scenario)" class="playBtnClass">
+        </div>
+    </div>
     <br/>
+    <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>
+    <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
+    <!--<img src="images/linkToBTN.png" alt=""  />-->
+    <i class="glyphicon glyphicon-link myLinkGlyphicon" ng-show="dataService.isBtnState" ng-click="scenarioClickToLink()"></i>
+
+
+    <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
+    <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->
+
+  
+    <br />
+ 
     <ul>
-        <li ng-repeat ="distractor in scenario.questions[0].answers">{{distractor.text}}</li>
+        <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
+            <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
+
+            <div ng-style="{'margin-top':(distractor.globalIndex * 25)}" >
+                <div class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
+                <div ng-click="toggle()" class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
+
+                <!--<img ng-click="toggle()" src="" alt="" class="circle" />-->
+                <span class="myAnswersSpanClass" ng-show="isShowDistractors">
+                    {{distractor.text}}
+
+                </span>
+                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink()"> </div>
+
+            </div>
+        </li>
+             
     </ul>
+
+    <!--<img ng-src="images/{{btnURL[btnarr]}}" alt="" ng-modle="btnarr" ng-click="changeBTN()" />-->
+    <!--<button ng-modle="btnarr" ng-click="change()">{{btnTxt[btnarr]}}</button>-->
 </div>

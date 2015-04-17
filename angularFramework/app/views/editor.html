@@ -1,7 +1,14 @@
-﻿<div>this is editor Page</div>
-<ul>
-    <li ng-repeat ="scenario in dataService.activities[0].scenarios">
-        <scenario scenario="scenario"></scenario>
-    </li>
+﻿<h1>{{dataService.activities[0].activitycodeName}}</h1>
+<br />
 
-</ul>
+<div class="lilachTraying">
+    <div class="freezLine">
+        <ul class="mainMoviesDiv">
+            <li ng-repeat="scenario in dataService.activities[0].scenarios">
+                <scenario scenario="scenario" global-distractor-count="globalDistractorCount"></scenario>
+            </li>
+
+        </ul>
+        <div class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)"></div>
+    </div>
+</div>
