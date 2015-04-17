@@ -4,6 +4,7 @@
 angular.module('angularFrameworkApp')
   .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService) {
       $scope.scenario = scenario;
+      //
       console.log("ll " + $scope.scenario);
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
       $scope.checkIfExist = function (scenario) {
@@ -65,7 +66,7 @@ angular.module('angularFrameworkApp')
           var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime };
           console.log(scenarioUpdateDet);
 
-          dataService.activities.push(scenarioUpdateDet);
+          dataService.activities[0].scenarios.push(scenarioUpdateDet);
           console.log(dataService.activities);
       }
   });
