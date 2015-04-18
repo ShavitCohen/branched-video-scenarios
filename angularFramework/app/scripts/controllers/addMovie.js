@@ -63,7 +63,7 @@ angular.module('angularFrameworkApp')
         
 
        //   console.log("scenario " + $scope.scenario);
-          var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime };
+          var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
           console.log(scenarioUpdateDet);
 
           dataService.activities[0].scenarios.push(scenarioUpdateDet);

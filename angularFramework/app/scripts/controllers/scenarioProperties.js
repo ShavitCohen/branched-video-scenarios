@@ -24,9 +24,14 @@ angular.module('angularFrameworkApp')
 
 
       $scope.addAnswer = function (answersArray) {
-          var answer = { text: "", scenario: "" }
+          var answer = { text: "", scenario: "", isRightAnswer:""}
+         
+          if ($scope.isChecked == true)
+          {
+              isRightAnswer = true;
+          }
           answersArray.push(answer);
-
+          console.log(answersArray);
       }
 
       $scope.deleteAnswer = function (index, answersArray)
