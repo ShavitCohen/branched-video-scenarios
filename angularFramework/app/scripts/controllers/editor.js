@@ -1,10 +1,9 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('editorCtrl', function ($scope, dataService,$modal) {
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
-      $scope.globalDistractorCount = {
-          count:0
-      };
-      
+
+    $scope.dataService.setDistractorsIndex();
+
       $scope.openAddMovieDialog = function (scenario) {
 
           var modalInstance = $modal.open({
@@ -19,7 +18,7 @@
               }
           });
       }
-          
+
 
   }
 

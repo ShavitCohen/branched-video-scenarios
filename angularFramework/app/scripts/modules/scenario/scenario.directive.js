@@ -4,8 +4,7 @@
       restrict: 'E',
       templateUrl: "scripts/modules/scenario/scenario.view.html",
       scope: {
-          scenario: "=",
-          globalDistractorCount: "="
+          scenario: "="
       },
       link: function (scope, element, attrs) {
         //scope.shavit = "hey";
@@ -13,18 +12,14 @@
 
           scope.dataService = dataService;
 
-       
+
 
           scope.promoteDistractorCount = function (distractor)
           {
               distractor.globalIndex = scope.globalDistractorCount.count++;
-
-           
-              //distractor.LastIndex = distractor.globalIndex;
-
           }
 
-         
+
 
             //  scope.btnarr = 0;
             //  scope.btnURL = ["EditBTN.png","addBTN.png","whatToDoBTN.png","linkToBTN.png"]
@@ -38,21 +33,21 @@
             //   break;
             //      case 2:
             //     scope.btnarr=3
-            //   break;  
+            //   break;
             //case 3:
             //     scope.btnarr=0;
-            //   break; 
+            //   break;
             //      }
             //  }
-       
+
 
               scope.isShowDistractors = false;
 
           scope.toggle = function () {
               if (dataService.isBtnState == true) {
-                 
+
                   dataService.isBtnState = false;
-                 
+
               }
 
 
@@ -63,28 +58,28 @@
              else
              {
                  if (dataService.isSelectRelationship == false) {
-                   
+
                       dataService.isSelectRelationship = true;
                       scope.isShowDistractors = true;
                       dataService.isBtnState = false;
-                    
+
                 }
-              
+
              }
-          
-            
 
-              
-             
+
+
+
+
           };
-        
 
-         
-      
+
+
+
           scope.answerClickToLink = function () {
-           
+
               dataService.isBtnState = !dataService.isBtnState;
-         
+
             //  dataService.isSelectRelationship = true;
 
 
@@ -94,12 +89,12 @@
           };
 
         scope.openEditDialog = function (scenario) {
-            
+
             var modalInstance = $modal.open({
                 windowClass: 'editModalClass',
                 //template:,
                 templateUrl: 'views/editMovModal.html',
-                controller:"scenarioPropertiesCtrl",              
+                controller:"scenarioPropertiesCtrl",
                 resolve: {
                     scenario: function () {
                         return scope.scenario;

@@ -33,7 +33,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 2,
                         myMovName: "ignor him",
@@ -52,7 +52,7 @@
 
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 3,
                         myMovName: "Leave",
@@ -70,7 +70,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 4,
                         myMovName: "see if he is ok",
@@ -88,7 +88,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 5,
                         myMovName: "search for help",
@@ -106,7 +106,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 6,
                         myMovName: "call 911",
@@ -124,7 +124,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 7,
                         myMovName: "freakout",
@@ -142,7 +142,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 8,
                         myMovName: "start cpr",
@@ -160,7 +160,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 9,
                         myMovName: "continue cpr",
@@ -178,7 +178,7 @@
                                 ]
                             }
                         ]
-                    }, //finish mov - next scenario 
+                    }, //finish mov - next scenario
                     {
                         myMovieNum: 10,
                         myMovName: "use aed",
@@ -197,11 +197,28 @@
                                 ]
                             }
                         ]
-                    } //finish mov - next scenario 
+                    } //finish mov - next scenario
               ]
           }
     ];
 
+    /**
+     * This function go over all the activity array and set the global distractor index
+     * This what help to order the distractors one after the other
+     */
+    data.setDistractorsIndex = function(){
+      var globalDistractorIndex = 0;
+      for (var i=0;i<data.activities[0].scenarios.length;i++){
+        var myScenario = data.activities[0].scenarios[i];
+        myScenario.index = i;
+        for(var j=0;j<myScenario.questions[0].answers.length; j++){
+          var myDistractor = myScenario.questions[0].answers[j];
+          myDistractor.index = globalDistractorIndex;
+          globalDistractorIndex++;
+        }
+      }
+
+    };
 
     data.isSelectRelationship = false;
     data.isBtnState = false;

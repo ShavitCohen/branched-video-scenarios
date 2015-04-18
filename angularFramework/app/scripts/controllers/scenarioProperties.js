@@ -2,7 +2,7 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario) {
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService) {
       $scope.scenario = scenario;
 
 
@@ -24,10 +24,10 @@ angular.module('angularFrameworkApp')
 
 
       $scope.addAnswer = function (answersArray) {
-          var answer = { text: "", scenario: "" }
+          var answer = { text: "", scenario: "" };
           answersArray.push(answer);
-
-      }
+        dataService.setDistractorsIndex();
+      };
 
       $scope.deleteAnswer = function (index, answersArray)
       {
@@ -40,5 +40,5 @@ angular.module('angularFrameworkApp')
           $modalInstance.close();
           console.log(myScenario);
       }
-     
+
   });
