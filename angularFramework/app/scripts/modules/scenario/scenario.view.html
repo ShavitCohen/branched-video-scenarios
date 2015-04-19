@@ -1,8 +1,10 @@
 ﻿<div>
 
     <div class="scenarioHolder">
-
-        <div class="youtubeoHolder" ng-click="openAddMovieDialog(scenario)">{{scenario.myMovName}}</div>
+        <div class="youtubeoHolder">
+            <div class="youtubeoHolderTEXT" ng-click="openAddMovieDialog(scenario)">{{scenario.myMovName}}</div>
+            <i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>
+        </div>
             <img ng-src="http://img.youtube.com/vi/{{scenario.id}}/1.jpg" alt="" />
         <div ng-click="openMovDialog(scenario)" class="playBtnClass">
         </div>
@@ -16,18 +18,18 @@
 
     <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
     <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->
-    <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
 
 
     <br />
 
     <ul>
 <<<<<<< HEAD
-        <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;">
-            <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
+        <!--<li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;">-->
+            <!--<div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>-->
 =======
         <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
 >>>>>>> 2596b8e93d9d4e471e45f8c082b7ae83696c2fc9
+            <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" >
                 <div class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>

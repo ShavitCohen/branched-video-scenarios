@@ -16,6 +16,11 @@
     content:"\25cb";
     font-size: 3em;
 }
+.myeditMovGlyphicon {
+  font-size: 11px;
+  margin-right: 94px;
+
+}
 .myDeleyeglyphicon {
           /*background-image: url('../images/delete_ico.png');*/
     /*width: 17px;
@@ -65,8 +70,17 @@ width:120px;
 {
 background-color:#58585A;
 color:white;
-text-align:center;
+padding-right:5px;
  cursor:pointer;
+    width:120px;
+
+}
+.youtubeoHolderTEXT {
+   text-overflow: ellipsis; 
+    white-space: nowrap; 
+        overflow: hidden;
+    width:90px;
+    position:absolute;
 
 }
 .circle{
@@ -174,8 +188,8 @@ margin-right:20px;
   width: 2px;
   background-color: #A8A8B7;
   position: absolute;
-   margin-top: 0px;
-  margin-right: 58px;
+  margin-top: -64px;
+  margin-right: -2px;
   z-index: 0;
 }
 .lilachTraying {
@@ -200,12 +214,14 @@ background-color:#EBEBEB;
 }
 
 .addScenarioBTNClass {
-    float:left;
+    /*float:left;*/
       background-image: url('../images/addScenarioBTN.png');
     width: 120px;
     height: 110px;
      cursor:pointer;
      margin-top:-160px;
+     z-index:33333;
+     position:absolute;
 }
     .addScenarioBTNClass:hover {
           background-image: url('../images/addScenarioBTNH.png');
