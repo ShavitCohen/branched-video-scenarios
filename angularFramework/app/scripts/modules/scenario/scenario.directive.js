@@ -131,6 +131,9 @@
                 resolve: {
                     scenario: function () {
                         return scope.scenario;
+                    },
+                    state: function () {
+                        return "edit";
                     }
                 }
             });

@@ -23,12 +23,9 @@
     <br />
 
     <ul>
-<<<<<<< HEAD
-        <!--<li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;">-->
-            <!--<div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>-->
-=======
+
         <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
->>>>>>> 2596b8e93d9d4e471e45f8c082b7ae83696c2fc9
+
             <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" >

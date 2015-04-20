@@ -15,7 +15,13 @@
                   scenario: function () {
                       return $scope.scenario;
                   }
+                ,
+                  state: function () {
+                      return "new";
+                  }
+
               }
+
           });
       }
 

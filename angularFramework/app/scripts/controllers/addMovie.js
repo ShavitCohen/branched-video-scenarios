@@ -2,7 +2,7 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService) {
+  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService,state) {
       $scope.scenario = scenario;
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
       $scope.movModalBTN = "שמור והמשך";
@@ -67,7 +67,7 @@ angular.module('angularFrameworkApp')
 
       $scope.addToJason = function () {
       
-          if($scope.movModalBTN == "שמור והמשך")
+          if (state == "new")
           {
               var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
               console.log(scenarioUpdateDet);
@@ -76,18 +76,20 @@ angular.module('angularFrameworkApp')
               console.log(dataService.activities);
               $modalInstance.close();
           }
-          else if ($scope.movModalBTN == "עדכן")
+          else if (state == "edit")
           {
            
               console.log("before" + scenario.myMovName);
 
-              var scenarioEditedDet = { myMovieNum: scenario.myMovieNum, myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
-            //console.log("scenarioEditedDet " + scenarioEditedDet.myMovName);
+              scenario.id = $scope.myUrlID;
+              scenario.myMovName = $scope.myscenarioName;
+              scenario.StartTime = $scope.myStartTime;
+              scenario.endTime = $scope.myEndTime;
 
               console.log("my scenario; " + scenario);
 
               //i dont know to whice arry to push it
-              $scope.scenario.push(scenarioEditedDet);
+              
 
               console.log("after" + $scope.scenario.myMovName);
               $modalInstance.close();
