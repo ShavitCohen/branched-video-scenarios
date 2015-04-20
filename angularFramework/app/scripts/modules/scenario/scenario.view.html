@@ -25,10 +25,11 @@
     <ul>
 
         <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
-
+            
             <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" >
+                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidth * distractor.lineDirection}" class="arrow"></div>
                 <div class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
                 <div ng-click="toggle()" class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
 
@@ -37,7 +38,7 @@
                     {{distractor.text}}
 
                 </span>
-                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink()"> </div>
+                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>
 
             </div>
         </li>

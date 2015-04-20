@@ -36,7 +36,7 @@
                 אפשרויות בחירה:
             </label>
         </div>
-        <div class="col-md-12" ng-repeat="answer in scenario.questions[0].answers">
+        <div class="col-md-12" ng-repeat="answer in tempAnswerArry">
             <div class="row">
                 <label class="col-md-3">
 
@@ -56,7 +56,7 @@
 
         <div class="row">
         
-            <div id ="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(scenario.questions[0].answers)"> <i class="glyphicon glyphicon-plus"></i></div>
+            <div id ="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(tempAnswerArry)"><i class="glyphicon glyphicon-plus"></i></div>
         </div>
     </div>
     <div class="modal-footer">

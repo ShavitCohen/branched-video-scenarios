@@ -9,7 +9,7 @@ angular.module('angularFrameworkApp')
       $scope.checkIfExist = function (scenario) {
 
 
-          if (scenario.myMovName[0] != null) {
+          if (state == "edit") {
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
               $scope.myUrl = scenario.movieLink + scenario.id;

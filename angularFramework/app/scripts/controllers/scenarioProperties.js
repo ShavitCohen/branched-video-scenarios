@@ -2,14 +2,16 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService) {
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario, dataService, tempAnswerArry) {
     $scope.scenario = scenario;
+    $scope.tempAnswerArry = tempAnswerArry;
 
+   
 
     $scope.headlingOfAddScene = "הוספת שאלה חדשה";
     $scope.checkIfExist = function (scenario) {
       if (scenario.myMovName[0] != null) {
-        $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
+          $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
         //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
 
 
@@ -23,15 +25,20 @@ angular.module('angularFrameworkApp')
 
 
 
-    $scope.addAnswer = function (answersArray) {
+    $scope.addAnswer = function (tempAnswerArry) {
 
-      var answer = { text: "", scenario: "", isRightAnswer:""}
+        var newAnswer = { text: "", scenario: "", isRightAnswer: "" };
 
       if ($scope.isChecked == true)
       {
         answer.isRightAnswer = true;
       }
-      answersArray.push(answer);
+        //  $scope.tempAnswerArry = [];
+    //  console.log();
+      tempAnswerArry.push(newAnswer);
+      console.log("afterpush: " + tempAnswerArry);
+      console.log("orginArry:"+scenario.questions[0].answers);
+     //answersArray.push(answer);
       dataService.setDistractorsIndex();
     }
 

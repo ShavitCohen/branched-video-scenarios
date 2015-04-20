@@ -18,6 +18,7 @@
               scenarios: [
                     {
                         myMovieNum: 1,
+                        
                         myMovName: "opening start",
                         id: "XIsXgNFGTJQ",
                         StartTime: 0,
@@ -36,6 +37,7 @@
                     }, //finish mov - next scenario
                     {
                         myMovieNum: 2,
+                        
                         myMovName: "ignor him",
                         id: "D6-CDlYWzYY",
                         StartTime: 0,
@@ -201,6 +203,17 @@
               ]
           }
     ];
+
+    data.calculateArrow = function (secondMovieNum) {
+        var myDiviation = data.clickedScenarioMovieNum - secondMovieNum;
+        data.clickedDistactor.lineWidth = myDiviation * 125;
+        console.log(data.clickedDistactor.lineWidth);
+
+        data.clickedDistactor.lineDirection = (myDiviation > 0) ? -1 : 1;
+        console.log(data.clickedDistactor.lineDirection);
+    //    data.clickedDistactor.lineDirection = (myDiviation < 0) ? 1 : 1;
+
+    }
 
     /**
      * This function go over all the activity array and set the global distractor index

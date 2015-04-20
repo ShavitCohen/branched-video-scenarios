@@ -76,7 +76,10 @@
 
 
 
-          scope.answerClickToLink = function () {
+          scope.answerClickToLink = function (distractor) {
+              dataService.clickedDistactor = distractor;
+              dataService.clickedScenarioMovieNum = scope.scenario.myMovieNum;
+
 
               dataService.isBtnState = !dataService.isBtnState;
 
@@ -85,10 +88,11 @@
 
           };
           scope.scenarioClickToLink = function () {
-              alert("הוקלקתי");
+              dataService.calculateArrow(scope.scenario.myMovieNum);
           };
 
         scope.openEditDialog = function (scenario) {
+            scope.tempAnswerArry = scenario.questions[0].answers;
 
             var modalInstance = $modal.open({
                 windowClass: 'editModalClass',
@@ -98,6 +102,9 @@
                 resolve: {
                     scenario: function () {
                         return scope.scenario;
+                    },
+                    tempAnswerArry: function () {
+                        return scope.tempAnswerArry;
                     }
                 }
             });
