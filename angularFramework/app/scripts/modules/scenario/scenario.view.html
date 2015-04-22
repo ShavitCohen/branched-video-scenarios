@@ -10,6 +10,8 @@
         </div>
     </div>
     <br/>
+  
+
     <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
     <!--<img src="images/linkToBTN.png" alt=""  />-->
@@ -26,9 +28,14 @@
 
         <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
 
-            <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
+            <div class="myDistractorPollClass" ng-style="{height:800}"></div>
 
-            <div ng-style="{'margin-top':(distractor.index * 25)}" >
+            <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
+                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow">
+
+
+                </div>
+                <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection}" ></div>
                 <div class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
                 <div ng-click="toggle()" class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
 
@@ -37,13 +44,14 @@
                     {{distractor.text}}
 
                 </span>
-                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink()"> </div>
+                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>
+
 
             </div>
         </li>
 
     </ul>
-
+    <!--<i class="{{btnURL[btnarr]}} myPancilGlyphicon" ng-modle="btnarr" ng-click="changeBTN()"></i>-->
     <!--<img ng-src="images/{{btnURL[btnarr]}}" alt="" ng-modle="btnarr" ng-click="changeBTN()" />-->
     <!--<button ng-modle="btnarr" ng-click="change()">{{btnTxt[btnarr]}}</button>-->
 </div>

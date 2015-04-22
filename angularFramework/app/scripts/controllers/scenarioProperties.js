@@ -2,14 +2,16 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService) {
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state) {
     $scope.scenario = scenario;
 
 
     $scope.headlingOfAddScene = "הוספת שאלה חדשה";
     $scope.checkIfExist = function (scenario) {
-      if (scenario.myMovName[0] != null) {
-        $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
+        if (scenario.state = "edit") {
+            $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
+            $scope.editModalBTN = "עדכן";
+
         //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
 
 

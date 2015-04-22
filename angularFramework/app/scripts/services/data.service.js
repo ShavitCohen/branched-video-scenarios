@@ -202,6 +202,45 @@
           }
     ];
 
+    data.calculateArrow = function (secondMovieNum) {
+        var myDiviation = data.clickedScenarioMovieNum - secondMovieNum;
+        if (myDiviation < 0) {
+            myDiviation = myDiviation *-(1);
+            data.clickedDistactor.lineWidth = myDiviation * 125;
+            data.clickedDistactor.lineDirection = 1;
+            data.clickedDistactor.lineWidthForMargin = 0;
+            data.clickedDistactor.lineArrowDirection = false;
+
+            console.log("left lineWidth: " + data.clickedDistactor.lineWidth);
+            console.log(" left lineDirection: " + data.clickedDistactor.lineDirection);
+            console.log(" left lineWidthForMargin: " + data.clickedDistactor.lineWidthForMargin);
+            console.log("left  lineArrowDirection: " + data.clickedDistactor.lineArrowDirection);
+
+        }
+        else {
+            data.clickedDistactor.lineWidth = myDiviation * 125;
+            data.clickedDistactor.lineDirection = -1;
+            data.clickedDistactor.lineWidthForMargin = data.clickedDistactor.lineWidth;
+            data.clickedDistactor.lineArrowDirection = true;
+
+            console.log("rigt lineArrowDirection: " + data.clickedDistactor.lineArrowDirection);
+            console.log("rigt lineWidth: " + data.clickedDistactor.lineWidth);
+            console.log("rigt lineDirection: " + data.clickedDistactor.lineDirection);
+            console.log("rigt lineWidthForMargin: " + data.clickedDistactor.lineWidthForMargin);
+
+       
+        }
+       // console.log("lineWidth: " + data.clickedDistactor.lineWidth);
+
+     //   data.clickedDistactor.lineDirection = (myDiviation > 0) ? -1 : 1;
+
+
+     //   console.log("lineDirection: " + data.clickedDistactor.lineDirection);
+
+
+    }
+
+
     /**
      * This function go over all the activity array and set the global distractor index
      * This what help to order the distractors one after the other

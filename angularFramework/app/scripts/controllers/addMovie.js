@@ -9,7 +9,8 @@ angular.module('angularFrameworkApp')
       $scope.checkIfExist = function (scenario) {
 
 
-          if (scenario.myMovName[0] != null) {
+          if (state == "edit") {
+
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
               $scope.myUrl = scenario.movieLink + scenario.id;
@@ -69,7 +70,24 @@ angular.module('angularFrameworkApp')
       
           if (state == "new")
           {
-              var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
+
+              var scenarioUpdateDet = {
+                  myMovieNum: "",
+                  myMovName: $scope.myscenarioName,
+                  id: $scope.myUrlID,
+                  StartTime: $scope.myStartTime,
+                  endTime: $scope.myEndTime,
+                  movieLink: "https://www.youtube.com/iframe_api?wmode=",
+                  questions: [
+                                {
+                                    type: "",
+                                    text: "",
+                                    answers: [
+                                        { }
+                                    ]
+                                }
+                  ]
+              };
               console.log(scenarioUpdateDet);
 
               dataService.activities[0].scenarios.push(scenarioUpdateDet);
@@ -79,23 +97,19 @@ angular.module('angularFrameworkApp')
           else if (state == "edit")
           {
            
-              console.log("before" + scenario.myMovName);
-
-              scenario.id = $scope.myUrlID;
+             
+             
               scenario.myMovName = $scope.myscenarioName;
+              scenario.id = $scope.myUrlID;
               scenario.StartTime = $scope.myStartTime;
               scenario.endTime = $scope.myEndTime;
 
-              console.log("my scenario; " + scenario);
-
-              //i dont know to whice arry to push it
-              
-
-              console.log("after" + $scope.scenario.myMovName);
+             
               $modalInstance.close();
 
           }
-        // 
+          // 
+        
       }
 
   });

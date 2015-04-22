@@ -1,5 +1,30 @@
 
 
+.arrowHead {
+               width:13px;
+    height:16px;
+background-image: url('../images/ArrowLeftDir.png');
+
+    position: absolute;
+  margin-top:23px;
+
+}
+.isRightArrow .arrowHead {
+          width:13px;
+    height:16px;
+background-image: url('../images/ArrowRightDir.png');
+
+    position: absolute;
+  margin-top: 23px;
+
+}
+.arrow {
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    margin-top: 30px;
+}
+
 .glyphicon.glyphicon-one-fine-full-dot {
     margin-bottom: -.8em;
     overflow: hidden;
@@ -19,6 +44,7 @@
 .myeditMovGlyphicon {
   font-size: 11px;
   margin-right: 94px;
+
 
 }
 .myDeleyeglyphicon {
@@ -138,11 +164,13 @@ background-color: white;
   padding-top: 9px;
   padding-right: 8px;
   margin-right: 34px;
-  margin-top: -11px;
+margin-top: 327px;
   display: block;
   border: 2px solid;
   border-radius: 20px 20px 20px 20px;
-  cursor:pointer;
+  cursor: pointer;
+  position: absolute;
+  z-index: 44;
 }
     .myPancilGlyphicon:hover {
     
@@ -157,11 +185,13 @@ color:white;
   padding-top: 9px;
   padding-right: 8px;
   margin-right: 34px;
-  margin-top: -11px;
+margin-top: 327px;
   display: block;
   border: 2px solid black;
   border-radius: 20px 20px 20px 20px;
     cursor:pointer;
+      position: absolute;
+  z-index: 44;
 }
 .myAnswersLinkSpanClass {
         cursor:pointer;
@@ -188,7 +218,7 @@ margin-right:20px;
   width: 2px;
   background-color: #A8A8B7;
   position: absolute;
-  margin-top: -64px;
+  margin-top: -45px;
   margin-right: -2px;
   z-index: 0;
 }
@@ -219,14 +249,13 @@ background-color:#EBEBEB;
     width: 120px;
     height: 110px;
      cursor:pointer;
-     margin-top:-160px;
+     margin-top:0px;
      z-index:33333;
      position:absolute;
 }
     .addScenarioBTNClass:hover {
           background-image: url('../images/addScenarioBTNH.png');
-    width: 120px;
-    height: 110px;
+ 
     }
 .browsehappy {
   margin: 0.2em 0;

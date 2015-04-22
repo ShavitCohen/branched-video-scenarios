@@ -19,31 +19,32 @@
               distractor.globalIndex = scope.globalDistractorCount.count++;
           }
 
+          
 
-
-            //  scope.btnarr = 0;
-            //  scope.btnURL = ["EditBTN.png","addBTN.png","whatToDoBTN.png","linkToBTN.png"]
-            //  scope.changeBTN = function () {
-            //      switch (scope.btnarr) {
-            //         case 0:
-            //    scope.btnarr=1;
-            //   break;
-            //case 1:
-            //    scope.btnarr = 2;
-            //   break;
-            //      case 2:
-            //     scope.btnarr=3
-            //   break;
-            //case 3:
-            //     scope.btnarr=0;
-            //   break;
-            //      }
-            //  }
+              scope.btnarr = 1;
+              scope.btnURL = ["glyphicon glyphicon-plus", "glyphicon glyphicon-pencil", "glyphicon glyphicon-link"]
+              scope.changeBTN = function () {
+                  switch (scope.btnarr) {
+                    case 0:
+                     scope.btnarr=1;
+                   break;
+                    case 1:
+                     scope.btnarr = 2;
+                      break;
+                    case 2:
+                     scope.btnarr = 0;
+                     break;
+            
+                  }
+              }
 
 
               scope.isShowDistractors = false;
 
-          scope.toggle = function () {
+              scope.toggle = function () {
+
+
+                  scope.btnarr = 1;
               if (dataService.isBtnState == true) {
 
                   dataService.isBtnState = false;
@@ -76,7 +77,10 @@
 
 
 
-          scope.answerClickToLink = function () {
+              scope.answerClickToLink = function (distractor) {
+                  scope.btnarr = 2;
+                  dataService.clickedDistactor = distractor;
+                  dataService.clickedScenarioMovieNum = scope.scenario.myMovieNum;
 
               dataService.isBtnState = !dataService.isBtnState;
 
@@ -85,7 +89,9 @@
 
           };
           scope.scenarioClickToLink = function () {
-              alert("הוקלקתי");
+
+              dataService.calculateArrow(scope.scenario.myMovieNum);
+    
           };
 
         scope.openEditDialog = function (scenario) {
@@ -98,6 +104,9 @@
                 resolve: {
                     scenario: function () {
                         return scope.scenario;
+                    },
+                    state: function () {
+                        return "edit";
                     }
                 }
             });
