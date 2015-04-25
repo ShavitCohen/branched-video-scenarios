@@ -37,7 +37,7 @@ angular.module('angularFrameworkApp')
     //  console.log();
       tempAnswerArry.push(newAnswer);
       console.log("afterpush: " + tempAnswerArry);
-      console.log("orginArry:"+scenario.questions[0].answers);
+      console.log("orginArry:" + scenario.interactions[0].distractors);
      //answersArray.push(answer);
       dataService.setDistractorsIndex();
     }
@@ -45,12 +45,12 @@ angular.module('angularFrameworkApp')
 
     $scope.deleteAnswer = function (index, answersArray)
     {
-      answersArray.answers.splice(index, 1);
+        answersArray.distractors.splice(index, 1);
 
     }
 
     $scope.deleteQuestions = function (index, myScenario) {
-      myScenario.questions.splice(index, 1);
+        myScenario.interactions.splice(index, 1);
       $modalInstance.close();
       console.log(myScenario);
     }

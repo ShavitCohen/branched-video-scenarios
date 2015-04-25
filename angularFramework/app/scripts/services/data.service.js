@@ -15,187 +15,198 @@
               currentTime: null,
               controls: true,
               "z-index": 0,
+              movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
               scenarios: [
                     {
-                        myMovieNum: 1,
+                        movIndex: 1,
                         
                         myMovName: "opening start",
-                        id: "XIsXgNFGTJQ",
-                        StartTime: 0,
+                        videoId: "XIsXgNFGTJQ",
+                        id:1,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                       
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אתעלם", scenario: 2 },
-                                    { text: "אבדוק לשלומו", scenario: 4, isRightAnswer: true }
+                                distractors: [
+                                    { text: "אתעלם", linkTo: 2 },
+                                    { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 2,
+                        movIndex: 2,
                         
                         myMovName: "ignor him",
-                        id: "D6-CDlYWzYY",
-                        StartTime: 0,
+                        videoId: "D6-CDlYWzYY",
+                        id: 2,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                       
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אעזוב", scenario: 3 },
-                                    { text: "אחפש עזרה", scenario: 5 }
+                                distractors: [
+                                    { text: "אעזוב", linkTo: 3 },
+                                    { text: "אחפש עזרה", linkTo: 5 }
                                 ]
 
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 3,
+                        movIndex: 3,
                         myMovName: "Leave",
-                        id: "kp4u4yRfJao",
-                        StartTime: 0,
+                        videoId: "kp4u4yRfJao",
+                        id: 3,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                       
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "null",
-                                answers: [
-                                    { text: "null", scenario: "tryAgain_5" },
-                                    { text: "null", scenario: "null" }
+                                distractors: [
+                                    { text: "null", linkTo: "tryAgain_5" },
+                                    { text: "null", linkTo: "null" }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 4,
+                        movIndex: 4,
                         myMovName: "see if he is ok",
-                        id: "E7vLCnkTkFg",
-                        StartTime: 0,
+                        videoId: "E7vLCnkTkFg",
+                        id: 4,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אחפש עזרה", scenario: 5 },
-                                    { text: "אתקשר למגן דוד אדום", scenario: 6, isRightAnswer: true }
+                                distractors: [
+                                    { text: "אחפש עזרה", linkTo: 5 },
+                                    { text: "אתקשר למגן דוד אדום", linkTo: 6, isRightAnswer: true }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 5,
+                        movIndex: 5,
                         myMovName: "search for help",
-                        id: "y33_JJicV7g",
-                        StartTime: 0,
+                        videoId: "y33_JJicV7g",
+                        id: 5,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "null",
-                                answers: [
-                                    { text: "null", scenario: "tryAgain_7" },
-                                    { text: "null", scenario: 3 }
+                                distractors: [
+                                    { text: "null", linkTo: "tryAgain_7" },
+                                    { text: "null", linkTo: 3 }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 6,
+                        movIndex: 6,
                         myMovName: "call 911",
-                        id: "NSTR1oHg7Rw",
-                        StartTime: 0,
+                        videoId: "NSTR1oHg7Rw",
+                        id: 6,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אתחיל החייאה", scenario: 8, isRightAnswer: true },
-                                    { text: "אצא מדעתי", scenario: 7 }
+                                distractors: [
+                                    { text: "אתחיל החייאה", linkTo: 8, isRightAnswer: true },
+                                    { text: "אצא מדעתי", linkTo: 7 }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 7,
+                        movIndex: 7,
                         myMovName: "freakout",
-                        id: "XPiI86kx5So",
-                        StartTime: 0,
+                        videoId: "XPiI86kx5So",
+                        id: 7,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אתחיל החייאה", scenario: 8 },
-                                    { text: "אעזוב", scenario: 3 }
+                                distractors: [
+                                    { text: "אתחיל החייאה", linkTo: 8 },
+                                    { text: "אעזוב", linkTo: 3 }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 8,
+                        movIndex: 8,
                         myMovName: "start cpr",
-                        id: "3-EOXfM2h2I",
-                        StartTime: 0,
+                        videoId: "3-EOXfM2h2I",
+                        id: 8,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אמשיך החייאה", scenario: 9 },
-                                    { text: "אשתמש בדפיברילטור", scenario: 10, isRightAnswer: true }
+                                distractors: [
+                                    { text: "אמשיך החייאה", linkTo: 9 },
+                                    { text: "אשתמש בדפיברילטור", linkTo: 10, isRightAnswer: true }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 9,
+                        movIndex: 9,
                         myMovName: "continue cpr",
-                        id: "OxxUjYZ9adY",
-                        StartTime: 0,
+                        videoId: "OxxUjYZ9adY",
+                        id: 9,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "מה תעשה?",
-                                answers: [
-                                    { text: "אחפש עזרה", scenario: 5 },
-                                    { text: "אשתמש בדפיברילטור", scenario: 10 }
+                                distractors: [
+                                    { text: "אחפש עזרה", linkTo: 5 },
+                                    { text: "אשתמש בדפיברילטור", linkTo: 10 }
                                 ]
                             }
                         ]
                     }, //finish mov - next scenario
                     {
-                        myMovieNum: 10,
+                        movIndex: 10,
                         myMovName: "use aed",
-                        id: "ThMCY_Dw5Kg",
-                        StartTime: 0,
+                        videoId: "ThMCY_Dw5Kg",
+                        id: 10,
+                        startTime: 0,
                         endTime: 5,
-                        movieLink: "https://www.youtube.com/iframe_api?wmode=opaque",
-                        questions: [
+                        
+                        interactions: [
                             {
                                 type: "singleSelection",
                                 text: "null",
-                                answers: [
-                                    { text: "null", scenario: "tryAgain_3" },
-                                    { text: "null", scenario: "null" },
-                                { text: "null", scenario: "null" }
+                                distractors: [
+                                    { text: "null", linkTo: "tryAgain_3" },
+                                    { text: "null", linkTo: "null" },
+                                { text: "null", linkTo: "null" }
                                 ]
                             }
                         ]
@@ -224,8 +235,8 @@
       for (var i=0;i<data.activities[0].scenarios.length;i++){
         var myScenario = data.activities[0].scenarios[i];
         myScenario.index = i;
-        for(var j=0;j<myScenario.questions[0].answers.length; j++){
-          var myDistractor = myScenario.questions[0].answers[j];
+        for (var j = 0; j < myScenario.interactions[0].distractors.length; j++) {
+            var myDistractor = myScenario.interactions[0].distractors[j];
           myDistractor.index = globalDistractorIndex;
           globalDistractorIndex++;
         }

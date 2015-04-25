@@ -28,7 +28,7 @@
             <label class="col-md-12">תוכן השאלה</label>
         </div>
         <div class="row">
-            <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenario.questions[0].text"></textarea>
+            <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenario.interactions[0].text"></textarea>
 
         </div>
         <div class="row">
@@ -45,7 +45,7 @@
                 <input type="radio" class="col-md-1" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
 
                 <textarea class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
-                <div ng-click="deleteAnswer($index,scenario.questions[0])"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
+                <div ng-click="deleteAnswer($index,scenario.interactions[0])"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
 
 
             </div>

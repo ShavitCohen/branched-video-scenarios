@@ -2,7 +2,8 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService,state) {
+  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService, state, activities) {
+      $scope.activities = activities;
       $scope.scenario = scenario;
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
       $scope.movModalBTN = "שמור והמשך";
@@ -12,10 +13,10 @@ angular.module('angularFrameworkApp')
           if (state == "edit") {
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
-              $scope.myUrl = scenario.movieLink + scenario.id;
-              $scope.loadTheYoutubeUrl($scope.scenario.id);
+              $scope.myUrl = activities.movieLink + scenario.videoId;
+              $scope.loadTheYoutubeUrl($scope.scenario.videoId);
               $scope.myscenarioName = scenario.myMovName;
-              $scope.myStartTime = scenario.StartTime;
+              $scope.myStartTime = scenario.startTime;
               $scope.myEndTime = scenario.endTime;
               $scope.movModalBTN = "עדכן";
        
@@ -69,7 +70,7 @@ angular.module('angularFrameworkApp')
       
           if (state == "new")
           {
-              var scenarioUpdateDet = { myMovieNum: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, StartTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
+              var scenarioUpdateDet = { movIndex: "", myMovName: $scope.myscenarioName, id: $scope.myUrlID, startTime: $scope.myStartTime, endTime: $scope.myEndTime, movieLink: "https://www.youtube.com/iframe_api?wmode=" };
               console.log(scenarioUpdateDet);
 
               dataService.activities[0].scenarios.push(scenarioUpdateDet);
@@ -81,9 +82,9 @@ angular.module('angularFrameworkApp')
            
               console.log("before" + scenario.myMovName);
 
-              scenario.id = $scope.myUrlID;
+              scenario.videoId = $scope.myUrlID;
               scenario.myMovName = $scope.myscenarioName;
-              scenario.StartTime = $scope.myStartTime;
+              scenario.startTime = $scope.myStartTime;
               scenario.endTime = $scope.myEndTime;
 
               console.log("my scenario; " + scenario);

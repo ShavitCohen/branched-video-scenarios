@@ -22,7 +22,7 @@ angular.module('angularFrameworkApp')
           player = new YT.Player('player', {
               height: '200',
               width: '400',
-              videoId: scenario.id
+              videoId: scenario.videoId
           });
       }
 

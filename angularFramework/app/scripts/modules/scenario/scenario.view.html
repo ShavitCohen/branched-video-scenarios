@@ -5,7 +5,7 @@
             <div class="youtubeoHolderTEXT" ng-click="openAddMovieDialog(scenario)">{{scenario.myMovName}}</div>
             <i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>
         </div>
-            <img ng-src="http://img.youtube.com/vi/{{scenario.id}}/1.jpg" alt="" />
+            <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
         <div ng-click="openMovDialog(scenario)" class="playBtnClass">
         </div>
     </div>
@@ -24,7 +24,7 @@
 
     <ul>
 
-        <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.questions[0].answers" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
+        <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.interactions[0].distractors" ng-class="{isTrue:distractor.isRightAnswer}" ng-init="promoteDistractorCount(distractor)" style="position:absolute;">
             
             <div class="myDistractorPollClass" ng-style="{'height':(800)}"></div>
 

@@ -78,7 +78,7 @@
 
           scope.answerClickToLink = function (distractor) {
               dataService.clickedDistactor = distractor;
-              dataService.clickedScenarioMovieNum = scope.scenario.myMovieNum;
+              dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
 
 
               dataService.isBtnState = !dataService.isBtnState;
@@ -88,11 +88,11 @@
 
           };
           scope.scenarioClickToLink = function () {
-              dataService.calculateArrow(scope.scenario.myMovieNum);
+              dataService.calculateArrow(scope.scenario.movIndex);
           };
 
         scope.openEditDialog = function (scenario) {
-            scope.tempAnswerArry = scenario.questions[0].answers;
+            scope.tempAnswerArry = scenario.interactions[0].distractors;
 
             var modalInstance = $modal.open({
                 windowClass: 'editModalClass',
