@@ -206,7 +206,7 @@
                                 distractors: [
                                     { text: "null", linkTo: "tryAgain_3" },
                                     { text: "null", linkTo: "null" },
-                                { text: "null", linkTo: "null" }
+                                    { text: "null", linkTo: "null" }
                                 ]
                             }
                         ]

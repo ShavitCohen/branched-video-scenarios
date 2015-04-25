@@ -67,10 +67,6 @@
 
              }
 
-
-
-
-
           };
 
 
@@ -146,6 +142,31 @@
             });
         }
 
+
+
+
+        scope.linkInitDistrctors = function (distractor, scenario) {
+            //distractor.globalIndex = scope.globalDistractorCount.count++;
+            //console.log("videoId " + match[7]);
+            if (distractor.text != "null") {
+                //scope.isShowDistractors = false;
+                //dataService.isSelectRelationship = false;
+                var myLinkArrowLength = distractor.linkTo - scenario.id;
+                console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
+                dataService.clickedDistactor = distractor;
+
+
+                if (scenario.id > distractor.linkTo) {
+                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is greater then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
+                }
+                else {
+                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
+                }
+
+                dataService.clickedDistactor.lineWidth = myLinkArrowLength * 125;
+                console.log("lineWidth = " + dataService.clickedDistactor.lineWidth);
+            }
+        }
 
       }
 
