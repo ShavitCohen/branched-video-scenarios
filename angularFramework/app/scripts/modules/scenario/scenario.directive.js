@@ -1,23 +1,23 @@
 ﻿angular.module('angularFrameworkApp')
   .directive("scenario", function ($modal,dataService) {
-    return {
-      restrict: 'E',
-      templateUrl: "scripts/modules/scenario/scenario.view.html",
-      scope: {
-          scenario: "="
-      },
-      link: function (scope, element, attrs) {
-        //scope.shavit = "hey";
-          scope.shavit = JSON.stringify(scope.data);
+      return {
+          restrict: 'E',
+          templateUrl: "scripts/modules/scenario/scenario.view.html",
+          scope: {
+              scenario: "="
+          },
+          link: function (scope, element, attrs) {
+              //scope.shavit = "hey";
+              scope.shavit = JSON.stringify(scope.data);
 
-          scope.dataService = dataService;
+              scope.dataService = dataService;
 
 
 
-          //scope.promoteDistractorCount = function (distractor)
-          //{
-          //    distractor.globalIndex = scope.globalDistractorCount.count++;
-          //}
+              //scope.promoteDistractorCount = function (distractor)
+              //{
+              //    distractor.globalIndex = scope.globalDistractorCount.count++;
+              //}
 
           
 
@@ -25,15 +25,15 @@
               scope.btnURL = ["glyphicon glyphicon-plus", "glyphicon glyphicon-pencil", "glyphicon glyphicon-link"]
               scope.changeBTN = function () {
                   switch (scope.btnarr) {
-                    case 0:
-                     scope.btnarr=1;
-                   break;
-                    case 1:
-                     scope.btnarr = 2;
-                      break;
-                    case 2:
-                     scope.btnarr = 0;
-                     break;
+                      case 0:
+                          scope.btnarr=1;
+                          break;
+                      case 1:
+                          scope.btnarr = 2;
+                          break;
+                      case 2:
+                          scope.btnarr = 0;
+                          break;
             
                   }
               }
@@ -45,75 +45,86 @@
 
 
                   scope.btnarr = 1;
-              if (dataService.isBtnState == true) {
+                  if (dataService.isBtnState == true) {
 
-                  dataService.isBtnState = false;
-
-              }
-
-
-             if (scope.isShowDistractors == true) {
-                   scope.isShowDistractors = false;
-                  dataService.isSelectRelationship = false;
-                 }
-             else
-             {
-                 if (dataService.isSelectRelationship == false) {
-
-                      dataService.isSelectRelationship = true;
-                      scope.isShowDistractors = true;
                       dataService.isBtnState = false;
 
-                }
-
-             }
-
-          };
+                  }
 
 
+                  if (scope.isShowDistractors == true) {
+                      scope.isShowDistractors = false;
+                      dataService.isSelectRelationship = false;
+                  }
+                  else
+                  {
+                      if (dataService.isSelectRelationship == false) {
+
+                          dataService.isSelectRelationship = true;
+                          scope.isShowDistractors = true;
+                          dataService.isBtnState = false;
+
+                      }
+
+                  }
+
+              };
 
 
-              scope.answerClickToLink = function (distractor) {
-                  scope.btnarr = 2;
-                  dataService.clickedDistactor = distractor;
-                  dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
 
 
-              dataService.isBtnState = !dataService.isBtnState;
+              //scope.answerClickToLink = function (distractor) {
+              //    scope.btnarr = 2;
+              //    dataService.clickedDistactor = distractor;
+              //    dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
 
-            //  dataService.isSelectRelationship = true;
+
+              //    dataService.isBtnState = !dataService.isBtnState;
+
+              //    //  dataService.isSelectRelationship = true;
 
 
-          };
-          scope.scenarioClickToLink = function () {
+              //};
+              //scope.scenarioClickToLink = function () {
 
-dataService.calculateArrow(scope.scenario.movIndex);
+              //    dataService.calculateArrow(scope.scenario.movIndex);
     
+              //לאקיים?
+              //};
 
-          };
+              scope.openEditDialog = function (scenario) {
+                  scope.tempAnswerArry = scenario.interactions[0].distractors;
 
-        scope.openEditDialog = function (scenario) {
-            scope.tempAnswerArry = scenario.interactions[0].distractors;
+                  var modalInstance = $modal.open({
+                      windowClass: 'editModalClass',
+                      //template:,
+                      templateUrl: 'views/editMovModal.html',
+                      controller:"scenarioPropertiesCtrl",
+                      resolve: {
+                          scenario: function () {
+                              return scope.scenario;
+                          },
+                          state: function () {
+                              return "edit";
+                          },
+                          tempAnswerArry: function () {
+                              return angular.copy(scope.tempAnswerArry);
 
-            var modalInstance = $modal.open({
-                windowClass: 'editModalClass',
-                //template:,
-                templateUrl: 'views/editMovModal.html',
-                controller:"scenarioPropertiesCtrl",
-                resolve: {
-                    scenario: function () {
-                        return scope.scenario;
-                    },
-                    state: function () {
-                        return "edit";
-                    },
-                    tempAnswerArry: function () {
-                        return scope.tempAnswerArry;
+                          }
+                      }
+                  });
+                  modalInstance.result.then(function (tempAnswerArry) {
+                      scope.modalUpdates = tempAnswerArry;
+                      console.log("selectedItem = " + scope.modalUpdates);
+                  }, function () {
+                      log.info('Modal dismissed at: ' + new Date());
+                  });
+              };
+           
+          
 
-                    }
-                }
-            });
-        }
+   
+
         scope.openMovDialog = function (scenario) {
 
             var modalInstance = $modal.open({
@@ -154,28 +165,7 @@ dataService.calculateArrow(scope.scenario.movIndex);
 
 
 
-        scope.linkInitDistrctors = function (distractor, scenario) {
-            //distractor.globalIndex = scope.globalDistractorCount.count++;
-            //console.log("videoId " + match[7]);
-            if (distractor.text != "null") {
-                //scope.isShowDistractors = false;
-                //dataService.isSelectRelationship = false;
-                var myLinkArrowLength = distractor.linkTo - scenario.id;
-                console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
-                dataService.clickedDistactor = distractor;
-
-
-                if (scenario.id > distractor.linkTo) {
-                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is greater then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
-                }
-                else {
-                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
-                }
-
-                dataService.clickedDistactor.lineWidth = myLinkArrowLength * 125;
-                console.log("lineWidth = " + dataService.clickedDistactor.lineWidth);
-            }
-        }
+      
 
       }
 

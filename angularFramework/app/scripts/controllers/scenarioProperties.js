@@ -49,7 +49,7 @@ angular.module('angularFrameworkApp')
 
     $scope.deleteAnswer = function (index, answersArray)
     {
-        answersArray.distractors.splice(index, 1);
+        answersArray.splice(index, 1);
 
     }
 
@@ -59,4 +59,17 @@ angular.module('angularFrameworkApp')
       console.log(myScenario);
     }
 
+
+    $scope.saveChangesInOriginArray = function () {
+        $modalInstance.close(tempAnswerArry);
+        console.log("passed ok function to save changes of modal... = " + tempAnswerArry);
+        scenario.interactions[0].distractors = tempAnswerArry;
+        console.log("orig arr = " + scenario.interactions[0].distractors);
+        dataService.setDistractorsIndex();
+
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
   });

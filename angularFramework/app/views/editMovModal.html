@@ -45,7 +45,7 @@
                 <input type="radio" class="col-md-1" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
 
                 <textarea class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
-                <div ng-click="deleteAnswer($index,scenario.interactions[0])"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
+                <div ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
 
 
             </div>
@@ -62,7 +62,7 @@
     <div class="modal-footer">
         <div class="col-md-4 col-md-offset-6">
             <input class="btn btn-warning" id="delete" type="button" value="מחק" ng-click="deleteQuestions($index,scenario)" />
-            <div class="btn btn-primary">{{editModalBTN}}</div>
+            <div class="btn btn-primary" ng-click="saveChangesInOriginArray()">{{editModalBTN}}</div>
 
         </div>
     </div>

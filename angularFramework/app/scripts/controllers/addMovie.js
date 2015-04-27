@@ -2,8 +2,8 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService, state, activities) {
-      $scope.activities = activities;
+  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService, state) {
+      $scope.activities = dataService.activities[0];
       $scope.scenario = scenario;
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
       $scope.movModalBTN = "שמור והמשך";
@@ -13,7 +13,7 @@ angular.module('angularFrameworkApp')
           if (state == "edit") {
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
-              $scope.myUrl = activities.movieLink + scenario.videoId;
+              $scope.myUrl = $scope.activities.movieLink + scenario.videoId;
               $scope.loadTheYoutubeUrl($scope.scenario.videoId);
               $scope.myscenarioName = scenario.myMovName;
               $scope.myStartTime = scenario.startTime;
@@ -83,7 +83,7 @@ angular.module('angularFrameworkApp')
                                     type: "",
                                     text: "",
                                     distractors: [
-                                        { }
+                                      
                                     ]
                                 }
                   ]

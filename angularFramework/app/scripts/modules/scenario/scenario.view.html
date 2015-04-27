@@ -31,8 +31,7 @@
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
                 <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow">
-
-
+                    {{distractor.lineDirection}}
                 </div>
                 <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection}" ></div>
                 <div class="circle"><i class="glyphicon glyphicon-one-fine-full-dot"></i></div>
@@ -47,7 +46,8 @@
 
 
             </div>
-            <div ng-init="linkInitDistrctors(distractor,scenario)"></div>
+
+           <!-- <div ng-init="dataService.linkInitDistrctors(distractor,scenario)"></div>-->
         </li>
 
     </ul>
