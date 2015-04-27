@@ -2,15 +2,19 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state) {
-    $scope.scenario = scenario;
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state, tempAnswerArry) {
 
+    $scope.scenario = scenario;
+    $scope.tempAnswerArry = tempAnswerArry;
+
+   
 
     $scope.headlingOfAddScene = "הוספת שאלה חדשה";
     $scope.checkIfExist = function (scenario) {
         if (scenario.state = "edit") {
             $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
             $scope.editModalBTN = "עדכן";
+
 
         //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
 
@@ -25,27 +29,32 @@ angular.module('angularFrameworkApp')
 
 
 
-    $scope.addAnswer = function (answersArray) {
+    $scope.addAnswer = function (tempAnswerArry) {
 
-      var answer = { text: "", scenario: "", isRightAnswer:""}
+        var newAnswer = { text: "", scenario: "", isRightAnswer: "" };
 
       if ($scope.isChecked == true)
       {
         answer.isRightAnswer = true;
       }
-      answersArray.push(answer);
+        //  $scope.tempAnswerArry = [];
+    //  console.log();
+      tempAnswerArry.push(newAnswer);
+      console.log("afterpush: " + tempAnswerArry);
+      console.log("orginArry:" + scenario.interactions[0].distractors);
+     //answersArray.push(answer);
       dataService.setDistractorsIndex();
     }
 
 
     $scope.deleteAnswer = function (index, answersArray)
     {
-      answersArray.answers.splice(index, 1);
+        answersArray.distractors.splice(index, 1);
 
     }
 
     $scope.deleteQuestions = function (index, myScenario) {
-      myScenario.questions.splice(index, 1);
+        myScenario.interactions.splice(index, 1);
       $modalInstance.close();
       console.log(myScenario);
     }

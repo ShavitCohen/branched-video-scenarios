@@ -14,10 +14,10 @@
 
 
 
-          scope.promoteDistractorCount = function (distractor)
-          {
-              distractor.globalIndex = scope.globalDistractorCount.count++;
-          }
+          //scope.promoteDistractorCount = function (distractor)
+          //{
+          //    distractor.globalIndex = scope.globalDistractorCount.count++;
+          //}
 
           
 
@@ -68,10 +68,6 @@
 
              }
 
-
-
-
-
           };
 
 
@@ -80,7 +76,8 @@
               scope.answerClickToLink = function (distractor) {
                   scope.btnarr = 2;
                   dataService.clickedDistactor = distractor;
-                  dataService.clickedScenarioMovieNum = scope.scenario.myMovieNum;
+                  dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
+
 
               dataService.isBtnState = !dataService.isBtnState;
 
@@ -90,11 +87,13 @@
           };
           scope.scenarioClickToLink = function () {
 
-              dataService.calculateArrow(scope.scenario.myMovieNum);
+dataService.calculateArrow(scope.scenario.movIndex);
     
+
           };
 
         scope.openEditDialog = function (scenario) {
+            scope.tempAnswerArry = scenario.interactions[0].distractors;
 
             var modalInstance = $modal.open({
                 windowClass: 'editModalClass',
@@ -107,6 +106,10 @@
                     },
                     state: function () {
                         return "edit";
+                    },
+                    tempAnswerArry: function () {
+                        return scope.tempAnswerArry;
+
                     }
                 }
             });
@@ -148,6 +151,31 @@
             });
         }
 
+
+
+
+        scope.linkInitDistrctors = function (distractor, scenario) {
+            //distractor.globalIndex = scope.globalDistractorCount.count++;
+            //console.log("videoId " + match[7]);
+            if (distractor.text != "null") {
+                //scope.isShowDistractors = false;
+                //dataService.isSelectRelationship = false;
+                var myLinkArrowLength = distractor.linkTo - scenario.id;
+                console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
+                dataService.clickedDistactor = distractor;
+
+
+                if (scenario.id > distractor.linkTo) {
+                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is greater then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
+                }
+                else {
+                    console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + myLinkArrowLength);
+                }
+
+                dataService.clickedDistactor.lineWidth = myLinkArrowLength * 125;
+                console.log("lineWidth = " + dataService.clickedDistactor.lineWidth);
+            }
+        }
 
       }
 

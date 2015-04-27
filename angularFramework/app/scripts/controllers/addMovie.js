@@ -2,7 +2,8 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService,state) {
+  .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService, state, activities) {
+      $scope.activities = activities;
       $scope.scenario = scenario;
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
       $scope.movModalBTN = "שמור והמשך";
@@ -10,13 +11,12 @@ angular.module('angularFrameworkApp')
 
 
           if (state == "edit") {
-
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
-              $scope.myUrl = scenario.movieLink + scenario.id;
-              $scope.loadTheYoutubeUrl($scope.scenario.id);
+              $scope.myUrl = activities.movieLink + scenario.videoId;
+              $scope.loadTheYoutubeUrl($scope.scenario.videoId);
               $scope.myscenarioName = scenario.myMovName;
-              $scope.myStartTime = scenario.StartTime;
+              $scope.myStartTime = scenario.startTime;
               $scope.myEndTime = scenario.endTime;
               $scope.movModalBTN = "עדכן";
        
@@ -72,22 +72,23 @@ angular.module('angularFrameworkApp')
           {
 
               var scenarioUpdateDet = {
-                  myMovieNum: "",
+                  movIndex: "",
                   myMovName: $scope.myscenarioName,
-                  id: $scope.myUrlID,
-                  StartTime: $scope.myStartTime,
+                  videoId: $scope.myUrlID,
+                  id:25,
+                  startTime: $scope.myStartTime,
                   endTime: $scope.myEndTime,
-                  movieLink: "https://www.youtube.com/iframe_api?wmode=",
-                  questions: [
+                  interactions: [
                                 {
                                     type: "",
                                     text: "",
-                                    answers: [
+                                    distractors: [
                                         { }
                                     ]
                                 }
                   ]
               };
+
               console.log(scenarioUpdateDet);
 
               dataService.activities[0].scenarios.push(scenarioUpdateDet);
@@ -97,11 +98,12 @@ angular.module('angularFrameworkApp')
           else if (state == "edit")
           {
            
-             
-             
+
+              console.log("before" + scenario.myMovName);
+
+              scenario.videoId = $scope.myUrlID;
               scenario.myMovName = $scope.myscenarioName;
-              scenario.id = $scope.myUrlID;
-              scenario.StartTime = $scope.myStartTime;
+              scenario.startTime = $scope.myStartTime;
               scenario.endTime = $scope.myEndTime;
 
              
