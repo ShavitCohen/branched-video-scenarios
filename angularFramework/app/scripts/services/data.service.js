@@ -77,18 +77,14 @@
                        
                         interactions: [
                             {
-                                type: "singleSelection",
-                                text: "null",
+                                type: "endMessege",
+                                text: "לא חבל? האיש מת",
                                 distractors: [
-                                    { text: "ggg", linkTo: "tryAgain_5" },
-                                    { text: "gg", linkTo: "null" }
+                                   { text: "סוף" }
+                                    //,
+                                    //{ text: "gg", linkTo: "null" }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: "לא חבל? האיש מת"
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {

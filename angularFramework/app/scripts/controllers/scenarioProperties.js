@@ -8,14 +8,17 @@ angular.module('angularFrameworkApp')
     $scope.tempAnswerArry = tempAnswerArry;
 
    
-
- 
+  
     $scope.checkIfExist = function (scenario) {
+
+       
         if (scenario.state = "edit") {
             $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.myMovName;
             $scope.editModalBTN = "עדכן";
+          
 
 
+            console.log("scenario[0].interactions[0].type " + scenario.interactions[0].type);
             //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
 
 
@@ -29,13 +32,34 @@ angular.module('angularFrameworkApp')
 
             $scope.headlingOfAddScene = "הוספת אינטראקציה חדשה";
         }
-        if (scenario.movIndex==1)
-        {
-        
+
+
+        $scope.checkboxSelection = scenario.interactions[0].type;
+        $scope.CheckboxSelectedFunc();
+
+     
+        if (scenario.movIndex == 1) {
+            $scope.isDisabled = true;
+        }
+       
+    }
+    $scope.CheckboxSelectedFunc = function () {
+        if ($scope.checkboxSelection == "singleSelection") {
+            $scope.whiceInteactionTypeS = true;
+            $scope.whiceInteactionTypeE = false;
+
+        }
+        else if ($scope.checkboxSelection == "endMessege") {
+            $scope.whiceInteactionTypeE = true;
+            $scope.whiceInteactionTypeS = false;
+
+
         }
     }
 
-
+    $scope.isCheckboxSelected = function (index) {
+        return index === $scope.checkboxSelection;
+    };
 
     $scope.addAnswer = function (tempAnswerArry) {
 
@@ -61,15 +85,24 @@ angular.module('angularFrameworkApp')
 
     }
 
-    $scope.deleteQuestions = function (index, myScenario) {
-        myScenario.interactions.splice(index, 1);
-      $modalInstance.close();
-      console.log(myScenario);
-    }
+    //$scope.deleteQuestions = function (index, myScenario) {
+    //    myScenario.interactions.splice(index, 1);
+    //  $modalInstance.close();
+    //  console.log(myScenario);
+    //}
 
 
     $scope.saveChangesInOriginArray = function () {
-        $modalInstance.close(tempAnswerArry);
+        if ($scope.checkboxSelection == "singleSelection") {
+
+            $modalInstance.close(tempAnswerArry);
+
+        }
+        else if ($scope.checkboxSelection == "endMessege") {
+
+            console.log("אני בהודעת סיום");
+            $modalInstance.close();
+        }
         console.log("passed ok function to save changes of modal... = " + tempAnswerArry);
         scenario.interactions[0].distractors = tempAnswerArry;
         console.log("orig arr = " + scenario.interactions[0].distractors);

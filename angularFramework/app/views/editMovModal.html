@@ -17,23 +17,34 @@
             <label class="col-md-3">סוג האינטראקציה:</label>
 
 
-            <!--<input type="radio" name="inetact" id="inetactTypeRad1" checked="{{mysingleSelectionChack}}">-->
-            <label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>
+            <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="checkboxSelection" ng-change="CheckboxSelectedFunc()">
 
-            <!--<input type="radio" name="inetact" id="inetactTypeRad2">
-            <label for="inetactTypeRad2">סימון</label>-->
+            <label for="singleSelection">חד ברירה</label>
 
-        </div>
+     
+            <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="checkboxSelection" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()">
 
-        <div class="row">
-            <label class="col-md-12">תוכן השאלה</label>
-        </div>
-        <div class="row">
-            <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenario.interactions[0].text"></textarea>
+            <label for="endMessege">הודעת סיום</label>
+            <!--<label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>-->
+
 
         </div>
         <div class="row">
-            <label class="col-md-3">
+            <label class="col-md-12" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום</label>
+        </div>
+        <div class="row">
+            <textarea class="col-md-8 col-md-offset-1 form-control" id="endMSGText" rows="3" cols="50" maxlength="150" ng-model="scenario.interactions[0].text" ng-show="whiceInteactionTypeE"></textarea>
+
+        </div>
+        <div class="row">
+            <label class="col-md-12" ng-show="whiceInteactionTypeS">תוכן השאלה</label>
+        </div>
+        <div class="row">
+            <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenario.interactions[0].text" ng-show="whiceInteactionTypeS"></textarea>
+
+        </div>
+        <div class="row">
+            <label class="col-md-3" ng-show="whiceInteactionTypeS">
                 אפשרויות בחירה:
             </label>
         </div>
@@ -41,10 +52,10 @@
             <div class="row">
       
 
-                <input type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
+                <input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
 
-                <textarea class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
-                <div ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
+                <textarea ng-show="whiceInteactionTypeS" class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
+                <div ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
 
 
             </div>
@@ -55,12 +66,12 @@
 
         <div class="row">
         
-            <div id ="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(tempAnswerArry)"><i class="glyphicon glyphicon-plus"></i></div>
+            <div ng-show="whiceInteactionTypeS" id="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(tempAnswerArry)"><i class="glyphicon glyphicon-plus"></i></div>
         </div>
     </div>
     <div class="modal-footer">
         <div class="col-md-4 col-md-offset-6">
-            <input class="btn btn-warning" id="delete" type="button" value="מחק" ng-click="deleteQuestions($index,scenario)" />
+            <input class="btn btn-warning" id="delete" type="button" value="בטל" ng-click="cancel()" />
             <div class="btn btn-primary" ng-click="saveChangesInOriginArray()">{{editModalBTN}}</div>
 
         </div>
