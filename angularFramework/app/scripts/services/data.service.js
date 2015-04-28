@@ -19,8 +19,8 @@
               scenarios: [
                     {
                         movIndex: 1,
-                        
-                        myMovName: "opening start",
+                        firstScenario:true,
+                        myMovName: "איש נופל",
                         videoId: "XIsXgNFGTJQ",
                         id:1,
                         startTime: 0,
@@ -34,13 +34,17 @@
                                     { text: "אתעלם", linkTo: 2 },
                                     { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true }
                                 ]
-                            }
+                            },
+                               {
+                                   type: "openingMessege",
+                                   text: "הגיע הזמן להציל חיים. מוכן להתחיל?"
+                               }
+
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 2,
-                        
-                        myMovName: "ignor him",
+                        myMovName: "אתעלם ממנו",
                         videoId: "D6-CDlYWzYY",
                         id: 2,
                         startTime: 0,
@@ -55,12 +59,17 @@
                                     { text: "אחפש עזרה", linkTo: 5 }
                                 ]
 
-                            }
+                            },
+                            
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 3,
-                        myMovName: "Leave",
+                        myMovName: "אעזוב",
                         videoId: "kp4u4yRfJao",
                         id: 3,
                         startTime: 0,
@@ -71,15 +80,20 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "null", linkTo: "tryAgain_5" },
-                                    { text: "null", linkTo: "null" }
+                                    { text: "ggg", linkTo: "tryAgain_5" },
+                                    { text: "gg", linkTo: "null" }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: "לא חבל? האיש מת"
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 4,
-                        myMovName: "see if he is ok",
+                        myMovName: "אבדוק אם הוא בסדר",
                         videoId: "E7vLCnkTkFg",
                         id: 4,
                         startTime: 0,
@@ -93,12 +107,17 @@
                                     { text: "אחפש עזרה", linkTo: 5 },
                                     { text: "אתקשר למגן דוד אדום", linkTo: 6, isRightAnswer: true }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 5,
-                        myMovName: "search for help",
+                        myMovName: "אחפש עזרה",
                         videoId: "y33_JJicV7g",
                         id: 5,
                         startTime: 0,
@@ -109,15 +128,20 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "null", linkTo: "tryAgain_7" },
-                                    { text: "null", linkTo: 3 }
+                                    { text: "s", linkTo: "tryAgain_7" },
+                                    { text: "s", linkTo: 3 }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: "חבל האיש מת"
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 6,
-                        myMovName: "call 911",
+                        myMovName: "אתקשר למגן דוד אדום",
                         videoId: "NSTR1oHg7Rw",
                         id: 6,
                         startTime: 0,
@@ -131,12 +155,17 @@
                                     { text: "אתחיל החייאה", linkTo: 8, isRightAnswer: true },
                                     { text: "אצא מדעתי", linkTo: 7 }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 7,
-                        myMovName: "freakout",
+                        myMovName: "אצא מדעתי",
                         videoId: "XPiI86kx5So",
                         id: 7,
                         startTime: 0,
@@ -150,12 +179,17 @@
                                     { text: "אתחיל החייאה", linkTo: 8 },
                                     { text: "אעזוב", linkTo: 3 }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 8,
-                        myMovName: "start cpr",
+                        myMovName: "אתחיל החייאה",
                         videoId: "3-EOXfM2h2I",
                         id: 8,
                         startTime: 0,
@@ -169,12 +203,17 @@
                                     { text: "אמשיך החייאה", linkTo: 9 },
                                     { text: "אשתמש בדפיברילטור", linkTo: 10, isRightAnswer: true }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 9,
-                        myMovName: "continue cpr",
+                        myMovName: "אמשיך החייאה",
                         videoId: "OxxUjYZ9adY",
                         id: 9,
                         startTime: 0,
@@ -188,12 +227,17 @@
                                     { text: "אחפש עזרה", linkTo: 5 },
                                     { text: "אשתמש בדפיברילטור", linkTo: 10 }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: ""
+                               }
                         ]
                     }, //finish mov - next scenario
                     {
                         movIndex: 10,
-                        myMovName: "use aed",
+                        myMovName: "אשתמש בדפיבלירטור",
                         videoId: "ThMCY_Dw5Kg",
                         id: 10,
                         startTime: 0,
@@ -204,11 +248,16 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "null", linkTo: "tryAgain_3" },
-                                    { text: "null", linkTo: "null" },
-                                    { text: "null", linkTo: "null" }
+                                    { text: "f", linkTo: "tryAgain_3" },
+                                    { text: "f", linkTo: "null" },
+                                    { text: "d", linkTo: "null" }
                                 ]
-                            }
+                            },
+
+                               {
+                                   type: "endMessege",
+                                   text: "כל הכבוד האיש בחיים"
+                               }
                         ]
                     } //finish mov - next scenario
               ]
@@ -228,7 +277,7 @@
 
 
                     data.connectionLength = distractor.linkTo - scenario.id;
-                    data.lineDirection = 1;
+                  //  data.lineDirection = 1;
                     console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
                 //    data.clickedDistactor = distractor;
                     
@@ -236,22 +285,26 @@
 
                     if (data.connectionLength < 0) {
                         console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
-
+                        distractor.lineWidth = data.connectionLength * (-125);
                         distractor.lineDirection = -1;
-                        distractor.lineWidthForMargin = 0;
                         distractor.lineArrowDirection = true;
+                        distractor.lineWidthForMargin = distractor.lineWidth;
+                        console.log(" distractor.lineWidthForMargin; " + distractor.lineWidthForMargin);
+
                     }
 
-                    else {
+                    else if (data.connectionLength > 0) {
+                        distractor.lineWidth = data.connectionLength * 125;
+
                         console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
 
                         distractor.lineDirection = 1;
                         distractor.lineArrowDirection = false;
-                        distractor.lineWidthForMargin = distractor.lineWidth;
+                        distractor.lineWidthForMargin = 0;
+
                     }
 
                     //data.currentDistractor = distractor;
-                    distractor.lineWidth = data.connectionLength * 125;
                     console.log("connectionLength = " + data.connectionLength + "  " + "lineWidth = " + distractor.lineWidth + "  " + "lineDirection = " + data.lineDirection);
                     // console.log("connectionLength = " + dataService.clickedDistactor.connectionLength);
                 }
@@ -341,6 +394,9 @@
       }
 
     };
+    data.myDistractorCurrentLinkTo = "";
+   
+
 
     data.isSelectRelationship = false;
     data.isBtnState = false;

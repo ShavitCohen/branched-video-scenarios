@@ -4,12 +4,13 @@
         <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
 
     </div>
-    <div class="modal-body">
+    <div class="modal-body" ng-class="{isFirstScenario:scenario.firstScenario}">
+        <!--<div>האם צריכה להיות הודעת פתיחה?{{scenario.firstScenario}}</div>-->
         <div class="row">
-            <label class="col-md-12">הודעת פתיחה</label>
+            <label class="col-md-12 myOpeningTextClass">הודעת פתיחה</label>
         </div>
         <div class="row">
-            <textarea class="col-md-8 col-md-offset-1 form-control" id="openingMSG" rows="3" maxlength="150" ng-model="scenario.openMessage"></textarea>
+            <textarea class="col-md-8 col-md-offset-1 form-control myOpeningTextClass" id="openingMSG" rows="3" maxlength="150" ng-model="scenario.interactions[1].text"></textarea>
         </div>
         <div class="row">
 
@@ -38,11 +39,9 @@
         </div>
         <div class="col-md-12" ng-repeat="answer in tempAnswerArry">
             <div class="row">
-                <label class="col-md-3">
+      
 
-                </label>
-
-                <input type="radio" class="col-md-1" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
+                <input type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
 
                 <textarea class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
                 <div ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>

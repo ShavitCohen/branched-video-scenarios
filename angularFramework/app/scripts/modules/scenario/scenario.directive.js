@@ -73,24 +73,31 @@
 
 
 
-              //scope.answerClickToLink = function (distractor) {
-              //    scope.btnarr = 2;
-              //    dataService.clickedDistactor = distractor;
-              //    dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
+              scope.answerClickToLink = function (distractor) {
+               
+                  
+                  //saving current distractor for scenarioClickToLink function
+                  dataService.myDistractorCurrentLinkTo = distractor;
+               
 
 
-              //    dataService.isBtnState = !dataService.isBtnState;
+                //  scope.btnarr = 2;
+                //  dataService.clickedDistactor = distractor;
+               //   dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
 
-              //    //  dataService.isSelectRelationship = true;
+
+               dataService.isBtnState = !dataService.isBtnState;
+
+                  dataService.isSelectRelationship = true;
 
 
-              //};
-              //scope.scenarioClickToLink = function () {
-
-              //    dataService.calculateArrow(scope.scenario.movIndex);
-    
-              //לאקיים?
-              //};
+              };
+              scope.scenarioClickToLink = function (scenario) {
+                  //changing linkTo num of the save distracor
+                  dataService.myDistractorCurrentLinkTo.linkTo = scenario.movIndex;
+                  //calling arrows function
+                     dataService.linkInitDistrctors();
+              };
 
               scope.openEditDialog = function (scenario) {
                   scope.tempAnswerArry = scenario.interactions[0].distractors;

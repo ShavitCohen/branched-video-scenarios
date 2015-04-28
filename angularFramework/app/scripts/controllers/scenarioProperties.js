@@ -9,22 +9,30 @@ angular.module('angularFrameworkApp')
 
    
 
-    $scope.headlingOfAddScene = "הוספת שאלה חדשה";
+ 
     $scope.checkIfExist = function (scenario) {
         if (scenario.state = "edit") {
-            $scope.headlingOfAddScene = "עריכת שאלה עבור סצינת " + scenario.myMovName;
+            $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.myMovName;
             $scope.editModalBTN = "עדכן";
 
 
-        //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
+            //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
 
 
-        //$scope.myUrl = scenario.movieLink + scenario.id;
-        //$scope.loadTheYoutubeUrl($scope.scenario.id);
-        //$scope.myscenarioName = scenario.myMovName;
-        //$scope.myStartTime = scenario.StartTime;
-        //$scope.myEndTime = scenario.endTime;
-      }
+            //$scope.myUrl = scenario.movieLink + scenario.id;
+            //$scope.loadTheYoutubeUrl($scope.scenario.id);
+            //$scope.myscenarioName = scenario.myMovName;
+            //$scope.myStartTime = scenario.StartTime;
+            //$scope.myEndTime = scenario.endTime;
+        }
+        else {
+
+            $scope.headlingOfAddScene = "הוספת אינטראקציה חדשה";
+        }
+        if (scenario.movIndex==1)
+        {
+        
+        }
     }
 
 
