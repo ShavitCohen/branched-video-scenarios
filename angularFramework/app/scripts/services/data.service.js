@@ -2,7 +2,7 @@
 .factory('dataService', function () {
     //פונקציה גלובלית שתעבוד אל מול דפים שונים
     var data = {};
-
+   
     data.activities = [
           {
               activitycodeName:"עזרה ראשונה",
@@ -244,9 +244,7 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "f", linkTo: "tryAgain_3" },
-                                    { text: "f", linkTo: "null" },
-                                    { text: "d", linkTo: "null" }
+                                    { text: "f", linkTo: "end" }
                                 ]
                             },
 
@@ -396,6 +394,7 @@
 
     data.isSelectRelationship = false;
     data.isBtnState = false;
+  
 
     return data;
 

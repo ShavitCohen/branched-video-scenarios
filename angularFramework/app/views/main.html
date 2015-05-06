@@ -1,12 +1,25 @@
-
 <div class="row marketing">
+ <div>{{myL}}</div>   
+    <div ng-init="onYouTubeIframeAPIReady()" >
+        <div id="player"></div>
+    </div>
+            <h1 >{{isEndMovie}}</h1>
 
+    <div ng-click="startPlayingTest()">startplaying</div>
+    <div ng-model="isEndMovie" ng-click="showQuestionDiv()">Show Questions
+        <div id="questionBack" ng-show="isEndMovie">test questions
+        <h3>{{myActivitie[0].interactions[0].text}}</h3>
+        <ul><li ng-repeat="distractor in myActivitie[myCurrentmovIndex].interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li></ul>
+    </div>
+    </div>
+    
+    <!--<div ng-click="openUserOpeningMessage()">tamar</div>-->
   <!--<input type="text" ng-model="myInput" value="{{myInput}}"/>
     <input type="button" ng-click="clicktoOpen" value="123">-->
 
     <!--<scenario data="myCasesActivities[0].scenarios[0]"></scenario>-->
 
-
+    
 
 
 
