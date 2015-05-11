@@ -63,7 +63,7 @@
                             
                                {
                                    type: "endMessege",
-                                   text: ""
+                                   text: "הודעת סיום פה...."
                                }
                         ]
                     }, //finish mov - next scenario
