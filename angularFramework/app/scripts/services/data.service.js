@@ -25,7 +25,7 @@
                         id:1,
                         startTime: 0,
                         endTime: 5,
-                       
+                        openingMessege: "הגיע הזמן להציל חיים. מוכן להתחיל?",
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -34,12 +34,7 @@
                                     { text: "אתעלם", linkTo: 2 },
                                     { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true }
                                 ]
-                            },
-                               {
-                                   type: "openingMessege",
-                                   text: "הגיע הזמן להציל חיים. מוכן להתחיל?"
-                               }
-
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -49,7 +44,6 @@
                         id: 2,
                         startTime: 0,
                         endTime: 5,
-                       
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -59,12 +53,7 @@
                                     { text: "אחפש עזרה", linkTo: 5 }
                                 ]
 
-                            },
-                            
-                               {
-                                   type: "endMessege",
-                                   text: "הודעת סיום פה...."
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -103,12 +92,7 @@
                                     { text: "אחפש עזרה", linkTo: 5 },
                                     { text: "אתקשר למגן דוד אדום", linkTo: 6, isRightAnswer: true }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: ""
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -127,12 +111,7 @@
                                     { text: "s", linkTo: "tryAgain_7" },
                                     { text: "s", linkTo: 3 }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: "חבל האיש מת"
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -151,12 +130,7 @@
                                     { text: "אתחיל החייאה", linkTo: 8, isRightAnswer: true },
                                     { text: "אצא מדעתי", linkTo: 7 }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: ""
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -175,12 +149,7 @@
                                     { text: "אתחיל החייאה", linkTo: 8 },
                                     { text: "אעזוב", linkTo: 3 }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: ""
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -199,12 +168,7 @@
                                     { text: "אמשיך החייאה", linkTo: 9 },
                                     { text: "אשתמש בדפיברילטור", linkTo: 10, isRightAnswer: true }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: ""
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -223,12 +187,7 @@
                                     { text: "אחפש עזרה", linkTo: 5 },
                                     { text: "אשתמש בדפיברילטור", linkTo: 10 }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: ""
-                               }
+                            }
                         ]
                     }, //finish mov - next scenario
                     {
@@ -246,12 +205,7 @@
                                 distractors: [
                                     { text: "f", linkTo: "end" }
                                 ]
-                            },
-
-                               {
-                                   type: "endMessege",
-                                   text: "כל הכבוד האיש בחיים"
-                               }
+                            }
                         ]
                     } //finish mov - next scenario
               ]

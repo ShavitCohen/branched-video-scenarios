@@ -48,13 +48,13 @@ angular.module('angularFrameworkApp')
                   }
                 ,
                   state: function () {
-                      return "new";
+                      return "openMessage";
                   }
                   ,
                   player: function () {
                       return player;
                   }
-
+                  
               }
 
           });
@@ -92,6 +92,35 @@ angular.module('angularFrameworkApp')
                   }
               });
 
+
+              if ($scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type == "endMessege") {
+                  console.log("myActivitie type == end message" + $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type);
+
+                  var myEndMessageString = $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].text;
+
+                  var modalInstance = $modal.open({
+                      windowClass: 'editModalClass',
+                      //template:,
+                      templateUrl: 'views/openingMessageModal.html',
+                      controller: "userOpeningMessageCtrl",
+                      resolve: {
+                          scenario: function () {
+                              return $scope.scenario;
+                          }
+                        ,
+                          state: function () {
+                              return "closeMessage";
+                          }
+                          ,
+                          player: function () {
+                              return myEndMessageString;
+                          }
+
+                      }
+
+                  });
+
+              }
               
               //console.log("movie endedddd");
               //console.log("movie endedddd");
@@ -123,6 +152,7 @@ angular.module('angularFrameworkApp')
               }
          // });
 
+          // endMessege    singleSelection
           $scope.myCurrentmovIndex = distractor.linkTo;
           console.log("my curr distractor = " + distractor  + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
           player.loadVideoById({ 'videoId': $scope.myActivitie[distractor.linkTo - 1].videoId });
