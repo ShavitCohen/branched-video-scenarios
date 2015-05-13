@@ -5,15 +5,15 @@
     </div>
             <h1 >{{myCurrentmovIndex}}</h1>
 
-    <div ng-click="startPlayingTest()">startplaying</div>
+    <!--<div ng-click="startPlayingTest()">startplaying</div>-->
   <!--  <div ng-model="isEndMovie" ng-click="showQuestionDiv()">Show Questions-->
   <!--  <div ng-show="isMovieEnded" ng-model="isMovieEnded">-->
-    <div ng-click="showQuestionDiv()">Show Questions
-        <div id="questionBack" ng-show="isEndMovie">test questions
+<!--    <div ng-click="showQuestionDiv()">Show Questions-->
+        <div id="questionBack" ng-show="isEndMovie">
         <h3>{{myActivitie[0].interactions[0].text}}</h3>
-        <ul><li ng-repeat="distractor in myActivitie[myCurrentmovIndex-1].interactions[0].distractors">{{distractor.text}}</li></ul>
+        <ul><li ng-repeat="distractor in myActivitie[myCurrentmovIndex-1].interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li></ul>
     </div>
-    </div>
+<!--    </div>-->
    <!-- </div>  -->
     
     <!--<div ng-click="openUserOpeningMessage()">tamar</div>-->
