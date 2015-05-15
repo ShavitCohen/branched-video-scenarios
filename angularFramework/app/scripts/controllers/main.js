@@ -95,9 +95,10 @@ angular.module('angularFrameworkApp')
 
               if ($scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type == "endMessege") {
                   console.log("myActivitie type == end message" + $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type);
-
-                  var myEndMessageString = $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].text;
-
+                  var mySTR = $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].text;
+                  //console.log("lilach mySTR: " + mySTR);
+                  player = mySTR;
+               //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
                       //template:,
@@ -113,7 +114,7 @@ angular.module('angularFrameworkApp')
                           }
                           ,
                           player: function () {
-                              return myEndMessageString;
+                              return player;
                           }
 
                       }

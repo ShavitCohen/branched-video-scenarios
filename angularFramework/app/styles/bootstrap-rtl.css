@@ -31,7 +31,9 @@
 }
 
 body.rtl, #container.rtl {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+font-family:'Open Sans Hebrew';
+
   direction: rtl;
 }
 
@@ -47,7 +49,8 @@ body.rtl, #container.rtl {
 .rtl .h4,
 .rtl .h5,
 .rtl .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family:'Open Sans Hebrew';
 }
 
 .rtl .navbar-brand {
@@ -213,12 +216,14 @@ body.rtl, #container.rtl {
   top: -2px;
   right: 0;
   left: 21px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family:'Open Sans Hebrew';
 }
 
 .rtl .close {
   float: left;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family:'Open Sans Hebrew';
 }
 
 .rtl .caret {

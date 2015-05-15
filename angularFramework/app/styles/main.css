@@ -1,3 +1,39 @@
+@font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+.myUserQueAndDistractorCollapseClass
+          {
+
+              margin-top:70px;
+          }
+.myUserDistractorClass{
+              background-color:black;
+               color: white;
+               display:block;
+               text-align:right;
+               margin-top:5px;
+               width:200px;
+              
+          }
+.myUserDistractorClass:hover {
+background-color:green;
+
+color: white;
+}
+h3 {
+color:white;
+padding-right:40px;
+}
+#questionBack  {
+    background-image: url('../images/interactionDiv.png');
+  width: 290px;
+  margin-top: -565px;
+  /* z-index: 9; */
+  position: absolute;
+  height: 560px;
+ 
+ font-family:'Open Sans Hebrew';
+
+}
+
 .arrow{
     height:5px;
     background-color:black;
@@ -290,6 +326,7 @@ width:1432px;
 }
 
 body {
+font-family:'Open Sans Hebrew';
   padding: 0;
  /*direction:rtl;*/
  
@@ -314,6 +351,7 @@ body {
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
+
 }
 
 /* Custom page footer */
@@ -348,6 +386,7 @@ body {
  /*Responsive: Portrait tablets and up*/ 
 @media screen and (min-width: 768px) {
   .container {
+
     /*max-width: 730px;*/
     width:100%;
         /*white-space: nowrap;*/
