@@ -15,7 +15,7 @@
     <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
     <!--<img src="images/linkToBTN.png" alt=""  />-->
-    <i class="glyphicon glyphicon-link myLinkGlyphicon" ng-show="dataService.isBtnState" ng-click="scenarioClickToLink(scenario)"></i>
+    <i class="glyphicon" ng-class="{'glyphoicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState,'glyphicon-pencil':!dataService.isBtnState,'glyphicon-plus':scenario.interactions[0].distractors.length == 0 }" ng-click="scenarioClickToLink(scenario)"></i>
 
 
     <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->

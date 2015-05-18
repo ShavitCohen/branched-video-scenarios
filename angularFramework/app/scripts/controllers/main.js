@@ -38,10 +38,11 @@ angular.module('angularFrameworkApp')
 
 
           var modalInstance = $modal.open({
-              windowClass: 'editModalClass',
+              windowClass: 'editModalClass ourModal',
               //template:,
               templateUrl: 'views/openingMessageModal.html',
               controller: "userOpeningMessageCtrl",
+              
               resolve: {
                   scenario: function () {
                       return $scope.scenario;

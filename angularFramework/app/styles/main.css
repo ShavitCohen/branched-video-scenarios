@@ -1,4 +1,10 @@
 @font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+.ourModal .modal-content{
+              background-color:yellow;
+
+          }
+
 .myUserQueAndDistractorCollapseClass
           {
 
