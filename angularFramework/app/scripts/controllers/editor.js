@@ -1,6 +1,19 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('editorCtrl', function ($scope, dataService,$modal) {
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
+      $scope.hoverYellow=function(bool)
+      {
+          if (bool == true)
+          {
+              $scope.isChangeColor = true;
+          }
+          else if (bool == false)
+
+          {
+              $scope.isChangeColor = false;
+
+          }
+      }
 
     $scope.dataService.setDistractorsIndex();
 
@@ -27,7 +40,6 @@
       
       //קריאה לפונקציה שיוצרת את הקווים המחברים בין מסיחים
       dataService.linkInitDistrctors();
-
   }
 
 

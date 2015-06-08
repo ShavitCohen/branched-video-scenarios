@@ -47,12 +47,12 @@ angular.module('angularFrameworkApp')
         if ($scope.checkboxSelection == "singleSelection") {
             $scope.whiceInteactionTypeS = true;
             $scope.whiceInteactionTypeE = false;
-
+          
         }
         else if ($scope.checkboxSelection == "endMessege") {
             $scope.whiceInteactionTypeE = true;
             $scope.whiceInteactionTypeS = false;
-
+            //(tempAnswerArry.type).push("endMessege");
 
         }
     }
@@ -71,7 +71,9 @@ angular.module('angularFrameworkApp')
       }
         //  $scope.tempAnswerArry = [];
     //  console.log();
-      tempAnswerArry.push(newAnswer);
+      (tempAnswerArry.distractors).push(newAnswer);
+      //(tempAnswerArry.type).push("singleSelection");
+      //console.log("tempAnswerArry.type " + tempAnswerArry.type);
       console.log("afterpush: " + tempAnswerArry);
       console.log("orginArry:" + scenario.interactions[0].distractors);
      //answersArray.push(answer);

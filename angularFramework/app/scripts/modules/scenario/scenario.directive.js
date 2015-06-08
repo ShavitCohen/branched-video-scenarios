@@ -100,8 +100,8 @@
               };
 
               scope.openEditDialog = function (scenario) {
-                  scope.tempAnswerArry = scenario.interactions[0].distractors;
-
+                  scope.tempAnswerArry = scenario.interactions[0];
+                  //console.log("mytempAnswerArry " + tempAnswerArry);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
                       //template:,
