@@ -1,15 +1,24 @@
 ﻿<div>
-    <div class="scenarioHolder" >
+    <div class="scenarioHolder" ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()">
         <div class="youtubeoHolder">
-            <div class="youtubeoHolderTEXT" ng-click="openAddMovieDialog(scenario)">{{scenario.myMovName}}</div>
-            <i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>
+
+            <div class="youtubeoHolderTEXT">{{scenario.myMovName}}</div>
+            <!--<i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>-->
         </div>
-            <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
-        <div ng-click="openMovDialog(scenario)" class="playBtnClass"><!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
+        <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
+
+
+        <div ng-click="openMovDialog(scenario)" class="playBtnClass">
+            <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
         </div>
     </div>
-    <br/>
   
+    <ul class="btnGroup" ng-show="isyoutubeHolderHover">
+        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph"></i></li>
+        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
+        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph"></i></li>
+    </ul>
+    <br/>
 
  <!--   <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>-->
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->

@@ -18,9 +18,16 @@
               //{
               //    distractor.globalIndex = scope.globalDistractorCount.count++;
               //}
+              scope.isyoutubeHolderHoverEnterFunc = function () {
 
-          
+                  scope.isyoutubeHolderHover = true;
+               
+              }
+              scope.isyoutubeHolderHoverLeaveFunc = function () {
 
+                  scope.isyoutubeHolderHover = false;
+
+              }
               scope.btnarr = 1;
               scope.btnURL = ["glyphicon glyphicon-plus", "glyphicon glyphicon-pencil", "glyphicon glyphicon-link"]
               scope.changeBTN = function () {

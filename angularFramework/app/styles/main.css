@@ -1,6 +1,43 @@
 @font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+.scenarioPlayEditTrashBtn
+{
+display:inline-block;
+background-color:white;
+border:1px solid #DCB601;
+margin-top:-10px;
+  border-radius: 100px 100px 100px 100px;
+  width:28px;
+  height:28px;
 
+ }
+.scenarioPlayEditTrashBtn:hover {
+     display:block;
+background-color:#DCB601;
+border:1px white solid;
+}
+.btnGroup
+{
+    display:block;
+    cursor:pointer;
+   margin-top: -56px;
+  position: absolute;
+  margin-right: -30px;
+
+ }
+.scenarioPlayEditTrashGlyph {
+   margin-right: 7px;
+  margin-top: 5px;
+  color: #DCB601;
+    display:block;
+
+ 
+}
+.scenarioPlayEditTrashGlyph:hover {
+      display:block;
+
+    color:white;
+    }
 .sceneHover
 {
 border:2px solid #58585A;
