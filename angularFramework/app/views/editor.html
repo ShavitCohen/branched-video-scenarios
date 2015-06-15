@@ -4,10 +4,9 @@
 <div class="lilachTraying">
     <div class="freezLine">
         <ul class="mainMoviesDiv">
-            <li class="sceneHover" ng-mouseenter="hoverYellow(true)" ng-mouseleave="hoverYellow(false)" ng-repeat="scenario in dataService.activities[0].scenarios">
+            <li class="myscene" ng-mouseenter="addHoverYellow($event)" ng-mouseleave="removeHoverYellow()" ng-repeat="scenario in dataService.activities[0].scenarios">
                 <scenario scenario="scenario"></scenario>
             </li>
-            <div>{{isChangeColor}}</div>
             <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)">
 
             </li>

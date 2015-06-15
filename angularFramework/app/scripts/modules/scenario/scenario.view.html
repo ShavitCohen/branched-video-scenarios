@@ -1,5 +1,5 @@
 ﻿<div>
-    <div class="scenarioHolder" ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()">
+    <div class="scenarioHolder sceneHoverChilds_border" ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()">
         <div class="youtubeoHolder">
 
             <div class="youtubeoHolderTEXT">{{scenario.myMovName}}</div>
@@ -11,20 +11,23 @@
         <div ng-click="openMovDialog(scenario)" class="playBtnClass">
             <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
         </div>
-    </div>
-  
-    <ul class="btnGroup" ng-show="isyoutubeHolderHover">
-        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph"></i></li>
+          <div ng-show="isyoutubeHolderHover">
+    <ul class="btnGroup" >
+        <li  class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph"></i></li>
         <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
         <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph"></i></li>
     </ul>
+        </div>
+    </div>
+ 
+  
     <br/>
 
  <!--   <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>-->
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
     <!--<img src="images/linkToBTN.png" alt=""  />-->
     <i class="glyphicon"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
-        <i class="glyphicon" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':scenario.interactions[0].distractors.length == 0,'myPancilGlyphicon':scenario.interactions[0].distractors.length > 0, 'myPlusGlyphicon':scenario.interactions[0].distractors.length == 0,'glyphicon-list':scenario.interactions[0].type == 'singleSelection', 'glyphicon-comment':scenario.interactions[0].type == 'endMessege'}"></i>
+        <i class="glyphicon sceneHoverChilds_border" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':scenario.interactions[0].distractors.length == 0,'myPancilGlyphicon':scenario.interactions[0].distractors.length > 0, 'myPlusGlyphicon':scenario.interactions[0].distractors.length == 0,'glyphicon-list':scenario.interactions[0].type == 'singleSelection', 'glyphicon-comment':scenario.interactions[0].type == 'endMessege'}"></i>
 
     <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
     <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->
@@ -35,11 +38,11 @@
     <ul>
         <li class="myDistractorBTNClass" ng-repeat="distractor in scenario.interactions[0].distractors" ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;">
 
-            <div class="myDistractorPollClass" ng-style="{height:800}"></div>
+            <div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}"></div>
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
           
-                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow">
+                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow sceneHoverChildsBorderLine">
                 
 
 
@@ -48,8 +51,13 @@
                    
                  <div class="circle"></div>
 <!--           כאן מתחיל הקוד של המסיחים העיגולים-->
-                 <div  ng-click="answerClickToLink(distractor)" class="circle"> <a tooltip-placement="bottom"  tooltip="{{distractor.text}}" tooltip-class="customClass">
-                     <i class="glyphicon glyphicon-record myDistractorGlyphicon"></i></a></div>
+                 <div  ng-click="answerClickToLink(distractor,$event)" class="circle"> 
+                     <a tooltip-placement="bottom"  tooltip="{{distractor.text}}" tooltip-class="customClass">
+                     <div class="distractorDot sceneHoverChildscolor glyphicon" ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()">
+
+                     </div>
+
+                     </a></div>
 
                 <!--<img ng-click="toggle()" src="" alt="" class="circle" />-->
                     <span class="myAnswersSpanClass" ng-show="isShowDistractors">

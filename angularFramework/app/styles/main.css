@@ -11,8 +11,9 @@ margin-top:-10px;
   height:28px;
 
  }
+
 .scenarioPlayEditTrashBtn:hover {
-     display:block;
+     /*display:block;*/
 background-color:#DCB601;
 border:1px white solid;
 }
@@ -32,24 +33,49 @@ border:1px white solid;
     display:block;
 
  
-}
+} 
 .scenarioPlayEditTrashGlyph:hover {
       display:block;
 
     color:white;
     }
+.backgroundArrowsGrey {
+opacity:0.2;
+}
+.regularOpacityArrows {
+    opacity:1;
+}
 .sceneHover
 {
 border:2px solid #58585A;
 height:800px;
           }
-.sceneHover:hover
+.sceneHover
 {
-border:2px solid yellow;
+border:none;
+}
+.sceneHover:hover .sceneHoverChilds_border
+{
+border:2px solid #DCB601;
+color:#DCB601;
+
+}
+.sceneHover:hover .sceneHoverChildscolor
+{
+/*border:2px solid #DCB601;*/
+border:2px solid #08828B;
+background-color:white;
+
+
+}
+.sceneHover:hover .sceneHoverChildsBorderLine
+{
+/*border:2px solid yellow;*/
+border:2px solid #08828B;
 
 }
 .ourModal .modal-content{
-              background-color:yellow;
+              background-color:#DCB601;
 
           }
 
@@ -97,21 +123,21 @@ padding-right:40px;
 
 
 .arrowHead {
-               width:13px;
-    height:16px;
+               width:18px;
+    height:23px;
 background-image: url('../images/ArrowLeftDir.png');
 
     position: absolute;
-  margin-top:23px;
+  margin-top:20px;
 
 }
 .isRightArrow .arrowHead {
-          width:13px;
-    height:16px;
+          width:18px;
+    height:23px;
 background-image: url('../images/ArrowRightDir.png');
 
     position: absolute;
-  margin-top: 23px;
+  margin-top: 20px;
 
 }
 .myOpeningTextClass {
@@ -258,11 +284,64 @@ margin-top: 21px;
                 color: #880000;
                 background-color: #ffff66;
                 box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                z-index:9999999;
+                position:absolute;
             }
- .myDistractorGlyphicon{
-color:gray;
-font-size:20px;
+
+ .distractorDot {
+
+ 	background-color: white;
+     border:2px solid #58585A;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
+.addingLinkGlyphicon {
+        background-color:#58585A;
+
+}
+.addingLinkGlyphicon:before{
+    content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+
+    font-size:14px;
+    margin-top:2px;
+    margin-right:1px;
+   
+      display:inline-block;
+}
+
+.distractorClickToLinkNewStyle {
+     background-color:#08828B;
+}
+.distractorClickToLinkNewStyle:before {
+ 
+    background-color:#08828B;
+       content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+
+    font-size:14px;
+    margin-top:2px;
+    margin-right:2px;
+      display:inline-block;
+
+}
+/*.distractorDot:before{
+  content:"\2b";
+  font-family:"Glyphicons Halflings";
+  line-height:1;
+  color:blue;
+  margin:10px;
+  display:inline-block;
+}*/
+
+/*.glyphicon.glyphicon-one-fine-dot:before .changeGluphiconLinkClass {
+  font-size: 70px;
+}*/
+
+
 .myAnswersSpanClass {
     border:1px solid #A8A8B7;
     background-color:white;
@@ -303,8 +382,8 @@ background-color: white;
 }
 .myPlusGlyphicon:hover {
     
-    color:yellow;
-    border:2px solid yellow;
+    color:#DCB601;
+    border:2px solid #DCB601;
 
 }
 .myPancilGlyphicon {
@@ -326,8 +405,8 @@ background-color: white;
 
 .isChangeColor.myPancilGlyphicon {
     
-    color:yellow;
-    border:yellow 2px solid;
+    color:#DCB601;
+    border:#DCB601 2px solid;
     margin-right:50px;
     }
 .myLinkGlyphicon {
@@ -379,7 +458,7 @@ margin-right:20px;
 }
 .isChangeColor.myDistractorPollClass {
   width: 2px;
-  background-color: yellow;
+  background-color: #DCB601;
   position: absolute;
   margin-top: -45px;
   margin-right: -2px;

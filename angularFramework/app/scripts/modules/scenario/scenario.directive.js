@@ -28,6 +28,29 @@
                   scope.isyoutubeHolderHover = false;
 
               }
+
+
+              scope.removeGreenClass = function () {
+                  // $(myElementHover).addClass("sceneHover");
+                  // angular(this).addClass("sceneHover");
+                  $('.distractorDot').hover(function ()
+                  {
+                      if (dataService.is_DistractorClicked2Link == false) {
+                      $(this).removeClass('sceneHoverChildscolor') , $(this).addClass('addingLinkGlyphicon')} });
+
+
+
+                 
+              }
+              scope.addGreenClass = function () {
+                
+                  $('.distractorDot').hover(function ()
+                  { $(this).addClass('sceneHoverChildscolor'), $(this).removeClass('addingLinkGlyphicon') });
+
+                  
+              }
+              
+
               scope.btnarr = 1;
               scope.btnURL = ["glyphicon glyphicon-plus", "glyphicon glyphicon-pencil", "glyphicon glyphicon-link"]
               scope.changeBTN = function () {
@@ -77,12 +100,23 @@
 
               };
 
+              
+              
+
+
+              scope.answerClickToLink = function (distractor,event) {
+                  dataService.is_DistractorClicked2Link = true;
+                  $('.distractorDot').removeClass('addingLinkGlyphicon');
+                  console.log("you are now clicked: " + dataService.is_DistractorClicked2Link);
+                  $(event.target).addClass('distractorClickToLinkNewStyle');
+                  $(event.target).removeClass('sceneHoverChildsBorderLine');
+                  $(event.target).removeClass('sceneHoverChildscolor');
+                  $('.myscene').removeClass('sceneHover');
+                  scope.myClickedDistractor2Link_Name = event.target;
+                  console.log("clicked distrctor name :" + scope.myClickedDistractor2Link_Name);
 
 
 
-              scope.answerClickToLink = function (distractor) {
-               
-                  
                   //saving current distractor for scenarioClickToLink function
                   dataService.myDistractorCurrentLinkTo = distractor;
                
@@ -103,7 +137,20 @@
                   //changing linkTo num of the save distracor
                   dataService.myDistractorCurrentLinkTo.linkTo = scenario.movIndex;
                   //calling arrows function
-                     dataService.linkInitDistrctors();
+                  dataService.linkInitDistrctors();
+                  //Tamar
+
+                  dataService.is_DistractorClicked2Link = false;
+                 
+                  
+                  console.log("clicked distrctor name :" +  angular.element(scope.myClickedDistractor2Link_Name));
+                  console.log("you are now clicked: " + dataService.is_DistractorClicked2Link);
+                  $('.distractorDot').removeClass('addingLinkGlyphicon');
+                  $('.distractorDot').removeClass('distractorClickToLinkNewStyle');
+                  $('.distractorDot').addClass('sceneHoverChildsBorderLine');
+                  $('.distractorDot').addClass('sceneHoverChildscolor');
+                  $('.myscene').addClass('sceneHover');
+                  dataService.isBtnState = false;
               };
 
               scope.openEditDialog = function (scenario) {

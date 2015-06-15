@@ -31,7 +31,7 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אתעלם", linkTo: 2 },
+                                    { text: "אתעלםאתעלםעלםאתעל לילך", linkTo: 2 },
                                     { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true }
                                 ]
                             }
@@ -348,6 +348,7 @@
 
     data.isSelectRelationship = false;
     data.isBtnState = false;
+    data.is_DistractorClicked2Link = false;
   
 
     return data;
