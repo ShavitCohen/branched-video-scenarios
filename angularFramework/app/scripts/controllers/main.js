@@ -124,22 +124,12 @@ angular.module('angularFrameworkApp')
 
               }
               
-              //console.log("movie endedddd");
-              //console.log("movie endedddd");
-              //console.log("myisMovieEnded before :" + $scope.isMovieEnded);
-              //$scope.myCurrentmovIndex = distractor.linkTo;
-              //console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
-              //$scope.isMovieEnded = true;
-
-              //console.log("myisMovieEnded after:" + $scope.isMovieEnded);
-              //console.log("myisMovieEnded before :" + isMovieEnded);
+              
           }
       }
    
 
-      //$scope.showQuestionDiv = function(){
-      //    $scope.isEndMovie = true;
-      //};
+ 
 
       $scope.myCurrentmovIndex = 1;
 
@@ -152,38 +142,13 @@ angular.module('angularFrameworkApp')
                   console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
 
               }
-         // });
-
-          // endMessege    singleSelection
+      
           $scope.myCurrentmovIndex = distractor.linkTo;
           console.log("my curr distractor = " + distractor  + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
           player.loadVideoById({ 'videoId': $scope.myActivitie[distractor.linkTo - 1].videoId });
 
 
-          
-
-          //if (distractor.linkTo) { }
       };
-      //if (scope.IsEndMovie == true) {
-      //    scope.IsEndMovie = false;
-      //    
-      //}
 
-
-      //$scope.$on('YT.PlayerState.ENDED', function ($event, player) {
-      //    // play it again
-      //    //player.playVideo();
-      //    console.log("movie endedddd");
-      //    console.log("myisMovieEnded before :" + isMovieEnded);
-      //    $scope.myCurrentmovIndex = distractor.linkTo;
-      //    console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
-      //    $scope.isMovieEnded = true;
-
-      //    console.log("myisMovieEnded after:" + isMovieEnded);
-
-      //    //player.loadVideoById({ 'videoId': $scope.myActivitie[distractor.linkTo - 1].videoId });
-
-         
-      //});
 
   });
