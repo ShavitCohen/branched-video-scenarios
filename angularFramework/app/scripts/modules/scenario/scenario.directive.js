@@ -136,12 +136,15 @@
                   }
 
                   ////////this is not working///////////
-                  if (angular.element(event.currentTarget) == angular.element(dataService.myCurrentSceneClicked2Link)) {
-                      dataService.isBtnState = !dataService.isBtnState;
-                      console.log("clicked on the same btn11111111111111111111111111111111111111111111111111111111111...");
-                  }
+                  //if (angular.element(event.currentTarget) == angular.element(dataService.myCurrentSceneClicked2Link)) {
+                  //    dataService.isBtnState = !dataService.isBtnState;
+                  //    console.log("clicked on the same btn11111111111111111111111111111111111111111111111111111111111...");
+                  //}
                   ////////this is not working///////////
 
+                  if (distractor == dataService.myDistractorCurrentLinkTo) {
+                      dataService.isBtnState = !dataService.isBtnState;
+                  }
 
                   scope.myClickedDistractor2Link_Name = event.target;
                   console.log("clicked distrctor name :" + scope.myClickedDistractor2Link_Name);
@@ -179,7 +182,7 @@
               };
 
               scope.openEditDialog = function (scenario) {
-                  scope.tempAnswerArry = scenario.interactions[0];
+                  scope.tempAnswerArry = angular.copy(scenario.interactions[0]);
                   console.log("tempAnswerArrytempAnswerArrytempAnswerArrytempAnswerArry " + scope.tempAnswerArry[0]);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
@@ -202,9 +205,11 @@
                   modalInstance.result.then(function (tempAnswerArry) {
                    //   tempAnswerArry.type = scope.checkboxSelection;
                      // console.log("checkboxSelection :" + scope.checkboxSelection);
-                      scope.modalUpdates = tempAnswerArry;
+                      //scope.modalUpdates = tempAnswerArry;
+                      angular.extend(scenario.interactions[0], tempAnswerArry);
                       console.log("tttttttttttt---scenario.interactions[0] :" + scenario.interactions[0]);
                       console.log("selectedItem = " + scope.modalUpdates);
+                      dataService.setDistractorsIndex();
                   }, function () {
                       log.info('Modal dismissed at: ' + new Date());
                   });

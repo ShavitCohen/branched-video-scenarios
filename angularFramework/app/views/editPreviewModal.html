@@ -3,20 +3,27 @@
         <h1 class="modal-title">{{scenario.myMovName}}</h1>
                 <div>{{myCurrentmovIndex}}</div>
 
+
     </div>
     <div class="modal-body">
+
         <div ng-init="onYouTubeIframeAPIReady()" class="myYoutubeIfreamPreview">
             <div id="player">
 
             </div>
 
         </div>
-        
+        <div ng-modle="myMovNameBreadCrumbs">{{myMovNameBreadCrumbs}}</div>
+
         <div id="questionBack" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapseClass">
                 <h3 class="myUserQueClass">{{scenario[0].interactions[0].text}}</h3>
 
-                <ul><li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li></ul>
+                <ul>
+                    <li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li>
+
+                </ul>
+
             </div>
     </div>
     </div>

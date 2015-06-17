@@ -79,19 +79,20 @@ angular.module('angularFrameworkApp')
                   startTime: $scope.myStartTime,
                   endTime: $scope.myEndTime,
                   interactions: [
-                                {
-                                    type: "",
-                                    text: "",
-                                    distractors: [
-                                      
-                                    ]
-                                }
+                                    {
+                                        type: "singleSelection",
+                                        text: "",
+                                        distractors: [
+                                            { text: "", linkTo: null },
+                                            { text: "", linkTo: null }
+                                        ]
+                                    }
                   ]
               };
 
               console.log(scenarioUpdateDet);
 
-              dataService.activities[0].scenarios.push(scenarioUpdateDet);
+              dataService.activities[0].scenarios.push(angular.copy(scenarioUpdateDet));
               console.log(dataService.activities);
               $modalInstance.close();
           }

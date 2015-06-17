@@ -10,6 +10,7 @@ angular.module('angularFrameworkApp')
       console.log("   $scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
+      $scope.myMovNameBreadCrumbs += dataService.activities[0].scenarios[dataService.myCurrentmovIndex - 1].myMovName +" >";
 
 
       var tag = document.createElement('script');
@@ -120,7 +121,7 @@ angular.module('angularFrameworkApp')
 
           player.loadVideoById({ 'videoId': dataService.activities[0].scenarios[distractor.linkTo - 1].videoId });
 
-
+          dataService.myCurrentmovIndex++;
       };
 
 

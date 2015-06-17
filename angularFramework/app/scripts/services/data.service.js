@@ -351,7 +351,7 @@
     data.is_DistractorClicked2Link = false;
 
     data.myCurrentSceneClicked2Link;
-  
+    data.myCurrentmovIndex = 1;
 
     return data;
 

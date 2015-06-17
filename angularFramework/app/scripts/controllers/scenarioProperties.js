@@ -53,7 +53,7 @@ angular.module('angularFrameworkApp')
             // tempAnswerArry.type = "singleSelection";
             var newType = "singleSelection";
 
-            (tempAnswerArry[2]) = newType;
+           // (tempAnswerArry[2]) = newType;
 
             console.log("AftertempAnswerArry.type " + tempAnswerArry[2]);
 
@@ -66,7 +66,7 @@ angular.module('angularFrameworkApp')
             $scope.whiceInteactionTypeS = false;
             var newType = "endMessege";
 
-            (tempAnswerArry[2]) = newType;
+           // (tempAnswerArry[2]) = newType;
 
             console.log("tempAnswerArry.type " + tempAnswerArry[2]);
             //(tempAnswerArry.type).push("endMessege");
@@ -123,9 +123,9 @@ angular.module('angularFrameworkApp')
             $modalInstance.close();
         }
         console.log("passed ok function to save changes of modal... = " + tempAnswerArry);
-        scenario.interactions[0].distractors = tempAnswerArry;
+        //cenario.interactions[0].distractors = tempAnswerArry;
         console.log("orig arr = " + scenario.interactions[0].distractors);
-        dataService.setDistractorsIndex();
+        //dataService.setDistractorsIndex();
 
     };
 

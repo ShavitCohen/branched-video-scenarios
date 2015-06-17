@@ -58,6 +58,7 @@ height:800px;
 
 .sceneHover .sceneHoverChilds_border
 {
+    /*yellow*/
 border:2px solid #DCB601;
 color:#DCB601;
 opacity:1;
@@ -248,7 +249,8 @@ width:120px;
 
   overflow: hidden;
     text-overflow: ellipsis; 
-    white-space: nowrap; 
+    white-space: nowrap;
+    border: 2px solid transparent; 
 }
 .youtubeoHolder
 {
@@ -410,7 +412,7 @@ background-color: white;
   padding-top: 12px;
   padding-right: 11px;
   margin-right: 34px;
-  margin-top: 332px;
+  margin-top: 337px;
   display: block;
   border: 2px solid;
   border-radius: 30px 30px 30px 30px;
@@ -465,12 +467,12 @@ margin-right:20px;
  
 }
 .myDistractorPollClass {
-  width: 2px;
-  background-color: #A8A8B7;
-  position: absolute;
-  margin-top: -45px;
-  margin-right: -2px;
-  z-index: 0;
+width: 2px;
+background-color: #A8A8B7;
+position: absolute;
+margin-top: -42px;
+margin-right: 58px;
+z-index: 0;
 }
 .isChangeColor.myDistractorPollClass {
   width: 2px;
