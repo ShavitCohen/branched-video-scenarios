@@ -349,6 +349,8 @@
     data.isSelectRelationship = false;
     data.isBtnState = false;
     data.is_DistractorClicked2Link = false;
+
+    data.myCurrentSceneClicked2Link;
   
 
     return data;

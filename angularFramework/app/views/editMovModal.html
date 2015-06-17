@@ -19,12 +19,12 @@
                 <label class="col-md-3">סוג האינטראקציה:</label>
 
 
-                <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="checkboxSelection" ng-change="CheckboxSelectedFunc()">
+                <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="checkboxSelection" ng-change="CheckboxSelectedFunc(tempAnswerArry)">
 
                 <label for="singleSelection">חד ברירה</label>
 
 
-                <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="checkboxSelection" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()">
+                <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="checkboxSelection" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc(tempAnswerArry)">
 
                 <label for="endMessege">הודעת סיום</label>
                 <!--<label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>-->

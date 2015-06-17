@@ -3,51 +3,29 @@
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
 
 
-      $scope.addHoverYellow = function (event)
-      {
+      $scope.addHoverYellow = function ($event) {
+          //console.log("addHoverYellow > checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
 
-          // $(myElementHover).addClass("sceneHover");
-          // angular(this).addClass("sceneHover");
-          $('.myscene').hover(function ()
-          {
-              console.log("checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
-              if ($scope.dataService.is_DistractorClicked2Link == false)
-              { $(this).addClass('sceneHover') }
+          if ($scope.dataService.is_DistractorClicked2Link == false) {
+
+              $(event.currentTarget).addClass('sceneHover');
               $('.arrow').addClass('backgroundArrowsGrey');
-              $(this).$('.arrow').removeClass('backgroundArrowsGrey');
-              //angular.forEach($('.myscene'), function(){
-              //    if($('.myscene') != $(event.target)){
-              //        $('.myscene').addClass('backgroundArrowsGrey');
-              //    }
-              //})
-
-          });
-          
-          //angular.forEach($('.myscene'), function(){
-          //    if($('.myscene') != $(event.target)){
-          //        $('.myscene').addClass('backgroundArrowsGrey');
-          //    }
-          //})
-       
+              $(event.currentTarget).removeClass('backgroundArrowsGrey');
+              dataService.myCurrentSceneClicked2Link = $(event.currentTarget);
+          };
       }
+ 
 
-      //angular.element('.myscene').hover(function(){ angular.element('.myscene').addClass("sceneHover")},console.log("hover over..."));
-      //angular.element(element).hover(function () 
-     // { angular.element(element).addClass("myClass") }, function () 
-      //{ angular.element(element).removeClass("myClass") });
-
-      $scope.removeHoverYellow = function ()
-      {
-         // $('.arrow').removeClass('backgroundArrowsGrey');
-         // $('.arrow').addClass('regularOpacityArrows');
-         // $(this).removeClass('backgroundArrowsGrey');
-      //   // $(myElementHover).removeClass("sceneHover");
-      //   // angular(this).removeClass("sceneHover");
-         
-      //    $(this).removeClass('sceneHover') ;
-      //    console.log("hover over2222...");
-      //    console.log("NOT NOoo hover over...");
-      }
+      $scope.removeHoverYellow = function ($event) {
+          //console.log("removeHoverYellow > checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
+          if ($scope.dataService.is_DistractorClicked2Link == false) {
+              $(event.currentTarget).removeClass('sceneHover');
+              $('.arrow').removeClass('backgroundArrowsGrey');
+              $(event.currentTarget).removeClass('backgroundArrowsGrey');
+              //$(event.currentTarget).removeClass('sceneHoverChilds_border', 'sceneHoverChildscolor', 'sceneHoverChildsBorderLine');
+          }
+      };
+ 
 
     $scope.dataService.setDistractorsIndex();
 

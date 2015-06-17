@@ -8,12 +8,12 @@
         <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
 
 
-        <div ng-click="openMovDialog(scenario)" class="playBtnClass">
+        <div class="playBtnClass">
             <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
         </div>
           <div ng-show="isyoutubeHolderHover">
     <ul class="btnGroup" >
-        <li  class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph"></i></li>
+        <li  class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph" ng-click="openMovDialog(scenario)"></i></li>
         <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
         <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph"></i></li>
     </ul>
@@ -26,7 +26,7 @@
  <!--   <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>-->
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
     <!--<img src="images/linkToBTN.png" alt=""  />-->
-    <i class="glyphicon"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
+    <i class="glyphicon bigLinkBtn"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
         <i class="glyphicon sceneHoverChilds_border" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':scenario.interactions[0].distractors.length == 0,'myPancilGlyphicon':scenario.interactions[0].distractors.length > 0, 'myPlusGlyphicon':scenario.interactions[0].distractors.length == 0,'glyphicon-list':scenario.interactions[0].type == 'singleSelection', 'glyphicon-comment':scenario.interactions[0].type == 'endMessege'}"></i>
 
     <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
@@ -64,7 +64,7 @@
                    
                 </span>
 <!--                ng-click="toggle()"  ng-show="isShowDistractors"-->
-                <div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>
+                <!--<div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>-->
 
 
             </div>

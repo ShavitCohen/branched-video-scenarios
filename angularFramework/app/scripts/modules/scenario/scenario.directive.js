@@ -104,41 +104,66 @@
               
 
 
-              scope.answerClickToLink = function (distractor,event) {
-                  dataService.is_DistractorClicked2Link = true;
+              scope.answerClickToLink = function (distractor, $event) {
+
+                  dataService.is_DistractorClicked2Link = true;                 
+
+                  //console.log("event.currentTarget = " + $(event.currentTarget));
+                  //console.log("dataService.myCurrentSceneClicked2Link = " + dataService.myCurrentSceneClicked2Link);
+
+                  dataService.myCurrentSceneClicked2Link.removeClass('sceneHover');
+                  dataService.myCurrentSceneClicked2Link.parent().removeClass('sceneHover');
+
                   $('.distractorDot').removeClass('addingLinkGlyphicon');
+                  $('.distractorDot').removeClass('distractorClickToLinkNewStyle');
+
+                  $(event.currentTarget).parent().parent().parent().addClass('sceneHover');
+                  
+                  // dataService.is_DistractorClicked2Link = true;
+                  console.log("answer click2link  >  is_DistractorClicked2Link = " + dataService.is_DistractorClicked2Link);
+
+                
                   console.log("you are now clicked: " + dataService.is_DistractorClicked2Link);
+
                   $(event.target).addClass('distractorClickToLinkNewStyle');
-                  $(event.target).removeClass('sceneHoverChildsBorderLine');
-                  $(event.target).removeClass('sceneHoverChildscolor');
-                  $('.myscene').removeClass('sceneHover');
+                  // $(event.currentTarget).addClass('sceneHover');
+                  $('.bigLinkBtn').addClass('bigLinkBtn_hover');
+                  
+
+                  if (dataService.isBtnState == false) {
+                      dataService.isBtnState = !dataService.isBtnState;
+                      console.log("btn is false...");
+                  }
+
+                  ////////this is not working///////////
+                  if (angular.element(event.currentTarget) == angular.element(dataService.myCurrentSceneClicked2Link)) {
+                      dataService.isBtnState = !dataService.isBtnState;
+                      console.log("clicked on the same btn11111111111111111111111111111111111111111111111111111111111...");
+                  }
+                  ////////this is not working///////////
+
+
                   scope.myClickedDistractor2Link_Name = event.target;
                   console.log("clicked distrctor name :" + scope.myClickedDistractor2Link_Name);
 
-
-
-                  //saving current distractor for scenarioClickToLink function
                   dataService.myDistractorCurrentLinkTo = distractor;
-               
 
-
-                //  scope.btnarr = 2;
-                //  dataService.clickedDistactor = distractor;
-               //   dataService.clickedScenarioMovieNum = scope.scenario.movIndex;
-
-
-               dataService.isBtnState = !dataService.isBtnState;
-
-                  dataService.isSelectRelationship = true;
-
+                  dataService.myCurrentSceneClicked2Link = $(event.currentTarget).parent().parent().parent();
 
               };
+
+
+
+
               scope.scenarioClickToLink = function (scenario) {
                   //changing linkTo num of the save distracor
+                  $('.bigLinkBtn').removeClass('bigLinkBtn_hover');
                   dataService.myDistractorCurrentLinkTo.linkTo = scenario.movIndex;
                   //calling arrows function
                   dataService.linkInitDistrctors();
-                  //Tamar
+                  $('.myscene').removeClass('sceneHover');
+                  $('.arrow').removeClass('backgroundArrowsGrey');
+                  $('.myscene').removeClass('backgroundArrowsGrey');
 
                   dataService.is_DistractorClicked2Link = false;
                  
@@ -149,13 +174,13 @@
                   $('.distractorDot').removeClass('distractorClickToLinkNewStyle');
                   $('.distractorDot').addClass('sceneHoverChildsBorderLine');
                   $('.distractorDot').addClass('sceneHoverChildscolor');
-                  $('.myscene').addClass('sceneHover');
+                 // $('.myscene').addClass('sceneHover');
                   dataService.isBtnState = false;
               };
 
               scope.openEditDialog = function (scenario) {
                   scope.tempAnswerArry = scenario.interactions[0];
-                  //console.log("mytempAnswerArry " + tempAnswerArry);
+                  console.log("tempAnswerArrytempAnswerArrytempAnswerArrytempAnswerArry " + scope.tempAnswerArry[0]);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
                       //template:,
@@ -175,7 +200,10 @@
                       }
                   });
                   modalInstance.result.then(function (tempAnswerArry) {
+                   //   tempAnswerArry.type = scope.checkboxSelection;
+                     // console.log("checkboxSelection :" + scope.checkboxSelection);
                       scope.modalUpdates = tempAnswerArry;
+                      console.log("tttttttttttt---scenario.interactions[0] :" + scenario.interactions[0]);
                       console.log("selectedItem = " + scope.modalUpdates);
                   }, function () {
                       log.info('Modal dismissed at: ' + new Date());

@@ -12,7 +12,7 @@ angular.module('angularFrameworkApp')
     $scope.checkIfExist = function (scenario) {
 
        
-        if (scenario.state = "edit") {
+        if (scenario.state = "edit" && scenario.interactions[0].distractors.length != 0) {
             $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.myMovName;
             $scope.editModalBTN = "עדכן";
           
@@ -31,6 +31,8 @@ angular.module('angularFrameworkApp')
         else {
 
             $scope.headlingOfAddScene = "הוספת אינטראקציה חדשה";
+            $scope.editModalBTN = "שמור";
+
         }
 
 
@@ -43,15 +45,30 @@ angular.module('angularFrameworkApp')
         }
        
     }
-    $scope.CheckboxSelectedFunc = function () {
+    $scope.CheckboxSelectedFunc = function (tempAnswerArry) {
         if ($scope.checkboxSelection == "singleSelection") {
+            console.log("$scope.checkboxSelection: " + $scope.checkboxSelection);
             $scope.whiceInteactionTypeS = true;
             $scope.whiceInteactionTypeE = false;
-          
+            // tempAnswerArry.type = "singleSelection";
+            var newType = "singleSelection";
+
+            (tempAnswerArry[2]) = newType;
+
+            console.log("AftertempAnswerArry.type " + tempAnswerArry[2]);
+
+
         }
         else if ($scope.checkboxSelection == "endMessege") {
+            console.log("$scope.checkboxSelection: " + $scope.checkboxSelection);
+
             $scope.whiceInteactionTypeE = true;
             $scope.whiceInteactionTypeS = false;
+            var newType = "endMessege";
+
+            (tempAnswerArry[2]) = newType;
+
+            console.log("tempAnswerArry.type " + tempAnswerArry[2]);
             //(tempAnswerArry.type).push("endMessege");
 
         }
@@ -63,7 +80,7 @@ angular.module('angularFrameworkApp')
 
     $scope.addAnswer = function (tempAnswerArry) {
 
-        var newAnswer = { text: "", scenario: "", isRightAnswer: "" };
+        var newAnswer = { text: "", scenario: "", isRightAnswer: ""};
 
       if ($scope.isChecked == true)
       {

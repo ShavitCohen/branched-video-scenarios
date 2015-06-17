@@ -42,38 +42,54 @@ border:1px white solid;
 .backgroundArrowsGrey {
 opacity:0.2;
 }
+
+.testorangebackarrow {
+opacity:1;
+color:orange;
+background-color:orange;
+}
 .regularOpacityArrows {
     opacity:1;
 }
 .sceneHover
 {
-border:2px solid #58585A;
 height:800px;
-          }
-.sceneHover
-{
-border:none;
-}
-.sceneHover:hover .sceneHoverChilds_border
+ }
+
+.sceneHover .sceneHoverChilds_border
 {
 border:2px solid #DCB601;
 color:#DCB601;
+opacity:1;
 
 }
-.sceneHover:hover .sceneHoverChildscolor
+.sceneHover .sceneHoverChildscolor
 {
 /*border:2px solid #DCB601;*/
 border:2px solid #08828B;
 background-color:white;
+opacity:1;
 
 
 }
-.sceneHover:hover .sceneHoverChildsBorderLine
+.sceneHover .sceneHoverChildsBorderLine
 {
 /*border:2px solid yellow;*/
 border:2px solid #08828B;
-
+opacity:1;
 }
+
+.bigLinkBtn_hover {
+    background-color:#08828B;
+    color:white;
+}
+
+.bigLinkBtn_hover:hover {
+    border:2px solid #DCB601;
+    border-spacing:150px;
+    border-radius: 150px;
+}
+
 .ourModal .modal-content{
               background-color:#DCB601;
 
@@ -410,7 +426,7 @@ background-color: white;
     margin-right:50px;
     }
 .myLinkGlyphicon {
-  background-color: black;
+  /*background-color: black;*/
   color: white;
   font-size: 25px;
   width: 50px;
