@@ -34,48 +34,5 @@
 
 
     <br />
-<div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}"></div>
 
-    <ul ng-repeat="distractor in scenario.interactions[0].distractors">
-        
-        <li class="myDistractorBTNClass"  ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;" ng-if="scenario.interactions[0].type == 'singleSelection'">
-
-            
-
-            <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
-          
-                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow sceneHoverChildsBorderLine">
-                
-
-
-                </div>
-                <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection}" ></div>
-                   
-                 <div class="circle"></div>
-<!--           כאן מתחיל הקוד של המסיחים העיגולים-->
-                 <div  ng-click="answerClickToLink(distractor,$event)" class="circle myDistractor_{{scenario.movIndex}}_{{$index}}" > 
-                     <a tooltip-placement="bottom"  tooltip="{{distractor.text}}" tooltip-class="customClass">
-                     <div class="distractorDot sceneHoverChildscolor glyphicon" ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()">
-
-                     </div>
-
-                     </a></div>
-
-                <!--<img ng-click="toggle()" src="" alt="" class="circle" />-->
-                    <span class="myAnswersSpanClass" ng-show="isShowDistractors">
-                   
-                </span>
-<!--                ng-click="toggle()"  ng-show="isShowDistractors"-->
-                <!--<div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>-->
-
-
-            </div>
-
-           <!-- <div ng-init="dataService.linkInitDistrctors(distractor,scenario)"></div>-->
-        </li>
-
-    </ul>
-    <!--<i class="{{btnURL[btnarr]}} myPancilGlyphicon" ng-modle="btnarr" ng-click="changeBTN()"></i>-->
-    <!--<img ng-src="images/{{btnURL[btnarr]}}" alt="" ng-modle="btnarr" ng-click="changeBTN()" />-->
-    <!--<button ng-modle="btnarr" ng-click="change()">{{btnTxt[btnarr]}}</button>-->
 </div>

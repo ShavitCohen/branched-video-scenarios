@@ -1,5 +1,6 @@
 @font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+
 .scenarioPlayEditTrashBtn
 {
 display:inline-block;
@@ -12,6 +13,10 @@ margin-top:-10px;
 
  }
 
+.bottomDivElements {
+margin-top:308px;
+
+}
 .scenarioPlayEditTrashBtn:hover {
      /*display:block;*/
 background-color:#DCB601;
@@ -412,7 +417,7 @@ background-color: white;
   padding-top: 12px;
   padding-right: 11px;
   margin-right: 34px;
-  margin-top: 337px;
+  margin-top: 150px;
   display: block;
   border: 2px solid;
   border-radius: 30px 30px 30px 30px;
@@ -470,7 +475,7 @@ margin-right:20px;
 width: 2px;
 background-color: #A8A8B7;
 position: absolute;
-margin-top: -42px;
+margin-top: -154px;
 margin-right: 58px;
 z-index: 0;
 }
@@ -494,6 +499,9 @@ background-color:#e5e5e5;
   height: 188px;
 white-space: nowrap;
 width:1432px;
+position:absolute;
+top:200px;
+z-index:3;
 
 
 }

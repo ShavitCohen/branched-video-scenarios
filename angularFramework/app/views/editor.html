@@ -2,17 +2,26 @@
 <br />
 
 <div class="lilachTraying">
-    <div class="freezLine">
-        <ul class="mainMoviesDiv">
-            <li class="myscene" ng-mouseover="addHoverYellow($event)" ng-mouseleave="removeHoverYellow($event)" ng-repeat="scenario in dataService.activities[0].scenarios">
-                <scenario scenario="scenario"></scenario>
-            </li>
-            <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)">
 
+
+    <div class="freezLine" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
+        <ul class="mainMoviesDiv">
+            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios"  ng-class="{'className':scenario.className}" ng-mouseenter="scenario.className = true" ng-mouseleave="scenario.className = false">
+                <scenario-top scenario="scenario"></scenario-top>
             </li>
+            <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)"></li>
         </ul>
 
 
 
     </div>
+
+    <div class="bottomDivElements" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
+        <ul class="mainMoviesDiv">
+            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios">
+                <scenario-bottom scenario="scenario"></scenario-bottom>
+            </li>
+        </ul>
+    </div>
+
 </div>

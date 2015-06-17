@@ -2,6 +2,15 @@
   .controller('editorCtrl', function ($scope, dataService,$modal) {
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
 
+      function init() {
+          var freezLineTop = $('.freezLine').css('top');
+          $(window).on('scroll', function () {
+              $('.freezLine').css('top', 200 + $(window).scrollTop());
+          });
+      }
+
+      init();
+
 
       $scope.addHoverYellow = function ($event) {
           //console.log("addHoverYellow > checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
