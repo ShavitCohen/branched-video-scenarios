@@ -1,6 +1,6 @@
 ﻿<div>
 
-<div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}"></div>
+<div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"></div>
 
     <ul ng-repeat="distractor in scenario.interactions[0].distractors">
         
@@ -10,7 +10,7 @@
 
             <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
           
-                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" class="arrow sceneHoverChildsBorderLine">
+                <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" ng-class="changeArrowBackgroundStyleGrey($event,scenario,$index)" class="arrow sceneHoverChildsBorderLine currArrowClass_{{scenario.movIndex}}">
                 
 
 
@@ -19,13 +19,15 @@
                    
                  <div class="circle"></div>
 <!--           כאן מתחיל הקוד של המסיחים העיגולים-->
-                 <div  ng-click="answerClickToLink(distractor,$event)" class="circle myDistractor_{{scenario.movIndex}}_{{$index}}" > 
+                 <div  ng-click="answerClickToLink(scenario,distractor,$event)" class="circle"> 
                      <a tooltip-placement="bottom"  tooltip="{{distractor.text}}" tooltip-class="customClass">
-                     <div class="distractorDot sceneHoverChildscolor glyphicon" ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()">
+                     <div ng-class="{'hoverYellowSceneElements_GreenDistractors':scenario.hoverYellowSceneElements, 'hoverOnDistractorGrey':distractor.hoverOnDistractorGrey, 'clickedGreenDistractorToLink':distractor.clickedGreenDistractorToLink}" ng-mouseenter="distractor.hoverOnDistractorGrey = true" ng-mouseleave="distractor.hoverOnDistractorGrey = false"  class="distractorDot myDistractor_{{distractor.distractorIndex}}"><!--ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()"-->
 
                      </div>
 
-                     </a></div>
+                     </a>
+
+                 </div>
 
                 <!--<img ng-click="toggle()" src="" alt="" class="circle" />-->
                     <span class="myAnswersSpanClass" ng-show="isShowDistractors">

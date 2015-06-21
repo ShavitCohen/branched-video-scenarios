@@ -1,12 +1,10 @@
-﻿<h1>{{dataService.activities[0].activitycodeName}}</h1>
-<br />
-
-<div class="lilachTraying">
+﻿<div class="lilachTraying">
 
 
     <div class="freezLine" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
+        <h1>{{dataService.activities[0].activitycodeName}}</h1>
         <ul class="mainMoviesDiv">
-            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios"  ng-class="{'className':scenario.className}" ng-mouseenter="scenario.className = true" ng-mouseleave="scenario.className = false">
+            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                 <scenario-top scenario="scenario"></scenario-top>
             </li>
             <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)"></li>
@@ -18,7 +16,7 @@
 
     <div class="bottomDivElements" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
         <ul class="mainMoviesDiv">
-            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios">
+            <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                 <scenario-bottom scenario="scenario"></scenario-bottom>
             </li>
         </ul>

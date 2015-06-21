@@ -31,8 +31,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אתעלםאתעלםעלםאתעל לילך", linkTo: 2 },
-                                    { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true }
+                                    { text: "אתעלםאתעלםעלםאתעל לילך", linkTo: 2, distractorIndex:1 },
+                                    { text: "אבדוק לשלומו", linkTo: 4, isRightAnswer: true, distractorIndex: 2 }
                                 ]
                             }
                         ]
@@ -49,8 +49,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אעזוב", linkTo: 3 },
-                                    { text: "אחפש עזרה", linkTo: 5 }
+                                    { text: "אעזוב", linkTo: 3, distractorIndex: 3 },
+                                    { text: "אחפש עזרה", linkTo: 5, distractorIndex: 4 }
                                 ]
 
                             }
@@ -69,7 +69,7 @@
                                 type: "endMessege",
                                 text: "לא חבל? האיש מת",
                                 distractors: [
-                                   { text: "סוף" }
+                                   { text: "סוף", distractorIndex: 5 }
                                     //,
                                     //{ text: "gg", linkTo: "null" }
                                 ]
@@ -89,8 +89,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אחפש עזרה", linkTo: 5 },
-                                    { text: "אתקשר למגן דוד אדום", linkTo: 6, isRightAnswer: true }
+                                    { text: "אחפש עזרה", linkTo: 5, distractorIndex: 6 },
+                                    { text: "אתקשר למגן דוד אדום", linkTo: 6, isRightAnswer: true, distractorIndex: 7 }
                                 ]
                             }
                         ]
@@ -108,8 +108,8 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "s", linkTo: "tryAgain_7" },
-                                    { text: "s", linkTo: 3 }
+                                    { text: "s", linkTo: "tryAgain_7", distractorIndex: 8 },
+                                    { text: "s", linkTo: 3, distractorIndex: 9 }
                                 ]
                             }
                         ]
@@ -127,8 +127,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אתחיל החייאה", linkTo: 8, isRightAnswer: true },
-                                    { text: "אצא מדעתי", linkTo: 7 }
+                                    { text: "אתחיל החייאה", linkTo: 8, isRightAnswer: true, distractorIndex: 10 },
+                                    { text: "אצא מדעתי", linkTo: 7, distractorIndex: 11 }
                                 ]
                             }
                         ]
@@ -146,8 +146,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אתחיל החייאה", linkTo: 8 },
-                                    { text: "אעזוב", linkTo: 3 }
+                                    { text: "אתחיל החייאה", linkTo: 8, distractorIndex: 12 },
+                                    { text: "אעזוב", linkTo: 3, distractorIndex: 13}
                                 ]
                             }
                         ]
@@ -165,8 +165,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אמשיך החייאה", linkTo: 9 },
-                                    { text: "אשתמש בדפיברילטור", linkTo: 10, isRightAnswer: true }
+                                    { text: "אמשיך החייאה", linkTo: 9, distractorIndex: 14 },
+                                    { text: "אשתמש בדפיברילטור", linkTo: 10, isRightAnswer: true, distractorIndex: 15 }
                                 ]
                             }
                         ]
@@ -184,8 +184,8 @@
                                 type: "singleSelection",
                                 text: "מה תעשה?",
                                 distractors: [
-                                    { text: "אחפש עזרה", linkTo: 5 },
-                                    { text: "אשתמש בדפיברילטור", linkTo: 10 }
+                                    { text: "אחפש עזרה", linkTo: 5, distractorIndex: 16 },
+                                    { text: "אשתמש בדפיברילטור", linkTo: 10, distractorIndex: 17 }
                                 ]
                             }
                         ]
@@ -203,7 +203,7 @@
                                 type: "singleSelection",
                                 text: "null",
                                 distractors: [
-                                    { text: "f", linkTo: "end" }
+                                    { text: "f", linkTo: "end", distractorIndex: 18 }
                                 ]
                             }
                         ]
@@ -342,9 +342,10 @@
       }
 
     };
-    data.myDistractorCurrentLinkTo = "";
-   
-
+    //data.myCurrentDistractorClicked = "sheker";
+    data.myClickedDistractor = 0;
+    data.myClickedDistractor_scenario = 0;
+    //data.clickedGreenDistractorToLink = true;
 
     data.isSelectRelationship = false;
     data.isBtnState = false;

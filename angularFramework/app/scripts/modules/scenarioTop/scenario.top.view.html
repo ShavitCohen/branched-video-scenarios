@@ -1,5 +1,5 @@
 ﻿<div>
-    <div class="scenarioHolder sceneHoverChilds_border" ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()">
+    <div class="scenarioHolder sceneHoverChilds_border" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"><!--ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()"-->
         <div class="youtubeoHolder">
 
             <div class="youtubeoHolderTEXT">{{scenario.myMovName}}</div>
@@ -27,7 +27,7 @@
     <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
     <!--<img src="images/linkToBTN.png" alt=""  />-->
     <i class="glyphicon bigLinkBtn"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
-        <i class="glyphicon sceneHoverChilds_border" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':scenario.interactions[0].distractors.length == 0,'myPancilGlyphicon':scenario.interactions[0].distractors.length > 0, 'myPlusGlyphicon':scenario.interactions[0].distractors.length == 0,'glyphicon-list':scenario.interactions[0].type == 'singleSelection', 'glyphicon-comment':scenario.interactions[0].type == 'endMessege'}"></i>
+        <i class="glyphicon sceneHoverChilds_border myBiglinkBtn_GlyphiconGroup" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':scenario.interactions[0].distractors.length == 0,'myPancilGlyphicon':scenario.interactions[0].distractors.length > 0, 'myPlusGlyphicon':scenario.interactions[0].distractors.length == 0,'glyphicon-list':scenario.interactions[0].type == 'singleSelection', 'glyphicon-comment':scenario.interactions[0].type == 'endMessege', 'hoverYellowSceneElements':scenario.hoverYellowSceneElements }"></i>
 
     <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
     <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->

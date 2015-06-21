@@ -17,17 +17,17 @@
               }
 
 
-              scope.removeGreenClass = function () {
-                  $('.distractorDot').hover(function ()
-                  {
-                      if (dataService.is_DistractorClicked2Link == false) {
-                      $(this).removeClass('sceneHoverChildscolor') , $(this).addClass('addingLinkGlyphicon')} });
-              }
+              //scope.removeGreenClass = function () {
+              //    $('.distractorDot').hover(function ()
+              //    {
+              //        if (dataService.is_DistractorClicked2Link == false) {
+              //        $(this).removeClass('sceneHoverChildscolor') , $(this).addClass('addingLinkGlyphicon')} });
+              //}
 
-              scope.addGreenClass = function () {  
-                  $('.distractorDot').hover(function ()
-                  { $(this).addClass('sceneHoverChildscolor'), $(this).removeClass('addingLinkGlyphicon') });
-              }
+              //scope.addGreenClass = function () {  
+              //    $('.distractorDot').hover(function ()
+              //    { $(this).addClass('sceneHoverChildscolor'), $(this).removeClass('addingLinkGlyphicon') });
+              //}
               
 
            
@@ -67,7 +67,7 @@
               scope.scenarioClickToLink = function (scenario) {
                   //changing linkTo num of the save distracor
                   $('.bigLinkBtn').removeClass('bigLinkBtn_hover');
-                  dataService.myDistractorCurrentLinkTo.linkTo = scenario.movIndex;
+                  dataService.myCurrentDistractorClicked.linkTo = scenario.movIndex;
                   //calling arrows function
                   dataService.linkInitDistrctors();
                   $('.myscene').removeClass('sceneHover');

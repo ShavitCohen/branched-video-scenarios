@@ -69,6 +69,50 @@ color:#DCB601;
 opacity:1;
 
 }
+
+.hoverYellowSceneElements {
+    border:2px solid #DCB601;
+color:#DCB601;
+background-color:#DCB601;
+opacity:1;
+}
+
+.hoverYellowSceneElements_GreenDistractors{
+    border:2px solid #08828B !important;
+    background-color:red;
+    color:red;
+opacity:1;
+
+}
+
+.hoverOnDistractorGrey:before {
+    /*border:2px solid pink !important;
+    background-color:blue;*/
+       content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+      position:absolute;
+      margin-top:-2px;
+     
+}
+.hoverOnDistractorGrey {
+        background-color:#58585A !important;
+        border:2px solid #58585A !important;
+     
+    
+}
+.clickedGreenDistractorToLink:before {
+         content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+      position:absolute;
+      margin-top:-2px;
+
+}
+.clickedGreenDistractorToLink {
+          background-color:#08828B !important;
+        border:2px solid #08828B !important;
+}
 .sceneHover .sceneHoverChildscolor
 {
 /*border:2px solid #DCB601;*/
@@ -417,13 +461,13 @@ background-color: white;
   padding-top: 12px;
   padding-right: 11px;
   margin-right: 34px;
-  margin-top: 150px;
+  margin-top: 218px;
   display: block;
   border: 2px solid;
   border-radius: 30px 30px 30px 30px;
   cursor: pointer;
   position: absolute;
-  z-index: 44;
+  z-index: 2;
 }
 
 .isChangeColor.myPancilGlyphicon {
@@ -433,15 +477,16 @@ background-color: white;
     margin-right:50px;
     }
 .myLinkGlyphicon {
-  /*background-color: black;*/
+  /*background-color: black; TAMAR*/
   color: white;
+  background-color:#08828B;
   font-size: 25px;
   width: 50px;
   height: 50px;
-  padding-top: 13px;
-  padding-right: 10px;
+  padding-top: 12px;
+  padding-right: 11px;
   margin-right: 34px;
-  margin-top: 332px;
+  margin-top: 218px;
   display: block;
   border: 2px solid black;
   border-radius: 30px 30px 30px 30px;
@@ -449,6 +494,12 @@ background-color: white;
   position: absolute;
   z-index: 44;
 }
+
+.myBiglinkBtn_GlyphiconGroup:before {
+z-index:22;
+position:absolute;
+}
+
 .myAnswersLinkSpanClass {
         cursor:pointer;
            position:absolute;
@@ -475,9 +526,9 @@ margin-right:20px;
 width: 2px;
 background-color: #A8A8B7;
 position: absolute;
-margin-top: -154px;
+margin-top: -82px;
 margin-right: 58px;
-z-index: 0;
+z-index: 1;
 }
 .isChangeColor.myDistractorPollClass {
   width: 2px;
@@ -495,13 +546,14 @@ background-color:red;
 }*/
 .freezLine {
 background-color:#e5e5e5;
-  padding-top: 19px;
-  height: 188px;
+  /*padding-top: -19px;*/
+  height: 259px;
 white-space: nowrap;
 width:1432px;
 position:absolute;
 top:200px;
 z-index:3;
+margin-top:-149px;
 
 
 }
