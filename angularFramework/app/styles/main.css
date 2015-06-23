@@ -1,6 +1,15 @@
 @font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+.recomendedScenariosBtn
+          {
+float:left;
+background-color:#D1AD01;
+color:white;
+margin-left:224px;
+margin-top:20px;
 
+
+          }
 .scenarioPlayEditTrashBtn
 {
 display:inline-block;
@@ -150,6 +159,22 @@ opacity:1;
 
               margin-top:70px;
           }
+
+.BreadCrumb_a {
+    color:blue;
+    display:inline-block;
+     
+}
+.BreadCrumb_a:hover {
+    
+    text-decoration:underline;
+     
+}
+.myUserQueAndDistractorCollapsePreviewModalClass {
+    margin-top: 50px;
+margin-right: -36px;
+
+}
 .myUserDistractorClass{
               background-color:black;
                color: white;
@@ -159,6 +184,16 @@ opacity:1;
                width:200px;
               
           }
+
+.myUserDistractorPrevireModalClass {
+      background-color:green;
+               color: white;
+               display:block;
+               text-align:right;
+               margin-top:5px;
+               width:180px;
+
+}
 .myUserDistractorClass:hover {
 background-color:green;
 
@@ -179,7 +214,17 @@ padding-right:40px;
  font-family:'Open Sans Hebrew';
 
 }
+#questionBackPreviewModal {
 
+     background-image: url('../images/interactionDiv.png');
+width: 182px;
+margin-top: -220px;
+/* z-index: 9; */
+position: absolute;
+height: 201px;
+font-family: 'Open Sans Hebrew';
+margin-right: 89px;
+}
 .arrow{
     height:5px;
     background-color:black;

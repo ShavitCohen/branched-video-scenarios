@@ -10,7 +10,7 @@ angular.module('angularFrameworkApp')
       console.log("   $scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
-      $scope.myMovNameBreadCrumbs += dataService.activities[0].scenarios[dataService.myCurrentmovIndex - 1].myMovName +" >";
+      
 
 
       var tag = document.createElement('script');
@@ -25,7 +25,7 @@ angular.module('angularFrameworkApp')
 
       $scope.onYouTubeIframeAPIReady = function () {
 
-     
+
           player = new YT.Player('player', {
               height: '200',
               width: '400',
@@ -35,10 +35,19 @@ angular.module('angularFrameworkApp')
                   'onStateChange': $scope.onPlayerStateChange
               }
           });
-      }
-
-       
+          $scope.myMovNameBreadCrumbs = scenario.myMovName + " >";
+          //var myBreadCrumb_a = $compile(angular.element('<div><a href="#" ng-click="breadCrumbClickFunc()" class="BreadCrumb_a"  '+ $scope.myMovNameBreadCrumbs +'</a></div>'))(scope);
+         var myBreadCrumb_a = angular.element('<div ng-click="breadCrumbClickFunc()" class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
+        $('#myBreadCrumbsHolder').append(myBreadCrumb_a);
       
+
+      };
+
+      $scope.breadCrumbClickFunc = function () {
+
+
+          console.log("sh la la la la");
+      };
 
 
 
@@ -104,7 +113,7 @@ angular.module('angularFrameworkApp')
 
     $scope.myCurrentmovIndex = 1;
 
-      $scope.gotoNextMovie = function (distractor) {
+    $scope.gotoNextMovie = function (distractor, scenario) {
 
           // $scope.$apply(function () {
           console.log("checking what IsEndMovie = " + $scope.isEndMovie);
@@ -121,7 +130,15 @@ angular.module('angularFrameworkApp')
 
           player.loadVideoById({ 'videoId': dataService.activities[0].scenarios[distractor.linkTo - 1].videoId });
 
-          dataService.myCurrentmovIndex++;
+
+          
+
+          $scope.myMovNameBreadCrumbs = dataService.activities[0].scenarios[distractor.linkTo - 1].myMovName + " >";
+
+          var myBreadCrumb_a = angular.element('<div class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
+          $('#myBreadCrumbsHolder').append(myBreadCrumb_a);
+
+        //dataService.myCurrentmovIndex++;
       };
 
 

@@ -9,12 +9,12 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
-              scope.isyoutubeHolderHoverEnterFunc = function () {
-                  scope.isyoutubeHolderHover = true;
-              }
-              scope.isyoutubeHolderHoverLeaveFunc = function () {
-                  scope.isyoutubeHolderHover = false;
-              }
+              //scope.isyoutubeHolderHoverEnterFunc = function () {
+              //    scope.isyoutubeHolderHover = true;
+              //}
+              //scope.isyoutubeHolderHoverLeaveFunc = function () {
+              //    scope.isyoutubeHolderHover = false;
+              //}
 
 
               //scope.removeGreenClass = function () {

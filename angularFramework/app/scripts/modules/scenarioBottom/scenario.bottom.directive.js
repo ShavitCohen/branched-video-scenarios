@@ -50,11 +50,22 @@
 
                       //כאן אנחנו לא מצליחות לאפס את המסיח הקודם שנלחץ - חזרה אל המצב הרגיל ללא מצב הקישור
 
+                      //dataService.myClickedDistractor = distractor.distractorIndex;
+                      //dataService.myClickedDistractor_scenario = scenario.movIndex;
+
                       dataService.myClickedDistractor = distractor.distractorIndex;
                       dataService.myClickedDistractor_scenario = scenario.movIndex;
-                      //dataService.myClickedDistractor = 0;
-                      //dataService.myClickedDistractor_scenario = 0;
-                     
+
+                      //איפוס המסיח הקודם
+
+                      distractor = dataService.activities[0].scenarios[dataService.myPreviousScenarioClicked - 1].interactions[0].distractors[dataService.myPreviousDistractorClicked - 1];
+                      distractor.clickedGreenDistractorToLink = false;
+
+                      //שמירת המסיח הנוכחי החדש למשתנים שאחריהם נעקוב בלחיצה הבאה - בתור מסיחים קודמים
+
+                      distractor = dataService.activities[0].scenarios[dataService.myClickedDistractor_scenario - 1].interactions[0].distractors[dataService.myClickedDistractor - 1];
+                      dataService.myPreviousDistractorClicked = distractor.distractorIndex;
+                      dataService.myPreviousScenarioClicked = scenario.movIndex;
                   }
                   else if (dataService.myClickedDistractor == 0) {
                       //לחצנו על מסיח פעם ראשונה
@@ -62,6 +73,10 @@
                       console.log("first time we click on a  distractor....dataService.myClickedDistractor ==== 0");
                       dataService.myClickedDistractor = distractor.distractorIndex;
                       dataService.myClickedDistractor_scenario = scenario.movIndex;
+                      dataService.myPreviousDistractorClicked = distractor.distractorIndex;
+                      dataService.myPreviousScenarioClicked = scenario.movIndex;
+                      //dataService.myPreviousDistractorClicked_copy = distractor.distractorIndex;
+                      //dataService.myPreviousScenarioClicked_copy = scenario.movIndex;
                   }
                 
                   console.log("dataService.myClickedDistractor = " + dataService.myClickedDistractor);

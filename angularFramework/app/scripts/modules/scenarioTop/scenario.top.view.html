@@ -1,5 +1,5 @@
 ﻿<div>
-    <div class="scenarioHolder sceneHoverChilds_border" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"><!--ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()"-->
+    <div class="scenarioHolder sceneHoverChilds_border"  ng-mouseenter="scenario.hoverSceneYoutubeHolder=true" ng-mouseleave="scenario.hoverSceneYoutubeHolder=false"><!--ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()"-->
         <div class="youtubeoHolder">
 
             <div class="youtubeoHolderTEXT">{{scenario.myMovName}}</div>
@@ -11,15 +11,15 @@
         <div class="playBtnClass">
             <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
         </div>
-          <div ng-show="isyoutubeHolderHover">
-    <ul class="btnGroup" >
-        <li  class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph" ng-click="openMovDialog(scenario)"></i></li>
-        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
-        <li class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph"></i></li>
+          <div>
+    <ul class="btnGroup">
+        <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph" ng-click="openMovDialog(scenario)"></i></li>
+        <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
+        <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph"></i></li>
     </ul>
         </div>
     </div>
- 
+
   
     <br/>
 

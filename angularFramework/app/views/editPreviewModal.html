@@ -13,14 +13,14 @@
             </div>
 
         </div>
-        <div ng-modle="myMovNameBreadCrumbs">{{myMovNameBreadCrumbs}}</div>
+        <div id="myBreadCrumbsHolder" ng-modle="myMovNameBreadCrumbs"></div>
 
-        <div id="questionBack" ng-show="isEndMovie">
-            <div class="myUserQueAndDistractorCollapseClass">
+        <div id="questionBackPreviewModal" ng-show="isEndMovie">
+            <div class="myUserQueAndDistractorCollapsePreviewModalClass">
                 <h3 class="myUserQueClass">{{scenario[0].interactions[0].text}}</h3>
 
                 <ul>
-                    <li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li>
+                    <li class="myUserDistractorPrevireModalClass btn btn success" ng-repeat="distractor in scenario.interactions[0].distractors" ng-click="gotoNextMovie(distractor,scenario)">{{distractor.text}}</li>
 
                 </ul>
 

@@ -345,6 +345,11 @@
     //data.myCurrentDistractorClicked = "sheker";
     data.myClickedDistractor = 0;
     data.myClickedDistractor_scenario = 0;
+    data.myPreviousDistractorClicked = 0;
+    data.myPreviousScenarioClicked = 0;
+    data.myPreviousDistractorClicked_copy = 0;
+    data.myPreviousScenarioClicked_copy = 0;
+
     //data.clickedGreenDistractorToLink = true;
 
     data.isSelectRelationship = false;

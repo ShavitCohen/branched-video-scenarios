@@ -2,7 +2,11 @@
 
 
     <div class="freezLine" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
+              <div class="btn recomendedScenariosBtn">הגדר תרחיש מומלץ
+                  <i class="glyphicon glyphicon-pencil"></i>
+              </div>
         <h1>{{dataService.activities[0].activitycodeName}}</h1>
+  
         <ul class="mainMoviesDiv">
             <li class="myscene" ng-repeat="scenario in dataService.activities[0].scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                 <scenario-top scenario="scenario"></scenario-top>
