@@ -13,7 +13,12 @@
             </div>
 
         </div>
-        <div id="myBreadCrumbsHolder" ng-modle="myMovNameBreadCrumbs"></div>
+        <div id="myBreadCrumbsHolder">
+            <ul>
+                <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.myMovName}}</li>
+            </ul>
+
+        </div>
 
         <div id="questionBackPreviewModal" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapsePreviewModalClass">

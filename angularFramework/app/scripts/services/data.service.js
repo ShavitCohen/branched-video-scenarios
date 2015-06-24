@@ -359,6 +359,34 @@
     data.myCurrentSceneClicked2Link;
     data.myCurrentmovIndex = 1;
 
+
+
+
+    data.closeAllBtns = function() {
+
+        //פונקציה למצב לחיצה על מסיח לטובת קישור
+        //נבדוק 3 מצבים - האם המסיח הנלחץ הוא כבר בחור, האם מסיח אחר כלשהו כבר נלחץ, ומה מצב הכפתורים הגדולים לקישור
+        data.isBtnState = false;
+
+        angular.forEach(data.activities[0].scenarios, function (scenario) {
+            angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                distractor.clickedGreenDistractorToLink = false;                          
+            })                      
+        })
+    };
+
+
+    data.myFuncFindingScenarioToPush = function(scenarioIndex){
+        for (var i = 0; i < data.activities[0].scenarios.length; i++) {
+            var scenario = data.activities[0].scenarios[i];
+            if (scenario.movIndex == scenarioIndex) {
+                return scenario;
+            }
+        }
+    }
+
+
+
     return data;
 
 });

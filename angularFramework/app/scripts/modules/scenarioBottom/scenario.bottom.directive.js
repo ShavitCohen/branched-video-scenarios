@@ -26,68 +26,30 @@
               };
 
 
-              scope.answerClickToLink = function (scenario, distractor, $event) {
+             
 
-                  //בדיקה האם המסיח הנלחץ הוא כבר נלחץ פעמיים
-                  //console.log("checking distractor before change : " + distractor.clickedGreenDistractorToLink);
+              scope.answerClickToLink = function (scenario, distractor, isSelected) {
 
-
-                  //בלחיצה נהפוך את מצב המסיח הנלחץ
-                  distractor.clickedGreenDistractorToLink = !distractor.clickedGreenDistractorToLink;
-
-                  console.log("dataService.myClickedDistractor = " + dataService.myClickedDistractor + "  &  distractor.distractorIndex = " + distractor.distractorIndex);
-
-                  if (dataService.myClickedDistractor == distractor.distractorIndex)
-                  {
-                      //לחצנו על אותו המסיח
-                      console.log("same distractor");
-                      dataService.isBtnState = !dataService.isBtnState;
-                      dataService.myClickedDistractor = 0;
-                      dataService.myClickedDistractor_scenario = 0;
+                 
+                  if (dataService.isBtnState == true) {
+                      //יש כבר כפתור פתוח לקישור
+                      //קריאה לפונקציה שמאפסת את כל הכפתורים
+                      
+                      if (distractor.clickedGreenDistractorToLink == true) {
+                          isSelected = false;
+                      }
+                      dataService.closeAllBtns();
                   }
-                  else if (dataService.myClickedDistractor != 0) {
-                     //לחצנו על מסיח אחר
-
-                      //כאן אנחנו לא מצליחות לאפס את המסיח הקודם שנלחץ - חזרה אל המצב הרגיל ללא מצב הקישור
-
-                      //dataService.myClickedDistractor = distractor.distractorIndex;
-                      //dataService.myClickedDistractor_scenario = scenario.movIndex;
-
-                      dataService.myClickedDistractor = distractor.distractorIndex;
-                      dataService.myClickedDistractor_scenario = scenario.movIndex;
-
-                      //איפוס המסיח הקודם
-
-                      distractor = dataService.activities[0].scenarios[dataService.myPreviousScenarioClicked - 1].interactions[0].distractors[dataService.myPreviousDistractorClicked - 1];
-                      distractor.clickedGreenDistractorToLink = false;
-
-                      //שמירת המסיח הנוכחי החדש למשתנים שאחריהם נעקוב בלחיצה הבאה - בתור מסיחים קודמים
-
-                      distractor = dataService.activities[0].scenarios[dataService.myClickedDistractor_scenario - 1].interactions[0].distractors[dataService.myClickedDistractor - 1];
-                      dataService.myPreviousDistractorClicked = distractor.distractorIndex;
-                      dataService.myPreviousScenarioClicked = scenario.movIndex;
-                  }
-                  else if (dataService.myClickedDistractor == 0) {
-                      //לחצנו על מסיח פעם ראשונה
-                      dataService.isBtnState = !dataService.isBtnState;
-                      console.log("first time we click on a  distractor....dataService.myClickedDistractor ==== 0");
-                      dataService.myClickedDistractor = distractor.distractorIndex;
-                      dataService.myClickedDistractor_scenario = scenario.movIndex;
-                      dataService.myPreviousDistractorClicked = distractor.distractorIndex;
-                      dataService.myPreviousScenarioClicked = scenario.movIndex;
-                      //dataService.myPreviousDistractorClicked_copy = distractor.distractorIndex;
-                      //dataService.myPreviousScenarioClicked_copy = scenario.movIndex;
-                  }
-                
-                  console.log("dataService.myClickedDistractor = " + dataService.myClickedDistractor);
-
-
-                  //בדיקה האם המסיח הנלחץ הוא כבר נלחץ פעמיים
-                  console.log("checking distractor after change : " + distractor.clickedGreenDistractorToLink);
+                  distractor.clickedGreenDistractorToLink = isSelected;
+                  dataService.isBtnState = isSelected;
+                  
                   //הכרחי עבור קישור בין סצינות - חיצים
                   dataService.myCurrentDistractorClicked = distractor;
-
               };
+
+              
+
+              
           }
       }
   });

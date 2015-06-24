@@ -35,19 +35,21 @@ angular.module('angularFrameworkApp')
                   'onStateChange': $scope.onPlayerStateChange
               }
           });
-          $scope.myMovNameBreadCrumbs = scenario.myMovName + " >";
-          //var myBreadCrumb_a = $compile(angular.element('<div><a href="#" ng-click="breadCrumbClickFunc()" class="BreadCrumb_a"  '+ $scope.myMovNameBreadCrumbs +'</a></div>'))(scope);
-         var myBreadCrumb_a = angular.element('<div ng-click="breadCrumbClickFunc()" class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
-        $('#myBreadCrumbsHolder').append(myBreadCrumb_a);
+
+         
+        //  $scope.myMovNameBreadCrumbs = scenario.myMovName + " >";
+        //  //var myBreadCrumb_a = $compile(angular.element('<div><a href="#" ng-click="breadCrumbClickFunc()" class="BreadCrumb_a"  '+ $scope.myMovNameBreadCrumbs +'</a></div>'))(scope);
+        // var myBreadCrumb_a = angular.element('<div ng-click="breadCrumbClickFunc()" class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
+        //$('#myBreadCrumbsHolder').append(myBreadCrumb_a);
       
+          //$scope.previewBreadcrumbsArray.push(scenario);
+          //באנגולר תמיד עדיף ליצור מערכים ולדחוף להם אלמנטים לטובת לולאה
+          $scope.previewBreadcrumbsArray.push(dataService.activities[0].scenarios[0]);
 
       };
 
-      $scope.breadCrumbClickFunc = function () {
-
-
-          console.log("sh la la la la");
-      };
+  
+      $scope.previewBreadcrumbsArray = [];
 
 
 
@@ -128,37 +130,32 @@ angular.module('angularFrameworkApp')
           console.log("dataService.activities.scenarios[distractor.linkTo - 1].videoId: " + dataService.activities[0].scenarios[distractor.linkTo - 1].videoId);
           $scope.scenario = dataService.activities[0].scenarios[distractor.linkTo - 1];
 
+        //באנגולר תמיד עדיף ליצור מערכים ולדחוף להם אלמנטים לטובת לולאה
+
+          var nextScenario = dataService.myFuncFindingScenarioToPush(distractor.linkTo);
+
+          $scope.previewBreadcrumbsArray.push(nextScenario);
+          
+
           player.loadVideoById({ 'videoId': dataService.activities[0].scenarios[distractor.linkTo - 1].videoId });
 
 
           
 
-          $scope.myMovNameBreadCrumbs = dataService.activities[0].scenarios[distractor.linkTo - 1].myMovName + " >";
+          //$scope.myMovNameBreadCrumbs = dataService.activities[0].scenarios[distractor.linkTo - 1].myMovName + " >";
 
-          var myBreadCrumb_a = angular.element('<div class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
-          $('#myBreadCrumbsHolder').append(myBreadCrumb_a);
+          //var myBreadCrumb_a = angular.element('<div class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
+          //$('#myBreadCrumbsHolder').append(myBreadCrumb_a);
 
         //dataService.myCurrentmovIndex++;
       };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $scope.breadCrumbClick = function (scenario, $index) {
+        $scope.previewBreadcrumbsArray.splice(($index +1), ($scope.previewBreadcrumbsArray.length - $index+1));
+        $scope.isEndMovie = false;
+      
+        player.loadVideoById({ 'videoId': scenario.videoId });
+    }
 
 
 

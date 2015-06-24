@@ -85,6 +85,10 @@
                   $('.distractorDot').addClass('sceneHoverChildscolor');
                  // $('.myscene').addClass('sceneHover');
                   dataService.isBtnState = false;
+                  
+                  //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
+                  dataService.closeAllBtns();
+
               };
 
               scope.openEditDialog = function (scenario) {
