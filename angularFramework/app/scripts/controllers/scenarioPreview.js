@@ -7,6 +7,7 @@ angular.module('angularFrameworkApp')
 
 
       $scope.scenario = scenario;
+      $scope.myTempScenario = scenario;
       console.log("   $scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
@@ -22,6 +23,11 @@ angular.module('angularFrameworkApp')
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
+      $scope.previewBreadcrumbsArray = [];
+
+
+      $scope.previewBreadcrumbsArray.push(dataService.activities[0].scenarios[0]);
+
 
       $scope.onYouTubeIframeAPIReady = function () {
 
@@ -44,12 +50,11 @@ angular.module('angularFrameworkApp')
       
           //$scope.previewBreadcrumbsArray.push(scenario);
           //באנגולר תמיד עדיף ליצור מערכים ולדחוף להם אלמנטים לטובת לולאה
-          $scope.previewBreadcrumbsArray.push(dataService.activities[0].scenarios[0]);
-
+          
+          
       };
 
   
-      $scope.previewBreadcrumbsArray = [];
 
 
 
@@ -114,6 +119,8 @@ angular.module('angularFrameworkApp')
 
 
     $scope.myCurrentmovIndex = 1;
+    $scope.myTempScenarioDistractors = scenario.interactions[0].distractors;
+
 
     $scope.gotoNextMovie = function (distractor, scenario) {
 
@@ -129,12 +136,13 @@ angular.module('angularFrameworkApp')
           console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
           console.log("dataService.activities.scenarios[distractor.linkTo - 1].videoId: " + dataService.activities[0].scenarios[distractor.linkTo - 1].videoId);
           $scope.scenario = dataService.activities[0].scenarios[distractor.linkTo - 1];
-
+          
         //באנגולר תמיד עדיף ליצור מערכים ולדחוף להם אלמנטים לטובת לולאה
 
           var nextScenario = dataService.myFuncFindingScenarioToPush(distractor.linkTo);
-
+          $scope.myTempScenarioDistractors = nextScenario.interactions[0].distractors;
           $scope.previewBreadcrumbsArray.push(nextScenario);
+          $scope.myTempScenario = nextScenario;
           
 
           player.loadVideoById({ 'videoId': dataService.activities[0].scenarios[distractor.linkTo - 1].videoId });
@@ -153,7 +161,8 @@ angular.module('angularFrameworkApp')
     $scope.breadCrumbClick = function (scenario, $index) {
         $scope.previewBreadcrumbsArray.splice(($index +1), ($scope.previewBreadcrumbsArray.length - $index+1));
         $scope.isEndMovie = false;
-      
+        $scope.myTempScenarioDistractors = $scope.previewBreadcrumbsArray[$index].interactions[0].distractors;
+        $scope.myTempScenario = $scope.previewBreadcrumbsArray[$index];
         player.loadVideoById({ 'videoId': scenario.videoId });
     }
 

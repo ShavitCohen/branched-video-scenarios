@@ -10,6 +10,7 @@ margin-top:20px;
 
 
           }
+          
 .scenarioPlayEditTrashBtn
 {
 display:inline-block;
@@ -160,7 +161,7 @@ opacity:1;
               margin-top:70px;
           }
 
-.BreadCrumb_a {
+/*.BreadCrumb_a {
     color:blue;
     display:inline-block;
      
@@ -169,12 +170,28 @@ opacity:1;
     
     text-decoration:underline;
      
+}*/
+#myBreadCrumbsHolder li {
+    display:inline-block;
+    cursor:pointer;
+      color:blue;
 }
+    #myBreadCrumbsHolder li:hover {
+    color:blue;
+    text-decoration:underline;
+    }
+#myBreadCrumbsHolder li:after {
+            content: ">";
+        }
+#myBreadCrumbsHolder li:last-child:after {
+            content: none;
+        }
 .myUserQueAndDistractorCollapsePreviewModalClass {
     margin-top: 50px;
 margin-right: -36px;
 
 }
+
 .myUserDistractorClass{
               background-color:black;
                color: white;
