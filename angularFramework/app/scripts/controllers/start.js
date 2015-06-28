@@ -12,12 +12,13 @@
       $scope.routeEditor = function () {
           if ($scope.myCaseCode == "111") {
               $location.path("/EditorPage");
+            $scope.$digest();
           }
       };
       $scope.signIn = function () {
 
           var user = new Parse.User();
-          user.set("username", "email@example.com");
+          user.set("username", "email111@example.com");
           user.set("password", "1234");
           user.set("email", "email@example.com");
 
@@ -45,6 +46,7 @@
               success: function (user) {
                   // Do stuff after successful login.
                   $location.path("/editorActivities");
+                $scope.$digest();
 
               },
               error: function (user, error) {
