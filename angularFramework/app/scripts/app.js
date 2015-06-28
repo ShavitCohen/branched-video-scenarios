@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngGrid'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -42,8 +43,13 @@ angular
              templateUrl: 'views/editor.html',
              controller:"editorCtrl"
          })
-
+    .when('/editorActivities', {
+        templateUrl: 'views/editorActivities.html',
+        controller: "editorActivitiesCtrl"
+    })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+Parse.initialize("B4xyoepaRsqirclmu38bwypiwc9kHnYrx3XjbVTA", "ArqzIVB0flaCMJRibbUaCASAU7xkRcwThybOaPZ5");

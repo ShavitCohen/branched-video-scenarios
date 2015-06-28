@@ -1,4 +1,55 @@
 @font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+          .gridStyle {
+
+font-family: 'OpenSansHebrew-Regular';
+ margin-right:30px;
+border: 1px solid rgb(212,212,212);
+width: 960px;
+height:470px;
+
+/*align-content:center;*/
+}
+.ngRow.even {
+    background-color:white;
+
+
+}  
+.ngRow.selected  {
+background-color:white;
+}
+.gridBtnCss {
+margin-right:15px;
+margin-top:5px;
+
+/*background-image:url('../img/delete_ico.png');*/
+/*height:19px;
+width:17px;*/
+}
+.gridBtnCss:hover {
+opacity:0.8;
+}
+
+.deleteHeader {
+background-color:white;
+color:#58585A;
+font-style:normal;
+}
+.dateCell {
+    color:#007F88;
+text-align:center;
+}
+.codeCell {
+text-align:center;
+color:#007F88;
+
+}
+.nameCell {
+
+color:#007F88;
+}
+.nameCell:hover {
+text-decoration:underline;
+}
 
 .recomendedScenariosBtn
           {

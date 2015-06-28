@@ -1,5 +1,6 @@
 ﻿<div class="lilachTraying">
 
+ 
 
     <div class="freezLine" ng-style="{width:((dataService.activities[0].scenarios.length + 1) * 150) + 'px'}">
               <div class="btn recomendedScenariosBtn">הגדר תרחיש מומלץ
@@ -25,5 +26,9 @@
             </li>
         </ul>
     </div>
+       <div class="btn btn-danger" ng-click="createScenario()">צור סנריו</div>
+    <ul>
 
+    <li ng-repeat="scenario in scenarios" ng-click="getScenarios(scenario)">{{scenario.attributes.name}}</li>
+</ul>
 </div>
