@@ -3,13 +3,15 @@
 
       init();
       var Activity;
+      var activityIns;
     $scope.activitiesData = [];
-
     //activity tables information
     $scope.gridOptions = {
-      data:"activitiesData",
+        data: "activitiesData",
+    
       columnDefs: [
         {
+
           width: "100",
           cellClass: 'dateCell',
           headerClass: 'deleteHeader',
@@ -72,9 +74,12 @@
           width: "220",
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
-          displayName: 'שם הפעילות'
+          displayName: 'שם הפעילות',
+          cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>'
+
           //cellTemplate: '<input type="button" ng-model="row.entity.activiteyName" ng-click="myActiviteyNameVal(row.entity.activiteyName)">'
         },
+
         {
           field: 'published',
           cellClass: 'deleteCell',
@@ -92,28 +97,32 @@
         Activity = Parse.Object.extend("Activity");
         getActivities();
       }
-
+     
     function setDataForNgGrid(results){
       var arr = [];
       angular.forEach(results,function(result){
         var obj = {};
         obj.name = result.attributes.name;
         obj.code = result.attributes.code;
+        obj.myID = result.id;
+        console.log("obj.myID " + obj.myID);
         obj.description = "bla bla bla";
         arr.push(obj);
       });
       return arr;
     }
-
+    dataService.allActivity = [];
       function getActivities(){
-
+         
           var query = new Parse.Query(Activity);
           query.equalTo("createdBy", Parse.User.current());
           query.find({
               success: function (results) {
                   $scope.activities = results;
+                  dataService.allActivity = results;
                   $scope.activitiesData = setDataForNgGrid(results);
                   $scope.$digest();
+                
               },
               error: function (error) {
 
@@ -134,9 +143,10 @@
           // Simple syntax to create a new subclass of Parse.Object.
 
           // Create a new instance of that class.
-          var activityIns = new Activity();
+          activityIns = new Activity();
           activityIns.save(activity, {
               success: function (activityIns) {
+                 
                   // The object was saved successfully.
                   getActivities();
               },
@@ -151,12 +161,27 @@
 
       }
 
-      $scope.gotoActivity = function (activity) {
-          dataService.currentActivity = activity;
-          $location.path("/EditorPage");
-      }
+      //$scope.gotoActivity = function (activity) {
+      //    console.log("lilach: " + activity);
+      //    dataService.currentActivity = activity;
+      //    $location.path("/EditorPage");
+      //}
+
+      $scope.loadById = function (row) {
+          console.log("row.entity :"+row.entity);
+          dataService.currentActivity;
+          //dataService.currentActivity = dataService.allActivity[row.entity.code];
+          dataService.currentActivity = row.entity.myID;
+          debugger;
+          console.log("myrow.entity :" + row.entity.myID);
+           $location.path("/EditorPage");
+
+          //debugger;
+          //dataService.currentActivity = row.entity.code;
+          //$location.path("/EditorPage");
 
 
+      };
 
 
 
