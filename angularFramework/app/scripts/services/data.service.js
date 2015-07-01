@@ -359,7 +359,12 @@
     data.myCurrentSceneClicked2Link;
     data.myCurrentmovIndex = 1;
 
-
+    //מערך גייסון שיכיל את הטבלאות נתונים מהפארס
+    data.selectedActivityDataarr = [];
+    data.selectedActivity_Scnarios_Dataarr = [];
+    data.selectedActivityScenario_Interactions_Dataarr = [];
+    data.selectedActivityScenarioInteractions_Distaractors_Dataarr = [];
+   
 
 
     data.closeAllBtns = function() {

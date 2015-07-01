@@ -2,9 +2,9 @@
 
 <div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"></div>
 
-    <ul ng-repeat="distractor in scenario.interactions[0].distractors">
+    <ul ng-repeat="distractor in dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr">
         
-        <li class="myDistractorBTNClass"  ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;" ng-if="scenario.interactions[0].type == 'singleSelection'">
+        <li class="myDistractorBTNClass"  ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;" ng-if="dataService.selectedActivityScenario_Interactions_Dataarr.type == 'singleSelection'">
 
             
 

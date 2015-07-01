@@ -170,8 +170,10 @@
       $scope.loadById = function (row) {
           console.log("row.entity :"+row.entity);
           dataService.currentActivity;
-          //dataService.currentActivity = dataService.allActivity[row.entity.code];
-          dataService.currentActivity = row.entity.myID;
+          //var index = $scope.activitiesData.index[row.entity.myID];
+          //var obj = $scope.activitiesData.data[index];
+
+          dataService.currentActivity = row.entity.myID; 
           debugger;
           console.log("myrow.entity :" + row.entity.myID);
            $location.path("/EditorPage");
