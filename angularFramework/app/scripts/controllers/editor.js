@@ -15,9 +15,9 @@
 
           getScenarios();
           console.log("init---goiing to getinteraction function");
-          
-         
-            
+
+
+
 
 
 
@@ -32,7 +32,7 @@
 
 
       init();
-      
+
       //$scope.createScenario = function () {
       //        var scenario = {
       //        name: $scope.updateNameTxt,
@@ -43,7 +43,7 @@
       //        endTime: $scope.updateEndTimeTxt,
       //        openingMessege: "הגיע הזמן להציל חיים. מוכן להתחיל?",
       //        papaActivityID: dataService.currentActivity,
-       
+
       //    }
 
 
@@ -55,7 +55,7 @@
       //        success: function (scenarioIns) {
       //            // The object was saved successfully.
       //            getScenarios();
-              
+
       //        },
       //        error: function (scenarioIns, error) {
       //            // The save failed.
@@ -70,7 +70,7 @@
       //}
 
 
-    
+
       //$scope.createInteractions = function () {
       //    debugger;
 
@@ -79,7 +79,7 @@
       //        //dataService.selectedScnarioDataarr.objectId
       //    type: "222",
       //    text: "333",
-             
+
 
       //    }
 
@@ -114,12 +114,12 @@
 
       //    var distractors = {
       //        papaScenarioID: "222",
-             
-             
+
+
       //            text: "444",
       //            linkTo: 0,
       //            distractorIndex: 0
-             
+
 
 
       //    }
@@ -156,8 +156,6 @@
 
 
       function getScenariosinJsonFormat(results) {
-          
-
           var arr1 = [];
           angular.forEach(results, function (result) {
               var obj1 = {};
@@ -167,6 +165,7 @@
               obj1.endTime = result.attributes.endTime;
               obj1.papaActivityID = result.attributes.papaActivityID;
               obj1.objectId = result.id;
+              obj1.original = result;
               arr1.push(obj1);
           });
           return arr1;
@@ -179,7 +178,7 @@
           query.equalTo("papaActivityID", dataService.currentActivity);
           query.find({
               success: function (results) {
-                 
+
                   $scope.scenarios = results;
                  // dataService.currentScenario = results;
                   $scope.selectedActivity_Scnarios_Dataarr1 = getScenariosinJsonFormat(results);
@@ -188,7 +187,7 @@
                   console.log("dataService.selectedActivity_Scnarios_Dataarr this is : " + dataService.selectedActivity_Scnarios_Dataarr);
                   console.log("dataService.selectedActivity_Scnarios_Dataarr --name---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.name);
                   console.log("dataService.selectedActivity_Scnarios_Dataarr --id---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.id);
-                  console.log("dataService.selectedActivity_Scnarios_Dataarr --attr-objectid---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.attributes.objectId);
+                  //console.log("dataService.selectedActivity_Scnarios_Dataarr --attr-objectid---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.attributes.objectId);
 
                   $scope.$digest();
                   getInteractions();
@@ -203,7 +202,7 @@
 
       }
 
-      
+
       console.log("im goint to get in ");
 
       function getInteractions() {
@@ -218,7 +217,7 @@
               var query = new Parse.Query(Interactions);
               query.containedIn("papaScenarioID", dataService.selectedActivity_Scnarios_Dataarr.objectId);
               query.find({
-                 
+
                   success: function (results) {
                       debugger;
 
@@ -306,7 +305,7 @@
               dataService.myCurrentSceneClicked2Link = $(event.currentTarget);
           };
       }
- 
+
 
       $scope.removeHoverYellow = function ($event) {
           //console.log("removeHoverYellow > checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
@@ -317,7 +316,7 @@
               //$(event.currentTarget).removeClass('sceneHoverChilds_border', 'sceneHoverChildscolor', 'sceneHoverChildsBorderLine');
           }
       };
- 
+
 
   //  $scope.dataService.setDistractorsIndex();
 
@@ -341,7 +340,7 @@
 
           });
       }
-      
+
       //קריאה לפונקציה שיוצרת את הקווים המחברים בין מסיחים
     //  dataService.linkInitDistrctors();
   }
