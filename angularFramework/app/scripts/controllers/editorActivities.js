@@ -1,8 +1,9 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('editorActivitiesCtrl', function ($scope, dataService, $modal, $location) {
+      var Activity = Parse.Object.extend("Activity");
 
       init();
-      var Activity;
+      
       var activityIns;
     $scope.activitiesData = [];
     //activity tables information
@@ -94,7 +95,6 @@
 
       function init() {
         dataService.checkifEditorisLoggedin();
-        Activity = Parse.Object.extend("Activity");
         getActivities();
       }
      
@@ -105,17 +105,24 @@
         obj.name = result.attributes.name;
         obj.code = result.attributes.code;
         obj.myID = result.id;
+        obj.original = result;
         console.log("obj.myID " + obj.myID);
         obj.description = "bla bla bla";
         arr.push(obj);
       });
       return arr;
     }
+
+
+
     dataService.allActivity = [];
+
+
+
       function getActivities(){
          
           var query = new Parse.Query(Activity);
-          query.equalTo("createdBy", Parse.User.current());
+          query.equalTo("parent", Parse.User.current());
           query.find({
               success: function (results) {
                   $scope.activities = results;
@@ -131,32 +138,35 @@
 
 
       }
+
+
       $scope.createNewActivity = function ()
       {
-          var activity = {
-              name: "עזרה ראשונה",
-              code: Math.floor((Math.random() * 99999) + 1000),
-              createdBy: Parse.User.current(),
-              published: true,
-              description: "תיאור",
-          }
-          // Simple syntax to create a new subclass of Parse.Object.
-
-          // Create a new instance of that class.
           activityIns = new Activity();
-          activityIns.save(activity, {
-              success: function (activityIns) {
-                 
-                  // The object was saved successfully.
-                  getActivities();
-              },
-              error: function (activityIns, error) {
-                  // The save failed.
-                  // error is a Parse.Error with an error code and message.
-                  debugger;
+          activityIns.set("name", "עזרה ראשונה");
+          activityIns.set("code", Math.floor((Math.random() * 99999) + 1000));
+          activityIns.set("published", true); // חשוב להגדרת האבא של הפעילות
+          activityIns.set("description", "תיאור");
+          activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
 
+          Parse.User.current().add("activities", activityIns); // הוספת הפעילות למערך הפעילויות
+          Parse.User.current().save(null, { // שמירה של הפעילות
+              success: function (user) {
+                  getActivities();
               }
           });
+
+         //activityIns.save(activity, {
+         //     success: function (activityIns) {
+
+         //         getActivities();
+         //     },
+         //     error: function (activityIns, error) {
+
+         //         debugger;
+
+         //     }
+         // });
 
 
       }
@@ -173,9 +183,9 @@
           //var index = $scope.activitiesData.index[row.entity.myID];
           //var obj = $scope.activitiesData.data[index];
 
-          dataService.currentActivity = row.entity.myID; 
+          dataService.currentActivity = row.entity.original; 
           debugger;
-          console.log("myrow.entity :" + row.entity.myID);
+          console.log("myrow.entity :" + row.entity.original);
            $location.path("/EditorPage");
 
           //debugger;

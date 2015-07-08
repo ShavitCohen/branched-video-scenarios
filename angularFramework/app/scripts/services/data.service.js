@@ -359,6 +359,9 @@
     data.myCurrentSceneClicked2Link;
     data.myCurrentmovIndex = 1;
 
+
+
+    data.currentScenarioId;
     //מערך גייסון שיכיל את הטבלאות נתונים מהפארס
     data.selectedActivityDataarr = [];
     data.selectedActivity_Scnarios_Dataarr = [];

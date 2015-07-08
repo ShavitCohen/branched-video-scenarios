@@ -83,7 +83,7 @@
                   $('.distractorDot').removeClass('distractorClickToLinkNewStyle');
                   $('.distractorDot').addClass('sceneHoverChildsBorderLine');
                   $('.distractorDot').addClass('sceneHoverChildscolor');
-                 // $('.myscene').addClass('sceneHover');
+                  // $('.myscene').addClass('sceneHover');
                   dataService.isBtnState = false;
                   
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
@@ -92,42 +92,82 @@
               };
 
               scope.openEditDialog = function (scenario) {
-                  scope.tempAnswerArry = angular.copy(scenario.interactions[0]);
-                  console.log("tempAnswerArrytempAnswerArrytempAnswerArrytempAnswerArry " + scope.tempAnswerArry[0]);
-                  var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
-                      //template:,
-                      templateUrl: 'views/editMovModal.html',
-                      controller:"scenarioPropertiesCtrl",
-                      resolve: {
-                          scenario: function () {
-                              return scope.scenario;
-                          },
-                          state: function () {
-                              return "edit";
-                          },
-                          tempAnswerArry: function () {
-                              return angular.copy(scope.tempAnswerArry);
+                  //scope.tempAnswerArry = angular.copy(scenario.interactions[0]);
+                  //console.log("tempAnswerArrytempAnswerArrytempAnswerArrytempAnswerArry " + scope.tempAnswerArry[0]);
+                  //var modalInstance = $modal.open({
+                  //    windowClass: 'editModalClass',
+                  //    //template:,
+                  //    templateUrl: 'views/editMovModal.html',
+                  //    controller:"scenarioPropertiesCtrl",
+                  //    resolve: {
+                  //        scenario: function () {
+                  //            return scope.scenario;
+                  //        },
+                  //        state: function () {
+                  //            return "edit";
+                  //        },
+                  //        tempAnswerArry: function () {
+                  //            return angular.copy(scope.tempAnswerArry);
 
-                          }
+                  //        }
+                  //    }
+                  //});
+                  //modalInstance.result.then(function (tempAnswerArry) {
+                  // //   tempAnswerArry.type = scope.checkboxSelection;
+                  //   // console.log("checkboxSelection :" + scope.checkboxSelection);
+                  //    //scope.modalUpdates = tempAnswerArry;
+                  //    angular.extend(scenario.interactions[0], tempAnswerArry);
+                  //    console.log("tttttttttttt---scenario.interactions[0] :" + scenario.interactions[0]);
+                  //    console.log("selectedItem = " + scope.modalUpdates);
+                  //    dataService.setDistractorsIndex();
+                  //}, function () {
+                  //    log.info('Modal dismissed at: ' + new Date());
+                  //});
+                  var Interactions = Parse.Object.extend("Interactions");
+
+                  var InteractionsIns = new Interactions();
+
+
+                  InteractionsIns.set("type", "kk");
+                  InteractionsIns.set("text", "texttt");
+                  InteractionsIns.set("parent", scenario.original); // חשוב להגדרת האבא של הפעילות
+
+
+                  scenario.original.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
+                  scenario.original.save(null, { // שמירה של הפעילות
+                      success: function (scenario) {
+
+                          // getActivities();
+                          var Distractors = Parse.Object.extend("Distractors");
+
+                          var DistractorsIns = new Distractors();
+
+
+                          DistractorsIns.set("text", "השאלה");
+                          DistractorsIns.set("linkTo", "1");
+                          DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
+
+
+                          InteractionsIns.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
+
+
+                          InteractionsIns.save(null, { // שמירה של הפעילות
+                              success: function (interaction) {
+                                  debugger;
+
+                              },
+                              error: function (obj, error) {
+                                  debugger;
+                              }
+                          });
+
+
                       }
-                  });
-                  modalInstance.result.then(function (tempAnswerArry) {
-                   //   tempAnswerArry.type = scope.checkboxSelection;
-                     // console.log("checkboxSelection :" + scope.checkboxSelection);
-                      //scope.modalUpdates = tempAnswerArry;
-                      angular.extend(scenario.interactions[0], tempAnswerArry);
-                      console.log("tttttttttttt---scenario.interactions[0] :" + scenario.interactions[0]);
-                      console.log("selectedItem = " + scope.modalUpdates);
-                      dataService.setDistractorsIndex();
-                  }, function () {
-                      log.info('Modal dismissed at: ' + new Date());
-                  });
-              };
+              
            
-          
-
-   
+              
+                      });
+              }
 
         scope.openMovDialog = function (scenario) {
 

@@ -15,9 +15,9 @@
 
           getScenarios();
           console.log("init---goiing to getinteraction function");
-
-
-
+          
+         
+            
 
 
 
@@ -32,63 +32,94 @@
 
 
       init();
-
-      //$scope.createScenario = function () {
-      //        var scenario = {
-      //        name: $scope.updateNameTxt,
-      //        movIndex: myMovIndex,
-      //        firstScenario: true,
-      //        videoId: $scope.updateUrlTxt,
-      //        startTime: $scope.updateStartTimeTxt,
-      //        endTime: $scope.updateEndTimeTxt,
-      //        openingMessege: "הגיע הזמן להציל חיים. מוכן להתחיל?",
-      //        papaActivityID: dataService.currentActivity,
-
-      //    }
+      
+      $scope.createScenario = function () {
+          var scenarioIns = new Scenario();
 
 
-      //    // Simple syntax to create a new subclass of Parse.Object.
+          scenarioIns.set("name", $scope.updateNameTxt);
+          scenarioIns.set("movIndex", myMovIndex);
+          scenarioIns.set("firstScenario", true); // חשוב להגדרת האבא של הפעילות
+          scenarioIns.set("videoId", $scope.updateUrlTxt);
+          scenarioIns.set("startTime", $scope.updateStartTimeTxt);
+          scenarioIns.set("endTime", $scope.updateEndTimeTxt);
+          scenarioIns.set("openingMessege", "");
+          scenarioIns.set("parent", dataService.currentActivity); // חשוב להגדרת האבא של הפעילות
 
-      //    // Create a new instance of that class.
-      //        var scenarioIns = new Scenario();
-      //    scenarioIns.save(scenario, {
-      //        success: function (scenarioIns) {
-      //            // The object was saved successfully.
-      //            getScenarios();
+              myMovIndex++;
+              
+              dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
+              dataService.currentActivity.save(null, { // שמירה של הפעילות
+                  success: function (activity) {
+                      
+                      var myScenario = getScenariosinJsonFormat(scenarioIns);
+                      $scope.selectedActivity_Scnarios_Dataarr1.push(myScenario);
+                      //getScenarios();
+                      $scope.$digest();
 
-      //        },
-      //        error: function (scenarioIns, error) {
-      //            // The save failed.
-      //            // error is a Parse.Error with an error code and message.
-      //            debugger;
-
-      //        }
-      //    });
-
-      //    dataService.currentScenario = scenario;
-      //    debugger;
-      //}
+                  },
+                  error: function (obj,error) {
+                  }
+              });
+              
+              //dataService.currentScenarioId = scenario.objectId;
+              //debugger;
+              //console.log("lilach: " + dataService.currentScenarioId);
 
 
+     //       dataService.currentActivity.add("Scenario", scenario); // הוספת הפעילות לעמודת תרחישים
+     //       dataService.currentActivity.save(); //שמירת הפעילות
 
+
+          // Create a new instance of that class.
+
+
+            
+       
+
+
+
+       //   dataService.currentScenario = scenario;
+      }
+
+
+    
       //$scope.createInteractions = function () {
-      //    debugger;
 
       //    var interaction = {
-      //        papaScenarioID: "111",
+      //        parent: "JkBXzg4Ikb",
+             
       //        //dataService.selectedScnarioDataarr.objectId
       //    type: "222",
       //    text: "333",
-
+             
 
       //    }
+
+
+      //    var Scenario = Parse.Object.extend("Scenario");
+      //    var query = new Parse.Query(Scenario);
+      //    query.equalTo("objectId", "JkBXzg4Ikb");
+      //    // query.include("scenarios");
+      //    query.find({
+      //        success: function (mycurrentScenario) {
+
+      //            dataService.currentInteractionId = interaction.objectId;
+      //            mycurrentScenario.add("Interactions", interaction); // הוספת הפעילות לעמודת תרחישים
+      //            mycurrentScenario.save(); //שמירת הפעילות
+      //        }
+      //    })
+
+
+
+
+
 
 
       //    // Simple syntax to create a new subclass of Parse.Object.
 
       //    // Create a new instance of that class.
       //    var interactionsIns = new Interactions();
-      //    debugger;
 
       //    interactionsIns.save(interaction, {
 
@@ -104,93 +135,163 @@
       //    });
 
       //    dataService.currentInteraction = interaction;
-      //    debugger;
 
       //}
 
 
-      //$scope.createDistractors = function () {
-      //    debugger;
+      $scope.createDistractors = function () {
 
-      //    var distractors = {
-      //        papaScenarioID: "222",
-
-
-      //            text: "444",
-      //            linkTo: 0,
-      //            distractorIndex: 0
-
-
-
-      //    }
+          var distractors = {
+              parent: "HaktFQYD1t",
+             
+             
+                  text: "444",
+                  linkTo: 0,
+                  distractorIndex: 0
+             
 
 
-      //    // Simple syntax to create a new subclass of Parse.Object.
+          }
+          var Interactions = Parse.Object.extend("Interactions");
+          var query = new Parse.Query(Interactions);
+          query.equalTo("objectId", "HaktFQYD1t");
+          // query.include("scenarios");
+          query.find({
+              success: function (mycurrentInteractions) {
 
-      //    // Create a new instance of that class.
-      //    var distractorsIns = new Distractors();
-      //    debugger;
+                  mycurrentInteractions.add("Distractors", distractors); // הוספת הפעילות לעמודת תרחישים
+                  mycurrentInteractions.save(); //שמירת הפעילות
+              }
+          })
 
-      //    distractorsIns.save(distractors, {
+          // Simple syntax to create a new subclass of Parse.Object.
 
-      //        success: function (distractorsIns) {
-      //            // The object was saved successfully.
-      //            console.log(" ליצור דיסטרקטור הצלחתי");
-      //        },
-      //        error: function (distractorsIns, error) {
-      //            // The save failed.
-      //            // error is a Parse.Error with an error code and message.
+          // Create a new instance of that class.
+          var distractorsIns = new Distractors();
 
-      //        }
-      //    });
+          distractorsIns.save(distractors, {
 
-      //    // dataService.currentScenario = scenario;
-      //}
+              success: function (distractorsIns) {
+                  // The object was saved successfully.
+                  console.log(" ליצור דיסטרקטור הצלחתי");
+              },
+              error: function (distractorsIns, error) {
+                  // The save failed.
+                  // error is a Parse.Error with an error code and message.
 
-
-
-
-
-
-
-
-
-      function getScenariosinJsonFormat(results) {
-          var arr1 = [];
-          angular.forEach(results, function (result) {
-              var obj1 = {};
-              obj1.name = result.attributes.name;
-              obj1.videoId = result.attributes.videoId;
-              obj1.startTime = result.attributes.startTime;
-              obj1.endTime = result.attributes.endTime;
-              obj1.papaActivityID = result.attributes.papaActivityID;
-              obj1.objectId = result.id;
-              obj1.original = result;
-              arr1.push(obj1);
+              }
           });
-          return arr1;
+
+          // dataService.currentScenario = scenario;
+      }
+
+
+
+
+      function getDistractorsinJsonFormat(distracor) {
+
+          
+              if (distracor) {
+                  var obj = {};
+                  obj.text = distracor.attributes.text;
+                  obj.type = distracor.attributes.type;
+                  obj.original = distracor;
+                  obj.objectId = distracor.id;
+                 
+              }
+       
+              return obj;
+      }
+
+
+      function getInteractionsinJsonFormat(interaction) {
+     
+         
+          if (interaction) {
+              var obj = {};
+              obj.text = interaction.attributes.text;
+              obj.type = interaction.attributes.type;
+              obj.original = interaction;
+              obj.objectId = interaction.id;
+              
+
+              var arr = [];
+              angular.forEach(interaction.attributes.distractors, function (distractor) {
+                  var myDistractor = getDistractorsinJsonFormat(distractor);
+                  arr.push(myDistractor);
+              })
+
+              obj.distractors = arr;
+          }
+             
+          return obj;
+      }
+         
+   
+
+
+      function getScenariosinJsonFormat(scenario) {
+          
+          if (scenario) {
+              var obj1 = {};
+              obj1.name = scenario.attributes.name;
+              obj1.videoId = scenario.attributes.videoId;
+              obj1.startTime = scenario.attributes.startTime;
+              obj1.endTime = scenario.attributes.endTime;
+              obj1.parent = scenario.attributes.parent;
+              obj1.original = scenario;
+              obj1.objectId = scenario.id;
+
+              
+              var arr = [];
+              angular.forEach(scenario.attributes.interactions, function (interaction) {
+                  var myInteraction = getInteractionsinJsonFormat(interaction);
+                  arr.push(myInteraction);
+              });
+
+               
+              obj1.interactions = arr;
+
+          }
+              return obj1;
       }
 
       function getScenarios() {
-          debugger;
           console.log("dataService.currentActivity: " + dataService.currentActivity);
           var query = new Parse.Query(Scenario);
-          query.equalTo("papaActivityID", dataService.currentActivity);
+          query.equalTo("parent", dataService.currentActivity);
+          query.include("interactions");
+          query.include(["interactions.distractors"]);
           query.find({
-              success: function (results) {
+              success: function (scenarios) {
+                  debugger;
 
-                  $scope.scenarios = results;
-                 // dataService.currentScenario = results;
-                  $scope.selectedActivity_Scnarios_Dataarr1 = getScenariosinJsonFormat(results);
-                  dataService.selectedActivity_Scnarios_Dataarr = $scope.selectedActivity_Scnarios_Dataarr1;
+                  if (scenarios.length > 0) {
+                      $scope.scenarios = scenarios;
+                      // dataService.currentScenario = results;
+                      var arr = [];
+                      angular.forEach(scenarios, function (scenario) {
+                          var myScenario = getScenariosinJsonFormat(scenario);
+                          arr.push(myScenario);
+                      });
 
-                  console.log("dataService.selectedActivity_Scnarios_Dataarr this is : " + dataService.selectedActivity_Scnarios_Dataarr);
-                  console.log("dataService.selectedActivity_Scnarios_Dataarr --name---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.name);
-                  console.log("dataService.selectedActivity_Scnarios_Dataarr --id---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.id);
-                  //console.log("dataService.selectedActivity_Scnarios_Dataarr --attr-objectid---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.attributes.objectId);
+                      $scope.selectedActivity_Scnarios_Dataarr1 = arr;
+                      dataService.selectedActivity_Scnarios_Dataarr = $scope.selectedActivity_Scnarios_Dataarr1;
+                      $scope.$digest();
+                     // getInteractions();
+                  } else {
 
-                  $scope.$digest();
-                  getInteractions();
+                  }
+                  //var interaction = scenarios[0].get("Interactions")[0];
+                  //debugger;
+                  
+
+                //  console.log("dataService.selectedActivity_Scnarios_Dataarr this is : " + dataService.selectedActivity_Scnarios_Dataarr);
+                //  console.log("dataService.selectedActivity_Scnarios_Dataarr --name---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.name);
+                //  console.log("dataService.selectedActivity_Scnarios_Dataarr --id---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.id);
+               //   console.log("dataService.selectedActivity_Scnarios_Dataarr --attr-objectid---- this is : " + dataService.selectedActivity_Scnarios_Dataarr.attributes.objectId);
+
+                 
 
               },
               error: function (error) {
@@ -202,90 +303,66 @@
 
       }
 
-
+      
       console.log("im goint to get in ");
 
-      function getInteractions() {
+      //function getInteractions() {
 
-          console.log("im in get interaction function");
+      //    console.log("im in get interaction function");
 
-          //angular.forEach(dataService.selectedActivity_Scnarios_Dataarr, function (currentScenario) {
-          //    console.log("dataService.selectedActivity_Scnarios_Dataarr2222: " + dataService.selectedActivity_Scnarios_Dataarr);
-          //    console.log("currentScenario 21212121" + currentScenario);
+      //    angular.forEach(dataService.selectedActivity_Scnarios_Dataarr, function (currentScenario) {
+      //        console.log("dataService.selectedActivity_Scnarios_Dataarr2222: " + dataService.selectedActivity_Scnarios_Dataarr);
+      //        console.log("currentScenario 21212121" + currentScenario);
 
-          console.log("dataService.selectedActivity_Scnarios_Dataarr.objectId: " + dataService.selectedActivity_Scnarios_Dataarr.objectId);
-              var query = new Parse.Query(Interactions);
-              query.containedIn("papaScenarioID", dataService.selectedActivity_Scnarios_Dataarr.objectId);
-              query.find({
+      //    console.log("dataService.selectedActivity_Scnarios_Dataarr.objectId: " + dataService.selectedActivity_Scnarios_Dataarr.objectId);
+      //        var query = new Parse.Query(Interactions);
+      //        query.containedIn("parent", dataService.selectedActivity_Scnarios_Dataarr.objectId);
+      //        query.find({
+                 
+      //            success: function (results) {
+      //                debugger;
 
-                  success: function (results) {
-                      debugger;
+      //                //  $scope.scenarios = results;
+      //                dataService.currentInteraction = results;
+      //                dataService.selectedActivityScenario_Interactions_Dataarr.push( getInteractionsinJsonFormat(results));
+      //                console.log("dataService.selectedActivityScenario_Interactions_Dataarr33333 " + dataService.selectedActivityScenario_Interactions_Dataarr);
 
-                      //  $scope.scenarios = results;
-                      dataService.currentInteraction = results;
-                      dataService.selectedActivityScenario_Interactions_Dataarr.push( getInteractionsinJsonFormat(results));
-                      console.log("dataService.selectedActivityScenario_Interactions_Dataarr33333 " + dataService.selectedActivityScenario_Interactions_Dataarr);
+      //                $scope.$digest();
 
-                      $scope.$digest();
+      //            },
+      //            error: function (error) {
 
-                  },
-                  error: function (error) {
+      //            }
+      //        });
 
-                  }
-              });
+      //    //});
 
-          //});
-
-      }
+      //}
 
 
-      function getInteractionsinJsonFormat(results) {
-          console.log("im in getInteractionsinJsonFormat");
-          var arr = [];
-          angular.forEach(results, function (result) {
-              var obj = {};
-              obj.text = result.attributes.text;
-              obj.type = result.attributes.type;
-
-              obj.objectId = result.id;
-              arr.push(obj);
-          });
-          return arr;
-      }
+  
 
 
 
-      function getDistractorsinJsonFormat(results) {
-          var arr = [];
-          angular.forEach(results, function (result) {
-              var obj = {};
-              obj.text = result.attributes.text;
-              obj.type = result.attributes.type;
-
-              obj.objectId = result.id;
-              arr.push(obj);
-          });
-          return arr;
-      }
 
       function getDistractors() {
 
-          var query = new Parse.Query(Distractors);
-          query.containedIn("papaScenarioID", dataService.currentInteraction);
-          query.find({
-              success: function (results) {
-                  debugger;
+          //var query = new Parse.Query(Distractors);
+          //query.containedIn("papaScenarioID", dataService.currentInteraction);
+          //query.find({
+          //    success: function (results) {
+          //        debugger;
 
-                  //  $scope.scenarios = results;
-                  dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr = getDistractorsinJsonFormat(results);
-                  debugger;
-                  $scope.$digest();
+          //        //  $scope.scenarios = results;
+          //        dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr = getDistractorsinJsonFormat(results);
+          //        debugger;
+          //        $scope.$digest();
 
-              },
-              error: function (error) {
+          //    },
+          //    error: function (error) {
 
-              }
-          });
+          //    }
+          //});
 
        //   dataService.currentDistractor = distractor;
 
@@ -305,7 +382,7 @@
               dataService.myCurrentSceneClicked2Link = $(event.currentTarget);
           };
       }
-
+ 
 
       $scope.removeHoverYellow = function ($event) {
           //console.log("removeHoverYellow > checking if distractor is clicked: " + dataService.is_DistractorClicked2Link);
@@ -316,7 +393,7 @@
               //$(event.currentTarget).removeClass('sceneHoverChilds_border', 'sceneHoverChildscolor', 'sceneHoverChildsBorderLine');
           }
       };
-
+ 
 
   //  $scope.dataService.setDistractorsIndex();
 
@@ -340,7 +417,7 @@
 
           });
       }
-
+      
       //קריאה לפונקציה שיוצרת את הקווים המחברים בין מסיחים
     //  dataService.linkInitDistrctors();
   }
