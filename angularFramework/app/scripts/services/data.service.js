@@ -404,6 +404,82 @@
         }
     }
 
+
+
+
+   
+
+
+
+
+    data.getScenariosinJsonFormat=function(scenario) {
+        debugger;
+        if (scenario) {
+            var obj1 = {};
+            obj1.name = scenario.attributes.name;
+            obj1.videoId = scenario.attributes.videoId;
+            obj1.startTime = scenario.attributes.startTime;
+            obj1.endTime = scenario.attributes.endTime;
+            obj1.parent = scenario.attributes.parent;
+            obj1.original = scenario;
+            obj1.objectId = scenario.id;
+
+
+            var arr = [];
+            angular.forEach(scenario.attributes.interactions, function (interaction) {
+                var myInteraction = data.getInteractionsinJsonFormat(interaction);
+                arr.push(myInteraction);
+            });
+
+
+            obj1.interactions = arr;
+
+        }
+        return obj1;
+    }
+   data.getInteractionsinJsonFormat=function(interaction) {
+
+
+        if (interaction) {
+            var obj = {};
+            obj.text = interaction.attributes.text;
+            obj.type = interaction.attributes.type;
+            obj.original = interaction;
+            obj.objectId = interaction.id;
+
+
+            var arr = [];
+            angular.forEach(interaction.attributes.distractors, function (distractor) {
+                var myDistractor = data.getDistractorsinJsonFormat(distractor);
+                arr.push(myDistractor);
+            })
+
+            obj.distractors = arr;
+        }
+
+        return obj;
+    }
+    data.getDistractorsinJsonFormat=function(distracor) {
+
+
+        if (distracor) {
+            var obj = {};
+            obj.text = distracor.attributes.text;
+            obj.type = distracor.attributes.type;
+            obj.original = distracor;
+            obj.objectId = distracor.id;
+
+        }
+
+        return obj;
+    }
+
+
+
+
+
+
+
     return data;
 
 });

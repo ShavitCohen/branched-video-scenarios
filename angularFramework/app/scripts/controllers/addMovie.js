@@ -3,6 +3,18 @@
 
 angular.module('angularFrameworkApp')
   .controller('scenarioAddMovieCtrl', function ($scope, $modalInstance, scenario, dataService, state) {
+      $scope.dataService = dataService;
+      var Scenario;
+      var myMovIndex = 0;
+      $scope.selectedActivity_Scnarios_Dataarr1 = [];
+      init();
+      function init() {
+          // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
+          debugger;
+          Scenario = Parse.Object.extend("Scenario");
+
+      }
+     
       $scope.activities = dataService.activities[0];
       $scope.scenario = scenario;
       $scope.headlingOfAddScene = "הוספת סרטון חדש";
@@ -15,7 +27,7 @@ angular.module('angularFrameworkApp')
 
               $scope.myUrl = $scope.activities.movieLink + scenario.videoId;
               $scope.loadTheYoutubeUrl($scope.scenario.videoId);
-              $scope.myscenarioName = scenario.myMovName;
+              $scope.myscenarioName = scenario.name;
               $scope.myStartTime = scenario.startTime;
               $scope.myEndTime = scenario.endTime;
               $scope.movModalBTN = "עדכן";
@@ -26,7 +38,8 @@ angular.module('angularFrameworkApp')
       }
       
 
-      $scope.youtube_parser  =function(myUrl) {
+      $scope.youtube_parser = function (myUrl) {
+          debugger;
           var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
           var match = myUrl.match(regExp);
           if (match && match[7].length == 11) {
@@ -64,54 +77,64 @@ angular.module('angularFrameworkApp')
          
 
       }
-      $scope.dataService = dataService;
 
       $scope.addToJason = function () {
-      
+          var scenarioIns = new Scenario();
+
           if (state == "new")
-          {
+          {            
+              scenarioIns.set("name", $scope.myscenarioName);
+              scenarioIns.set("movIndex", myMovIndex);
+              scenarioIns.set("firstScenario", true); // חשוב להגדרת האבא של הפעילות
+              scenarioIns.set("videoId", $scope.myUrlID);
+              scenarioIns.set("startTime", $scope.myStartTime);
+              scenarioIns.set("endTime", $scope.myEndTime);
+              scenarioIns.set("openingMessege", "");
+              scenarioIns.set("parent", dataService.currentActivity); // חשוב להגדרת האבא של הפעילות
 
-              var scenarioUpdateDet = {
-                  movIndex: "",
-                  myMovName: $scope.myscenarioName,
-                  videoId: $scope.myUrlID,
-                  id:25,
-                  startTime: $scope.myStartTime,
-                  endTime: $scope.myEndTime,
-                  interactions: [
-                                    {
-                                        type: "singleSelection",
-                                        text: "",
-                                        distractors: [
-                                            { text: "", linkTo: null },
-                                            { text: "", linkTo: null }
-                                        ]
-                                    }
-                  ]
-              };
+              myMovIndex++;
 
-              console.log(scenarioUpdateDet);
+              dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
+              dataService.currentActivity.save(null, { // שמירה של הפעילות
+                  success: function (activity) {
+                     
+                      var myScenario = dataService.getScenariosinJsonFormat(scenarioIns);
+                      $scope.selectedActivity_Scnarios_Dataarr1.push(myScenario);
+                      //getScenarios();
+                      $scope.$digest();
+                    
 
-              dataService.activities[0].scenarios.push(angular.copy(scenarioUpdateDet));
-              console.log(dataService.activities);
+
+                  },
+                  error: function (obj, error) {
+                     
+                  }
+
+              });
+              
               $modalInstance.close();
+
           }
+              
+          
           else if (state == "edit")
           {
-           
-
-              console.log("before" + scenario.myMovName);
-
-              scenario.videoId = $scope.myUrlID;
-              scenario.myMovName = $scope.myscenarioName;
-              scenario.startTime = $scope.myStartTime;
-              scenario.endTime = $scope.myEndTime;
-
+             //לא הצלחתי לגרום לנתונים להתעדכן
              
+                      // Now let's update it with some new data. In this case, only cheatMode and score
+                      // will get sent to the cloud. playerName hasn't changed.
+            
+              
+                 //     scenarioIns.set("videoId", $scope.myUrlID);
+                  //    scenarioIns.set("startTime", $scope.myStartTime);
+                 //     scenarioIns.set("endTime", $scope.myEndTime);
+                   //   scenarioIns.save();
+                 
+            
               $modalInstance.close();
 
           }
-          // 
+        
         
       }
 

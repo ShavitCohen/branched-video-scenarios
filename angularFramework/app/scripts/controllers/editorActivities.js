@@ -184,7 +184,6 @@
           //var obj = $scope.activitiesData.data[index];
 
           dataService.currentActivity = row.entity.original; 
-          debugger;
           console.log("myrow.entity :" + row.entity.original);
            $location.path("/EditorPage");
 
