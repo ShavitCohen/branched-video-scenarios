@@ -6,6 +6,10 @@
 *   Copyright: See the file "LICENSE" for the full license governing this code.
 *******************************************************************************/
 
+.ui-grid-header-cell{
+  float:left;
+}
+
 .rtl blockquote {
   border-right: 5px solid #eeeeee;
   border-left: 0;
@@ -194,7 +198,7 @@ font-family:'Open Sans Hebrew';
 }
 
 @media (min-width: 768px) {
-  
+
 }
 
 .rtl .nav-tabs-justified > li > a {
@@ -259,7 +263,7 @@ font-family:'Open Sans Hebrew';
 }
 
 @media (min-width: 768px) {
-  
+
 }
 
 .rtl .nav-tabs > li {
@@ -361,7 +365,7 @@ font-family:'Open Sans Hebrew';
 .rtl .checkbox-inline input[type="checkbox"] {
   float: right;
   margin-right:-20px;
-  
+
 }
 
 .rtl .radio-inline + .radio-inline,

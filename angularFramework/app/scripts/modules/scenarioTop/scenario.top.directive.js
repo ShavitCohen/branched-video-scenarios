@@ -24,13 +24,13 @@
               //        $(this).removeClass('sceneHoverChildscolor') , $(this).addClass('addingLinkGlyphicon')} });
               //}
 
-              //scope.addGreenClass = function () {  
+              //scope.addGreenClass = function () {
               //    $('.distractorDot').hover(function ()
               //    { $(this).addClass('sceneHoverChildscolor'), $(this).removeClass('addingLinkGlyphicon') });
               //}
-              
 
-           
+
+
 
               scope.isShowDistractors = false;
 
@@ -63,7 +63,7 @@
 
               };
 
-              
+
               scope.scenarioClickToLink = function (scenario) {
                   //changing linkTo num of the save distracor
                   $('.bigLinkBtn').removeClass('bigLinkBtn_hover');
@@ -75,8 +75,8 @@
                   $('.myscene').removeClass('backgroundArrowsGrey');
 
                   dataService.is_DistractorClicked2Link = false;
-                 
-                  
+
+
                   console.log("clicked distrctor name :" +  angular.element(scope.myClickedDistractor2Link_Name));
                   console.log("you are now clicked: " + dataService.is_DistractorClicked2Link);
                   $('.distractorDot').removeClass('addingLinkGlyphicon');
@@ -85,7 +85,7 @@
                   $('.distractorDot').addClass('sceneHoverChildscolor');
                   // $('.myscene').addClass('sceneHover');
                   dataService.isBtnState = false;
-                  
+
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
                   dataService.closeAllBtns();
 
@@ -163,9 +163,9 @@
 
 
                       }
-              
-           
-              
+
+
+
                       });
               }
 
@@ -209,7 +209,7 @@
 
 
 
-      
+
 
       }
 
