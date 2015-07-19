@@ -1,6 +1,7 @@
 ﻿<form name="myForm">
     <div class="modal-content" ng-init="checkIfExist(scenario)">
         <div class="modal-header">
+
             <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
 
         </div>
@@ -12,23 +13,28 @@
                 <label class="col-md-12 myOpeningTextClass">הודעת פתיחה</label>
             </div>
             <div class="row">
-                <textarea class="col-md-8 col-md-offset-1 form-control myOpeningTextClass" id="openingMSG" rows="3" maxlength="150" required ng-model="scenario.interactions[1].text"></textarea>
+                <textarea class="col-md-8 col-md-offset-1 form-control myOpeningTextClass" id="openingMSG" rows="3" maxlength="150" required ng-model="scenario.interactions[1].text" ></textarea>
             </div>
             <div class="row">
 
                 <label class="col-md-3">סוג האינטראקציה:</label>
 
 
-                <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="tempAnswerArry.type">
-
+                <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="scenario.interactions[0].type" ng-change="CheckboxSelectedFunc()">
+    
+               
                 <label for="singleSelection">חד ברירה</label>
 
 
-                <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="tempAnswerArry.type" ng-disabled="{{isDisabled}}">
-
+                <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()">
+              
                 <label for="endMessege">הודעת סיום</label>
                 <!--<label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>-->
 
+                whiceInteactionTypeE{{whiceInteactionTypeE}}
+                <br />
+
+                whiceInteactionTypeS{{whiceInteactionTypeS}}
 
             </div>
             <div class="row">
@@ -55,7 +61,7 @@
                     <div class="row">
 
 
-                        <input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">
+                        <!--<input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">-->
 
                         <textarea ng-show="whiceInteactionTypeS" class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
                         <div ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>

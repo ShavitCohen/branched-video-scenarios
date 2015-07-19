@@ -98,6 +98,50 @@ angular.module('angularFrameworkApp')
               dataService.currentActivity.save(null, { // שמירה של הפעילות
                   success: function (activity) {
 
+                      var Interactions = Parse.Object.extend("Interactions");
+
+                      var InteractionsIns = new Interactions();
+
+
+                      InteractionsIns.set("type", "singleSelection");
+                      InteractionsIns.set("text", "");
+                      InteractionsIns.set("parent", scenarioIns); // חשוב להגדרת האבא של הפעילות
+
+                      scenarioIns.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
+                      scenarioIns.save(null, { // שמירה של הפעילות
+                          success: function (scenario) {
+                            //  dataService.currentScenario = scenarioIns;
+
+                              var Distractors = Parse.Object.extend("Distractors");
+
+                              var DistractorsIns = new Distractors();
+
+
+                              DistractorsIns.set("text", "");
+                              DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+                              DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
+
+
+                              InteractionsIns.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
+
+
+                              InteractionsIns.save(null, { // שמירה של הפעילות
+                                  success: function (interaction) {
+                                      debugger;
+                                  
+                                  },
+                                  error: function (obj, error) {
+                                      debugger;
+                                  }
+                              });
+
+
+
+                          }
+
+
+
+                      });
                       var myScenario = dataService.getScenariosinJsonFormat(scenarioIns);
                       dataService.selectedActivity_Scnarios_Dataarr.push(myScenario);
                       //getScenarios();

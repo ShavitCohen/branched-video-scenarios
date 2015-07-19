@@ -115,7 +115,6 @@
 
 
       function getScenarios() {
-          console.log("dataService.currentActivity: " + dataService.currentActivity);
           var query = new Parse.Query(Scenario);
           query.equalTo("parent", dataService.currentActivity);
           query.include("interactions");

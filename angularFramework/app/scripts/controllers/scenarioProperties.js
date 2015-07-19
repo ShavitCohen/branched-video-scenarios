@@ -4,29 +4,17 @@
 angular.module('angularFrameworkApp')
   .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state, tempAnswerArry) {
 
-    $scope.scenario = scenario;
+      $scope.scenario = scenario;
+     
     $scope.tempAnswerArry = tempAnswerArry;
-
-   
-  
+    
     $scope.checkIfExist = function (scenario) {
 
-       
+      
         if (scenario.state = "edit" && scenario.interactions[0].distractors.length != 0) {
-            $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.myMovName;
+            $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.name;
             $scope.editModalBTN = "עדכן";
-          
-
-
-            console.log("scenario[0].interactions[0].type " + scenario.interactions[0].type);
-            //להוסיף מה שיהיה צריך כשמנגנון יוסיף עמודים
-
-
-            //$scope.myUrl = scenario.movieLink + scenario.id;
-            //$scope.loadTheYoutubeUrl($scope.scenario.id);
-            //$scope.myscenarioName = scenario.myMovName;
-            //$scope.myStartTime = scenario.StartTime;
-            //$scope.myEndTime = scenario.endTime;
+ 
         }
         else {
 
@@ -45,31 +33,23 @@ angular.module('angularFrameworkApp')
         }
        
     }
-    $scope.CheckboxSelectedFunc = function (tempAnswerArry) {
+
+
+
+    $scope.CheckboxSelectedFunc = function () {
         if ($scope.checkboxSelection == "singleSelection") {
-            console.log("$scope.checkboxSelection: " + $scope.checkboxSelection);
             $scope.whiceInteactionTypeS = true;
             $scope.whiceInteactionTypeE = false;
-            // tempAnswerArry.type = "singleSelection";
             var newType = "singleSelection";
 
-           // (tempAnswerArry[2]) = newType;
-
-            console.log("AftertempAnswerArry.type " + tempAnswerArry[2]);
-
-
-        }
+                   }
         else if ($scope.checkboxSelection == "endMessege") {
-            console.log("$scope.checkboxSelection: " + $scope.checkboxSelection);
 
             $scope.whiceInteactionTypeE = true;
             $scope.whiceInteactionTypeS = false;
             var newType = "endMessege";
 
-           // (tempAnswerArry[2]) = newType;
-
-            console.log("tempAnswerArry.type " + tempAnswerArry[2]);
-            //(tempAnswerArry.type).push("endMessege");
+       
 
         }
     }
@@ -79,21 +59,18 @@ angular.module('angularFrameworkApp')
     };
 
     $scope.addAnswer = function (tempAnswerArry) {
+      
+      
+      var newAnswer = { text: "", linkTo: ""};
 
-        var newAnswer = { text: "", scenario: "", isRightAnswer: ""};
-
-      if ($scope.isChecked == true)
-      {
-        answer.isRightAnswer = true;
-      }
-        //  $scope.tempAnswerArry = [];
-    //  console.log();
+      //if ($scope.isChecked == true)
+      //{
+      //  answer.isRightAnswer = true;
+      //}
+    
       (tempAnswerArry.distractors).push(newAnswer);
-      //(tempAnswerArry.type).push("singleSelection");
-      //console.log("tempAnswerArry.type " + tempAnswerArry.type);
-      console.log("afterpush: " + tempAnswerArry);
-      console.log("orginArry:" + scenario.interactions[0].distractors);
-     //answersArray.push(answer);
+   
+     
       dataService.setDistractorsIndex();
     }
 
@@ -104,30 +81,111 @@ angular.module('angularFrameworkApp')
 
     }
 
-    //$scope.deleteQuestions = function (index, myScenario) {
-    //    myScenario.interactions.splice(index, 1);
-    //  $modalInstance.close();
-    //  console.log(myScenario);
-    //}
+ 
 
 
     $scope.saveChangesInOriginArray = function () {
-        if ($scope.checkboxSelection == "singleSelection") {
+     // צריכה למצוא את האינטראקציה עליה לחצתי ולעדכן אותה ספציפית. אחרת הוא פשוט מוסיף עוד רשומה
 
-            $modalInstance.close(tempAnswerArry);
+     
+        var Scenario = Parse.Object.extend("Scenario");
+        var Interactions = Parse.Object.extend("Interactions");
+        var Distractors = Parse.Object.extend("Distractors");
+        debugger;
 
-        }
-        else if ($scope.checkboxSelection == "endMessege") {
+        var query = new Parse.Query(Interactions);
+        query.equalTo("parent", dataService.currentScenario);//צריך לשמור איכשהו את האבא של איטראקשיין שהוא למעשה האיידי של סנריו כערך פארסי
+      // query.include(["interactions.distractors"]);
+        query.find({
+            success: function (interactions) {
+                debugger;
 
-            console.log("אני בהודעת סיום");
-            $modalInstance.close();
-        }
-        console.log("passed ok function to save changes of modal... = " + tempAnswerArry);
-        //cenario.interactions[0].distractors = tempAnswerArry;
-        console.log("orig arr = " + scenario.interactions[0].distractors);
-        //dataService.setDistractorsIndex();
 
+
+
+            },
+            error: function (error) {
+                debugger;
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+ 
+
+
+
+
+        //var Interactions = Parse.Object.extend("Interactions");
+
+        //var InteractionsIns = new Interactions();
+
+
+        //InteractionsIns.set("type", $scope.tempAnswerArry.type);
+        //InteractionsIns.set("text", $scope.tempAnswerArry.text);
+        //InteractionsIns.set("parent", scenario.original); // חשוב להגדרת האבא של הפעילות
+
+
+        //scenario.original.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
+        //scenario.original.save(null, { // שמירה של הפעילות
+        //    success: function (scenario) {
+
+        //        var Distractors = Parse.Object.extend("Distractors");
+
+        //        var DistractorsIns = new Distractors();
+
+
+        //        DistractorsIns.set("text", tempAnswerArry.distractors.text);
+        //        DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+        //        DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
+
+
+        //        InteractionsIns.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
+
+
+        //        InteractionsIns.save(null, { // שמירה של הפעילות
+        //            success: function (interaction) {
+        //                debugger;
+        //                $modalInstance.close(tempAnswerArry);
+        //            },
+        //            error: function (obj, error) {
+        //                debugger;
+        //            }
+        //        });
+               
+
+
+        //    }
+
+
+
+        //});
+
+
+        //if ($scope.checkboxSelection == "singleSelection") {
+
+
+
+        //    $modalInstance.close(tempAnswerArry);
+
+        //}
+        //else if ($scope.checkboxSelection == "endMessege") {
+
+        //    console.log("אני בהודעת סיום");
+        //    $modalInstance.close();
     };
+        
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
