@@ -64,51 +64,51 @@
   
 
 
-      $scope.createDistractors = function () {
+      //$scope.createDistractors = function () {
 
-          var distractors = {
-              parent: "HaktFQYD1t",
+      //    var distractors = {
+      //        parent: "HaktFQYD1t",
              
              
-                  text: "444",
-                  linkTo: 0,
-                  distractorIndex: 0
+      //            text: "444",
+      //            linkTo: 0,
+      //            distractorIndex: 0
              
 
 
-          }
-          var Interactions = Parse.Object.extend("Interactions");
-          var query = new Parse.Query(Interactions);
-          query.equalTo("objectId", "HaktFQYD1t");
-          // query.include("scenarios");
-          query.find({
-              success: function (mycurrentInteractions) {
+      //    }
+      //    var Interactions = Parse.Object.extend("Interactions");
+      //    var query = new Parse.Query(Interactions);
+      //    query.equalTo("objectId", "HaktFQYD1t");
+      //    // query.include("scenarios");
+      //    query.find({
+      //        success: function (mycurrentInteractions) {
 
-                  mycurrentInteractions.add("Distractors", distractors); // הוספת הפעילות לעמודת תרחישים
-                  mycurrentInteractions.save(); //שמירת הפעילות
-              }
-          })
+      //            mycurrentInteractions.add("Distractors", distractors); // הוספת הפעילות לעמודת תרחישים
+      //            mycurrentInteractions.save(); //שמירת הפעילות
+      //        }
+      //    })
 
-          // Simple syntax to create a new subclass of Parse.Object.
+      //    // Simple syntax to create a new subclass of Parse.Object.
 
-          // Create a new instance of that class.
-          var distractorsIns = new Distractors();
+      //    // Create a new instance of that class.
+      //    var distractorsIns = new Distractors();
 
-          distractorsIns.save(distractors, {
+      //    distractorsIns.save(distractors, {
 
-              success: function (distractorsIns) {
-                  // The object was saved successfully.
-                  console.log(" ליצור דיסטרקטור הצלחתי");
-              },
-              error: function (distractorsIns, error) {
-                  // The save failed.
-                  // error is a Parse.Error with an error code and message.
+      //        success: function (distractorsIns) {
+      //            // The object was saved successfully.
+      //            console.log(" ליצור דיסטרקטור הצלחתי");
+      //        },
+      //        error: function (distractorsIns, error) {
+      //            // The save failed.
+      //            // error is a Parse.Error with an error code and message.
 
-              }
-          });
+      //        }
+      //    });
 
-          // dataService.currentScenario = scenario;
-      }
+      //    // dataService.currentScenario = scenario;
+      //}
 
 
 
