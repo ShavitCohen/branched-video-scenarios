@@ -5,16 +5,16 @@ angular.module('angularFrameworkApp')
   .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state, tempAnswerArry) {
 
       $scope.scenario = scenario;
-     
+
     $scope.tempAnswerArry = tempAnswerArry;
-    
+
     $scope.checkIfExist = function (scenario) {
 
-      
+
         if (scenario.state = "edit" && scenario.interactions[0].distractors.length != 0) {
             $scope.headlingOfAddScene = "עריכת אינטראקציה עבור סצינת " + scenario.name;
             $scope.editModalBTN = "עדכן";
- 
+
         }
         else {
 
@@ -27,11 +27,11 @@ angular.module('angularFrameworkApp')
         $scope.checkboxSelection = scenario.interactions[0].type;
         $scope.CheckboxSelectedFunc();
 
-     
+
         if (scenario.movIndex == 1) {
             $scope.isDisabled = true;
         }
-       
+
     }
 
 
@@ -49,7 +49,7 @@ angular.module('angularFrameworkApp')
             $scope.whiceInteactionTypeS = false;
             var newType = "endMessege";
 
-       
+
 
         }
     }
@@ -59,18 +59,18 @@ angular.module('angularFrameworkApp')
     };
 
     $scope.addAnswer = function (tempAnswerArry) {
-      
-      
+
+
       var newAnswer = { text: "", linkTo: ""};
 
       //if ($scope.isChecked == true)
       //{
       //  answer.isRightAnswer = true;
       //}
-    
+
       (tempAnswerArry.distractors).push(newAnswer);
-   
-     
+
+
       dataService.setDistractorsIndex();
     }
 
@@ -81,111 +81,30 @@ angular.module('angularFrameworkApp')
 
     }
 
- 
+
 
 
     $scope.saveChangesInOriginArray = function () {
-     // צריכה למצוא את האינטראקציה עליה לחצתי ולעדכן אותה ספציפית. אחרת הוא פשוט מוסיף עוד רשומה
-
-     
-        var Scenario = Parse.Object.extend("Scenario");
-        var Interactions = Parse.Object.extend("Interactions");
-        var Distractors = Parse.Object.extend("Distractors");
-        debugger;
-
-        var query = new Parse.Query(Interactions);
-        query.equalTo("parent", dataService.currentScenario);//צריך לשמור איכשהו את האבא של איטראקשיין שהוא למעשה האיידי של סנריו כערך פארסי
-      // query.include(["interactions.distractors"]);
-        query.find({
-            success: function (interactions) {
-                debugger;
+      $scope.scenario.interactions[0] = $scope.tempAnswerArry;
+      var interaction =$scope.scenario.original.attributes.interactions[0];
 
 
+      for(var i=0; i< $scope.tempAnswerArry; i++) {
+        if($scope.scenario.interactions[0].length < i+1){
+          var distractor = $scope.scenario.interactions[0].distractors[i];
+          // 1. we need to check if the distractor has an original value if it does, we need to change $scope.scenario.interactions[0].distractors[i] parse way according to
+        }else{
+          // we need to create a distractor (parse way)
+          // and then push it to $scope.scenario.interactions[0].distractors
+        }
+      }
+      // when the loop is over
+      // we need to save only the $scope.scenario.interactions[0] which is the parent of all interactions
 
+      // if the save is success, we close the modal
 
-            },
-            error: function (error) {
-                debugger;
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
- 
-
-
-
-
-        //var Interactions = Parse.Object.extend("Interactions");
-
-        //var InteractionsIns = new Interactions();
-
-
-        //InteractionsIns.set("type", $scope.tempAnswerArry.type);
-        //InteractionsIns.set("text", $scope.tempAnswerArry.text);
-        //InteractionsIns.set("parent", scenario.original); // חשוב להגדרת האבא של הפעילות
-
-
-        //scenario.original.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
-        //scenario.original.save(null, { // שמירה של הפעילות
-        //    success: function (scenario) {
-
-        //        var Distractors = Parse.Object.extend("Distractors");
-
-        //        var DistractorsIns = new Distractors();
-
-
-        //        DistractorsIns.set("text", tempAnswerArry.distractors.text);
-        //        DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
-        //        DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
-
-
-        //        InteractionsIns.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
-
-
-        //        InteractionsIns.save(null, { // שמירה של הפעילות
-        //            success: function (interaction) {
-        //                debugger;
-        //                $modalInstance.close(tempAnswerArry);
-        //            },
-        //            error: function (obj, error) {
-        //                debugger;
-        //            }
-        //        });
-               
-
-
-        //    }
-
-
-
-        //});
-
-
-        //if ($scope.checkboxSelection == "singleSelection") {
-
-
-
-        //    $modalInstance.close(tempAnswerArry);
-
-        //}
-        //else if ($scope.checkboxSelection == "endMessege") {
-
-        //    console.log("אני בהודעת סיום");
-        //    $modalInstance.close();
     };
-        
+
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

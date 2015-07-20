@@ -92,36 +92,34 @@
               };
 
               scope.openEditDialog = function (scenario) {
-                  scope.tempAnswerArry = angular.copy(scenario.interactions[0]);
-                  // scope.tempAnswerArry = angular.copy(dataService.selectedActivity_Scnarios_Dataarr);
+                var tempAnswerArray = angular.copy(scenario.interactions[0]); // we want to copy the distractions in order to manipulate them without changing the real scenario
 
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
-                      //template:,
                       templateUrl: 'views/editMovModal.html',
                       controller:"scenarioPropertiesCtrl",
                       resolve: {
                           scenario: function () {
-                              return scope.scenario;
+                              return scenario;
                           },
                           state: function () {
                               return "edit";
                           },
                           tempAnswerArry: function () {
-                              return angular.copy(scope.tempAnswerArry);
+                              return angular.copy(tempAnswerArray);
 
                           }
                       }
                   });
                   modalInstance.result.then(function (tempAnswerArry) {
-         
+
                       angular.extend(scenario.interactions[0], tempAnswerArry);
-                 
+
                       dataService.setDistractorsIndex();
                   }, function () {
                       log.info('Modal dismissed at: ' + new Date());
                   });
-                 
+
               }
 
         scope.openMovDialog = function (scenario) {
@@ -152,7 +150,7 @@
                 controller: "scenarioAddMovieCtrl",
                 resolve: {
                     scenario: function () {
-                        return scope.scenario;
+                        return scenario;
                     },
                     state: function () {
                         return "edit";

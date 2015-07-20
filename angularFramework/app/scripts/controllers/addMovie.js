@@ -26,7 +26,7 @@ angular.module('angularFrameworkApp')
               $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
 
               $scope.myUrl = $scope.activities.movieLink + scenario.videoId;
-              $scope.loadTheYoutubeUrl($scope.scenario.videoId);
+              $scope.loadTheYoutubeUrl(scenario.videoId);
               $scope.myscenarioName = scenario.name;
               $scope.myStartTime = scenario.startTime;
               $scope.myEndTime = scenario.endTime;
@@ -128,7 +128,7 @@ angular.module('angularFrameworkApp')
                               InteractionsIns.save(null, { // שמירה של הפעילות
                                   success: function (interaction) {
                                       debugger;
-                                  
+
                                   },
                                   error: function (obj, error) {
                                       debugger;
@@ -163,19 +163,28 @@ angular.module('angularFrameworkApp')
 
           else if (state == "edit")
           {
-             //לא הצלחתי לגרום לנתונים להתעדכן
-
-                      // Now let's update it with some new data. In this case, only cheatMode and score
-                      // will get sent to the cloud. playerName hasn't changed.
-
-
-                 //     scenarioIns.set("videoId", $scope.myUrlID);
-                  //    scenarioIns.set("startTime", $scope.myStartTime);
-                 //     scenarioIns.set("endTime", $scope.myEndTime);
-                   //   scenarioIns.save();
+            scenario.videoId = $scope.myUrlID;
+            scenario.name = $scope.myscenarioName;
+            scenario.startTime = $scope.myStartTime;
+            scenario.endTime = $scope.myEndTime;
 
 
-              $modalInstance.close();
+            scenario.original.set("name", scenario.name);
+            scenario.original.set("videoId", scenario.videoId);
+            scenario.original.set("startTime", scenario.startTime);
+            scenario.original.set("endTime", scenario.endTime);
+
+            scenario.original.save(null,{
+              success:function(savedScenario){
+                //scenario have been successfully saved to Parse
+                // only then, we close the modal
+                $modalInstance.close();
+              },
+              error:function(err){
+
+              }
+            });
+
 
           }
 
