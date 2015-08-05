@@ -11,7 +11,8 @@ angular.module('angularFrameworkApp')
       console.log("   $scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
-      
+      $scope.videoDuration = 0;
+      $scope.videDurationEnded_Paused = false;
 
 
       var tag = document.createElement('script');
@@ -62,15 +63,36 @@ angular.module('angularFrameworkApp')
           player.playVideo();
       };
 
+
+      $scope.done = false;
+
+      $scope.onPlayerReady = function () {
+          console.log("entered player ready function...");
+          player.playVideo();
+          console.log("playing video now...");
+          $scope.videoDuration = player.getDuration();
+          console.log("videoDuration in general is : " + $scope.videoDuration);
+
+              // pause few seconds before the end - for test 170 sec before end
+              setTimeout($scope.pauseVideo, ($scope.videoDuration - 170) * 1000);
+              console.log("set timeout was done successfully");
+              $scope.done = true;
+      };
  
 
-      $scope.onPlayerStateChange = function (event) {
-          //if (event.data == YT.PlayerState.PLAYING && !done) {
-          //    getDurationFunc();
-          //}
+      $scope.pauseVideo = function() {
+          $scope.videDurationEnded_Paused = true;
+          player.pauseVideo();
 
-          if (event.data == YT.PlayerState.ENDED) {
+          console.log("paused video...");
+      }
+
+
+      $scope.onPlayerStateChange = function (event) {
+          if (event.data == YT.PlayerState.ENDED || $scope.videDurationEnded_Paused == true) {
               console.log("movie ended");
+              //player.pauseVideo();
+              //console.log("paused video...");
               //pauseVideo();
 
               $scope.$apply(function () {

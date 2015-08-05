@@ -100,7 +100,7 @@
         obj.myID = result.id;
         obj.original = result;
         console.log("obj.myID " + obj.myID);
-        obj.description = "bla bla bla";
+        obj.description = result.attributes.description;
         arr.push(obj);
       });
       return arr;
@@ -133,19 +133,47 @@
 
     $scope.createNewActivity = function ()
     {
-      activityIns = new Activity();
-      activityIns.set("name", "עזרה ראשונה");
-      activityIns.set("code", Math.floor((Math.random() * 99999) + 1000));
-      activityIns.set("published", true); // חשוב להגדרת האבא של הפעילות
-      activityIns.set("description", "תיאור");
-      activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
+        //adding modal to open pop up for configuring new activity
+        var modalInstance = $modal.open({
+            windowClass: 'editModalClass',
+            //template:,
+            //templateUrl: 'views/openingMessageModal.html',
+            //controller: "userOpeningMessageCtrl",
+            templateUrl: 'views/editorNewActivityModal.html',
+            controller: "editorNewActivityCtrl",
+            resolve: {
+                allActivities: function () {
+                    return dataService.allActivity;
+                }
+              //,
+              //  state: function () {
+              //      return "closeMessage";
+              //  }
+              //  ,
+              //  player: function () {
+              //      return player;
+              //  }
 
-      Parse.User.current().add("activities", activityIns); // הוספת הפעילות למערך הפעילויות
-      Parse.User.current().save(null, { // שמירה של הפעילות
-        success: function (user) {
-          getActivities();
-        }
-      });
+            }
+
+        });
+
+        //end of modal for new activity
+
+        //working code for creating new activity automatically - moving this to new modal above
+      //activityIns = new Activity();
+      //activityIns.set("name", "עזרה ראשונה");
+      //activityIns.set("code", Math.floor((Math.random() * 99999) + 1000));
+      //activityIns.set("published", true); // חשוב להגדרת האבא של הפעילות
+      //activityIns.set("description", "תיאור");
+      //activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
+
+      //Parse.User.current().add("activities", activityIns); // הוספת הפעילות למערך הפעילויות
+      //Parse.User.current().save(null, { // שמירה של הפעילות
+      //  success: function (user) {
+      //    getActivities();
+      //  }
+      //});
 
       //activityIns.save(activity, {
       //     success: function (activityIns) {
