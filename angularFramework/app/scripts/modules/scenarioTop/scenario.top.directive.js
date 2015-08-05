@@ -160,7 +160,24 @@
         }
 
 
+        scope.openDeleteMovieDialog = function () {
 
+            var modalInstance = $modal.open({
+                windowClass: 'editModalClass',
+                //template:,
+                templateUrl: 'views/DeleteMovie.html',
+                controller: "scenarioDeleteMovieCtrl",
+                resolve: {
+                    scenario: function () {
+                        return scenario;
+                    },
+                    state: function () {
+                        return "delete";
+                    }
+                }
+            });
+
+        }
 
 
 

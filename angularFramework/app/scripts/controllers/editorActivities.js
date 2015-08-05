@@ -27,7 +27,8 @@
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           displayName: 'צפייה',
-          cellTemplate: '<img src="img/watch_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myWatchFunc()" >'
+          cellTemplate: '<img src="images/PreviewTV_small.png" alt="preview" class="gridBtnCss" ng-click="myWatchFunc()" >'
+          //cellTemplate: '<img src="img/watch_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myWatchFunc()" >'
 
         },
         {
@@ -36,7 +37,8 @@
           width: "52",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="img/duplicate_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
+          cellTemplate: '<img src="images/DuplicateFile_small.png" alt="duplicate" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
+          //cellTemplate: '<img src="img/duplicate_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
 
         },
         {
@@ -45,7 +47,7 @@
           width: "52",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="img/edit_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myEditFunc()" >'
+          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="gridBtnCss" ng-click="myEditFunc()" >'
 
         },
         {
@@ -76,7 +78,7 @@
           headerClass: 'deleteHeader',
 
           displayName: 'פרסום',
-          cellTemplate: '<img src="img/upload_Active.png" alt="upload_Active" class="gridBtnCss" ng-click="myPubFunc()" >'
+          cellTemplate: '<img src="images/UploadShare_small.png" alt="upload" class="gridBtnCss" ng-click="myPubFunc()" >'
 
           //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
         }]
