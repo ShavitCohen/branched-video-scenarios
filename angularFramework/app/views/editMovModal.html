@@ -48,7 +48,7 @@
                 <label class="col-md-12" ng-show="whiceInteactionTypeS">תוכן השאלה</label>
             </div>
             <div class="row">
-                <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="tempAnswerArry.text" ng-show="whiceInteactionTypeS"></textarea>
+                <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="interacionText" ng-show="whiceInteactionTypeS"></textarea>
 
             </div>
             <div ng-show="tempAnswerArry.type == 'singleSelection'">
@@ -57,7 +57,8 @@
                         אפשרויות בחירה:
                     </label>
                 </div>
-                <div class="col-md-12" ng-repeat="answer in tempAnswerArry.distractors">
+                {{scenario.interactions[0].distractors}}
+                <div class="col-md-12" ng-repeat="answer in scenario.interactions[0].distractors">
                     <div class="row">
 
 

@@ -3,11 +3,19 @@
 
 angular.module('angularFrameworkApp')
   .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state, tempAnswerArry) {
-       var Distractors;
+     
+
       $scope.scenario = scenario;
+      var Interactions = Parse.Object.extend("Interactions");
 
     $scope.tempAnswerArry = tempAnswerArry;
+    $scope.interacionText = tempAnswerArry.text;
+      //  $scope.distractorsText = tempAnswerArry.distractors[0].text;
 
+      
+  
+
+ 
     $scope.checkIfExist = function (scenario) {
 
 
@@ -60,16 +68,40 @@ angular.module('angularFrameworkApp')
 
     $scope.addAnswer = function (tempAnswerArry) {
 
+        var interaction = $scope.scenario.original.attributes.interactions[0];
 
-      var newAnswer = { text: "", linkTo: ""};
+        
+        var Distractors = Parse.Object.extend("Distractors");
 
-      //if ($scope.isChecked == true)
-      //{
-      //  answer.isRightAnswer = true;
-      //}
+        var DistractorsIns = new Distractors();
 
-      (tempAnswerArry.distractors).push(newAnswer);
 
+        DistractorsIns.set("text", "");
+        DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+        DistractorsIns.set("parent", interaction); // חשוב להגדרת האבא של הפעילות
+
+
+        interaction.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
+
+
+        interaction.save(null, { // שמירה של הפעילות
+            success: function (interaction) {
+                debugger;
+                (scenario.interactions[0].distractors).push(DistractorsIns);
+
+                $scope.$digest();
+            },
+            error: function (obj, error) {
+                debugger;
+            }
+        });
+
+
+
+    
+      //var newAnswer = { text: "", linkTo: ""};
+
+      //(tempAnswerArry.distractors).push(newAnswer);
 
       dataService.setDistractorsIndex();
     }
@@ -86,64 +118,145 @@ angular.module('angularFrameworkApp')
 
     $scope.saveChangesInOriginArray = function () {
         debugger;
-      $scope.scenario.interactions[0] = $scope.tempAnswerArry;
+     //   scenario.attributes.interactions.text = $scope.interacionText;
+
+        var interaction = $scope.scenario.original.attributes.interactions[0];
+
+     
+
+           interaction.set("text", $scope.interacionText);
+            interaction.save(null,{
+                success:function(savedInteraction){
+                   
+                },
+                error:function(err){
+
+                }
+            });
 
 
-      for (var i = 0; i < $scope.tempAnswerArry.distractors.length; i++) {
-          // if ($scope.scenario.interactions[0].length < i + 1) {
-          var interaction = $scope.scenario.original.attributes.interactions[0];
 
-          var distractorsLength = $scope.scenario.interactions[0].distractors;
-          var originDistracctorArry = [];
-          originDistracctorArry = $scope.scenario.interactions[0].distractors;
-          var originDistractor = interaction.attributes.distractors[i];
-          var distractor = $scope.scenario.interactions[0].distractors[i];
+ 
+            var myNewDistractorText = [];
+            myNewDistractorText.push(scenario.interactions[0].distractors);
+   
+
+        for (var i = 0; i < $scope.scenario.interactions.length; i++) {
+            if ($scope.scenario.interactions.length < i + 1) {
+                var distractor = $scope.scenario.interactions[0].distractors[i];
+                if (distractor.attributes.text=="") {
+                    
+
+                    var distractor = $scope.scenario.original.attributes.interactions[0].attributes.distractors[0];
+                    distractor.set("text", myNewDistractorText.text);
+                    distractor.save(null, {
+                        success: function (savedDistractor) {
+
+                        },
+                        error: function (err) {
+
+                        }
+                    });
+
+                }
+                // 1. we need to check if the distractor has an original value if it does, we need to change $scope.scenario.interactions[0].distractors[i] parse way according to
+            } else {
+          
+                distractor.attributes.text = myNewDistractorText[0].text;
+                   
+
+
+                scenario.original.attributes.interactions[0].attributes.distractors[0].set("text", distractor.attributes.text);
+                   
+                scenario.original.attributes.interactions[0].attributes.distractors[0].save(null, {
+                        success:function(savedDistractors){
+                            //scenario have been successfully saved to Parse
+                            // only then, we close the modal
+                            $modalInstance.close();
+                        },
+                        error:function(err){
+
+                        }
+                    });
+
+
+
+
+
+
+
+                // we need to create a distractor (parse way)
+                // and then push it to $scope.scenario.interactions[0].distractors
+            }
+        }
+        // when the loop is over
+        // we need to save only the $scope.scenario.interactions[0] which is the parent of all interactions
+
+     
+
+
+
+
+
+    //  $scope.scenario.interactions[0] = $scope.tempAnswerArry;
+
+
+    //  for (var i = 0; i < $scope.tempAnswerArry.distractors.length; i++) {
+    //      // if ($scope.scenario.interactions[0].length < i + 1) {
+    //      var interaction = $scope.scenario.original.attributes.interactions[0];
+
+    //      var distractorsLength = $scope.scenario.interactions[0].distractors;
+    //      var originDistracctorArry = [];
+    //      originDistracctorArry = $scope.scenario.interactions[0].distractors;
+    //      var originDistractor = interaction.attributes.distractors[i];
+    //      var distractor = $scope.scenario.interactions[0].distractors[i];
 
 
 
          
 
-          // 1. we need to check if the distractor has an original value if it does, we need to change $scope.scenario.interactions[0].distractors[i] parse way according to
-          //יש יותר מסיחים בחדש מאשר במקור - צריך להוסיף את המסיח החדש למער
-          if (distractorsLength.length == i + 1) {
-              //צור רשומה חדשה בפארס של מסיח
-             //לא הולךךךךךךך
-          } else {
+    //      // 1. we need to check if the distractor has an original value if it does, we need to change $scope.scenario.interactions[0].distractors[i] parse way according to
+    //      //יש יותר מסיחים בחדש מאשר במקור - צריך להוסיף את המסיח החדש למער
+    //      if (distractorsLength.length == i + 1) {
+    //          //צור רשומה חדשה בפארס של מסיח
+    //         //לא הולךךךךךךך
+    //      } else {
 
 
-          //האם התוכן של מסיח קיים ומסיח חדש שונים? כן --צריך לעדכן את פארס
-          if (distractor.text != originDistractor.attributes.text) {
+    //      //האם התוכן של מסיח קיים ומסיח חדש שונים? כן --צריך לעדכן את פארס
+    //      if (distractor.text != originDistractor.attributes.text) {
 
-              originDistractor.set("text", distractor.text);
-              scenario.original.save(null, {
-                  success: function (savedDistractor) {
-                      //distractor have been successfully saved to Parse
-                      // only then, we close the modal
-                      $modalInstance.close();
-                  },
-                  error: function (err) {
+    //          originDistractor.set("text", distractor.text);
+    //          scenario.original.save(null, {
+    //              success: function (savedDistractor) {
+    //                  //distractor have been successfully saved to Parse
+    //                  // only then, we close the modal
+    //                  $modalInstance.close();
+    //              },
+    //              error: function (err) {
 
-                  }
-              });
-          }else{
-              //הערכים זהים בין מקור לחדש - אין צורך לעשות כלום
-          }
+    //              }
+    //          });
+    //      }else{
+    //          //הערכים זהים בין מקור לחדש - אין צורך לעשות כלום
+    //      }
 
 
     
             
             
+    //        }
+    //  }
+    //  // when the loop is over
+    //  // we need to save only the $scope.scenario.interactions[0] which is the parent of all interactions
+
+    //  // if the save is success, we close the modal
+
+    //};
+
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
             }
-      }
-      // when the loop is over
-      // we need to save only the $scope.scenario.interactions[0] which is the parent of all interactions
-
-      // if the save is success, we close the modal
-
-    };
-
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
     };
   });
