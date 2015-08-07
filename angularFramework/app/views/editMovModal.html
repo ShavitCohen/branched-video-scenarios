@@ -57,10 +57,10 @@
                         אפשרויות בחירה:
                     </label>
                 </div>
-                {{scenario.interactions[0].distractors}}
-                <div class="col-md-12" ng-repeat="answer in scenario.interactions[0].distractors">
+               
+                <div class="col-md-12" ng-repeat="answer in tempAnswerArry.distractors">
                     <div class="row">
-
+                        {{tempAnswerArry.distractors}}
 
                         <!--<input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">-->
 
