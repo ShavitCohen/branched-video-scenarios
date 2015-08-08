@@ -1,0 +1,19 @@
+<div class="modal-content" ng-init="checkIfExist(scenario)">
+  <div class="modal-header">
+
+    <h1 class="modal-title">{{header}}</h1>
+
+  </div>
+  <div class="modal-body">
+    {{bodyText}}
+  </div>
+
+  <div class="modal-footer">
+    <div class="col-md-4 col-md-offset-6">
+      <input class="btn btn-warning" type="button" value="אישור" ng-click="closeModal(true)" />
+      <input class="btn btn-primary" type="button" value="בטל" ng-click="closeModal(false)" />
+    </div>
+  </div>
+</div>
+
+
