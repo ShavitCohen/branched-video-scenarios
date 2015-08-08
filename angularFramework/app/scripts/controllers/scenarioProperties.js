@@ -2,13 +2,14 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state, tempAnswerArry) {
-
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state) {
+    var Interactions = Parse.Object.extend("Interactions");
 
     $scope.scenario = scenario;
-    var Interactions = Parse.Object.extend("Interactions");
-    $scope.tempAnswerArry = tempAnswerArry;
-    $scope.interacionText = tempAnswerArry.text;
+    var scenarioInteraction = angular.copy(scenario.interactions[0]);
+    $scope.scenarioInteraction = scenarioInteraction;
+
+/*    $scope.interacionText = tempAnswerArry.text;*/
 
     //  $scope.distractorsText = tempAnswerArry.distractors[0].text;
 
@@ -39,6 +40,10 @@ angular.module('angularFrameworkApp')
       if (scenario.movIndex == 1) {
         $scope.isDisabled = true;
       }
+
+    }
+
+    function getInteractions(){
 
     }
 
@@ -244,10 +249,10 @@ angular.module('angularFrameworkApp')
 
 
 
-      //  $scope.scenario.interactions[0] = $scope.tempAnswerArry;
+      //  $scope.scenario.interactions[0] = $scope.scenarioInteraction;
 
 
-      //  for (var i = 0; i < $scope.tempAnswerArry.distractors.length; i++) {
+      //  for (var i = 0; i < $scope.scenarioInteraction.distractors.length; i++) {
       //      // if ($scope.scenario.interactions[0].length < i + 1) {
       //      var interaction = $scope.scenario.original.attributes.interactions[0];
 

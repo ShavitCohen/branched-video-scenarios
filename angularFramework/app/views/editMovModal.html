@@ -41,7 +41,7 @@
         <label class="col-md-12" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום</label>
       </div>
       <div class="row">
-        <textarea class="col-md-8 col-md-offset-1 form-control" id="endMSGText" rows="3" cols="50" maxlength="150" ng-model="tempAnswerArry.text" ng-show="whiceInteactionTypeE"></textarea>
+        <textarea class="col-md-8 col-md-offset-1 form-control" id="endMSGText" rows="3" cols="50" maxlength="150" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeE"></textarea>
 
       </div>
       <div class="row">
@@ -51,21 +51,21 @@
         <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="interacionText" ng-show="whiceInteactionTypeS"></textarea>
 
       </div>
-      <div ng-show="tempAnswerArry.type == 'singleSelection'">
+      <div ng-show="scenarioInteraction.type == 'singleSelection'">
         <div class="row">
           <label class="col-md-3">
             אפשרויות בחירה:
           </label>
         </div>
 
-        <div class="col-md-12" ng-repeat="answer in tempAnswerArry.distractors">
+        <div class="col-md-12" ng-repeat="answer in scenarioInteraction.distractors">
           <div class="row">
-            <!--{{tempAnswerArry.distractors}}-->
+            <!--{{scenarioInteraction.distractors}}-->
 
             <!--<input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">-->
 
             <textarea ng-show="whiceInteactionTypeS" class="col-md-5 form-control" id="option1Text" rows="1" maxlength="150" ng-model="answer.text"></textarea>
-            <div ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,tempAnswerArry)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
+            <div ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,scenarioInteraction)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
 
 
           </div>
@@ -75,7 +75,7 @@
 
         <div class="row">
 
-          <div ng-show="whiceInteactionTypeS" id="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(tempAnswerArry)"><i class="glyphicon glyphicon-plus"></i></div>
+          <div ng-show="whiceInteactionTypeS" id="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(scenarioInteraction)"><i class="glyphicon glyphicon-plus"></i></div>
         </div>
       </div>
 

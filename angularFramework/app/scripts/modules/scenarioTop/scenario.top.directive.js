@@ -92,8 +92,6 @@
               };
 
               scope.openEditDialog = function (scenario) {
-                var tempAnswerArray = angular.copy(scenario.interactions[0]); // we want to copy the distractions in order to manipulate them without changing the real scenario
-
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
                       templateUrl: 'views/editMovModal.html',
@@ -104,10 +102,6 @@
                           },
                           state: function () {
                               return "edit";
-                          },
-                          tempAnswerArry: function () {
-                              return angular.copy(tempAnswerArray);
-
                           }
                       }
                   });
@@ -157,6 +151,12 @@
                     }
                 }
             });
+
+
+          //After the modal is being closed we want to manualy ask angular to render the view by scope.$digest();
+          modalInstance.result.then(function () {
+            scope.$digest();
+          });
         }
 
 
@@ -176,6 +176,8 @@
                     }
                 }
             });
+
+
 
         }
 
