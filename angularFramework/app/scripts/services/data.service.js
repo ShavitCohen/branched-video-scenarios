@@ -2,7 +2,7 @@
 .factory('dataService', function () {
     //פונקציה גלובלית שתעבוד אל מול דפים שונים
     var data = {};
-   
+
     data.activities = [
           {
               activitycodeName:"עזרה ראשונה",
@@ -63,7 +63,7 @@
                         id: 3,
                         startTime: 0,
                         endTime: 5,
-                       
+
                         interactions: [
                             {
                                 type: "endMessege",
@@ -83,7 +83,7 @@
                         id: 4,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -102,7 +102,7 @@
                         id: 5,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -121,7 +121,7 @@
                         id: 6,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -140,7 +140,7 @@
                         id: 7,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -159,7 +159,7 @@
                         id: 8,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -178,7 +178,7 @@
                         id: 9,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -197,7 +197,7 @@
                         id: 10,
                         startTime: 0,
                         endTime: 5,
-                        
+
                         interactions: [
                             {
                                 type: "singleSelection",
@@ -218,7 +218,7 @@
 
         angular.forEach(data.activities[0].scenarios, function(scenario){
             angular.forEach(scenario.interactions[0].distractors, function(distractor){
-               
+
                 console.log("checking now... " + "distractor = " + distractor.text);
 
                 if (distractor.text != "null") {
@@ -228,7 +228,7 @@
                   //  data.lineDirection = 1;
                     console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
                 //    data.clickedDistactor = distractor;
-                    
+
                     //distractor.connectionLength * distractor.lineDirection
 
                     if (data.connectionLength < 0) {
@@ -257,16 +257,16 @@
                     // console.log("connectionLength = " + dataService.clickedDistactor.connectionLength);
                 }
 
-                
+
                 //else if (distractor.text == "null") {
                 //    data.connectionLength = 0;
                 //    data.lineDirection = 0;
                 //}
-            
+
             })
         });
 
-        
+
     }
 
 
@@ -296,7 +296,7 @@
     //        console.log("rigt lineDirection: " + data.clickedDistactor.lineDirection);
     //        console.log("rigt lineWidthForMargin: " + data.clickedDistactor.lineWidthForMargin);
 
-       
+
     //    }
 
 
@@ -367,7 +367,7 @@
     data.selectedActivity_Scnarios_Dataarr = [];
     data.selectedActivityScenario_Interactions_Dataarr = [];
     data.selectedActivityScenarioInteractions_Distaractors_Dataarr = [];
-   
+
 
 
     data.closeAllBtns = function() {
@@ -378,8 +378,8 @@
 
         angular.forEach(data.activities[0].scenarios, function (scenario) {
             angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-                distractor.clickedGreenDistractorToLink = false;                          
-            })                      
+                distractor.clickedGreenDistractorToLink = false;
+            })
         })
     };
 
@@ -394,7 +394,7 @@
     }
 
     data.checkifEditorisLoggedin=function(){
-    
+
     var currentUser = Parse.User.current();
         if (currentUser) {
             // do stuff with the user
@@ -407,13 +407,13 @@
 
 
 
-   
+
 
 
 
 
     data.getScenariosinJsonFormat=function(scenario) {
-        debugger;
+
         if (scenario) {
             var obj1 = {};
             obj1.name = scenario.attributes.name;
@@ -446,7 +446,7 @@
             obj.type = interaction.attributes.type;
             obj.original = interaction;
             obj.objectId = interaction.id;
-
+           obj.parent = interaction.attributes.parent;
 
             var arr = [];
             angular.forEach(interaction.attributes.distractors, function (distractor) {
@@ -468,6 +468,7 @@
             obj.type = distracor.attributes.type;
             obj.original = distracor;
             obj.objectId = distracor.id;
+            obj.parent = distracor.attributes.parent;
 
         }
 

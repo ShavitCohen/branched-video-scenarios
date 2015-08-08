@@ -39,7 +39,7 @@ angular
          templateUrl: 'views/SummaryPage.html'
       })
 
-         .when('/EditorPage', {
+         .when('/EditorPage/:id', {
              templateUrl: 'views/editor.html',
              controller:"editorCtrl"
          })

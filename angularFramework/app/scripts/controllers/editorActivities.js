@@ -200,13 +200,13 @@
 
     $scope.loadById = function (row) {
       console.log("row.entity :"+row.entity);
-      dataService.currentActivity;
+      //dataService.currentActivity;
       //var index = $scope.activitiesData.index[row.entity.myID];
       //var obj = $scope.activitiesData.data[index];
 
-      dataService.currentActivity = row.entity.original;
+      //dataService.currentActivity = row.entity.original;
       console.log("myrow.entity :" + row.entity.original);
-      $location.path("/EditorPage");
+      $location.path("/EditorPage/" + row.entity.original.id);
 
       //debugger;
       //dataService.currentActivity = row.entity.code;
