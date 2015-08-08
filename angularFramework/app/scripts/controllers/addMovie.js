@@ -10,7 +10,7 @@ angular.module('angularFrameworkApp')
       init();
       function init() {
           // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
-          debugger;
+          //debugger;
           Scenario = Parse.Object.extend("Scenario");
 
       }
@@ -39,7 +39,7 @@ angular.module('angularFrameworkApp')
 
 
       $scope.youtube_parser = function (myUrl) {
-          debugger;
+          //debugger;
           var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
           var match = myUrl.match(regExp);
           if (match && match[7].length == 11) {
@@ -98,7 +98,7 @@ angular.module('angularFrameworkApp')
               dataService.currentActivity.save(null, { // שמירה של הפעילות
                   success: function (activity) {
 
-                      var Interactions = Parse.Object.extend("Interactions");
+                   /*   var Interactions = Parse.Object.extend("Interactions");
 
                       var InteractionsIns = new Interactions();
 
@@ -141,7 +141,7 @@ angular.module('angularFrameworkApp')
 
 
 
-                      });
+                      });*/
                       var myScenario = dataService.getScenariosinJsonFormat(scenarioIns);
                       dataService.selectedActivity_Scnarios_Dataarr.push(myScenario);
                       //getScenarios();

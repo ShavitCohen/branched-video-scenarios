@@ -1,37 +1,37 @@
 ﻿<div>
-    <div class="scenarioHolder sceneHoverChilds_border"  ng-mouseenter="scenario.hoverSceneYoutubeHolder=true" ng-mouseleave="scenario.hoverSceneYoutubeHolder=false"><!--ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()"-->
-        <div class="youtubeoHolder">
+  <div class="scenarioHolder sceneHoverChilds_border"  ng-mouseenter="scenario.hoverSceneYoutubeHolder=true" ng-mouseleave="scenario.hoverSceneYoutubeHolder=false"><!--ng-mouseenter="isyoutubeHolderHoverEnterFunc()" ng-mouseleave="isyoutubeHolderHoverLeaveFunc()"-->
+    <div class="youtubeoHolder">
 
-            <div class="youtubeoHolderTEXT">{{scenario.name}}</div>
-            <!--<i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>-->
-        </div>
-        <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
+      <div class="youtubeoHolderTEXT">{{scenario.name}}</div>
+      <!--<i class="glyphicon glyphicon-pencil myeditMovGlyphicon" ng-click="openAddMovieDialog(scenario)"></i>-->
+    </div>
+    <img ng-src="http://img.youtube.com/vi/{{scenario.videoId}}/1.jpg" alt="" />
 
 
-        <div class="playBtnClass">
-            <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
-        </div>
-          <div>
-    <ul class="btnGroup">
+    <div class="playBtnClass">
+      <!--<i class="glyphicon glyphicon-play-circle myPlayCircleGlyphiconClass"></i>-->
+    </div>
+    <div>
+      <ul class="btnGroup">
         <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-play scenarioPlayEditTrashGlyph" ng-click="openMovDialog(scenario)"></i></li>
         <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-pencil scenarioPlayEditTrashGlyph" ng-click="openAddMovieDialog(scenario)"></i></li>
         <li ng-show="scenario.hoverSceneYoutubeHolder" class="scenarioPlayEditTrashBtn"><i class="glyphicon glyphicon-trash scenarioPlayEditTrashGlyph" ng-click="openDeleteMovieDialog(scenario)"></i></li>
-    </ul>
-        </div>
+      </ul>
     </div>
-
-  
-    <br/>
- <!--   <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>-->
-    <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
-    <!--<img src="images/linkToBTN.png" alt=""  />-->
-    <i class="glyphicon bigLinkBtn"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
-        <i class="glyphicon sceneHoverChilds_border myBiglinkBtn_GlyphiconGroup" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length == 0,'myPancilGlyphicon':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length > 0, 'myPlusGlyphicon':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length == 0,'glyphicon-list':dataService.selectedActivityScenario_Interactions_Dataarr.type == 'singleSelection', 'glyphicon-comment':dataService.selectedActivityScenario_Interactions_Dataarr.type == 'endMessege', 'hoverYellowSceneElements':scenario.hoverYellowSceneElements }"></i>
-
-    <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
-    <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->
+  </div>
 
 
-    <br />
+  <br/>
+  <!--   <i class="glyphicon glyphicon-pencil myPancilGlyphicon" ng-show="!dataService.isBtnState" ng-click="openEditDialog(scenario)"></i>-->
+  <!--<button class="btn btn-success" ng-show="!dataService.isSelectRelationship" id="myMovTumb" ng-click="openEditDialog(scenario)">+</button>-->
+  <!--<img src="images/linkToBTN.png" alt=""  />-->
+  <i class="glyphicon bigLinkBtn"  ng-click="scenarioClickToLink(scenario)" ng-show="dataService.isBtnState" ng-class="{'glyphicon-link':dataService.isBtnState, 'myLinkGlyphicon':dataService.isBtnState}"></i>
+  <i class="glyphicon sceneHoverChilds_border myBiglinkBtn_GlyphiconGroup" ng-click="openEditDialog(scenario)" ng-show="!dataService.isBtnState" ng-class="{'glyphicon-plus':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length == 0,'myPancilGlyphicon':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length > 0, 'myPlusGlyphicon':dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr.length == 0,'glyphicon-list':dataService.selectedActivityScenario_Interactions_Dataarr.type == 'singleSelection', 'glyphicon-comment':dataService.selectedActivityScenario_Interactions_Dataarr.type == 'endMessege', 'hoverYellowSceneElements':scenario.hoverYellowSceneElements }"></i>
+
+  <!--<button class="btn btn-success" ng-show="dataService.isSelectRelationship" id="Button1" >Click here</button>-->
+  <!--<img src="images/whatToDoBTN.png" alt="" class="myMovTumb" />-->
+
+
+  <br />
 
 </div>
