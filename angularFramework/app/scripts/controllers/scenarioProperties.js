@@ -2,20 +2,12 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state) {
+  .controller('scenarioPropertiesCtrl', function ($scope, $modalInstance, scenario,dataService,state,scenarioInteraction,$modal) {
     var Interactions = Parse.Object.extend("Interactions");
 
     $scope.scenario = scenario;
-    var scenarioInteraction = angular.copy(scenario.interactions[0]);
+
     $scope.scenarioInteraction = scenarioInteraction;
-
-/*    $scope.interacionText = tempAnswerArry.text;*/
-
-    //  $scope.distractorsText = tempAnswerArry.distractors[0].text;
-
-
-
-
 
     $scope.checkIfExist = function (scenario) {
 
@@ -71,7 +63,15 @@ angular.module('angularFrameworkApp')
       return index === $scope.checkboxSelection;
     };
 
-    $scope.addAnswer = function (tempAnswerArry) {
+    /**
+     * This function will add a new distractor to the interaction
+     * @param tempAnswerArry
+     */
+    $scope.addAnswer = function () {
+
+      var newAnswer = { text: "", linkTo: "", original:null };
+      $scope.scenarioInteraction.distractors.push(newAnswer);
+
       //var interaction = $scope.scenario.original.attributes.interactions[0];
 
 
@@ -102,25 +102,34 @@ angular.module('angularFrameworkApp')
 
 
 
-      var interaction = $scope.scenario.original.attributes.interactions[0];
 
-      var newAnswer = { text: "", linkTo: "", parent: interaction };
 
-      (tempAnswerArry.distractors).push(newAnswer);
-      debugger;
+      /*var interaction = $scope.scenario.original.attributes.interactions[0];*/
 
-      dataService.setDistractorsIndex();
+
+
+      /*(tempAnswerArry.distractors).push(newAnswer);*/
+      /*debugger;*/
+
+      /*dataService.setDistractorsIndex();*/
     }
 
 
     $scope.deleteAnswer = function (index, answersArray)
     {
+      var distractor = answersArray[index];
+      if(!scenarioInteraction.distractorsToRemove){
+        scenarioInteraction.distractorsToRemove = [];
+      }
+      if(distractor.original){//if the distractor exists in parse
+        scenarioInteraction.distractorsToRemove.push(distractor);
+      }
       answersArray.splice(index, 1);
-
     }
 
-
-
+    $scope.closeModal = function(){
+      $modalInstance.close($scope.scenarioInteraction);
+    };
 
     $scope.saveChangesInOriginArray = function () {
 
