@@ -129,25 +129,30 @@
       query.first({
         success: function (activity) {
             //debugger;
-         
-          var scenarios = activity.attributes.scenarios;
-          if (scenarios.length > 0) {
+            dataService.currentActivity = activity;
+            var scenarios = activity.attributes.scenarios;
+            if (scenarios === undefined) {
+                
+                
+                $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+                $scope.$digest();
+            }
+           else if (scenarios.length > 0) {
+
             $scope.scenarios = scenarios;
-            // dataService.currentScenario = results;
             var arr = [];
             angular.forEach(scenarios, function (scenario) {
               var myScenario = dataService.getScenariosinJsonFormat(scenario);
               arr.push(myScenario);
-            });
-            dataService.currentActivity = activity;
-            dataService.currentActivity.scenarios = arr;
-          
-            dataService.selectedActivity_Scnarios_Dataarr = $scope.selectedActivity_Scnarios_Dataarr1;
-            $scope.$digest();
-            // getInteractions();
-          } else {
+              dataService.currentActivity = activity;
+              dataService.currentActivity.scenarios = arr;
+              $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+              $scope.$digest();
 
-          }
+            });
+           
+           
+          } 
 
 
 

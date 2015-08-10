@@ -157,7 +157,7 @@ angular.module('angularFrameworkApp')
             addFirstInteraction(scenarioIns,"singleSelection","",function(scenario){
               //The first instance creation was successful, and we are adding the video to the array
               var myScenario = dataService.getScenariosinJsonFormat(scenario);
-              dataService.selectedActivity_Scnarios_Dataarr.push(myScenario);
+          //    dataService.selectedActivity_Scnarios_Dataarr.push(myScenario);
               $modalInstance.close();
 
             });

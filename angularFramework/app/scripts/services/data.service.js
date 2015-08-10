@@ -329,16 +329,24 @@
      * This function go over all the activity array and set the global distractor index
      * This what help to order the distractors one after the other
      */
-    data.setDistractorsIndex = function(){
+    data.setDistractorsIndex = function(currentActivity){
       var globalDistractorIndex = 0;
-      for (var i=0;i<data.activities[0].scenarios.length;i++){
-        var myScenario = data.activities[0].scenarios[i];
-        myScenario.index = i;
+      for (var i = 0; i < currentActivity.scenarios.length; i++) {
+          var myScenario = currentActivity.scenarios[i];
+          if (myScenario.interactions[0]) {
+              
+          
+          myScenario.index = i;
+          if (myScenario.interactions[0].distractors && myScenario.interactions[0].distractors.length > 0) {
+              
+         
         for (var j = 0; j < myScenario.interactions[0].distractors.length; j++) {
             var myDistractor = myScenario.interactions[0].distractors[j];
           myDistractor.index = globalDistractorIndex;
           globalDistractorIndex++;
         }
+          }
+               }
       }
 
     };
