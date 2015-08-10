@@ -128,7 +128,8 @@
       query.include(["scenarios.interactions.distractors"]);
       query.first({
         success: function (activity) {
-          //debugger;
+            //debugger;
+         
           var scenarios = activity.attributes.scenarios;
           if (scenarios.length > 0) {
             $scope.scenarios = scenarios;
@@ -138,8 +139,9 @@
               var myScenario = dataService.getScenariosinJsonFormat(scenario);
               arr.push(myScenario);
             });
-
-            $scope.selectedActivity_Scnarios_Dataarr1 = arr;
+            dataService.currentActivity = activity;
+            dataService.currentActivity.scenarios = arr;
+          
             dataService.selectedActivity_Scnarios_Dataarr = $scope.selectedActivity_Scnarios_Dataarr1;
             $scope.$digest();
             // getInteractions();

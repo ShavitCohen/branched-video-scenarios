@@ -67,8 +67,10 @@ angular.module('angularFrameworkApp')
      * This function will add a new distractor to the interaction
      * @param tempAnswerArry
      */
-    $scope.addAnswer = function () {
 
+      //כפתור הפלוס הירוק
+    $scope.addAnswer = function () {
+        debugger;
       var newAnswer = { text: "", linkTo: "", original:null };
       $scope.scenarioInteraction.distractors.push(newAnswer);
 
@@ -119,7 +121,8 @@ angular.module('angularFrameworkApp')
     {
       var distractor = answersArray[index];
       if(!scenarioInteraction.distractorsToRemove){
-        scenarioInteraction.distractorsToRemove = [];
+          scenarioInteraction.distractorsToRemove = [];
+          
       }
       if(distractor.original){//if the distractor exists in parse
         scenarioInteraction.distractorsToRemove.push(distractor);
@@ -128,11 +131,11 @@ angular.module('angularFrameworkApp')
     }
 
     $scope.closeModal = function(){
-      $modalInstance.close($scope.scenarioInteraction);
+      $modalInstance.close(scenarioInteraction);
     };
 
     $scope.saveChangesInOriginArray = function () {
-
+        debugger;
       //   scenario.attributes.interactions.text = $scope.interacionText;
 
       var interaction = $scope.scenario.original.attributes.interactions[0];
@@ -145,14 +148,15 @@ angular.module('angularFrameworkApp')
 
         }
       });
-      debugger;
+      
       for (var i = 0; i < tempAnswerArry.distractors.length; i++) {
 
         if ($scope.scenario.interactions.length <= i + 1) {
+            //$scope.scenario.interactions.length >  what is this? the current scenario's interactions?
 
 
-
-          var interaction = $scope.scenario.original.attributes.interactions[0];
+            var interaction = $scope.scenario.original.attributes.interactions[0];
+            var interaction2 = $scope.scenario.interactions[0].original;
 
 
           var Distractors = Parse.Object.extend("Distractors");
@@ -179,15 +183,6 @@ angular.module('angularFrameworkApp')
               debugger;
             }
           });
-
-
-
-
-
-
-
-
-
 
 
 

@@ -359,6 +359,8 @@
     data.myCurrentSceneClicked2Link;
     data.myCurrentmovIndex = 1;
 
+    //הפעילות עלינו אנחנו עובדים
+    data.currentActivity;
 
 
     data.currentScenarioId;

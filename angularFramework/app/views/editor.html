@@ -2,14 +2,14 @@
 
  
 
-    <div class="freezLine" ng-style="{width:((dataService.selectedActivity_Scnarios_Dataarr.length + 1) * 150) + 'px'}">
+    <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
               <div class="btn recomendedScenariosBtn">הגדר תרחיש מומלץ
                   <i class="glyphicon glyphicon-pencil"></i>
               </div>
         <h1>{{dataService.activities[0].activitycodeName}}</h1>
   
         <ul class="mainMoviesDiv">
-            <li class="myscene" ng-repeat="scenario in dataService.selectedActivity_Scnarios_Dataarr" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
+            <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                 <scenario-top scenario="scenario"></scenario-top>
             </li>
             <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)"></li>
@@ -19,9 +19,9 @@
 
     </div>
 
-    <div class="bottomDivElements" ng-style="{width:((dataService.selectedActivity_Scnarios_Dataarr.length + 1) * 150) + 'px'}">
+    <div class="bottomDivElements" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
         <ul class="mainMoviesDiv">
-            <li class="myscene" ng-repeat="scenario in dataService.selectedActivity_Scnarios_Dataarr" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
+            <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                 <scenario-bottom scenario="scenario"></scenario-bottom>
             </li>
         </ul>

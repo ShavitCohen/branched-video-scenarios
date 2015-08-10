@@ -110,7 +110,8 @@
           });
           modalInstance.result.then(function (copyOf_scenarioInteraction) {
             var interaction =scenario.interactions[0];
-            //First we save the text
+              //First we save the text
+            interaction.text = copyOf_scenarioInteraction.text;
             interaction.original.set("text",copyOf_scenarioInteraction.text);
             //Then we want to remove the deleted distractors
             interaction.distractors = copyOf_scenarioInteraction.distractors;
