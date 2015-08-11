@@ -334,12 +334,8 @@
       for (var i = 0; i < currentActivity.scenarios.length; i++) {
         var myScenario = currentActivity.scenarios[i];
         if (myScenario.interactions[0]) {
-
-
           myScenario.index = i;
           if (myScenario.interactions[0].distractors && myScenario.interactions[0].distractors.length > 0) {
-
-
             for (var j = 0; j < myScenario.interactions[0].distractors.length; j++) {
               var myDistractor = myScenario.interactions[0].distractors[j];
               myDistractor.index = globalDistractorIndex;
@@ -348,9 +344,11 @@
           }
         }
       }
-
+      data.allDistractorsCount = globalDistractorIndex;
     };
-    //data.myCurrentDistractorClicked = "sheker";
+
+    data.allDistractorsCount = 0;
+
     data.myClickedDistractor = 0;
     data.myClickedDistractor_scenario = 0;
     data.myPreviousDistractorClicked = 0;

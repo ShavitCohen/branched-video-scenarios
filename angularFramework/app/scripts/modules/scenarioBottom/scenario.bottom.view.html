@@ -1,25 +1,25 @@
-﻿<div>
+﻿<div id="bottom">
 
-<div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{height:800}" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"></div>
+<div class="myDistractorPollClass sceneHoverChilds_border" ng-style="{'min-height':800,'height':250 + (dataService.allDistractorsCount * 25)}" ng-class="{'hoverYellowSceneElements':scenario.hoverYellowSceneElements}"></div>
 
     <ul ng-repeat="distractor in scenario.interactions[0].distractors">
-        
+
         <li class="myDistractorBTNClass"  ng-class="{isTrue:distractor.isRightAnswer}" style="position:absolute;" ng-if="scenario.interactions[0].type == 'singleSelection'">
 
-            
 
-            <div ng-style="{'margin-top':(distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
-          
+
+            <div ng-style="{'margin-top':100 + (distractor.index * 25)}" ng-class="{isRightArrow:distractor.lineArrowDirection}">
+
                 <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" ng-class="changeArrowBackgroundStyleGrey($event,scenario,$index)" class="arrow sceneHoverChildsBorderLine currArrowClass_{{scenario.movIndex}}">
-                
+
 
 
                 </div>
                 <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection}" ></div>
-                   
+
                  <div class="circle"></div>
 <!--           כאן מתחיל הקוד של המסיחים העיגולים-->
-                 <div  ng-click="answerClickToLink(scenario,distractor,true)" class="circle"> 
+                 <div  ng-click="answerClickToLink(scenario,distractor,true)" class="circle">
                      <a tooltip-placement="bottom"  tooltip="{{distractor.text}}" tooltip-class="customClass">
                      <div ng-class="{'hoverYellowSceneElements_GreenDistractors':scenario.hoverYellowSceneElements, 'hoverOnDistractorGrey':distractor.hoverOnDistractorGrey, 'clickedGreenDistractorToLink':distractor.clickedGreenDistractorToLink}" ng-mouseenter="distractor.hoverOnDistractorGrey = true" ng-mouseleave="distractor.hoverOnDistractorGrey = false"  class="distractorDot myDistractor_{{distractor.distractorIndex}}"><!--ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()"-->
 
@@ -31,7 +31,7 @@
 
                 <!--<img ng-click="toggle()" src="" alt="" class="circle" />-->
                     <span class="myAnswersSpanClass" ng-show="isShowDistractors">
-                   
+
                 </span>
 <!--                ng-click="toggle()"  ng-show="isShowDistractors"-->
                 <!--<div class="myAnswersLinkSpanClass" ng-show="isShowDistractors" ng-click="answerClickToLink(distractor)"> </div>-->

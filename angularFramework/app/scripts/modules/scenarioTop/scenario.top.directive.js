@@ -110,7 +110,7 @@
           });
           modalInstance.result.then(function (copyOf_scenarioInteraction) {
             var interaction =scenario.interactions[0];
-              //First we save the text
+            //First we save the text
             interaction.text = copyOf_scenarioInteraction.text;
             interaction.original.set("text",copyOf_scenarioInteraction.text);
             //Then we want to remove the deleted distractors
@@ -124,7 +124,7 @@
             }
 
             //Then we want to copy/extend the items from the interactions we created in the modal to the real interaction
-            //angular.extend(interaction.distractors, copyOf_scenarioInteraction.distractors);
+            angular.extend(interaction.distractors, copyOf_scenarioInteraction.distractors);
             angular.forEach(interaction.distractors,function(distractor){
               if(distractor.original){ // this mean that this is not a new item
                 distractor.original.set("text", distractor.text);
@@ -145,7 +145,8 @@
 
             interaction.original.save(null, { // שמירה של הפעילות
               success: function (interaction) {
-
+                dataService.setDistractorsIndex(dataService.currentActivity);
+                scope.$parent.$parent.$digest(); // this refresh the view of the parent of the directive (the parent that holds both .top and .bottom)
               },
               error: function (obj, error) {
 

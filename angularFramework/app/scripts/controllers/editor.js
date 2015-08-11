@@ -128,17 +128,10 @@
       query.include(["scenarios.interactions.distractors"]);
       query.first({
         success: function (activity) {
-            //debugger;
-            dataService.currentActivity = activity;
-            var scenarios = activity.attributes.scenarios;
-            if (scenarios === undefined) {
-                
-                
-                $scope.dataService.setDistractorsIndex(dataService.currentActivity);
-                $scope.$digest();
-            }
-           else if (scenarios.length > 0) {
-
+          //debugger;
+          dataService.currentActivity = activity;
+          var scenarios = activity.attributes.scenarios;
+          if (scenarios != undefined && scenarios.length > 0) {
             $scope.scenarios = scenarios;
             var arr = [];
             angular.forEach(scenarios, function (scenario) {
@@ -146,24 +139,16 @@
               arr.push(myScenario);
               dataService.currentActivity = activity;
               dataService.currentActivity.scenarios = arr;
-              $scope.dataService.setDistractorsIndex(dataService.currentActivity);
-              $scope.$digest();
-
             });
-           
-           
-          } 
+          }
 
-
-
+          $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+          $scope.$digest();
         },
         error: function (error) {
 
         }
       });
-      //   dataService.currentScenario = scenario;
-
-
     }
 
 
