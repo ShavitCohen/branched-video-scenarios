@@ -159,6 +159,7 @@ angular.module('angularFrameworkApp')
               var myScenario = dataService.getScenariosinJsonFormat(scenario);
               dataService.currentActivity.attributes.scenarios.push(myScenario);
               $modalInstance.close(myScenario);
+            
 
             });
 

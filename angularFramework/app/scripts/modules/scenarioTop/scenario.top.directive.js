@@ -9,6 +9,7 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
+              dataService.linkInitDistrctors();
               //scope.isyoutubeHolderHoverEnterFunc = function () {
               //    scope.isyoutubeHolderHover = true;
               //}

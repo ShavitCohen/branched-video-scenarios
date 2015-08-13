@@ -118,7 +118,7 @@ angular.module('angularFrameworkApp')
 
 
                               DistractorsIns.set("text", "");
-                              DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+                              DistractorsIns.set("linkTo",null);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
                               DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
 
 
