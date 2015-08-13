@@ -71,7 +71,7 @@ angular.module('angularFrameworkApp')
       //כפתור הפלוס הירוק
     $scope.addAnswer = function () {
         debugger;
-      var newAnswer = { text: "", linkTo: "", original:null };
+      var newAnswer = { text: "", linkTo: null, original:null };
       $scope.scenarioInteraction.distractors.push(newAnswer);
 
       //var interaction = $scope.scenario.original.attributes.interactions[0];
@@ -165,7 +165,7 @@ angular.module('angularFrameworkApp')
 
 
           DistractorsIns.set("text", tempAnswerArry.distractors[i].text);
-          DistractorsIns.set("linkTo", "");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+          DistractorsIns.set("linkTo", null);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
           DistractorsIns.set("parent", interaction); // חשוב להגדרת האבא של הפעילות
 
 

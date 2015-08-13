@@ -70,10 +70,7 @@
                   //var Distractors = Parse.Object.extend("Distractors");
                   //var DistractorsIns = new Distractors();
                   dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
-
-                 
-
-                  
+       
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
                           //The distractor have been updated.
