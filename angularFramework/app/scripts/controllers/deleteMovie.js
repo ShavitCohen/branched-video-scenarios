@@ -17,8 +17,8 @@ angular.module('angularFrameworkApp')
 
       $scope.activities = dataService.activities[0];
       $scope.scenario = scenario;
-      $scope.headlingOfAddScene = "הוספת סרטון חדש";
-      $scope.movModalBTN = "שמור והמשך";
+      //$scope.headlingOfAddScene = "הוספת סרטון חדש";
+      $scope.movModalBTN = "מחק והמשך";
       $scope.checkIfExist = function (scenario) {
 
 

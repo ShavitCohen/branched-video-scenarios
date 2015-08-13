@@ -216,7 +216,7 @@
 
       //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);
 
-      angular.forEach(data.activities[0].scenarios, function(scenario){
+        angular.forEach(data.currentActivity.scenarios, function (scenario) {
         angular.forEach(scenario.interactions[0].distractors, function(distractor){
 
           console.log("checking now... " + "distractor = " + distractor.text);
@@ -224,7 +224,7 @@
           if (distractor.text != "null") {
 
 
-            data.connectionLength = distractor.linkTo - scenario.id;
+            data.connectionLength = distractor.linkTo - scenario.index;
             //  data.lineDirection = 1;
             console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
             //    data.clickedDistactor = distractor;
@@ -232,7 +232,7 @@
             //distractor.connectionLength * distractor.lineDirection
 
             if (data.connectionLength < 0) {
-              console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
+              console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
               distractor.lineWidth = data.connectionLength * (-125);
               distractor.lineDirection = -1;
               distractor.lineArrowDirection = true;
@@ -244,7 +244,7 @@
             else if (data.connectionLength > 0) {
               distractor.lineWidth = data.connectionLength * 125;
 
-              console.log("distractor = " + distractor.text + "  with Id = " + scenario.id + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
+              console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
 
               distractor.lineDirection = 1;
               distractor.lineArrowDirection = false;
@@ -335,7 +335,7 @@
         var myScenario = currentActivity.scenarios[i];
         if (myScenario.interactions[0]) {
           myScenario.index = i;
-          if (myScenario.interactions[0].distractors && myScenario.interactions[0].distractors.length > 0) {
+          if (myScenario.interactions[0].distractors[0] && myScenario.interactions[0].distractors.length > 0) {
             for (var j = 0; j < myScenario.interactions[0].distractors.length; j++) {
               var myDistractor = myScenario.interactions[0].distractors[j];
               myDistractor.index = globalDistractorIndex;
