@@ -9,7 +9,7 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
-              dataService.linkInitDistrctors();
+              
               //scope.isyoutubeHolderHoverEnterFunc = function () {
               //    scope.isyoutubeHolderHover = true;
               //}
@@ -83,7 +83,8 @@
 
                   dataService.myCurrentDistractorClicked.linkTo = scenario.index;
                   //calling arrows function
-                  dataService.linkInitDistrctors();
+                  dataService.linkInitDistrctors(dataService.myCurrentDistractorClicked, scenario);
+                  
                   $('.myscene').removeClass('sceneHover');
                   $('.arrow').removeClass('backgroundArrowsGrey');
                   $('.myscene').removeClass('backgroundArrowsGrey');

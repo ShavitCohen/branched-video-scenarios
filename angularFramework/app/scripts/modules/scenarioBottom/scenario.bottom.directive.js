@@ -11,6 +11,22 @@
               scope.shavit = JSON.stringify(scope.data);
 
               scope.dataService = dataService;
+              //לילך
+           
+
+
+
+              scope.loadArrowsConnections = function (distractorLinkTo, scenario)
+              {
+                  if (distractorLinkTo.linkTo != null) {
+                      console.log("enter functionloadArrowsConnections");
+                      dataService.myCurrentDistractorClicked = distractorLinkTo;
+                      dataService.myCurrentDistractorClicked.linkTo = distractorLinkTo.linkTo;
+                      dataService.linkInitDistrctors(distractorLinkTo, scenario);
+                  }
+              }
+
+
 
               scope.changeArrowBackgroundStyleGrey = function ($event, scenario, $index) {
                   if (scenario.hoverYellowSceneElements == true) {

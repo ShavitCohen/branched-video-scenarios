@@ -21,12 +21,12 @@
 
 
         <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="scenario.interactions[0].type" ng-change="CheckboxSelectedFunc()">
-
-
+  
+       
         <label for="singleSelection">חד ברירה</label>
 
 
-        <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()">
+        <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()" >
 
         <label for="endMessege">הודעת סיום</label>
         <!--<label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>-->
@@ -52,7 +52,7 @@
       </div>
       <div ng-show="scenarioInteraction.type == 'singleSelection'">
         <div class="row">
-          <label class="col-md-3">
+          <label class="col-md-3" ng-show="whiceInteactionTypeS">
             אפשרויות בחירה:
           </label>
         </div>

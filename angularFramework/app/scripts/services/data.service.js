@@ -212,16 +212,16 @@
       }
     ];
 
-    data.linkInitDistrctors = function () {
+    data.linkInitDistrctors = function (distractor, scenario) {
 
       //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);
 
-        angular.forEach(data.currentActivity.scenarios, function (scenario) {
-        angular.forEach(scenario.interactions[0].distractors, function(distractor){
+        //angular.forEach(data.currentActivity.scenarios, function (scenario) {
+        //angular.forEach(scenario.interactions[0].distractors, function(distractor){
 
           console.log("checking now... " + "distractor = " + distractor.text);
 
-          if (distractor.text != "null") {
+          if (distractor.text != "") {
 
 
             data.connectionLength = distractor.linkTo - scenario.index;
@@ -235,7 +235,7 @@
               console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
               distractor.lineWidth = data.connectionLength * (-125);
               distractor.lineDirection = -1;
-              distractor.lineArrowDirection = true;
+              distractor.lineArrowDirection = 0;
               distractor.lineWidthForMargin = distractor.lineWidth;
               console.log(" distractor.lineWidthForMargin; " + distractor.lineWidthForMargin);
 
@@ -247,9 +247,13 @@
               console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
 
               distractor.lineDirection = 1;
-              distractor.lineArrowDirection = false;
+              distractor.lineArrowDirection = 1;
               distractor.lineWidthForMargin = 0;
 
+            }
+            else if (data.connectionLength == 0) {
+                console.log("arrow to himself");
+                distractor.lineArrowDirection = 2;
             }
 
             //data.currentDistractor = distractor;
@@ -263,9 +267,8 @@
           //    data.lineDirection = 0;
           //}
 
-        })
-      });
-
+      //  })
+      //});
 
     }
 
@@ -474,6 +477,8 @@
         var obj = {};
         obj.text = distracor.attributes.text;
         obj.type = distracor.attributes.type;
+        obj.linkTo = distracor.attributes.linkTo;
+
         obj.original = distracor;
         obj.objectId = distracor.id;
         obj.parent = distracor.attributes.parent;

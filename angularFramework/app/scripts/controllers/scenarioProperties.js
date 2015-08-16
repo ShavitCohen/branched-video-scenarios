@@ -42,14 +42,16 @@ angular.module('angularFrameworkApp')
 
 
     $scope.CheckboxSelectedFunc = function () {
-      if ($scope.checkboxSelection == "singleSelection") {
+        if (scenario.interactions[0].type == "singleSelection") {
+            console.log("print single");
+
         $scope.whiceInteactionTypeS = true;
         $scope.whiceInteactionTypeE = false;
         var newType = "singleSelection";
 
       }
-      else if ($scope.checkboxSelection == "endMessege") {
-
+        else if (scenario.interactions[0].type == "endMessege") {
+          console.log("print end");
         $scope.whiceInteactionTypeE = true;
         $scope.whiceInteactionTypeS = false;
         var newType = "endMessege";

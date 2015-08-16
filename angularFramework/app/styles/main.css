@@ -301,7 +301,7 @@ margin-right: 89px;
 }
 
 
-.arrowHead {
+.isLeftArrow .arrowHead {
                width:18px;
     height:23px;
 background-image: url('../images/ArrowLeftDir.png');
@@ -319,6 +319,16 @@ background-image: url('../images/ArrowRightDir.png');
   margin-top: 20px;
 
 }
+.isSelfArrow .arrowHead {
+          width:27px;
+    height:35px;
+background-image: url('../images/ArrowSelftDir.png');
+
+    position: absolute;
+margin-top: 19px;
+margin-right: -30px;
+}
+
 .myOpeningTextClass {
 display:none;}
 .isFirstScenario .myOpeningTextClass  {
