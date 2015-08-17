@@ -73,15 +73,8 @@
                   dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
-
-
-                          dataService.linkInitDistrctors(dataService.myCurrentDistractorClicked, dataService.myCurrentScenarioClicked);
-                         
-                        
-
                       },
                       error: function (obj, error) {
-
                       }
                   });
                  
@@ -103,10 +96,10 @@
                   $('.distractorDot').addClass('sceneHoverChildscolor');
                   // $('.myscene').addClass('sceneHover');
                   dataService.isBtnState = false;
-
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
                   dataService.closeAllBtns();
                   dataService.setArrows();
+                  scope.$digest();
               };
 
               scope.openEditDialog = function (scenario) {

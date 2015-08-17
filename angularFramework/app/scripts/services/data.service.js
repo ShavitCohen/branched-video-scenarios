@@ -220,14 +220,14 @@
           };
     data.linkInitDistrctors = function (distractor, scenario) {
 
-      //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);
+        //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);
 
         //angular.forEach(data.currentActivity.scenarios, function (scenario) {
         //angular.forEach(scenario.interactions[0].distractors, function(distractor){
 
-          console.log("checking now... " + "distractor = " + distractor.text);
+        console.log("checking now... " + "distractor = " + distractor.text);
 
-          if (distractor.text != "") {
+        if (distractor.text != "") {
 
 
             data.connectionLength = distractor.linkTo - scenario.index;
@@ -238,23 +238,23 @@
             //distractor.connectionLength * distractor.lineDirection
 
             if (data.connectionLength < 0) {
-              console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
-              distractor.lineWidth = data.connectionLength * (-125);
-              distractor.lineDirection = -1;
-              distractor.lineArrowDirection = 0;
-              distractor.lineWidthForMargin = distractor.lineWidth;
-              console.log(" distractor.lineWidthForMargin; " + distractor.lineWidthForMargin);
+                console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
+                distractor.lineWidth = data.connectionLength * (-125);
+                distractor.lineDirection = -1;
+                distractor.lineArrowDirection = 0;
+                distractor.lineWidthForMargin = distractor.lineWidth;
+                console.log(" distractor.lineWidthForMargin; " + distractor.lineWidthForMargin);
 
             }
 
             else if (data.connectionLength > 0) {
-              distractor.lineWidth = data.connectionLength * 125;
+                distractor.lineWidth = data.connectionLength * 125;
 
-              console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
+                console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
 
-              distractor.lineDirection = 1;
-              distractor.lineArrowDirection = 1;
-              distractor.lineWidthForMargin = 0;
+                distractor.lineDirection = 1;
+                distractor.lineArrowDirection = 1;
+                distractor.lineWidthForMargin = 0;
 
             }
             else if (data.connectionLength == 0) {
@@ -265,17 +265,17 @@
             //data.currentDistractor = distractor;
             console.log("connectionLength = " + data.connectionLength + "  " + "lineWidth = " + distractor.lineWidth + "  " + "lineDirection = " + data.lineDirection);
             // console.log("connectionLength = " + dataService.clickedDistactor.connectionLength);
-          }
+        }
 
 
-          //else if (distractor.text == "null") {
-          //    data.connectionLength = 0;
-          //    data.lineDirection = 0;
-          //}
+        //else if (distractor.text == "null") {
+        //    data.connectionLength = 0;
+        //    data.lineDirection = 0;
+        //}
 
-      //  })
-      //});
-         
+        //  })
+        //});
+
     }
 
 
