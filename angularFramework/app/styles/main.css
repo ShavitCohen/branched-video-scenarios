@@ -56,7 +56,7 @@ text-decoration:underline;
 float:left;
 background-color:#D1AD01;
 color:white;
-margin-left:224px;
+
 margin-top:20px;
 
 
@@ -331,9 +331,9 @@ margin-right: -30px;
 
 .myOpeningTextClass {
 display:none;}
-.isFirstScenario .myOpeningTextClass  {
+/*.isFirstScenario .myOpeningTextClass  {
 display:block;
-}
+}*/
 
 .arrow {
     height: 2px;

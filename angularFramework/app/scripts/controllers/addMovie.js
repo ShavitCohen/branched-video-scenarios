@@ -23,9 +23,9 @@ angular.module('angularFrameworkApp')
 
 
       if (state == "edit") {
-        $scope.headlingOfAddScene = "עריכת סרטון " + scenario.myMovName;
+        $scope.headlingOfAddScene = "עריכת סרטון " + scenario.name;
 
-        $scope.myUrl = $scope.activities.movieLink + scenario.videoId;
+        $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque "+ scenario.videoId;
         $scope.loadTheYoutubeUrl(scenario.videoId);
         $scope.myscenarioName = scenario.name;
         $scope.myStartTime = scenario.startTime;
@@ -92,6 +92,7 @@ angular.module('angularFrameworkApp')
       var InteractionsIns = new Interactions();
       InteractionsIns.set("type", "singleSelection");
       InteractionsIns.set("text", "");
+      InteractionsIns.set("openingMessege", "");
       InteractionsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות
 
       parent.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות

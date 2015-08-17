@@ -269,7 +269,7 @@
 
       //  })
       //});
-
+         
     }
 
 
@@ -455,6 +455,7 @@
         var obj = {};
         obj.text = interaction.attributes.text;
         obj.type = interaction.attributes.type;
+        obj.openingMessege = interaction.attributes.openingMessege;
         obj.original = interaction;
         obj.objectId = interaction.id;
         obj.parent = interaction.attributes.parent;

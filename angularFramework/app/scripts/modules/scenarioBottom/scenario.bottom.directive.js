@@ -19,7 +19,6 @@
               scope.loadArrowsConnections = function (distractorLinkTo, scenario)
               {
                   if (distractorLinkTo.linkTo != null) {
-                      console.log("enter functionloadArrowsConnections");
                       dataService.myCurrentDistractorClicked = distractorLinkTo;
                       dataService.myCurrentDistractorClicked.linkTo = distractorLinkTo.linkTo;
                       dataService.linkInitDistrctors(distractorLinkTo, scenario);
@@ -61,6 +60,8 @@
                   
                   //הכרחי עבור קישור בין סצינות - חיצים
                   dataService.myCurrentDistractorClicked = distractor;
+                  dataService.myCurrentScenarioClicked = scenario;
+
               };
 
               

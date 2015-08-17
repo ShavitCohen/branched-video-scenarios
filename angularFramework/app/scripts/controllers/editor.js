@@ -10,6 +10,7 @@
     $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
     function init() {
+        
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       Activity = Parse.Object.extend("Activity");
       Scenario = Parse.Object.extend("Scenario");
@@ -17,7 +18,6 @@
       Distractors = Parse.Object.extend("Distractors");
 
       getScenarios($routeParams.id);
-
 
       var freezLineTop = $('.freezLine').css('top');
       $(window).on('scroll', function () {
@@ -138,6 +138,8 @@
               var myScenario = dataService.getScenariosinJsonFormat(scenario);
               arr.push(myScenario);
               dataService.currentActivity = activity;
+              $scope.activityName = dataService.currentActivity.attributes.name;
+
               dataService.currentActivity.scenarios = arr;
             });
           }

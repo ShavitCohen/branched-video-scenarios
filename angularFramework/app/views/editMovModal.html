@@ -5,15 +5,14 @@
       <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
 
     </div>
-    <div class="modal-body" ng-class="{isFirstScenario:scenario.firstScenario}">
+    <div class="modal-body">
 
 
-      <!--<div>האם צריכה להיות הודעת פתיחה?{{scenario.firstScenario}}</div>-->
       <div class="row">
-        <label class="col-md-12 myOpeningTextClass">הודעת פתיחה</label>
+          <label ng-show="isfirstScenario" class="col-md-12 ">הודעת פתיחה</label>
       </div>
       <div class="row">
-        <textarea class="col-md-8 col-md-offset-1 form-control myOpeningTextClass" id="openingMSG" rows="3" maxlength="150" required ng-model="scenario.interactions[0].text" ></textarea>
+          <textarea ng-show="isfirstScenario" class="col-md-8 col-md-offset-1 form-control " id="openingMSG" rows="3" maxlength="150" required ng-model="scenarioInteraction.openingMessege"></textarea>
       </div>
       <div class="row">
 
@@ -29,26 +28,21 @@
         <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()" >
 
         <label for="endMessege">הודעת סיום</label>
-        <!--<label class="col-md-6" for="inetactTypeRad1">חד ברירה</label>-->
-
-        <!--whiceInteactionTypeE{{whiceInteactionTypeE}}-->
-        <br />
-
-        <!--whiceInteactionTypeS{{whiceInteactionTypeS}}-->
+       
 
       </div>
       <div class="row">
         <label class="col-md-12" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום</label>
       </div>
       <div class="row">
-        <textarea class="col-md-8 col-md-offset-1 form-control" id="endMSGText" rows="3" cols="50" maxlength="150" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeE"></textarea>
+          <textarea ng-show="whiceInteactionTypeE" class="col-md-8 col-md-offset-1 form-control" id="endMSGText" rows="3" cols="50" maxlength="150" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeE"></textarea>
 
       </div>
       <div class="row">
         <label class="col-md-12" ng-show="whiceInteactionTypeS">תוכן השאלה</label>
       </div>
       <div class="row">
-        <textarea class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeS"></textarea>
+          <textarea ng-show="whiceInteactionTypeS" class="col-md-8 col-md-offset-1 form-control" id="questionText" rows="3" cols="50" maxlength="150" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeS"></textarea>
       </div>
       <div ng-show="scenarioInteraction.type == 'singleSelection'">
         <div class="row">
@@ -74,7 +68,7 @@
 
         <div class="row">
 
-          <div ng-show="whiceInteactionTypeS" id="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(scenarioInteraction)"><i class="glyphicon glyphicon-plus"></i></div>
+            <div ng-show="whiceInteactionTypeS" id="addOption" class="col-md-1 col-md-offset-4 btn btn-success" ng-click="addAnswer(scenarioInteraction)"><i class="glyphicon glyphicon-plus"></i></div>
         </div>
       </div>
 

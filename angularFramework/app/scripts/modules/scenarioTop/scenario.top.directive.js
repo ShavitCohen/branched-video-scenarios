@@ -70,20 +70,23 @@
 
                   //var Distractors = Parse.Object.extend("Distractors");
                   //var DistractorsIns = new Distractors();
-                  dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
-       
+                  dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
-                          //The distractor have been updated.
+
+
+                          dataService.linkInitDistrctors(dataService.myCurrentDistractorClicked, dataService.myCurrentScenarioClicked);
+                         
+                        
+
                       },
                       error: function (obj, error) {
 
                       }
                   });
-
-                  dataService.myCurrentDistractorClicked.linkTo = scenario.index;
+                 
+                 // dataService.myCurrentDistractorClicked.linkTo = scenario.index;
                   //calling arrows function
-                  dataService.linkInitDistrctors(dataService.myCurrentDistractorClicked, scenario);
                   
                   $('.myscene').removeClass('sceneHover');
                   $('.arrow').removeClass('backgroundArrowsGrey');
@@ -127,7 +130,11 @@
                       var interaction = scenario.interactions[0];
                       //First we save the text
                       interaction.text = copyOf_scenarioInteraction.text;
+                      interaction.openingMessege = copyOf_scenarioInteraction.openingMessege;
                       interaction.original.set("text", copyOf_scenarioInteraction.text);
+                      interaction.original.set("type", dataService.interactionType);
+                      interaction.original.set("openingMessege", copyOf_scenarioInteraction.openingMessege);
+
                       //Then we want to remove the deleted distractors
                       interaction.distractors = copyOf_scenarioInteraction.distractors;
                       if (copyOf_scenarioInteraction.distractorsToRemove) {
@@ -179,7 +186,7 @@
                   var Distractors = Parse.Object.extend("Distractors");
                   var DistractorsIns = new Distractors();
                   DistractorsIns.set("text", distractor.text);
-                  DistractorsIns.set("linkTo", distractor.linkTo);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
+                  DistractorsIns.set("linkTo", distractor.linkTo);
                   DistractorsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות
                   parent.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
                   return DistractorsIns;

@@ -6,7 +6,7 @@
               <div class="btn recomendedScenariosBtn">הגדר תרחיש מומלץ
                   <i class="glyphicon glyphicon-pencil"></i>
               </div>
-        <h1>{{dataService.activities[0].activitycodeName}}</h1>
+        <h1>{{activityName}}</h1>
   
         <ul class="mainMoviesDiv">
             <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
@@ -30,6 +30,6 @@
 
     <ul>
 
-    <li ng-repeat="scenario in scenarios">{{scenario.attributes.name}}</li>
+  
 </ul>
 </div>
