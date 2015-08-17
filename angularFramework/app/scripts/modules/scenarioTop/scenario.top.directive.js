@@ -78,7 +78,7 @@
                       }
                   });
                  
-                 // dataService.myCurrentDistractorClicked.linkTo = scenario.index;
+                  dataService.myCurrentDistractorClicked.linkTo = scenario.index;
                   //calling arrows function
                   
                   $('.myscene').removeClass('sceneHover');
