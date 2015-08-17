@@ -211,7 +211,13 @@
         ]
       }
     ];
-
+    data.setArrows = function(){
+             angular.forEach(data.currentActivity.scenarios, function(scenario){
+                  angular.forEach(scenario.interactions[0].distractors, function(distractor){
+                          data.linkInitDistrctors(distractor,scenario);
+                      })
+                })
+          };
     data.linkInitDistrctors = function (distractor, scenario) {
 
       //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);

@@ -1,11 +1,17 @@
-@font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+/*@font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
+ @font-face {
+    font-family: OpenSansHebrew-Regular;
+    src: url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+}
+
+
           .gridStyle {
 
-font-family: 'OpenSansHebrew-Regular';
- margin-right:30px;
-border: 1px solid rgb(212,212,212);
-width: 960px;
-height:470px;
+ font-family: 'OpenSansHebrew-Regular';
+  margin-right:30px;
+  border: 1px solid rgb(212,212,212);
+  width: 960px;
+  height:470px;
 
 /*align-content:center;*/
 }
@@ -324,9 +330,9 @@ background-image: url('../images/ArrowRightDir.png');
     height:35px;
 background-image: url('../images/ArrowSelftDir.png');
 
-    position: absolute;
-margin-top: 19px;
-margin-right: -30px;
+  position: absolute;
+  margin-top: 19px;
+  margin-right: -30px !important;
 }
 
 .myOpeningTextClass {

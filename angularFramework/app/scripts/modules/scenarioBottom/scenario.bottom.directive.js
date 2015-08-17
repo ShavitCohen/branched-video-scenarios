@@ -12,19 +12,15 @@
 
               scope.dataService = dataService;
               //לילך
-           
 
 
+            function init(){
+              dataService.setArrows();
+            }
 
-              scope.loadArrowsConnections = function (distractorLinkTo, scenario)
-              {
-                  if (distractorLinkTo.linkTo != null) {
-                      dataService.myCurrentDistractorClicked = distractorLinkTo;
-                      dataService.myCurrentDistractorClicked.linkTo = distractorLinkTo.linkTo;
-                      dataService.linkInitDistrctors(distractorLinkTo, scenario);
-                  }
-              }
+            init();
 
+             
 
 
               scope.changeArrowBackgroundStyleGrey = function ($event, scenario, $index) {
@@ -37,19 +33,19 @@
                       $('.arrow').removeClass('backgroundArrowsGrey');
                       $('.currArrowClass_' + scenario.movIndex).removeClass('hoverYellowSceneElements_GreenDistractors');
                   }
-                  
+
               };
 
 
-             
+
 
               scope.answerClickToLink = function (scenario, distractor, isSelected) {
 
-                 
+
                   if (dataService.isBtnState == true) {
                       //יש כבר כפתור פתוח לקישור
                       //קריאה לפונקציה שמאפסת את כל הכפתורים
-                      
+
                       if (distractor.clickedGreenDistractorToLink == true) {
                           isSelected = false;
                       }
@@ -57,16 +53,16 @@
                   }
                   distractor.clickedGreenDistractorToLink = isSelected;
                   dataService.isBtnState = isSelected;
-                  
+
                   //הכרחי עבור קישור בין סצינות - חיצים
                   dataService.myCurrentDistractorClicked = distractor;
                   dataService.myCurrentScenarioClicked = scenario;
 
               };
 
-              
 
-              
+
+
           }
       }
   });

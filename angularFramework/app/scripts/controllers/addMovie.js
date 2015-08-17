@@ -100,31 +100,7 @@ angular.module('angularFrameworkApp')
         success: function (scenario) {
 
           successFunctionAfterCreation(scenario);
-          //  dataService.currentScenario = scenarioIns;
-
-          /*var Distractors = Parse.Object.extend("Distractors");
-
-           var DistractorsIns = new Distractors();
-
-
-           DistractorsIns.set("text", "");
-           DistractorsIns.set("linkTo", "1");//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
-           DistractorsIns.set("parent", InteractionsIns); // חשוב להגדרת האבא של הפעילות
-
-
-           InteractionsIns.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
-
-
-           InteractionsIns.save(null, { // שמירה של הפעילות
-           success: function (interaction) {
-           debugger;
-
-           },
-           error: function (obj, error) {
-           debugger;
-           }
-           });*/
-
+         
 
 
         }

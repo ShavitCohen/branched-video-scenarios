@@ -106,7 +106,7 @@
 
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
                   dataService.closeAllBtns();
-
+                  dataService.setArrows();
               };
 
               scope.openEditDialog = function (scenario) {
