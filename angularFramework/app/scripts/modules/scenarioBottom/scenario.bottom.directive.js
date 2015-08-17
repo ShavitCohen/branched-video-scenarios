@@ -12,16 +12,20 @@
 
               scope.dataService = dataService;
               //לילך
-           
 
 
+            function init(){
+              dataService.setArrows();
+            }
+
+            init();
 
               scope.loadArrowsConnections = function (distractorLinkTo, scenario)
               {
                   if (distractorLinkTo.linkTo != null) {
                       console.log("enter functionloadArrowsConnections");
-                      dataService.myCurrentDistractorClicked = distractorLinkTo;
-                      dataService.myCurrentDistractorClicked.linkTo = distractorLinkTo.linkTo;
+/*                      dataService.myCurrentDistractorClicked = distractorLinkTo;
+                      dataService.myCurrentDistractorClicked.linkTo = distractorLinkTo.linkTo;*/
                       dataService.linkInitDistrctors(distractorLinkTo, scenario);
                   }
               }
@@ -38,19 +42,19 @@
                       $('.arrow').removeClass('backgroundArrowsGrey');
                       $('.currArrowClass_' + scenario.movIndex).removeClass('hoverYellowSceneElements_GreenDistractors');
                   }
-                  
+
               };
 
 
-             
+
 
               scope.answerClickToLink = function (scenario, distractor, isSelected) {
 
-                 
+
                   if (dataService.isBtnState == true) {
                       //יש כבר כפתור פתוח לקישור
                       //קריאה לפונקציה שמאפסת את כל הכפתורים
-                      
+
                       if (distractor.clickedGreenDistractorToLink == true) {
                           isSelected = false;
                       }
@@ -58,14 +62,14 @@
                   }
                   distractor.clickedGreenDistractorToLink = isSelected;
                   dataService.isBtnState = isSelected;
-                  
+
                   //הכרחי עבור קישור בין סצינות - חיצים
                   dataService.myCurrentDistractorClicked = distractor;
               };
 
-              
 
-              
+
+
           }
       }
   });
