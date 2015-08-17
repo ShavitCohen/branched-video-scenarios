@@ -9,7 +9,7 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
-              
+
               //scope.isyoutubeHolderHoverEnterFunc = function () {
               //    scope.isyoutubeHolderHover = true;
               //}
@@ -71,7 +71,7 @@
                   //var Distractors = Parse.Object.extend("Distractors");
                   //var DistractorsIns = new Distractors();
                   dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);//לילך תזכורת לעצמי - לא אמור להיות כאן בכללללללללללל
-       
+
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
                           //The distractor have been updated.
@@ -84,7 +84,7 @@
                   dataService.myCurrentDistractorClicked.linkTo = scenario.index;
                   //calling arrows function
                   dataService.linkInitDistrctors(dataService.myCurrentDistractorClicked, scenario);
-                  
+
                   $('.myscene').removeClass('sceneHover');
                   $('.arrow').removeClass('backgroundArrowsGrey');
                   $('.myscene').removeClass('backgroundArrowsGrey');
@@ -103,6 +103,7 @@
 
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
                   dataService.closeAllBtns();
+                  dataService.setArrows();
 
               };
 
@@ -250,7 +251,7 @@
                   });
 
 
-     
+
 
 
 
