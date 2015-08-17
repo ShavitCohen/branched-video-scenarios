@@ -1,7 +1,23 @@
-﻿<div class="row marketing">
-  <input type="text" ng-model="myCaseCode"/>{{ myCaseCode }}
-  <button class="btn btn-alert" type="button" title="User" ng-click="codeValidate()">User</button>
+﻿<div class="row marketing startPageContainer">
+    <div class="loginPopupBackground">
+        <h1 class="loginPopupHeadlineColor">התחברות</h1>
+        <div class="loginPopupBackgroundAlign">
+            <h2 class="loginPopupH2HeadlineColor">הקלד כתובת דוא"ל</h2>
+            <input type="text" class="loginPopupTextInputBack" ng-model="LoginEmailAdress" />
+            <h2 class="loginPopupH2HeadlineColor" >הקלד סיסמה</h2>
+            <input type="text" class="loginPopupTextInputBack" ng-model="LoginPassword" />
+            <ul>
+                <li class="btn loginBtn" ng-click="login()">התחברות</li>
+                <li class="btn signUpBtn" ng-click="signIn()">הרשמה</li>
+            </ul>
+          
+
+            <h3 class="loginPopupH3HeadlineColor">user:email@example.com password:1234</h3>
+            <!--loginPopupSignUp-->
+        </div>
+        
+    </div>
+    <input type="text" ng-model="myCaseCode" class="loginPopupTextInputBack" />{{ myCaseCode }}
+    <button class="btn btn-alert" type="button" title="User" ng-click="codeValidate()">User</button>
     <button class="btn btn-alert" type="button" title="Editor" ng-click="routeEditor()">Editor</button>
-    <div class="btn btn-danger" ng-click="signIn()">הרשמה</div>
-  <div class="btn btn-danger" ng-click="login()">התחברות</div>
 </div>

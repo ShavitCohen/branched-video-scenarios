@@ -6,6 +6,7 @@
 
 angular.module('angularFrameworkApp')
   .controller('confirmationModalCtrl', function ($scope, $modalInstance, scenario, dataService, state, activityScenario) {
+    
     $scope.header = "Are you sure you want to delete?";
     $scope.bodyText = "this will delete all";
 

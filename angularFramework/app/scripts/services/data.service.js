@@ -220,37 +220,28 @@
           };
     data.linkInitDistrctors = function (distractor, scenario) {
 
-        //console.log("distractor,scenario = " + distractor.text + "  " +  scenario.id);
 
-        //angular.forEach(data.currentActivity.scenarios, function (scenario) {
-        //angular.forEach(scenario.interactions[0].distractors, function(distractor){
-
-        console.log("checking now... " + "distractor = " + distractor.text);
 
         if (distractor.text != "") {
 
 
             data.connectionLength = distractor.linkTo - scenario.index;
             //  data.lineDirection = 1;
-            console.log("distractor = " + distractor.text + " is linked to = " + distractor.linkTo);
             //    data.clickedDistactor = distractor;
 
             //distractor.connectionLength * distractor.lineDirection
 
             if (data.connectionLength < 0) {
-                console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is greater then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
                 distractor.lineWidth = data.connectionLength * (-125);
                 distractor.lineDirection = -1;
                 distractor.lineArrowDirection = 0;
                 distractor.lineWidthForMargin = distractor.lineWidth;
-                console.log(" distractor.lineWidthForMargin; " + distractor.lineWidthForMargin);
 
             }
 
             else if (data.connectionLength > 0) {
-                distractor.lineWidth = data.connectionLength * 125;
+                distractor.lineWidth = data.connectionLength * 100;
 
-                console.log("distractor = " + distractor.text + "  with Id = " + scenario.index + " is smaller then the link to " + distractor.linkTo + " ... diff is = " + data.connectionLength);
 
                 distractor.lineDirection = 1;
                 distractor.lineArrowDirection = 1;
@@ -258,80 +249,17 @@
 
             }
             else if (data.connectionLength == 0) {
-                console.log("arrow to himself");
                 distractor.lineArrowDirection = 2;
             }
 
-            //data.currentDistractor = distractor;
-            console.log("connectionLength = " + data.connectionLength + "  " + "lineWidth = " + distractor.lineWidth + "  " + "lineDirection = " + data.lineDirection);
-            // console.log("connectionLength = " + dataService.clickedDistactor.connectionLength);
         }
 
 
-        //else if (distractor.text == "null") {
-        //    data.connectionLength = 0;
-        //    data.lineDirection = 0;
-        //}
-
-        //  })
-        //});
 
     }
 
 
-    //data.calculateArrow = function (secondMovieNum) {
-    //    var myDiviation = data.clickedScenarioMovieNum - secondMovieNum;
-    //    if (myDiviation < 0) {
-    //        myDiviation = myDiviation *-(1);
-    //        data.clickedDistactor.lineWidth = myDiviation * 125;
-    //        data.clickedDistactor.lineDirection = 1;
-    //        data.clickedDistactor.lineWidthForMargin = 0;
-    //        data.clickedDistactor.lineArrowDirection = false;
-
-    //        console.log("left lineWidth: " + data.clickedDistactor.lineWidth);
-    //        console.log(" left lineDirection: " + data.clickedDistactor.lineDirection);
-    //        console.log(" left lineWidthForMargin: " + data.clickedDistactor.lineWidthForMargin);
-    //        console.log("left  lineArrowDirection: " + data.clickedDistactor.lineArrowDirection);
-
-    //    }
-    //    else {
-    //        data.clickedDistactor.lineWidth = myDiviation * 125;
-    //        data.clickedDistactor.lineDirection = -1;
-    //        data.clickedDistactor.lineWidthForMargin = data.clickedDistactor.lineWidth;
-    //        data.clickedDistactor.lineArrowDirection = true;
-
-    //        console.log("rigt lineArrowDirection: " + data.clickedDistactor.lineArrowDirection);
-    //        console.log("rigt lineWidth: " + data.clickedDistactor.lineWidth);
-    //        console.log("rigt lineDirection: " + data.clickedDistactor.lineDirection);
-    //        console.log("rigt lineWidthForMargin: " + data.clickedDistactor.lineWidthForMargin);
-
-
-    //    }
-
-
-
-
-
-
-    // console.log("lineWidth: " + data.clickedDistactor.lineWidth);
-
-    //   data.clickedDistactor.lineDirection = (myDiviation > 0) ? -1 : 1;
-
-
-    //   console.log("lineDirection: " + data.clickedDistactor.lineDirection);
-
-
-//}
-
-
-    //data.clickedDistactor.lineWidth = myDiviation * 125;
-    //console.log(data.clickedDistactor.lineWidth);
-
-    //data.clickedDistactor.lineDirection = (myDiviation > 0) ? -1 : 1;
-    //console.log(data.clickedDistactor.lineDirection);
-    //    data.clickedDistactor.lineDirection = (myDiviation < 0) ? 1 : 1;
-
-    //}
+   
 
 
     /**
@@ -462,6 +390,7 @@
         obj.text = interaction.attributes.text;
         obj.type = interaction.attributes.type;
         obj.openingMessege = interaction.attributes.openingMessege;
+        obj.endMessegeText = interaction.attributes.endMessegeText;
         obj.original = interaction;
         obj.objectId = interaction.id;
         obj.parent = interaction.attributes.parent;

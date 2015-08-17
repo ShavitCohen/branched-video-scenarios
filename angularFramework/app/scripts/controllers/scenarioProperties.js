@@ -103,5 +103,7 @@ angular.module('angularFrameworkApp')
     $scope.closeModal = function(){
       $modalInstance.close(scenarioInteraction);
     };
-
+    $scope.cancel = function(){
+        $modalInstance.close();
+    };
   });

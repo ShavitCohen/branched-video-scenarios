@@ -1,13 +1,10 @@
 ﻿<br />
+<div class="editorActivitiesNgGridBackgroung">
+    <div class="editorActivitiesNgGridAlign">
+        <h1 class="editorActivitiesH1Headline">תרחישי למידה</h1>
+        <div class="btn addNewActivityBtn" ng-click="createNewActivity()"><i class="glyphicon glyphicon-plus"></i> יצירת פעילות חדשה</div>
 
-<div class="btn btn-danger" ng-click="createNewActivity()">יצירת פעילות חדשה</div>
-
-<input id="addActiviteyId" type="button" value="" ng-click="addActivitey();" class="btn btn-danger"/>
- <div class="gridStyle" ui-grid="gridOptions"></div>
-<!--        <div class="selectedItems">{{mySelections}}</div>-->
-
-
-<!--<ul>
-
-    <li ng-repeat="activity in activities" ng-click="gotoActivity(activity)">{{activity.attributes.name}}</li>
-</ul>-->
+        <!--<input id="addActiviteyId" type="button" value="" ng-click="addActivitey();" class="btn btn-danger" />-->
+        <div class="gridStyle" ui-grid="gridOptions"></div>
+    </div>
+</div>

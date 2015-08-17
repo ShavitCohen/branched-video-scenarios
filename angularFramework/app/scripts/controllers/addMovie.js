@@ -91,6 +91,7 @@ angular.module('angularFrameworkApp')
       var Interactions = Parse.Object.extend("Interactions");
       var InteractionsIns = new Interactions();
       InteractionsIns.set("type", "singleSelection");
+      InteractionsIns.set("endMessegeText", "");
       InteractionsIns.set("text", "");
       InteractionsIns.set("openingMessege", "");
       InteractionsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות

@@ -104,7 +104,7 @@
 
               scope.openEditDialog = function (scenario) {
                   var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
+                      windowClass: 'editModalClass ourModal',
                       templateUrl: 'views/editMovModal.html',
                       controller: "scenarioPropertiesCtrl",
                       resolve: {
@@ -124,9 +124,13 @@
                       //First we save the text
                       interaction.text = copyOf_scenarioInteraction.text;
                       interaction.openingMessege = copyOf_scenarioInteraction.openingMessege;
+                      interaction.endMessegeText = copyOf_scenarioInteraction.endMessegeText;
                       interaction.original.set("text", copyOf_scenarioInteraction.text);
                       interaction.original.set("type", dataService.interactionType);
                       interaction.original.set("openingMessege", copyOf_scenarioInteraction.openingMessege);
+                      interaction.original.set("endMessegeText", copyOf_scenarioInteraction.endMessegeText);
+
+                      
 
                       //Then we want to remove the deleted distractors
                       interaction.distractors = copyOf_scenarioInteraction.distractors;
@@ -207,7 +211,7 @@
               scope.openAddMovieDialog = function (scenario) {
 
                   var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
+                      windowClass: 'editModalClass ourModal',
                       //template:,
                       templateUrl: 'views/AddMovie.html',
                       controller: "scenarioAddMovieCtrl",
@@ -232,7 +236,7 @@
               scope.openDeleteMovieDialog = function (scenario) {
 
                   var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
+                      windowClass: 'editModalClass ourModal',
                       //template:,
                       templateUrl: 'views/confirmationModal.html',
                       controller: "confirmationModalCtrl",

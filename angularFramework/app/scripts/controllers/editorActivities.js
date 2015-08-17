@@ -14,16 +14,16 @@
         {
           field: 'myDel',
           displayName: 'מחיקה',
-          width: "52",
+          width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
 
-          cellTemplate: '<img src="img/delete_ico.png" alt="delete_ico" class="gridBtnCss" ng-click="myDeleteFunc()">'
+          cellTemplate: '<img src="images/delete_ico.png" alt="delete_ico" class="gridBtnCss" ng-click="myDeleteFunc()">'
 
         },
         {
           field: 'watch',
-          width: "52",
+          width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           displayName: 'צפייה',
@@ -34,7 +34,7 @@
         {
           field: 'duplicate',
           displayName: 'שכפול',
-          width: "52",
+          width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           cellTemplate: '<img src="images/DuplicateFile_small.png" alt="duplicate" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
@@ -44,7 +44,7 @@
         {
           field: 'edit',
           displayName: 'עריכה',
-          width: "52",
+          width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="gridBtnCss" ng-click="myEditFunc()" >'
@@ -76,7 +76,7 @@
           field: 'published',
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-
+         
           displayName: 'פרסום',
           cellTemplate: '<img src="images/UploadShare_small.png" alt="upload" class="gridBtnCss" ng-click="myPubFunc()" >'
 

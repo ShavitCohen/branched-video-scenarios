@@ -31,90 +31,6 @@
 
     init();
 
-    //$scope.createScenario = function () {
-    //    var scenarioIns = new Scenario();
-
-
-    //    scenarioIns.set("name", $scope.updateNameTxt);
-    //    scenarioIns.set("movIndex", myMovIndex);
-    //    scenarioIns.set("firstScenario", true); // חשוב להגדרת האבא של הפעילות
-    //    scenarioIns.set("videoId", $scope.updateUrlTxt);
-    //    scenarioIns.set("startTime", $scope.updateStartTimeTxt);
-    //    scenarioIns.set("endTime", $scope.updateEndTimeTxt);
-    //    scenarioIns.set("openingMessege", "");
-    //    scenarioIns.set("parent", dataService.currentActivity); // חשוב להגדרת האבא של הפעילות
-
-    //        myMovIndex++;
-
-    //        dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
-    //        dataService.currentActivity.save(null, { // שמירה של הפעילות
-    //            success: function (activity) {
-
-    //                var myScenario = dataService.getScenariosinJsonFormat(scenarioIns);
-    //                $scope.selectedActivity_Scnarios_Dataarr1.push(myScenario);
-    //                //getScenarios();
-    //                $scope.$digest();
-
-    //            },
-    //            error: function (obj,error) {
-    //            }
-    //        });
-
-
-    //}
-
-
-
-
-
-    //$scope.createDistractors = function () {
-
-    //    var distractors = {
-    //        parent: "HaktFQYD1t",
-
-
-    //            text: "444",
-    //            linkTo: 0,
-    //            distractorIndex: 0
-
-
-
-    //    }
-    //    var Interactions = Parse.Object.extend("Interactions");
-    //    var query = new Parse.Query(Interactions);
-    //    query.equalTo("objectId", "HaktFQYD1t");
-    //    // query.include("scenarios");
-    //    query.find({
-    //        success: function (mycurrentInteractions) {
-
-    //            mycurrentInteractions.add("Distractors", distractors); // הוספת הפעילות לעמודת תרחישים
-    //            mycurrentInteractions.save(); //שמירת הפעילות
-    //        }
-    //    })
-
-    //    // Simple syntax to create a new subclass of Parse.Object.
-
-    //    // Create a new instance of that class.
-    //    var distractorsIns = new Distractors();
-
-    //    distractorsIns.save(distractors, {
-
-    //        success: function (distractorsIns) {
-    //            // The object was saved successfully.
-    //            console.log(" ליצור דיסטרקטור הצלחתי");
-    //        },
-    //        error: function (distractorsIns, error) {
-    //            // The save failed.
-    //            // error is a Parse.Error with an error code and message.
-
-    //        }
-    //    });
-
-    //    // dataService.currentScenario = scenario;
-    //}
-
-
-
 
 
     function getScenarios(activityId) {
@@ -162,29 +78,6 @@
 
 
 
-    function getDistractors() {
-
-      //var query = new Parse.Query(Distractors);
-      //query.containedIn("papaScenarioID", dataService.currentInteraction);
-      //query.find({
-      //    success: function (results) {
-      //        debugger;
-
-      //        //  $scope.scenarios = results;
-      //        dataService.selectedActivityScenarioInteractions_Distaractors_Dataarr = getDistractorsinJsonFormat(results);
-      //        debugger;
-      //        $scope.$digest();
-
-      //    },
-      //    error: function (error) {
-
-      //    }
-      //});
-
-      //   dataService.currentDistractor = distractor;
-
-    }
-
 
 
 
@@ -217,7 +110,7 @@
     $scope.openAddMovieDialog = function (scenario) {
 
       var modalInstance = $modal.open({
-        windowClass: 'editModalClass',
+          windowClass: 'editModalClass ourModal',
         //template:,
         templateUrl: 'views/AddMovie.html',
         controller: "scenarioAddMovieCtrl",

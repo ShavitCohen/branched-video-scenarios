@@ -18,9 +18,9 @@
       $scope.signIn = function () {
 
           var user = new Parse.User();
-          user.set("username", "email111@example.com");
-          user.set("password", "1234");
-          user.set("email", "email@example.com");
+          user.set("username", $scope.LoginEmailAdress);
+          user.set("password", $scope.LoginPassword);
+          user.set("email", $scope.LoginEmailAdress);
 
           // other fields can be set just like with Parse.Object
           user.set("phone", "415-392-0202");
@@ -43,8 +43,9 @@
 
       $scope.login = function () {
 
-
-          Parse.User.logIn("email@example.com", "1234", {
+          //user:email@example.com
+          //pass:1234
+          Parse.User.logIn($scope.LoginEmailAdress, $scope.LoginPassword, {
               success: function (user) {
                   // Do stuff after successful login.
                   $location.path("/editorActivities");
