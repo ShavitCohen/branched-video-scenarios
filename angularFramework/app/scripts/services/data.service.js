@@ -214,8 +214,10 @@
     data.setArrows = function(){
              angular.forEach(data.currentActivity.scenarios, function(scenario){
                   angular.forEach(scenario.interactions[0].distractors, function(distractor){
-                          data.linkInitDistrctors(distractor,scenario);
-                      })
+                      if(distractor.linkTo){
+                            data.linkInitDistrctors(distractor,scenario);
+                      }
+                    })
                 })
           };
     data.linkInitDistrctors = function (distractor, scenario) {
@@ -259,7 +261,7 @@
     }
 
 
-   
+
 
 
     /**

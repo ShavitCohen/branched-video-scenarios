@@ -9,7 +9,7 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
-              
+
               //scope.isyoutubeHolderHoverEnterFunc = function () {
               //    scope.isyoutubeHolderHover = true;
               //}
@@ -77,10 +77,10 @@
                       error: function (obj, error) {
                       }
                   });
-                 
+
                   dataService.myCurrentDistractorClicked.linkTo = scenario.index;
                   //calling arrows function
-                  
+
                   $('.myscene').removeClass('sceneHover');
                   $('.arrow').removeClass('backgroundArrowsGrey');
                   $('.myscene').removeClass('backgroundArrowsGrey');
@@ -99,7 +99,6 @@
                   //קריאה לפונקציה שתאפס את כל מצבי הכפתורים
                   dataService.closeAllBtns();
                   dataService.setArrows();
-                  scope.$digest();
               };
 
               scope.openEditDialog = function (scenario) {
@@ -130,7 +129,7 @@
                       interaction.original.set("openingMessege", copyOf_scenarioInteraction.openingMessege);
                       interaction.original.set("endMessegeText", copyOf_scenarioInteraction.endMessegeText);
 
-                      
+
 
                       //Then we want to remove the deleted distractors
                       interaction.distractors = copyOf_scenarioInteraction.distractors;
@@ -254,7 +253,7 @@
                   });
 
 
-     
+
 
 
 
