@@ -2,13 +2,13 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('scenarioPreviewCtrl', function ($scope, $modalInstance, scenario, dataService) {
+  .controller('scenarioPreviewCtrl', function ($scope, $modalInstance, scenario, dataService, state) {
      // $scope.myCurrentmovIndex = 1;
 
 
       $scope.scenario = scenario;
       $scope.myTempScenario = scenario;
-      console.log("   $scope.scenario: " + $scope.scenario);
+      console.log("$scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
       $scope.videoDuration = 0;
@@ -190,13 +190,41 @@ angular.module('angularFrameworkApp')
 
 
     
+    if (state == "recommendedScenarios") {
+        $scope.ifIsRecommended = true;
 
-      
 
+    }
+    else {
+
+        $scope.ifIsRecommended = false;
+
+    }
+
+
+    $scope.saveRecommendedScenarios = function ()
+    {
+        dataService.currentActivity.set("recommendedScenarios", $scope.previewBreadcrumbsArray);
+    
+
+        dataService.currentActivity.save(null, { // שמירה של הפעילות
+            success: function (user) {
+                console.log("saved succsesss");
+            },
+            error: function (err) {
+
+            }
+        });
+
+    }
       $scope.exitPreviewModal = function ()
       {
 
           $modalInstance.close();
       }
+
+
+
+
 
   });

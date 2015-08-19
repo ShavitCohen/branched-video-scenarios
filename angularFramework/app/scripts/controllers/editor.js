@@ -128,6 +128,27 @@
       });
     }
 
+
+
+    $scope.recommendedScenariosOpenTheModal = function ()
+    {
+
+
+        var modalInstance = $modal.open({
+            windowClass: 'editModalClass ourModal',
+            //template:,
+            templateUrl: 'views/recommendedScenariosModal.html',
+            controller: "recommendedScenariosModalCtrl",
+            resolve: {
+           
+                state: function () {
+                    return "new";
+                }
+
+            }
+
+        });
+    }
     //קריאה לפונקציה שיוצרת את הקווים המחברים בין מסיחים
      
   }
