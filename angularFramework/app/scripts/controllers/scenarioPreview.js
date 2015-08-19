@@ -27,7 +27,7 @@ angular.module('angularFrameworkApp')
       $scope.previewBreadcrumbsArray = [];
 
 
-      $scope.previewBreadcrumbsArray.push(dataService.activities[0].scenarios[0]);
+      $scope.previewBreadcrumbsArray.push($scope.scenario);
 
 
       $scope.onYouTubeIframeAPIReady = function () {
@@ -105,7 +105,7 @@ angular.module('angularFrameworkApp')
 
               console.log("$scope.scenario[$scope.myCurrentmovIndex - 1].interactions[0].type: " + $scope.scenario.interactions[0].type);
               if ($scope.scenario.interactions[0].type == "endMessege") {
-                  var mySTR = $scope.scenario.interactions[0].text;
+                  var mySTR = $scope.scenario.interactions[0].endMessegeText;
                   //console.log("lilach mySTR: " + mySTR);
                   player = mySTR;
                   //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
@@ -141,7 +141,7 @@ angular.module('angularFrameworkApp')
 
 
     $scope.myCurrentmovIndex = 1;
-    $scope.myTempScenarioDistractors = scenario.interactions[0].distractors;
+    $scope.myTempScenarioDistractors = $scope.scenario.interactions[0].distractors;
 
 
     $scope.gotoNextMovie = function (distractor, scenario) {
@@ -150,14 +150,11 @@ angular.module('angularFrameworkApp')
           console.log("checking what IsEndMovie = " + $scope.isEndMovie);
           if ($scope.isEndMovie == true) {
               $scope.isEndMovie = false;
-              console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
 
           }
 
           $scope.myCurrentmovIndex = distractor.linkTo;
-          console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
-          console.log("dataService.activities.scenarios[distractor.linkTo - 1].videoId: " + dataService.activities[0].scenarios[distractor.linkTo - 1].videoId);
-          $scope.scenario = dataService.activities[0].scenarios[distractor.linkTo - 1];
+          $scope.scenario = dataService.currentActivity.scenarios[distractor.linkTo];
           
         //באנגולר תמיד עדיף ליצור מערכים ולדחוף להם אלמנטים לטובת לולאה
 
@@ -166,8 +163,8 @@ angular.module('angularFrameworkApp')
           $scope.previewBreadcrumbsArray.push(nextScenario);
           $scope.myTempScenario = nextScenario;
           
+          player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
 
-          player.loadVideoById({ 'videoId': dataService.activities[0].scenarios[distractor.linkTo - 1].videoId });
 
 
           

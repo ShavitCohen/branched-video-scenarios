@@ -1,6 +1,6 @@
 ﻿<div class="modal-content">
     <div class="modal-header">
-        <h1 class="modal-title" ng-modal="myTempScenario">{{myTempScenario.myMovName}}</h1>
+        <h1 class="modal-title" ng-modal="myTempScenario">{{myTempScenario.name}}</h1>
                 <div>{{myCurrentmovIndex}}</div>
 
 
@@ -15,14 +15,14 @@
         </div>
         <div id="myBreadCrumbsHolder">
             <ul>
-                <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.myMovName}}</li>
+                <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.name}}</li>
             </ul>
 
         </div>
 
         <div id="questionBackPreviewModal" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapsePreviewModalClass">
-                <h3 class="myUserQueClass">{{scenario[0].interactions[0].text}}</h3>
+                <h3 class="myUserQueClass">{{scenario.interactions[0].text}}</h3>
 
                 <ul>
                     <li class="myUserDistractorPrevireModalClass btn btn success" ng-repeat="distractor in myTempScenarioDistractors" ng-modal="myTempScenarioDistractors" ng-click="gotoNextMovie(distractor,scenario)">{{distractor.text}}</li>
