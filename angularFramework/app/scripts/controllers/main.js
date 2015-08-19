@@ -175,7 +175,7 @@ angular.module('angularFrameworkApp')
               $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo];
           console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
 
-          player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo - 1].attributes.videoId });
+          player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
      
 
       };
@@ -185,7 +185,7 @@ angular.module('angularFrameworkApp')
       function getScenarios(activityCode) {
           var query = new Parse.Query(Activity);
           //query.equalTo("parent", Parse.User.current());
-          query.equalTo("code", 88956);//למה הוא מקבל את הערך כמחרוזת ולא כמספר
+          query.equalTo("code", 68483);//למה הוא מקבל את הערך כמחרוזת ולא כמספר
 
 
           query.include("scenarios");
