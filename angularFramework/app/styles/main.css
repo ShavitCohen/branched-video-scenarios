@@ -20,12 +20,12 @@
 
 .ngRow.even {
     background-color:white;
-
-
 }  
+
 .ngRow.selected  {
 background-color:white;
 }
+
 .gridBtnCss {
 margin-right:15px;
 margin-top:5px;

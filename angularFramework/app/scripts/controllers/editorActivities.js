@@ -47,7 +47,7 @@
           width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="gridBtnCss" ng-click="myEditFunc()" >'
+          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="btn gridBtnCss" ng-click="grid.appScope.createNewActivity(2)" >'
 
         },
         {
@@ -69,7 +69,7 @@
           width: "220",
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
-          displayName: 'שם הפעילות',
+          displayName: 'שם התרחיש',
           cellTemplate:'<div class="ui-grid-cell-contents" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
         },
         {
@@ -133,8 +133,9 @@
     }
 
 
-    $scope.createNewActivity = function ()
+    $scope.createNewActivity = function (modalNewEditState)
     {
+        console.log("modalNewEditState = " + modalNewEditState);
         //adding modal to open pop up for configuring new activity
         var modalInstance = $modal.open({
             windowClass: 'editModalClass',
@@ -146,50 +147,13 @@
             resolve: {
                 allActivities: function () {
                     return dataService.allActivity;
+                },
+                modalNewEditState: function () {
+                    return modalNewEditState;
                 }
-              //,
-              //  state: function () {
-              //      return "closeMessage";
-              //  }
-              //  ,
-              //  player: function () {
-              //      return player;
-              //  }
-
             }
 
         });
-
-        //end of modal for new activity
-
-        //working code for creating new activity automatically - moving this to new modal above
-      //activityIns = new Activity();
-      //activityIns.set("name", "עזרה ראשונה");
-      //activityIns.set("code", Math.floor((Math.random() * 99999) + 1000));
-      //activityIns.set("published", true); // חשוב להגדרת האבא של הפעילות
-      //activityIns.set("description", "תיאור");
-      //activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
-
-      //Parse.User.current().add("activities", activityIns); // הוספת הפעילות למערך הפעילויות
-      //Parse.User.current().save(null, { // שמירה של הפעילות
-      //  success: function (user) {
-      //    getActivities();
-      //  }
-      //});
-
-      //activityIns.save(activity, {
-      //     success: function (activityIns) {
-
-      //         getActivities();
-      //     },
-      //     error: function (activityIns, error) {
-
-      //         debugger;
-
-      //     }
-      // });
-
-
     }
 
     //$scope.gotoActivity = function (activity) {

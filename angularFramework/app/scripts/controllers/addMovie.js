@@ -65,18 +65,27 @@ angular.module('angularFrameworkApp')
     var player;
 
     $scope.loadTheYoutubeUrl = function (myUrlID) {
-
-
       player = new YT.Player('player', {
         //height: '200',
         //width: '400',
-        videoId: myUrlID
+          videoId: myUrlID
+          //startSeconds: scenario.startTime,
+          //endSeconds: scenario.endTime,
       });
-
-
-
-
     }
+
+
+
+    $scope.updateMovStartEndTime = function (myChangeRequestID) {
+        if (myChangeRequestID == 1) {
+            //request for updating start time
+            console.log("request to update start time..");
+        }
+        else if (myChangeRequestID == 2) {
+            //request for updating end time
+            console.log("request to update end time..");
+        }
+    };
 
     /**
      * This function creates an interaction and assign it to the parent
