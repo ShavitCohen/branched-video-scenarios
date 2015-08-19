@@ -30,7 +30,7 @@ angular
         templateUrl: 'views/about.html'
       })
 
-      .when('/MainPage', {
+      .when('/MainPage/:id', {
           templateUrl: 'views/main.html',
           controller: "MainCtrl"
       })

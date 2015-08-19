@@ -19,8 +19,9 @@ angular.module('angularFrameworkApp')
     $scope.scenario = scenario;
     $scope.headlingOfAddScene = "הוספת סרטון חדש";
     $scope.movModalBTN = "שמור והמשך";
-    $scope.checkIfExist = function (scenario) {
+    $scope.myVideoDuration = 0;
 
+    $scope.checkIfExist = function (scenario) {
 
       if (state == "edit") {
         $scope.headlingOfAddScene = "עריכת סרטון " + scenario.name;
@@ -31,7 +32,7 @@ angular.module('angularFrameworkApp')
         $scope.myStartTime = scenario.startTime;
         $scope.myEndTime = scenario.endTime;
         $scope.movModalBTN = "עדכן";
-
+        
         //  $scope.editExistMov();
 
       }
@@ -68,22 +69,36 @@ angular.module('angularFrameworkApp')
       player = new YT.Player('player', {
         //height: '200',
         //width: '400',
-          videoId: myUrlID
-          //startSeconds: scenario.startTime,
-          //endSeconds: scenario.endTime,
+          videoId: myUrlID,
+          
+          events: {
+              'onReady': onPlayerReady
+              
+          }
       });
     }
 
+
+
+    function onPlayerReady(event) {
+        $scope.myVideoDuration = player.getDuration();
+        console.log("duration of video = " + player.getDuration());
+        $scope.myStartTime = 0;
+        $scope.myEndTime = ($scope.myVideoDuration);
+    };
 
 
     $scope.updateMovStartEndTime = function (myChangeRequestID) {
         if (myChangeRequestID == 1) {
             //request for updating start time
             console.log("request to update start time..");
+           // $scope.myStartTime = 0;
+            //?start=840&end=1240&autoplay=1
         }
         else if (myChangeRequestID == 2) {
             //request for updating end time
             console.log("request to update end time..");
+           // $scope.myEndTime = $scope.myVideoDuration;
         }
     };
 
@@ -164,7 +179,22 @@ angular.module('angularFrameworkApp')
 
       else if (state == "edit")
       {
-        scenario.videoId = $scope.myUrlID;
+          $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId;
+          var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+          var match = $scope.myUrl.match(regExp);
+          if (match && match[7].length == 11) {
+              console.log("videoId = " + match[7]);
+              $scope.myUrlID = match[7];
+              //$scope.myUrlID = $scope.youtube_parser($scope.myUrl);
+              scenario.videoId = $scope.myUrlID;
+
+              console.log("video id = " + $scope.myUrlID);
+
+
+              ///כל זה לא עובד לא יודעות למה//
+              //מנסות לעדכן סהכ את הכתובת החדשה וזהו///
+              //אולי לא צריך בכלל לעשות את זה//
+          }
         scenario.name = $scope.myscenarioName;
         scenario.startTime = $scope.myStartTime;
         scenario.endTime = $scope.myEndTime;

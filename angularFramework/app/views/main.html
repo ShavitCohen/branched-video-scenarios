@@ -1,8 +1,6 @@
 <div class="row marketing">
  <div>{{myL}}</div>   
-    <div ng-init="onYouTubeIframeAPIReady()" >
         <div id="player"></div>
-    </div>
             <!--<h1 >{{myCurrentmovIndex}}</h1>-->
 
     <!--<div ng-click="startPlayingTest()">startplaying</div>-->
@@ -11,9 +9,8 @@
 <!--    <div ng-click="showQuestionDiv()">Show Questions-->
         <div id="questionBack" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapseClass">
-                <h3 class="myUserQueClass">{{myActivitie[0].interactions[0].text}}</h3>
-
-                <ul><li class="myUserDistractorClass btn btn success" ng-repeat="distractor in myActivitie[myCurrentmovIndex-1].interactions[0].distractors" ng-click="gotoNextMovie(distractor)">{{distractor.text}}</li></ul>
+                <h3 class="myUserQueClass" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
+                <ul><li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.attributes.interactions[0].attributes.distractors" ng-click="gotoNextMovie(distractor)">{{distractor.attributes.text}}</li></ul>
             </div>
         
     </div>

@@ -8,10 +8,36 @@
  * Controller of the angularFrameworkApp
  */
 angular.module('angularFrameworkApp')
-  .controller('MainCtrl', function ($scope, dataService, $modal) {
+  .controller('MainCtrl', function ($scope, dataService, $modal, $routeParams) {
 
-      $scope.myActivitie = dataService.activities[0].scenarios;
-      console.log("activities[0].scenarios[0].interactions[0].text = " + dataService.activities[0].scenarios[0].interactions[0].text);
+
+      $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
+      var myMovIndex = 0;
+      var Activity;
+      var Scenario;
+      var Interactions;
+      var Distractors;
+
+
+      function init() {
+          $scope.scenario;
+          // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
+          Activity = Parse.Object.extend("Activity");
+          Scenario = Parse.Object.extend("Scenario");
+          Interactions = Parse.Object.extend("Interactions");
+          Distractors = Parse.Object.extend("Distractors");
+
+          getScenarios($routeParams.id);
+
+    
+      }
+
+
+
+
+      init();
+
+
       
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
@@ -24,19 +50,20 @@ angular.module('angularFrameworkApp')
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
-      console.log(" $scope.myActivitie[0].videoId: " + $scope.myActivitie[0].videoId);
+      //console.log(" $scope.myActivitie[0].videoId: " + $scope.myActivitie[0].videoId);
       $scope.onYouTubeIframeAPIReady = function () {
           player = new YT.Player('player', {
               height: '560',
               width: '1024',
-              videoId: $scope.myActivitie[0].videoId,
+              videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
+              
               events: {
                   'onReady': $scope.onPlayerReady,
                   'onStateChange': $scope.onPlayerStateChange
               }
           });
 
-
+          $scope.scenario = dataService.currentActivity.attributes.scenarios[0];
           var modalInstance = $modal.open({
               windowClass: 'editModalClass ourModal',
               //template:,
@@ -142,13 +169,54 @@ angular.module('angularFrameworkApp')
                   console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
 
               }
-      
-          $scope.myCurrentmovIndex = distractor.linkTo;
-          console.log("my curr distractor = " + distractor  + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
-          player.loadVideoById({ 'videoId': $scope.myActivitie[distractor.linkTo - 1].videoId });
+              $scope.myCurrentmovIndex = distractor.linkTo;
+              $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo - 1];
+          console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
 
+          player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo - 1].attributes.videoId });
+     
 
       };
 
+
+
+      function getScenarios(activityCode) {
+          var query = new Parse.Query(Activity);
+          //query.equalTo("parent", Parse.User.current());
+          query.equalTo("code", 88956);//למה הוא מקבל את הערך כמחרוזת ולא כמספר
+
+
+          query.include("scenarios");
+          query.include(["scenarios.interactions"]);
+          query.include(["scenarios.interactions.distractors"]);
+          query.first({
+              success: function (activity) {
+                  //debugger;
+                  dataService.currentActivity = activity;
+                  var scenarios = activity.attributes.scenarios;
+                  if (scenarios != undefined && scenarios.length > 0) {
+                      $scope.scenarios = scenarios;
+                      var arr = [];
+                      angular.forEach(scenarios, function (scenario) {
+                          var myScenario = dataService.getScenariosinJsonFormat(scenario);
+                          arr.push(myScenario);
+                          dataService.currentActivity = activity;
+                          $scope.myActivitie = dataService.currentActivity.scenarios;
+                          $scope.activityName = dataService.currentActivity.attributes.name;
+
+                          dataService.currentActivity.scenarios = arr;
+                      });
+                      $scope.onYouTubeIframeAPIReady();
+
+                  }
+
+                  $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+                  $scope.$digest();
+              },
+              error: function (error) {
+
+              }
+          });
+      }
 
   });

@@ -2,19 +2,20 @@
   .controller('startCtrl', function ($scope, $location, dataService) {
       $scope.codeValidate = function () {
           console.log($scope.myCaseCode)
-          if ($scope.myCaseCode == "123") {
-              $location.path("/MainPage");
+          if ($scope.myCaseCode == 88956) {
+              $location.path("/MainPage/" + $scope.myCaseCode);
+
               //אם הקוד קיים אז ננווט לעמוד הבא
 
           }
       };
 
-      $scope.routeEditor = function () {
-          if ($scope.myCaseCode == "111") {
-              $location.path("/EditorPage");
-            $scope.$digest();
-          }
-      };
+      //$scope.routeEditor = function () {
+      //    if ($scope.myCaseCode == "111") {
+      //        $location.path("/EditorPage");
+      //      $scope.$digest();
+      //    }
+      //};
       $scope.signIn = function () {
 
           var user = new Parse.User();
