@@ -11,6 +11,7 @@
             <div class="myUserQueAndDistractorCollapseClass">
                 <h3 class="myUserQueClass" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
                 <ul><li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.attributes.interactions[0].attributes.distractors" ng-click="gotoNextMovie(distractor)">{{distractor.attributes.text}}</li></ul>
+                {{scenario.attributes.interactions[0].attributes.distractors}}
             </div>
         
     </div>

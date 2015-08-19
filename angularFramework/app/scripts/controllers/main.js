@@ -111,22 +111,11 @@ angular.module('angularFrameworkApp')
           if (event.data == YT.PlayerState.ENDED) {
               console.log("movie ended");
               //pauseVideo();
-
-              $scope.$apply(function () {
-                  if ($scope.isEndMovie == false) {
-                      $scope.isEndMovie = true;
-                      console.log("IsEndMovie = " + $scope.isEndMovie);
-
-                  }
-              });
-
-
-              if ($scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type == "endMessege") {
-                  console.log("myActivitie type == end message" + $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].type);
-                  var mySTR = $scope.myActivitie[$scope.myCurrentmovIndex - 1].interactions[0].text;
+              if ($scope.scenario.attributes.interactions[0].attributes.type == "endMessege") {
+                  var mySTR = $scope.scenario.attributes.interactions[0].attributes.endMessegeText;
                   //console.log("lilach mySTR: " + mySTR);
                   player = mySTR;
-               //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
+                  //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
                       //template:,
@@ -149,7 +138,20 @@ angular.module('angularFrameworkApp')
 
                   });
 
+
+
               }
+              else {
+                  $scope.$apply(function () {
+                      if ($scope.isEndMovie == false) {
+                          $scope.isEndMovie = true;
+                          console.log("IsEndMovie = " + $scope.isEndMovie);
+
+                      }
+                  });
+
+              }
+
               
               
           }
@@ -169,8 +171,8 @@ angular.module('angularFrameworkApp')
                   console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
 
               }
-              $scope.myCurrentmovIndex = distractor.linkTo;
-              $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo - 1];
+          //    $scope.myCurrentmovIndex = distractor.linkTo;
+              $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo];
           console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
 
           player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo - 1].attributes.videoId });
