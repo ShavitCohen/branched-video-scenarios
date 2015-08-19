@@ -24,6 +24,8 @@
               activityIns.set("code", Math.floor((Math.random() * 99999) + 1000));
               activityIns.set("published", true); // חשוב להגדרת האבא של הפעילות
               activityIns.set("description", $scope.myActivityDescription);
+              activityIns.set("recommendedScenarios", []);
+
               activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
 
               Parse.User.current().add("activities", activityIns); // הוספת הפעילות למערך הפעילויות

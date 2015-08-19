@@ -204,11 +204,14 @@ angular.module('angularFrameworkApp')
 
     $scope.saveRecommendedScenarios = function ()
     {
-        dataService.currentActivity.set("recommendedScenarios", $scope.previewBreadcrumbsArray);
+        var arr = [];
+
+        arr.push($scope.previewBreadcrumbsArray);
+        dataService.currentActivity.attributes.set("recommendedScenarios", arr);
     
 
-        dataService.currentActivity.save(null, { // שמירה של הפעילות
-            success: function (user) {
+        dataService.currentActivity.attributes.save(null, { // שמירה של הפעילות
+            success: function (Activity) {
                 console.log("saved succsesss");
             },
             error: function (err) {
