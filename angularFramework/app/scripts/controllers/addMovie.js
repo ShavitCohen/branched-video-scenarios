@@ -70,6 +70,8 @@ angular.module('angularFrameworkApp')
         //height: '200',
         //width: '400',
           videoId: myUrlID,
+          startSeconds: 5,
+          endSeconds: 8,
           playerVars: {
               'rel': 0,
               'enablejsapi': 1
@@ -86,8 +88,8 @@ angular.module('angularFrameworkApp')
     function onPlayerReady(event) {
         $scope.myVideoDuration = player.getDuration();
         console.log("duration of video = " + player.getDuration());
-        $scope.myStartTime = 0;
-        $scope.myEndTime = ($scope.myVideoDuration);
+        //$scope.myStartTime = player.playerVars.startSeconds;
+        //$scope.myEndTime = player.playerVars.endSeconds;
     };
 
 
