@@ -99,7 +99,6 @@
         var obj = {};
         obj.name = result.attributes.name;
         obj.code = result.attributes.code;
-        obj.recommendedScenarios = result.attributes.recommendedScenarios;
 
         obj.myID = result.id;
         obj.original = result;
