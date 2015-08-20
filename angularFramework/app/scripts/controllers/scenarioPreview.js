@@ -27,13 +27,21 @@ angular.module('angularFrameworkApp')
       //    after the API code downloads.
       var player;
       $scope.previewBreadcrumbsArray = [];
-      $scope.previewBreadcrumbsArray_IDs = [];
+      var previewBreadCrumbsNewArray = [];
+     
 
       if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
           //אין תרחיש מומלץ עדיין ולכן נכייל את המערכים מחדש
-          $scope.previewBreadcrumbsArray.push($scope.scenario);
-          $scope.previewBreadcrumbsArray_IDs.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name });
+          $scope.tempArrDistractors = [];
+          for (var i = 0; i < $scope.scenario.interactions[0].distractors.length; i++) {
+              $scope.tempArrDistractors.push({ text: $scope.scenario.interactions[0].distractors[i].text, linkTo: $scope.scenario.interactions[0].distractors[i].linkTo});
+          }
+          $scope.previewBreadcrumbsArray.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
+          var obj = { videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+          previewBreadCrumbsNewArray.push(obj);
           console.log("Creating new Recommended scenarios...");
+          //$scope.previewBreadcrumbsArray.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name });
+
          
       }
       else {
@@ -42,7 +50,8 @@ angular.module('angularFrameworkApp')
           console.log("a recommended scenario is already configured... loading configuration...");
           for (var i = 0; i < dataService.currentActivity.attributes.recommendedScenarios.length; i++) {
               $scope.previewBreadcrumbsArray.push(dataService.currentActivity.attributes.recommendedScenarios[i]);
-              $scope.previewBreadcrumbsArray_IDs.push(dataService.currentActivity.attributes.recommendedScenarios[i]);
+              var obj = dataService.currentActivity.attributes.recommendedScenarios[i];
+              previewBreadCrumbsNewArray.push(obj);
           }
          
       }
@@ -194,9 +203,38 @@ angular.module('angularFrameworkApp')
 
           var nextScenario = dataService.myFuncFindingScenarioToPush(distractor.linkTo);
           $scope.myTempScenarioDistractors = nextScenario.interactions[0].distractors;
-          $scope.previewBreadcrumbsArray.push(nextScenario);
-          $scope.previewBreadcrumbsArray_IDs.push({ videoId: nextScenario.videoId, name: nextScenario.name });
+          //$scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name });
+          $scope.tempArrDistractors = [];
+          for (var i = 0; i < $scope.scenario.interactions[0].distractors.length; i++) {
+              $scope.tempArrDistractors.push({ text: $scope.scenario.interactions[0].distractors[i].text, linkTo: $scope.scenario.interactions[0].distractors[i].linkTo });
+          }
+
+          if ($scope.previewBreadcrumbsArray.length >= scenario.index + 1) {
+              //בדיקה האם המערך של הפירורי לחם גדול יותר ויש עוד פירורי לחם אחרי הסצינה הנוכחית 
+              if (dataService.currentActivity.scenarios[distractor.linkTo].name == $scope.previewBreadcrumbsArray[scenario.index + 1].name) {
+                  console.log("test - the same");
+              }
+              else {
+                  console.log("test - not the same");
+                  //לחצת על מסיח חדש שאינו הבא בתור בתרחיש המומלץ שכבר הוגדר
+                  //נמחק את הפירורי הלחם הלא רלוונטיים מהמערך פירורי לחם
+                  $scope.previewBreadcrumbsArray.splice((scenario.index+1), ($scope.previewBreadcrumbsArray.length - (scenario.index +1)));
+
+                  $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
+                  var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+                  previewBreadCrumbsNewArray.push(obj);
+              }
+          }
+          else {
+              //או האם מערך הפירורי לחם הסתיים ומכאן יש רק להוסיף עוד סצינות לתרחיש
+              //לחצת על מסיח חדש שאינו הבא בתור בתרחיש המומלץ שכבר הוגדר
+              $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
+              var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+              previewBreadCrumbsNewArray.push(obj);
+          }
+
           $scope.myTempScenario = nextScenario;
+          //$scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name });
           
           //player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
           player.loadVideoById({
@@ -217,10 +255,12 @@ angular.module('angularFrameworkApp')
       };
 
     $scope.breadCrumbClick = function (scenario, $index) {
-        $scope.previewBreadcrumbsArray.splice(($index +1), ($scope.previewBreadcrumbsArray.length - $index+1));
+        $scope.previewBreadcrumbsArray.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
+        previewBreadCrumbsNewArray.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
+        //$scope.previewBreadcrumbsArray_IDs.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
         $scope.isEndMovie = false;
-        $scope.myTempScenarioDistractors = $scope.previewBreadcrumbsArray[$index].interactions[0].distractors;
-        $scope.myTempScenario = $scope.previewBreadcrumbsArray[$index];
+        $scope.myTempScenarioDistractors = previewBreadCrumbsNewArray[$index].distractors;
+        $scope.myTempScenario = previewBreadCrumbsNewArray[$index];
         //player.loadVideoById({ 'videoId': scenario.videoId });
         player.loadVideoById({
             'videoId': scenario.videoId,
@@ -248,14 +288,19 @@ angular.module('angularFrameworkApp')
 
     $scope.saveRecommendedScenarios = function ()
     {
-      
-
-        
-
-    
-        dataService.currentActivity.set("recommendedScenarios", $scope.previewBreadcrumbsArray_IDs);
+        dataService.currentActivity.set("recommendedScenarios", previewBreadCrumbsNewArray);
         //activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
 
+        for (var i = 0; i < previewBreadCrumbsNewArray.length; i++) {
+
+            delete previewBreadCrumbsNewArray[i].$$hashKey;
+            for (var b = 0; b < previewBreadCrumbsNewArray[i].distractors.length; b++) {
+
+                delete previewBreadCrumbsNewArray[i].distractors[b].$$hashKey;
+
+
+            }
+        }
 
         //Parse.User.current().add("recommendedScenarios", activityIns); // הוספת הפעילות למערך הפעילויות
         dataService.currentActivity.save(null, { // שמירה של הפעילות
@@ -263,6 +308,7 @@ angular.module('angularFrameworkApp')
                 $modalInstance.close();
             },
             error: function (err) {
+                debugger;
 
             }
         });

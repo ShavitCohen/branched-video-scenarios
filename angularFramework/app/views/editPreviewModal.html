@@ -22,7 +22,8 @@
 
         <div id="questionBackPreviewModal" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapsePreviewModalClass">
-                <h3 class="myUserQueClass">{{scenario.interactions[0].text}}</h3>
+                <h3 class="myUserQueClass">{{myTempScenario.interactions[0].text}}</h3>
+                
 
                 <ul>
                     <li class="myUserDistractorPrevireModalClass btn btn success" ng-repeat="distractor in myTempScenarioDistractors" ng-modal="myTempScenarioDistractors" ng-click="gotoNextMovie(distractor,scenario)">{{distractor.text}}</li>
