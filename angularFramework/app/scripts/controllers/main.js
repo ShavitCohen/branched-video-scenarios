@@ -56,7 +56,10 @@ angular.module('angularFrameworkApp')
               height: '560',
               width: '1024',
               videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
-              
+              playerVars: {
+                  'rel': 0,
+                  'enablejsapi': 1
+              },
               events: {
                   'onReady': $scope.onPlayerReady,
                   'onStateChange': $scope.onPlayerStateChange

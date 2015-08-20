@@ -70,7 +70,10 @@ angular.module('angularFrameworkApp')
         //height: '200',
         //width: '400',
           videoId: myUrlID,
-          
+          playerVars: {
+              'rel': 0,
+              'enablejsapi': 1
+          },
           events: {
               'onReady': onPlayerReady
               

@@ -18,6 +18,8 @@ angular.module('angularFrameworkApp')
       var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";
+     
+
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -25,10 +27,26 @@ angular.module('angularFrameworkApp')
       //    after the API code downloads.
       var player;
       $scope.previewBreadcrumbsArray = [];
+      $scope.previewBreadcrumbsArray_IDs = [];
 
-
-      $scope.previewBreadcrumbsArray.push($scope.scenario);
-
+      if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
+          //אין תרחיש מומלץ עדיין ולכן נכייל את המערכים מחדש
+          $scope.previewBreadcrumbsArray.push($scope.scenario);
+          $scope.previewBreadcrumbsArray_IDs.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name });
+          console.log("Creating new Recommended scenarios...");
+         
+      }
+      else {
+          //יש כבר הגדרה של תרחיש מומלץ
+          //נטען את התרחיש המומלץ שכבר הוגדר מהפארס
+          console.log("a recommended scenario is already configured... loading configuration...");
+          for (var i = 0; i < dataService.currentActivity.attributes.recommendedScenarios.length; i++) {
+              $scope.previewBreadcrumbsArray.push(dataService.currentActivity.attributes.recommendedScenarios[i]);
+              $scope.previewBreadcrumbsArray_IDs.push(dataService.currentActivity.attributes.recommendedScenarios[i]);
+          }
+         
+      }
+      
 
       $scope.onYouTubeIframeAPIReady = function () {
 
@@ -37,6 +55,12 @@ angular.module('angularFrameworkApp')
               height: '200',
               width: '400',
               videoId: scenario.videoId,
+              startSeconds: 5,
+              endSeconds: 8,
+              playerVars: {
+                  'rel': 0,
+                  'enablejsapi': 1
+              },
               events: {
                   'onReady': $scope.onPlayerReady,
                   'onStateChange': $scope.onPlayerStateChange
@@ -44,6 +68,9 @@ angular.module('angularFrameworkApp')
           });
 
          
+          //www.youtube.com/v/VIDEO_ID?playlist=VIDEO_ID&autoplay=1&rel=0
+
+
         //  $scope.myMovNameBreadCrumbs = scenario.myMovName + " >";
         //  //var myBreadCrumb_a = $compile(angular.element('<div><a href="#" ng-click="breadCrumbClickFunc()" class="BreadCrumb_a"  '+ $scope.myMovNameBreadCrumbs +'</a></div>'))(scope);
         // var myBreadCrumb_a = angular.element('<div ng-click="breadCrumbClickFunc()" class="BreadCrumb_a">' + $scope.myMovNameBreadCrumbs + '</div>');
@@ -59,14 +86,21 @@ angular.module('angularFrameworkApp')
 
 
 
-      $scope.startPlayingTest = function () {
-          player.playVideo();
-      };
+      //$scope.startPlayingTest = function () {
+      //   // player.playVideo();
+      //    player.loadVideoById({
+      //        'videoId': scenario.videoId,
+      //        'startSeconds': 5,
+      //        'endSeconds': 8
+      //    });
+      //    //player.playVideo();
+      //};
 
 
       $scope.done = false;
 
       $scope.onPlayerReady = function () {
+
           console.log("entered player ready function...");
           player.playVideo();
           console.log("playing video now...");
@@ -161,10 +195,15 @@ angular.module('angularFrameworkApp')
           var nextScenario = dataService.myFuncFindingScenarioToPush(distractor.linkTo);
           $scope.myTempScenarioDistractors = nextScenario.interactions[0].distractors;
           $scope.previewBreadcrumbsArray.push(nextScenario);
+          $scope.previewBreadcrumbsArray_IDs.push({ videoId: nextScenario.videoId, name: nextScenario.name });
           $scope.myTempScenario = nextScenario;
           
-          player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
-
+          //player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
+          player.loadVideoById({
+              'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId,
+              'startSeconds': 5,
+              'endSeconds': 8
+          });
 
 
           
@@ -182,7 +221,12 @@ angular.module('angularFrameworkApp')
         $scope.isEndMovie = false;
         $scope.myTempScenarioDistractors = $scope.previewBreadcrumbsArray[$index].interactions[0].distractors;
         $scope.myTempScenario = $scope.previewBreadcrumbsArray[$index];
-        player.loadVideoById({ 'videoId': scenario.videoId });
+        //player.loadVideoById({ 'videoId': scenario.videoId });
+        player.loadVideoById({
+            'videoId': scenario.videoId,
+            'startSeconds': 5,
+            'endSeconds': 8
+        });
     }
 
 
@@ -205,18 +249,18 @@ angular.module('angularFrameworkApp')
     $scope.saveRecommendedScenarios = function ()
     {
       
-        var arr = [];
 
-        arr.push($scope.previewBreadcrumbsArray);
+        
+
     
-        dataService.currentActivity.set("recommendedScenarios", arr);
+        dataService.currentActivity.set("recommendedScenarios", $scope.previewBreadcrumbsArray_IDs);
         //activityIns.set("parent", Parse.User.current()); // חשוב להגדרת האבא של הפעילות
 
 
         //Parse.User.current().add("recommendedScenarios", activityIns); // הוספת הפעילות למערך הפעילויות
         dataService.currentActivity.save(null, { // שמירה של הפעילות
             success: function (Activity) {
-                console.log("saved succsesss");
+                $modalInstance.close();
             },
             error: function (err) {
 

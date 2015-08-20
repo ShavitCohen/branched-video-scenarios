@@ -70,7 +70,11 @@ angular.module('angularFrameworkApp')
           player = new YT.Player('player', {
               //height: '200',
               //width: '400',
-              videoId: myUrlID
+              videoId: myUrlID,
+              playerVars: {
+                  'rel': 0,
+                  'enablejsapi': 1
+              },
           });
 
 
