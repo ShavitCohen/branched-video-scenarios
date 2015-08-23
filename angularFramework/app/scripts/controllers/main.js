@@ -20,6 +20,7 @@ angular.module('angularFrameworkApp')
 
 
       function init() {
+          dataService.userClickedScenariosSummary = [];
           $scope.scenario;
           // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
           Activity = Parse.Object.extend("Activity");
@@ -29,7 +30,7 @@ angular.module('angularFrameworkApp')
 
           getScenarios($routeParams.id);
 
-    
+
       }
 
 
@@ -169,14 +170,15 @@ angular.module('angularFrameworkApp')
 
           // $scope.$apply(function () {
           console.log("checking what IsEndMovie = " + $scope.isEndMovie);
-              if ($scope.isEndMovie == true) {
-                  $scope.isEndMovie = false;
-                  console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
+          if ($scope.isEndMovie == true) {
+              $scope.isEndMovie = false;
+              console.log("IsEndMovie after distractor click = " + $scope.isEndMovie);
 
-              }
+          }
           //    $scope.myCurrentmovIndex = distractor.linkTo;
-              $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo];
-          console.log("my curr distractor = " + distractor + " and distractor.linkTo = " + distractor.linkTo + "  and myCurrentmovIndex = " + $scope.myCurrentmovIndex);
+          $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo];
+      
+          dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
 
           player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
      
@@ -210,6 +212,7 @@ angular.module('angularFrameworkApp')
                           $scope.activityName = dataService.currentActivity.attributes.name;
 
                           dataService.currentActivity.scenarios = arr;
+
                       });
                       $scope.onYouTubeIframeAPIReady();
 
@@ -222,6 +225,8 @@ angular.module('angularFrameworkApp')
 
               }
           });
+          dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[0].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[0].attributes.videoId });
+
       }
 
   });

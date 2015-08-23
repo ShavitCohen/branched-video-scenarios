@@ -286,6 +286,10 @@
       data.allDistractorsCount = globalDistractorIndex;
     };
 
+    data.userClickedScenariosSummary = [];
+    data.scenarioLengthforSummary = [];
+    data.editorUserDifferences = false;
+    data.myRedBack = false;
     data.allDistractorsCount = 0;
 
     data.myClickedDistractor = 0;

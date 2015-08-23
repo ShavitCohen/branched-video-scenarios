@@ -47,6 +47,10 @@ angular
         templateUrl: 'views/editorActivities.html',
         controller: "editorActivitiesCtrl"
     })
+         .when('/userSummary', {
+             templateUrl: 'views/userSummary.html',
+             controller: "userSummaryCtrl"
+         })
       .otherwise({
         redirectTo: '/'
       });

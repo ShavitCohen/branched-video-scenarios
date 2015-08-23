@@ -26,7 +26,11 @@ angular.module('angularFrameworkApp')
       if (state == "edit") {
         $scope.headlingOfAddScene = "עריכת סרטון " + scenario.name;
 
-        $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque "+ scenario.videoId;
+          //orig value:
+          //$scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId;
+
+        $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId + "?start=" + 5 + '&end=' + 7 + '&version=3';
+        
         $scope.loadTheYoutubeUrl(scenario.videoId);
         $scope.myscenarioName = scenario.name;
         $scope.myStartTime = scenario.startTime;
@@ -57,7 +61,7 @@ angular.module('angularFrameworkApp')
 
     var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
+    tag.src = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId + "?start=" + 5 + '&end=' + 7 + '&version=3';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -66,21 +70,47 @@ angular.module('angularFrameworkApp')
     var player;
 
     $scope.loadTheYoutubeUrl = function (myUrlID) {
+        console.log("called the loadTheYoutubeUrl function...");
+      //player = new YT.Player('player', {
+      //  //height: '200',
+      //  //width: '400',
+      //    videoId: myUrlID,
+      //    //startSeconds: 5,
+      //    //endSeconds: 8,
+      //    playerVars: {
+      //        'rel': 0,
+      //        'enablejsapi': 1
+      //    },
+      //    events: {
+      //        'onReady': onPlayerReady
+              
+      //    }
+      //});
+
+
       player = new YT.Player('player', {
-        //height: '200',
-        //width: '400',
-          videoId: myUrlID,
-          startSeconds: 5,
-          endSeconds: 8,
           playerVars: {
               'rel': 0,
               'enablejsapi': 1
           },
           events: {
-              'onReady': onPlayerReady
-              
+              onReady: function () {
+                  player.loadVideoById({ 'videoId': scenario.videoId, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
+
+              }
           }
       });
+
+    }
+
+    $scope.myPlayerChangeFunc = function (scenario) {
+        console.log("$scope.myUrlID = " + scenario.videoId);
+        //player.loadVideoById(scenario.videoId, $scope.myStartTime, $scope.myEndTime);
+        player.loadVideoById({ 'videoId': scenario.videoId, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
+
+
+       // player.stopVideo();
+       // $scope.loadTheYoutubeUrl(scenario.videoId);
     }
 
 
@@ -93,19 +123,19 @@ angular.module('angularFrameworkApp')
     };
 
 
-    $scope.updateMovStartEndTime = function (myChangeRequestID) {
-        if (myChangeRequestID == 1) {
-            //request for updating start time
-            console.log("request to update start time..");
-           // $scope.myStartTime = 0;
-            //?start=840&end=1240&autoplay=1
-        }
-        else if (myChangeRequestID == 2) {
-            //request for updating end time
-            console.log("request to update end time..");
-           // $scope.myEndTime = $scope.myVideoDuration;
-        }
-    };
+    //$scope.updateMovStartEndTime = function (myChangeRequestID) {
+    //    if (myChangeRequestID == 1) {
+    //        //request for updating start time
+    //        console.log("request to update start time..");
+    //       // $scope.myStartTime = 0;
+    //        //?start=840&end=1240&autoplay=1
+    //    }
+    //    else if (myChangeRequestID == 2) {
+    //        //request for updating end time
+    //        console.log("request to update end time..");
+    //       // $scope.myEndTime = $scope.myVideoDuration;
+    //    }
+    //};
 
     /**
      * This function creates an interaction and assign it to the parent

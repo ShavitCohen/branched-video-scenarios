@@ -600,12 +600,74 @@ padding-right:5px;
     padding-top: 5px;
       font-size: 15px;
 }
+.youtubeoHolderForUserSummary
+{
+background-color:#58585A;
+color:white;
+padding-right:5px;
+ cursor:pointer;
+    width:200px;
+    height: 30px;
+    padding-top: 5px;
+      font-size: 15px;
+}
+.youtubeoHolderuserSummary {
+    display:block;
+    margin-top:17px;
+
+
+}
+.userSummaryRowsLi {
+
+       display:block;
+}
 .youtubeoHolderTEXT {
    text-overflow: ellipsis; 
     white-space: nowrap; 
         overflow: hidden;
     width:90px;
     position:absolute;
+
+}
+.youtubeoHolderTEXTForUserSmmary {
+   text-overflow: ellipsis; 
+    white-space: nowrap; 
+        overflow: hidden;
+    width:190px;
+    position:absolute;
+
+}
+.userScenariosList {
+   display: inline-block;
+
+position: absolute;
+margin-right: 300px;
+
+margin-top: -18px;
+}
+
+.editorScenariosList {
+     display:inline-block;
+     position: absolute;
+}
+.userSummaryRows {
+
+
+display: inline-block;
+position: absolute;
+
+}
+.userSummaryRowsLi div {
+
+width: 500px;
+height: 100px;
+margin-top: 17px;
+}
+.editorUserDifferences {
+background-color: red;
+width: 500px;
+height: 100px;
+margin-top: 17px;
 
 }
 .circle{
@@ -810,6 +872,7 @@ margin-right:20px;
  margin-top:5px;
  
 }
+
 .myDistractorPollClass {
 width: 2px;
     background-color: #A8A8B7;
