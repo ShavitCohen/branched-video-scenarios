@@ -25,12 +25,15 @@ angular
           templateUrl: 'views/StartPage.html',
           controller:"startCtrl"
       })
-
+      
       .when('/userStartPage', {
           templateUrl: 'views/userStartPage.html',
           controller: "userStartPage"
       })
-      
+       .when('/aboutUsModal', {
+           templateUrl: 'views/aboutUsModal.html',
+           controller: "aboutUsModalCtrl"
+       })
       .when('/about', {
         templateUrl: 'views/about.html'
       })

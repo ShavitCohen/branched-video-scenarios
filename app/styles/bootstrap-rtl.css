@@ -484,10 +484,10 @@ font-family:'Open Sans Hebrew';
   clear: both;
 }
 
-.rtl .row {
+/*.rtl .row {
   margin-right: -15px;
   margin-left: -15px;
-}
+}*/
 
 .rtl .row:before,
 .rtl .row:after {

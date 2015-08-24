@@ -26,12 +26,12 @@
               scope.changeArrowBackgroundStyleGrey = function ($event, scenario, $index) {
                   if (scenario.hoverYellowSceneElements == true) {
                       $('.arrow').addClass('backgroundArrowsGrey');
-                      $('.currArrowClass_' + scenario.movIndex).addClass('hoverYellowSceneElements_GreenDistractors');
+                      $('.currArrowClass_' + scenario.index).addClass('hoverYellowSceneElements_GreenDistractors');
                      // console.log("currArrowClass_' + scenario.movIndex) :"+'currArrowClass_ '+ scenario.movIndex);
                   }
                   else {
                       $('.arrow').removeClass('backgroundArrowsGrey');
-                      $('.currArrowClass_' + scenario.movIndex).removeClass('hoverYellowSceneElements_GreenDistractors');
+                      $('.currArrowClass_' + scenario.index).removeClass('hoverYellowSceneElements_GreenDistractors');
                   }
 
               };

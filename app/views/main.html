@@ -1,50 +1,13 @@
 <div class="row marketing">
- <div>{{myL}}</div>   
-        <div id="player"></div>
-            <!--<h1 >{{myCurrentmovIndex}}</h1>-->
+  
+    <div id="player" class="myYoutubeIfreamUser"></div>
+   
+    <div  class="UserquestionBack" ng-show="isEndMovie">
+        <div class="myUserQueAndDistractorCollapseClass">
+            <h3 class="myUserQueClass" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
+            <ul><li class="UsermyUserDistractorClass btn btn success" ng-repeat="distractor in scenario.attributes.interactions[0].attributes.distractors" ng-click="gotoNextMovie(distractor)">{{distractor.attributes.text}}</li></ul>
+        </div>
 
-    <!--<div ng-click="startPlayingTest()">startplaying</div>-->
-  <!--  <div ng-model="isEndMovie" ng-click="showQuestionDiv()">Show Questions-->
-  <!--  <div ng-show="isMovieEnded" ng-model="isMovieEnded">-->
-<!--    <div ng-click="showQuestionDiv()">Show Questions-->
-        <div id="questionBack" ng-show="isEndMovie">
-            <div class="myUserQueAndDistractorCollapseClass">
-                <h3 class="myUserQueClass" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
-                <ul><li class="myUserDistractorClass btn btn success" ng-repeat="distractor in scenario.attributes.interactions[0].attributes.distractors" ng-click="gotoNextMovie(distractor)">{{distractor.attributes.text}}</li></ul>
-            </div>
-        
     </div>
-<!--    </div>-->
-   <!-- </div>  -->
-    
-    <!--<div ng-click="openUserOpeningMessage()">tamar</div>-->
-  <!--<input type="text" ng-model="myInput" value="{{myInput}}"/>
-    <input type="button" ng-click="clicktoOpen" value="123">-->
 
-    <!--<scenario data="myCasesActivities[0].scenarios[0]"></scenario>-->
-
-    
-
-
-
-
-  <!--<h4>myList</h4>
-    <ul>
-        <li ng-repeat="item in awesomeThings">{{item.a}}</li>
-    </ul>
-    <div>
-        {{awesomeThings[1]}}
-    </div>
-    {{duplicate(myInput,myInput2)}}
-    <div>
-        <input type="text" ng-model="myInput" name="name" value=" " />
-        <input type="text" ng-model="myInput2" name="name" value=" " />
-    </div>
-    <div ng-controller="aaaCtrl">
-        {{shavit}}
-        {{duplicate(3,3)}}
-    </div>
-    <button ng-click="clearInputs();">shavit</button>
-    <div id="player">
-    </div>-->
 </div>

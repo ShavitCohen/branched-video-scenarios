@@ -12,7 +12,9 @@ background-color:black;
   direction:rtl;
   
 }
-
+.loginPopupH3HeadlineColor {
+color:red;
+}
 
 .yourSignUpRequstAcceptedClass {
 width:100px;

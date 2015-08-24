@@ -1,14 +1,11 @@
 ﻿
     <div class="startPageContainerBody">
 <div class="row marketing startPageContainer">
-        <div class="btn btn-danger" ng-click="goToUserStartPage()">צד משתמש</div>
 
 
     <div class="loginPopupBackground">
 
         <ul class="loginPopupHeadlineColor">
-
-                  
 
             <li ng-click="toggleToSignUpSignIn(true)">להירשם</li>
             
@@ -22,7 +19,6 @@
             <input type="text" class="loginPopupTextInputBack" ng-model="LoginEmailAdress" />
             <h2 class="loginPopupH2HeadlineColor" >הקלד סיסמה</h2>
             <input type="text" class="loginPopupTextInputBack" ng-model="LoginPassword" />
-            <span class="yourSignUpRequstAcceptedClass" ng-show="yourSignUpRequstAccepted">הרשמתך נקלטה בהצלחה! לחץ להתחברות</span>
             <ul>
                 <li class="btn loginBtn" ng-click="login()" ng-show="!signInorSignUpSelected">התחברות</li>
                 <li class="btn loginBtn" ng-click="signIn()"ng-show="signInorSignUpSelected">הרשמה</li>
@@ -30,6 +26,8 @@
           
 
             <h3 class="loginPopupH3HeadlineColor">user:email@example.com password:1234</h3>
+            <div class="yourSignUpRequstAcceptedClass" ng-show="yourSignUpRequstAccepted">הרשמתך נקלטה בהצלחה! לחץ להתחברות</div>
+
             <!--loginPopupSignUp-->
         </div>
         

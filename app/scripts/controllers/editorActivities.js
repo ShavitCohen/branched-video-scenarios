@@ -58,7 +58,7 @@
           displayName: 'קוד גישה'
         }, {
           field: 'description',
-          width: "300",
+          width: "464",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           displayName: 'תיאור'
@@ -66,7 +66,7 @@
         {
           field: 'name',
 
-          width: "220",
+          width: "383",
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
           displayName: 'שם התרחיש',

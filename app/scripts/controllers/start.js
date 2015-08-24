@@ -19,13 +19,7 @@
 
 
       }
-      $scope.goToUserStartPage = function ()
-      {
-          console.log("aer");
-          $location.path("/userStartPage");
-
-
-      }
+   
 
 
       //$scope.routeEditor = function () {
@@ -46,8 +40,10 @@
 
           user.signUp(null, {
               success: function (user) {
-                  $scope.yourSignUpRequstAccepted = true;
-
+                 
+                  $timeout(function () {
+                      $scope.yourSignUpRequstAccepted = true;
+                  }, 300);
                   // Hooray! Let them use the app now.
 
               },
@@ -70,7 +66,7 @@
                   // Do stuff after successful login.
 
                 $timeout(function(){
-                  $location.path("/editorActivities");
+                  $location.path("/editorActivities")
                 },300);
 
 

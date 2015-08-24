@@ -9,7 +9,7 @@
           $modalInstance.close();
           $scope.scenario = dataService.currentActivity.scenarios[0];
               var modalInstance = $modal.open({
-                  //windowClass: 'editModalClass',
+                  windowClass: 'editModalClass ourModal',
                   templateUrl: 'views/editPreviewModal.html',
                   controller: "scenarioPreviewCtrl",
                   resolve: {

@@ -17,7 +17,7 @@
                  <div class="circle"></div>
 <!--           כאן מתחיל הקוד של המסיחים העיגולים-->
                  <div  ng-click="answerClickToLink(scenario,distractor,true)" class="circle">
-                     <a tooltip-placement="left"  tooltip="{{distractor.text}}" tooltip-class="customClass">
+                     <a tooltip-placement="right"  tooltip="{{distractor.text}}" tooltip-class="customClass">
                      <div ng-class="{'hoverYellowSceneElements_GreenDistractors':scenario.hoverYellowSceneElements, 'hoverOnDistractorGrey':distractor.hoverOnDistractorGrey, 'clickedGreenDistractorToLink':distractor.clickedGreenDistractorToLink}" ng-mouseenter="distractor.hoverOnDistractorGrey = true" ng-mouseleave="distractor.hoverOnDistractorGrey = false"  class="distractorDot myDistractor_{{distractor.distractorIndex}}"><!--ng-mouseleave="removeGreenClass()" ng-mouseenter="addGreenClass()"-->
 
                      </div>

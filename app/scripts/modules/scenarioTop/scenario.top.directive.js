@@ -199,7 +199,7 @@
               scope.openMovDialog = function (scenario) {
 
                   var modalInstance = $modal.open({
-                      //windowClass: 'editModalClass',
+                      windowClass: 'editModalClass ourModal',
                       templateUrl: 'views/editPreviewModal.html',
                       controller: "scenarioPreviewCtrl",
                       resolve: {

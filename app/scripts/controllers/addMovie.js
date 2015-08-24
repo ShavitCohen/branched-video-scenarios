@@ -175,7 +175,10 @@ angular.module('angularFrameworkApp')
 
       });
     }
+    $scope.closeModal = function () {
+        $modalInstance.close();
 
+    }
     $scope.addToJason = function () {
       var scenarioIns = new Scenario();
 

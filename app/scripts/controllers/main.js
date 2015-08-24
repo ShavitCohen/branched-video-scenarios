@@ -55,7 +55,7 @@ angular.module('angularFrameworkApp')
       $scope.onYouTubeIframeAPIReady = function () {
           player = new YT.Player('player', {
               height: '560',
-              width: '1024',
+              width: '980',
               videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
               playerVars: {
                   'rel': 0,
@@ -121,7 +121,7 @@ angular.module('angularFrameworkApp')
                   player = mySTR;
                   //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
                   var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
+                      windowClass: 'editModalClass ourModal',
                       //template:,
                       templateUrl: 'views/openingMessageModal.html',
                       controller: "userOpeningMessageCtrl",
