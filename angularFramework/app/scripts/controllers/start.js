@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .controller('startCtrl', function ($scope, $location, dataService) {
+  .controller('startCtrl', function ($scope, $location, dataService,$timeout) {
       $scope.codeValidate = function () {
           console.log($scope.myCaseCode)
           if ($scope.myCaseCode == 68483) {
@@ -49,8 +49,12 @@
           Parse.User.logIn($scope.LoginEmailAdress, $scope.LoginPassword, {
               success: function (user) {
                   // Do stuff after successful login.
+
+                $timeout(function(){
                   $location.path("/editorActivities");
-                $scope.$digest();
+                },300);
+
+
 
               },
               error: function (user, error) {
@@ -72,7 +76,7 @@
           }
       }
 
-    
+
   });
 
 
