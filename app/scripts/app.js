@@ -26,6 +26,11 @@ angular
           controller:"startCtrl"
       })
 
+      .when('/userStartPage', {
+          templateUrl: 'views/userStartPage.html',
+          controller: "userStartPage"
+      })
+      
       .when('/about', {
         templateUrl: 'views/about.html'
       })

@@ -17,13 +17,6 @@
 
 
       }
-      $scope.goToUserStartPage = function ()
-      {
-
-          $location.path("/userStartPage");
-
-
-      }
     $scope.codeValidate = function () {
           console.log($scope.myCaseCode)
           if ($scope.myCaseCode == 68483) {

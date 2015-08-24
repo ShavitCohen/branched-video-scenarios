@@ -441,11 +441,17 @@ border:1px #58585A solid;
              width:400px;
     height:200px;
 }
+.startPageContainerBody {
+position: absolute;
+width: 100%;
+height: auto;
+}
 .startPageContainer {
+    margin:0px auto;
       background-image: url('../images/decisions-making.jpg');
-      width:1349px;
+     background-repeat:no-repeat;
+      /*width:1349px;*/
       height:800px;
-     
 }
 .loginPopupBackground {
 
@@ -457,9 +463,30 @@ border:1px #58585A solid;
 }
 .loginPopupHeadlineColor {
 
-color:white;
-     padding-right: 61px;
-    padding-top: 18px;
+margin-right:-34px;
+}
+.loginPopupHeadlineColor li {
+
+color: white;
+display: inline-block;
+padding-right: 30px;
+font-size: 24px;
+margin-top: 20px;
+
+}
+.signInSelected {
+background-color: gray;
+width: 127px;
+height: 67px;
+margin-right: -6px;
+margin-top: -54px;
+}
+.signUpSelected {
+background-color: gray;
+width: 127px;
+height: 67px;
+margin-right: 127px;
+margin-top: -54px;
 }
 .loginPopupH2HeadlineColor {
     color:white;
