@@ -1,5 +1,7 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('startCtrl', function ($scope, $location, dataService, $timeout) {
+      $scope.yourSignUpRequstAccepted = false;
+
 
       $scope.toggleToSignUpSignIn = function (state) {
           if (state == true) {
@@ -19,20 +21,12 @@
       }
       $scope.goToUserStartPage = function ()
       {
-
+          console.log("aer");
           $location.path("/userStartPage");
 
 
       }
-    $scope.codeValidate = function () {
-          console.log($scope.myCaseCode)
-          if ($scope.myCaseCode == 68483) {
-              $location.path("/MainPage/" + $scope.myCaseCode);
 
-              //אם הקוד קיים אז ננווט לעמוד הבא
-
-          }
-      };
 
       //$scope.routeEditor = function () {
       //    if ($scope.myCaseCode == "111") {
@@ -52,15 +46,16 @@
 
           user.signUp(null, {
               success: function (user) {
+                  $scope.yourSignUpRequstAccepted = true;
+
                   // Hooray! Let them use the app now.
-                  debugger;
+
               },
               error: function (user, error) {
                   // Show the error message somewhere and let the user try again.
                   handleParseError(error);
 
                   alert("Error: " + error.code + " " + error.message);
-                  debugger;
 
               }
           });

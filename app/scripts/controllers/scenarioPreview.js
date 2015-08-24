@@ -5,7 +5,7 @@ angular.module('angularFrameworkApp')
   .controller('scenarioPreviewCtrl', function ($scope, $modalInstance, scenario, dataService, state) {
      // $scope.myCurrentmovIndex = 1;
 
-
+      $scope.isMyEndMessege = false;
       $scope.scenario = scenario;
       $scope.myTempScenario = ({ videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
       console.log("$scope.scenario: " + $scope.scenario);
@@ -36,8 +36,8 @@ angular.module('angularFrameworkApp')
           for (var i = 0; i < $scope.scenario.interactions[0].distractors.length; i++) {
               $scope.tempArrDistractors.push({ text: $scope.scenario.interactions[0].distractors[i].text, linkTo: $scope.scenario.interactions[0].distractors[i].linkTo});
           }
-          $scope.previewBreadcrumbsArray.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
-          var obj = { videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+          $scope.previewBreadcrumbsArray.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text, interactionType: $scope.scenario.interactions[0].type,interactionEndMessegeText: $scope.scenario.interactions[0].endMessegeText });
+          var obj = { videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text, interactionType: $scope.scenario.interactions[0].type,interactionEndMessegeText: $scope.scenario.interactions[0].endMessegeText };
           previewBreadCrumbsNewArray.push(obj);
           console.log("Creating new Recommended scenarios...");
           //$scope.previewBreadcrumbsArray.push({ videoId: $scope.scenario.videoId, name: $scope.scenario.name });
@@ -132,6 +132,7 @@ angular.module('angularFrameworkApp')
 
 
       $scope.onPlayerStateChange = function (event) {
+          console.log("onPlayerStateChange....");
           if (event.data == YT.PlayerState.ENDED || $scope.videDurationEnded_Paused == true) {
               console.log("movie ended");
               //player.pauseVideo();
@@ -139,40 +140,43 @@ angular.module('angularFrameworkApp')
               //pauseVideo();
 
               $scope.$apply(function () {
-                  if ($scope.isEndMovie == false) {
+                  if ($scope.isEndMovie == false &&  $scope.ifIsRecommended == true) {
                       $scope.isEndMovie = true;
                       console.log("IsEndMovie = " + $scope.isEndMovie);
 
                   }
               });
 
-              console.log("$scope.scenario[$scope.myCurrentmovIndex - 1].interactions[0].type: " + $scope.scenario.interactions[0].type);
-              if ($scope.scenario.interactions[0].type == "endMessege") {
-                  var mySTR = $scope.scenario.interactions[0].endMessegeText;
+              console.log("$scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex].interactions[0].type" + $scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex].interactionType);
+              if ($scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex].interactionType == "endMessege") {
+                  $scope.isMyEndMessege = true;
+                  $scope.myEndMessege = $scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex].interactionEndMessegeText;
+
+
                   //console.log("lilach mySTR: " + mySTR);
                //   player = mySTR;
                   //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
-                  var modalInstance = $modal.open({
-                      windowClass: 'editModalClass',
-                      //template:,
-                      templateUrl: 'views/openingMessageModal.html',
-                      controller: "userOpeningMessageCtrl",
-                      resolve: {
-                          scenario: function () {
-                              return $scope.scenario;
-                          }
-                        ,
-                          state: function () {
-                              return "closeMessage";
-                          }
-                          ,
-                          player: function () {
-                              return player;
-                          }
+                  //var modalInstance = $modal.open({
+                  //    windowClass: 'editModalClass',
+                  //    //template:,
+                  //    templateUrl: 'views/openingMessageModal.html',
+                  //    controller: "userOpeningMessageCtrl",
+                  //    resolve: {
+                  //        scenario: function () {
+                  //            return $scope.scenario;
+                  //        }
+                  //      ,
+                  //        state: function () {
+                  //            return "closeMessage";
+                  //        }
+                  //        ,
+                  //        player: function () {
+                  //            return player;
+                  //        }
 
-                      }
+                  //    }
 
-                  });
+                  //});
 
               }
 
@@ -188,7 +192,7 @@ angular.module('angularFrameworkApp')
 
     
     $scope.gotoNextMovie = function (distractor, scenario) {
-        
+        $scope.isMyEndMessege = false;
           // $scope.$apply(function () {
           console.log("checking what IsEndMovie = " + $scope.isEndMovie);
           if ($scope.isEndMovie == true) {
@@ -225,8 +229,8 @@ angular.module('angularFrameworkApp')
                   //var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
                   //previewBreadCrumbsNewArray.push(obj);
               }
-              $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
-              var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+          $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text, interactionType: $scope.scenario.interactions[0].type, interactionEndMessegeText: $scope.scenario.interactions[0].endMessegeText });
+          var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text, interactionType: $scope.scenario.interactions[0].type,interactionEndMessegeText: $scope.scenario.interactions[0].endMessegeText };
               previewBreadCrumbsNewArray.push(obj);
 
           //}
@@ -261,6 +265,7 @@ angular.module('angularFrameworkApp')
       };
 
     $scope.breadCrumbClick = function (scenario, $index) {
+        $scope.isMyEndMessege = false;
         $scope.previewBreadcrumbsArray.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
         previewBreadCrumbsNewArray.splice(($index + 1), (previewBreadCrumbsNewArray.length - $index + 1));
         myCurrentPlaybackScenarioIndex = $scope.previewBreadcrumbsArray.length - 1;

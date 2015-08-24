@@ -13,7 +13,7 @@
             </div>
 
         </div>
-        <div id="myBreadCrumbsHolder">
+        <div ng-show="ifIsRecommended" id="myBreadCrumbsHolder">
             <ul>
                 <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.name}}</li>
             </ul>
@@ -23,7 +23,7 @@
         <div id="questionBackPreviewModal" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapsePreviewModalClass">
                 <h3 class="myUserQueClass">{{myTempScenario.interactionText}}</h3>
-                
+                <p ng-show="isMyEndMessege">{{myEndMessege}}</p>
 
                 <ul>
                     <li class="myUserDistractorPrevireModalClass btn btn success" ng-repeat="distractor in myTempScenarioDistractors" ng-modal="myTempScenarioDistractors" ng-click="gotoNextMovie(distractor,scenario)">{{distractor.text}}</li>
