@@ -1,6 +1,7 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('startCtrl', function ($scope, $location, dataService,$timeout) {
-      $scope.codeValidate = function () {
+
+    $scope.codeValidate = function () {
           console.log($scope.myCaseCode)
           if ($scope.myCaseCode == 68483) {
               $location.path("/MainPage/" + $scope.myCaseCode);

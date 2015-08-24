@@ -11,7 +11,7 @@ angular.module('angularFrameworkApp')
   .controller('MainCtrl', function ($scope, dataService, $modal, $routeParams) {
 
 
-      $scope.dataService = dataService; //äæø÷ú äîéãò ùì äãèä ñìúåê äñ÷åô ùéòáåã òí HTML
+      $scope.dataService = dataService; //×”×–×¨×§×ª ×”××™×“×¢ ×©×œ ×”×“×˜×” ×¡×œ×ª×•×š ×”×¡×§×•×¤ ×©×™×¢×‘×•×“ ×¢× HTML
       var myMovIndex = 0;
       var Activity;
       var Scenario;
@@ -28,7 +28,7 @@ angular.module('angularFrameworkApp')
           Interactions = Parse.Object.extend("Interactions");
           Distractors = Parse.Object.extend("Distractors");
 
-          getScenarios($routeParams.id);
+          getScenarios(Number($routeParams.id));
 
 
       }
@@ -39,7 +39,7 @@ angular.module('angularFrameworkApp')
       init();
 
 
-      
+
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
       var tag = document.createElement('script');
@@ -73,7 +73,7 @@ angular.module('angularFrameworkApp')
               //template:,
               templateUrl: 'views/openingMessageModal.html',
               controller: "userOpeningMessageCtrl",
-              
+
               resolve: {
                   scenario: function () {
                       return $scope.scenario;
@@ -86,7 +86,7 @@ angular.module('angularFrameworkApp')
                   player: function () {
                       return player;
                   }
-                  
+
               }
 
           });
@@ -96,10 +96,10 @@ angular.module('angularFrameworkApp')
 
       //$scope.openUserOpeningMessage = function (scenario) {
 
-         
+
       //}
 
-     
+
 
       $scope.startPlayingTest = function () {
           player.playVideo();
@@ -156,13 +156,13 @@ angular.module('angularFrameworkApp')
 
               }
 
-              
-              
+
+
           }
       }
-   
 
- 
+
+
 
       $scope.myCurrentmovIndex = 1;
 
@@ -177,11 +177,11 @@ angular.module('angularFrameworkApp')
           }
           //    $scope.myCurrentmovIndex = distractor.linkTo;
           $scope.scenario = dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo];
-      
+
           dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
 
           player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
-     
+
 
       };
 
@@ -190,7 +190,7 @@ angular.module('angularFrameworkApp')
       function getScenarios(activityCode) {
           var query = new Parse.Query(Activity);
           //query.equalTo("parent", Parse.User.current());
-          query.equalTo("code", 68483);//ìîä äåà î÷áì àú äòøê ëîçøåæú åìà ëîñôø
+          query.equalTo("code", activityCode);//×œ××” ×”×•× ××§×‘×œ ××ª ×”×¢×¨×š ×›××—×¨×•×–×ª ×•×œ× ×›××¡×¤×¨
 
 
           query.include("scenarios");
@@ -219,13 +219,14 @@ angular.module('angularFrameworkApp')
                   }
 
                   $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+                  dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[0].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[0].attributes.videoId });
                   $scope.$digest();
               },
               error: function (error) {
 
               }
           });
-          dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[0].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[0].attributes.videoId });
+
 
       }
 
