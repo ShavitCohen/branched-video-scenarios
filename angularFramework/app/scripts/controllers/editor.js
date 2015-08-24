@@ -10,7 +10,7 @@
     $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
     function init() {
-        
+
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       Activity = Parse.Object.extend("Activity");
       Scenario = Parse.Object.extend("Scenario");
@@ -45,22 +45,8 @@
       query.first({
         success: function (activity) {
           //debugger;
-          dataService.currentActivity = activity;
-          var scenarios = activity.attributes.scenarios;
-          if (scenarios != undefined && scenarios.length > 0) {
-            $scope.scenarios = scenarios;
-            var arr = [];
-            angular.forEach(scenarios, function (scenario) {
-              var myScenario = dataService.getScenariosinJsonFormat(scenario);
-              arr.push(myScenario);
-              dataService.currentActivity = activity;
-              $scope.activityName = dataService.currentActivity.attributes.name;
-
-              dataService.currentActivity.scenarios = arr;
-            });
-          }
-
-          $scope.dataService.setDistractorsIndex(dataService.currentActivity);
+          dataService.setCurrentActivity(activity);
+          $scope.activityName = dataService.currentActivity.attributes.name;
           $scope.$digest();
         },
         error: function (error) {
@@ -140,7 +126,7 @@
             templateUrl: 'views/recommendedScenariosModal.html',
             controller: "recommendedScenariosModalCtrl",
             resolve: {
-           
+
                 state: function () {
                     return "new";
                 }
@@ -150,7 +136,7 @@
         });
     }
     //קריאה לפונקציה שיוצרת את הקווים המחברים בין מסיחים
-     
+
   }
 
 

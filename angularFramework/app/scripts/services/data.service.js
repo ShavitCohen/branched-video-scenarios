@@ -335,10 +335,27 @@
     };
 
 
+    data.setCurrentActivity = function(activity){
+      data.currentActivity = activity;
+      var scenarios = activity.attributes.scenarios;
+      if (scenarios != undefined && scenarios.length > 0) {
+        //$scope.scenarios = scenarios;
+        var arr = [];
+        angular.forEach(scenarios, function (scenario) {
+          var myScenario = data.getScenariosinJsonFormat(scenario);
+          arr.push(myScenario);
+          /*dataService.currentActivity = activity;*/
+        });
+        data.currentActivity.scenarios = arr;
+      }
+      data.setDistractorsIndex(data.currentActivity);
+    };
+
+
     data.myFuncFindingScenarioToPush = function(distractorLinkTo){
         for (var i = 0; i < data.currentActivity.scenarios.length; i++) {
             var scenario = data.currentActivity.scenarios[i];
-           
+
             if (i == distractorLinkTo) {
           return scenario;
         }

@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .directive("scenarioTop", function ($modal, dataService) {
+  .directive("scenarioTop", function ($modal, dataService,$timeout) {
       return {
           restrict: 'E',
           templateUrl: "scripts/modules/scenarioTop/scenario.top.view.html",
@@ -254,6 +254,30 @@
                           }
                       }
                   });
+
+                modalInstance.result.then(function (val) {
+                  if (val == true) {
+                    if (scenario.original) {
+                      var _scenario = scenario; // just to be able to refer it later
+                      dataService.currentActivity.remove("scenarios", scenario.original); //removing the distractor form the instructions array
+                      dataService.currentActivity.save(null, {
+                        success: function (scenario) {
+                          $timeout(function(){
+                            dataService.setCurrentActivity(dataService.currentActivity);
+                          },100);
+                        },
+                        error: function (obj, error) {
+
+                        }
+                      })
+                    }
+
+
+                  }
+                  else {
+                    //בטל
+                  }
+                });
 
 
 
