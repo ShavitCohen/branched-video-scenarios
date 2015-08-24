@@ -214,7 +214,7 @@
     data.setArrows = function(){
              angular.forEach(data.currentActivity.scenarios, function(scenario){
                   angular.forEach(scenario.interactions[0].distractors, function(distractor){
-                      if(distractor.linkTo != undefined){
+                      if(distractor.linkTo != undefined && distractor.linkTo!=null){
                             data.linkInitDistrctors(distractor,scenario);
                       }
                     })
@@ -345,16 +345,32 @@
       if (scenarios != undefined && scenarios.length > 0) {
         //$scope.scenarios = scenarios;
         var arr = [];
-        angular.forEach(scenarios, function (scenario) {
-          var myScenario = data.getScenariosinJsonFormat(scenario);
+        angular.forEach(scenarios, function (scenario,index) {
+          var myScenario = data.getScenariosinJsonFormat(scenario,index);
           arr.push(myScenario);
           /*dataService.currentActivity = activity;*/
         });
         data.currentActivity.scenarios = arr;
       }
       data.setDistractorsIndex(data.currentActivity);
+      data.setLinkToIndex(data.currentActivity);
+      data.setArrows();
     };
 
+    data.setLinkToIndex = function (activity) {
+        var scenariosIndexObj = {};
+        angular.forEach(activity.scenarios, function (scenario, index) {
+            scenariosIndexObj[scenario.objectId] = index;
+        });
+
+        angular.forEach(activity.scenarios, function (scenario) {
+            angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                if (distractor.linkToScenarioID) {
+                    distractor.linkTo = scenariosIndexObj[distractor.linkToScenarioID];
+                }
+            });
+        });
+    };
 
     data.myFuncFindingScenarioToPush = function(distractorLinkTo){
         for (var i = 0; i < data.currentActivity.scenarios.length; i++) {
@@ -385,7 +401,7 @@
 
 
 
-    data.getScenariosinJsonFormat=function(scenario) {
+    data.getScenariosinJsonFormat=function(scenario,index) {
 
       if (scenario) {
         var obj1 = {};
@@ -396,6 +412,7 @@
         obj1.parent = scenario.attributes.parent;
         obj1.original = scenario;
         obj1.objectId = scenario.id;
+        obj1.index = index;
 
 
         var arr = [];
@@ -442,7 +459,7 @@
         obj.text = distracor.attributes.text;
         obj.type = distracor.attributes.type;
         obj.linkTo = distracor.attributes.linkTo;
-
+        obj.linkToScenarioID = distracor.attributes.linkToScenarioID;
         obj.original = distracor;
         obj.objectId = distracor.id;
         obj.parent = distracor.attributes.parent;

@@ -7,13 +7,13 @@ angular.module('angularFrameworkApp')
 
 
       $scope.scenario = scenario;
-      $scope.myTempScenario = scenario;
+      $scope.myTempScenario = ({ videoId: $scope.scenario.videoId, name: $scope.scenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
       console.log("$scope.scenario: " + $scope.scenario);
       $scope.isEndMovie = false;
       $scope.isMovieEnded = false;
       $scope.videoDuration = 0;
       $scope.videDurationEnded_Paused = false;
-
+      var myCurrentPlaybackScenarioIndex = 0;
 
       var tag = document.createElement('script');
 
@@ -150,7 +150,7 @@ angular.module('angularFrameworkApp')
               if ($scope.scenario.interactions[0].type == "endMessege") {
                   var mySTR = $scope.scenario.interactions[0].endMessegeText;
                   //console.log("lilach mySTR: " + mySTR);
-                  player = mySTR;
+               //   player = mySTR;
                   //   console.log("lilach mySTR myEndMessageString: " + $scope.myEndMessageString);
                   var modalInstance = $modal.open({
                       windowClass: 'editModalClass',
@@ -186,9 +186,9 @@ angular.module('angularFrameworkApp')
     $scope.myCurrentmovIndex = 1;
     $scope.myTempScenarioDistractors = $scope.scenario.interactions[0].distractors;
 
-
+    
     $scope.gotoNextMovie = function (distractor, scenario) {
-
+        
           // $scope.$apply(function () {
           console.log("checking what IsEndMovie = " + $scope.isEndMovie);
           if ($scope.isEndMovie == true) {
@@ -209,34 +209,40 @@ angular.module('angularFrameworkApp')
               $scope.tempArrDistractors.push({ text: $scope.scenario.interactions[0].distractors[i].text, linkTo: $scope.scenario.interactions[0].distractors[i].linkTo });
           }
 
-          if ($scope.previewBreadcrumbsArray.length >= scenario.index + 1) {
+          //if ($scope.previewBreadcrumbsArray.length > scenario.index+1) {
               //בדיקה האם המערך של הפירורי לחם גדול יותר ויש עוד פירורי לחם אחרי הסצינה הנוכחית 
-              if (dataService.currentActivity.scenarios[distractor.linkTo].name == $scope.previewBreadcrumbsArray[scenario.index + 1].name) {
+          if (($scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex]) && (dataService.currentActivity.scenarios[distractor.linkTo].name == $scope.previewBreadcrumbsArray[myCurrentPlaybackScenarioIndex].name)) {
                   console.log("test - the same");
+                 
               }
               else {
                   console.log("test - not the same");
                   //לחצת על מסיח חדש שאינו הבא בתור בתרחיש המומלץ שכבר הוגדר
                   //נמחק את הפירורי הלחם הלא רלוונטיים מהמערך פירורי לחם
-                  $scope.previewBreadcrumbsArray.splice((scenario.index+1), ($scope.previewBreadcrumbsArray.length - (scenario.index +1)));
-
-                  $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
-                  var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
-                  previewBreadCrumbsNewArray.push(obj);
+                  $scope.previewBreadcrumbsArray.splice((scenario.index + 1), ($scope.previewBreadcrumbsArray.length - (myCurrentPlaybackScenarioIndex + 1)));
+                  myCurrentPlaybackScenarioIndex = $scope.previewBreadcrumbsArray.length - 1;
+                  //$scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
+                  //var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+                  //previewBreadCrumbsNewArray.push(obj);
               }
-          }
-          else {
-              //או האם מערך הפירורי לחם הסתיים ומכאן יש רק להוסיף עוד סצינות לתרחיש
-              //לחצת על מסיח חדש שאינו הבא בתור בתרחיש המומלץ שכבר הוגדר
               $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
               var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
               previewBreadCrumbsNewArray.push(obj);
-          }
 
-          $scope.myTempScenario = nextScenario;
+          //}
+          //else {
+          //    //או האם מערך הפירורי לחם הסתיים ומכאן יש רק להוסיף עוד סצינות לתרחיש
+          //    //לחצת על מסיח חדש שאינו הבא בתור בתרחיש המומלץ שכבר הוגדר
+          //    $scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text });
+          //    var obj = { videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: $scope.scenario.interactions[0].text };
+          //    previewBreadCrumbsNewArray.push(obj);
+          //}
+
+              $scope.myTempScenario = ({ videoId: nextScenario.videoId, name: nextScenario.name, distractors: $scope.tempArrDistractors, interactionText: nextScenario.interactions[0].text });
           //$scope.previewBreadcrumbsArray.push({ videoId: nextScenario.videoId, name: nextScenario.name });
           
-          //player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
+        //player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
+              myCurrentPlaybackScenarioIndex++;
           player.loadVideoById({
               'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId,
               'startSeconds': 5,
@@ -256,7 +262,8 @@ angular.module('angularFrameworkApp')
 
     $scope.breadCrumbClick = function (scenario, $index) {
         $scope.previewBreadcrumbsArray.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
-        previewBreadCrumbsNewArray.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
+        previewBreadCrumbsNewArray.splice(($index + 1), (previewBreadCrumbsNewArray.length - $index + 1));
+        myCurrentPlaybackScenarioIndex = $scope.previewBreadcrumbsArray.length - 1;
         //$scope.previewBreadcrumbsArray_IDs.splice(($index + 1), ($scope.previewBreadcrumbsArray.length - $index + 1));
         $scope.isEndMovie = false;
         $scope.myTempScenarioDistractors = previewBreadCrumbsNewArray[$index].distractors;

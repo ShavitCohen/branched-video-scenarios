@@ -71,6 +71,9 @@
                   //var Distractors = Parse.Object.extend("Distractors");
                   //var DistractorsIns = new Distractors();
                   dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);
+                  dataService.myCurrentDistractorClicked.original.set("linkToScenarioID", scenario.objectId);
+                  console.log("scenario.id = " + scenario.objectId + "taaammmm")
+                  //linkToScenarioID
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
                       },
@@ -79,6 +82,8 @@
                   });
 
                   dataService.myCurrentDistractorClicked.linkTo = scenario.index;
+                  dataService.myCurrentDistractorClicked.linkToScenarioID = scenario.objectId;
+
                   //calling arrows function
 
                   $('.myscene').removeClass('sceneHover');
@@ -147,6 +152,8 @@
                           if (distractor.original) { // this mean that this is not a new item
                               distractor.original.set("text", distractor.text);
                               distractor.original.set("linkTo", distractor.linkTo);
+                              distractor.original.set("linkToScenarioID", scenario.objectId);
+                              console.log("scenario top directive - setting -  distractor.original.set(linkToScenarioID, scenario.objectId) --> so scenario.objectId  === " + scenario.objectId);
                               //after setting the distractor with the new values we should save it
                               distractor.original.save(null, {
                                   success: function (distractor) {
@@ -183,6 +190,7 @@
                   var DistractorsIns = new Distractors();
                   DistractorsIns.set("text", distractor.text);
                   DistractorsIns.set("linkTo", distractor.linkTo);
+                  DistractorsIns.set("linkToScenarioID", distractor.linkToScenarioID);
                   DistractorsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות
                   parent.add("distractors", DistractorsIns); // הוספת הפעילות למערך הפעילויות
                   return DistractorsIns;
@@ -258,10 +266,36 @@
                 modalInstance.result.then(function (val) {
                   if (val == true) {
                     if (scenario.original) {
-                      var _scenario = scenario; // just to be able to refer it later
+                        var _scenario = scenario; // just to be able to refer it later
+
+
+
+                        for (var i = 0; i < dataService.currentActivity.scenarios.length; i++) {
+                        
+                            for (var j = 0; j < dataService.currentActivity.scenarios[i].interactions[0].distractors.length; j++) {
+                              
+                                if (dataService.currentActivity.scenarios[i].interactions[0].distractors[j].linkTo == scenario.index) {
+
+                                     dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.set("linkTo", null);
+                                    //after setting the distractor with the new values we should save it
+                                     dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.save(null, {
+                                        success: function (distractor) {
+                                            //The distractor have been updated.
+                                        },
+                                        error: function (obj, error) {
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
                       dataService.currentActivity.remove("scenarios", scenario.original); //removing the distractor form the instructions array
+               
                       dataService.currentActivity.save(null, {
-                        success: function (scenario) {
+                          success: function (scenario) {
+                              
+                       
                           $timeout(function(){
                             dataService.setCurrentActivity(dataService.currentActivity);
                           },100);

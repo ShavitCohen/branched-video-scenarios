@@ -80,7 +80,7 @@ angular.module('angularFrameworkApp')
       //כפתור הפלוס הירוק
     $scope.addAnswer = function () {
         debugger;
-      var newAnswer = { text: "", linkTo: null, original:null };
+        var newAnswer = { text: "", linkTo: null, linkToScenarioID: "", original:null };
       $scope.scenarioInteraction.distractors.push(newAnswer);
 
    
