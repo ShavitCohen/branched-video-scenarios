@@ -6,8 +6,11 @@ angular.module('angularFrameworkApp')
     $scope.dataService = dataService;
     var Scenario;
     var myMovIndex = 0;
-    $scope.selectedActivity_Scnarios_Dataarr1 = [];
+    var player;
+
+
     init();
+
     function init() {
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       //debugger;
@@ -30,13 +33,13 @@ angular.module('angularFrameworkApp')
           //$scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId;
 
         $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId + "?start=" + 5 + '&end=' + 7 + '&version=3';
-        
+
         $scope.loadTheYoutubeUrl(scenario.videoId);
         $scope.myscenarioName = scenario.name;
         $scope.myStartTime = scenario.startTime;
         $scope.myEndTime = scenario.endTime;
         $scope.movModalBTN = "עדכן";
-        
+
         //  $scope.editExistMov();
 
       }
@@ -59,15 +62,18 @@ angular.module('angularFrameworkApp')
 
 
 
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId + "?start=" + 5 + '&end=' + 7 + '&version=3';
+ /*   var tag = document.createElement('script');
+    var videoId= "";
+    if(scenario){
+      videoId = scenario.videoId;
+    }
+    /!*tag.src = "https://www.youtube.com/iframe_api?wmode=opaque " + videoId  + "?start=" + 5 + '&end=' + 7 + '&version=3';*!/
     var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);*/
 
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
-    var player;
+
 
     $scope.loadTheYoutubeUrl = function (myUrlID) {
         console.log("called the loadTheYoutubeUrl function...");
@@ -83,7 +89,7 @@ angular.module('angularFrameworkApp')
       //    },
       //    events: {
       //        'onReady': onPlayerReady
-              
+
       //    }
       //});
 

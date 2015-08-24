@@ -270,6 +270,9 @@
      */
     data.setDistractorsIndex = function(currentActivity){
       var globalDistractorIndex = 0;
+      if (!currentActivity.scenarios) {
+        currentActivity.scenarios = [];
+      }
       for (var i = 0; i < currentActivity.scenarios.length; i++) {
         var myScenario = currentActivity.scenarios[i];
         if (myScenario.interactions[0]) {
@@ -283,6 +286,7 @@
           }
         }
       }
+
       data.allDistractorsCount = globalDistractorIndex;
     };
 
