@@ -1,0 +1,32 @@
+﻿<div class="lilachTraying editorActivitiesNgGridBackgroung">
+
+
+        <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
+            <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
+                הגדר תרחיש מומלץ
+                <i class="glyphicon glyphicon-pencil"></i>
+            </div>
+            <h1 class="ActivityNameH1">{{activityName}}</h1>
+
+            <ul class="mainMoviesDiv">
+                <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
+                    <scenario-top scenario="scenario"></scenario-top>
+                </li>
+                <li class="addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)"></li>
+            </ul>
+
+
+
+        </div>
+
+        <div class="bottomDivElements" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
+            <ul class="mainMoviesDiv">
+                <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
+                    <scenario-bottom scenario="scenario"></scenario-bottom>
+                </li>
+            </ul>
+        </div>
+
+
+        <ul></ul>
+    </div>

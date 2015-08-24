@@ -1,0 +1,1024 @@
+/*@font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
+ @font-face {
+    font-family: OpenSansHebrew-Regular;
+    src: url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+}
+
+
+.gridStyle {
+
+ font-family: 'OpenSansHebrew-Regular';
+  
+  border: 1px solid rgb(212,212,212);
+  width: 975px;
+  height:470px;
+  background-color:#eeeeee;
+  margin-top:10px;
+
+/*align-content:center;*/
+}
+
+.ngRow.even {
+    background-color:white;
+}  
+
+.ngRow.selected  {
+background-color:white;
+}
+
+.gridBtnCss {
+margin-right:15px;
+margin-top:5px;
+
+/*background-image:url('../img/delete_ico.png');*/
+/*height:19px;
+width:17px;*/
+}
+.gridBtnCss:hover {
+opacity:0.8;
+}
+
+.deleteHeader {
+background-color:white;
+color:#58585A;
+font-style:normal;
+}
+.dateCell {
+    color:#007F88;
+text-align:center;
+}
+.codeCell {
+text-align:center;
+color:#007F88;
+
+}
+.nameCell {
+
+color:#007F88;
+}
+.nameCell:hover {
+text-decoration:underline;
+}
+
+.recomendedScenariosBtn
+          {
+/*float:left;*/
+background-color:#D1AD01;
+color:white;
+    margin-top: 20px;
+    margin-right: 1060px;
+    position: absolute;
+   }
+.recomendedScenariosBtn:hover 
+{
+color:white;
+}
+.scenarioPlayEditTrashBtn
+{
+display:inline-block;
+background-color:white;
+border:1px solid #DCB601;
+margin-top:-10px;
+  border-radius: 100px 100px 100px 100px;
+  width:28px;
+  height:28px;
+
+ }
+
+.bottomDivElements {
+margin-top:308px;
+
+}
+.scenarioPlayEditTrashBtn:hover {
+     /*display:block;*/
+background-color:#DCB601;
+border:1px white solid;
+}
+.btnGroup
+{
+    display: block;
+    cursor: pointer;
+    margin-top: -38px;
+    position: absolute;
+    margin-right: -37px;
+
+ }
+.scenarioPlayEditTrashGlyph {
+   margin-right: 7px;
+  margin-top: 5px;
+  color: #DCB601;
+    display:block;
+
+ 
+} 
+.scenarioPlayEditTrashGlyph:hover {
+      display:block;
+
+    color:white;
+    }
+.backgroundArrowsGrey {
+opacity:0.2;
+}
+
+.testorangebackarrow {
+opacity:1;
+color:orange;
+background-color:orange;
+}
+.regularOpacityArrows {
+    opacity:1;
+}
+.sceneHover
+{
+height:800px;
+ }
+
+.sceneHover .sceneHoverChilds_border
+{
+    /*yellow*/
+border:2px solid #DCB601;
+color:#DCB601;
+opacity:1;
+
+}
+
+.hoverYellowSceneElements {
+    border:2px solid #DCB601;
+color:#DCB601;
+background-color:#DCB601;
+opacity:1;
+}
+
+.hoverYellowSceneElements_GreenDistractors{
+    border:2px solid #08828B !important;
+    background-color:red;
+    color:red;
+opacity:1;
+
+}
+
+.hoverOnDistractorGrey:before {
+    /*border:2px solid pink !important;
+    background-color:blue;*/
+       content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+      position:absolute;
+      margin-top:-2px;
+     
+}
+.hoverOnDistractorGrey {
+        background-color:#58585A !important;
+        border:2px solid #58585A !important;
+     
+    
+}
+.clickedGreenDistractorToLink:before {
+         content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+      position:absolute;
+      margin-top:-2px;
+
+}
+.clickedGreenDistractorToLink {
+          background-color:#08828B !important;
+        border:2px solid #08828B !important;
+}
+.sceneHover .sceneHoverChildscolor
+{
+/*border:2px solid #DCB601;*/
+border:2px solid #08828B;
+background-color:white;
+opacity:1;
+
+
+}
+.sceneHover .sceneHoverChildsBorderLine
+{
+/*border:2px solid yellow;*/
+border:2px solid #08828B;
+opacity:1;
+}
+
+.bigLinkBtn_hover {
+    background-color:#08828B;
+    color:white;
+}
+
+.bigLinkBtn_hover:hover {
+    border:2px solid #DCB601;
+    border-spacing:150px;
+    border-radius: 150px;
+}
+
+.ourModal .modal-header{
+         
+    background-color:#58585A;
+    
+          }
+.ourModal .modal-title {
+font-size:20px;
+    color:white;
+}
+.ourModal .modal-dialog {
+width:500px;
+}
+.addOptionBTN {
+background-color:#58585A;
+color:white;
+margin-right:15px;
+}
+.addOptionBTN:hover {
+background-color:#69696B;
+color:white;
+}
+.myUserQueAndDistractorCollapseClass
+          {
+
+              margin-top:70px;
+          }
+.saveInteractionBTN {
+
+    background-color:#DCB601;
+    color:white;
+}
+.saveInteractionBTN:hover {
+
+    background-color:#E9C001;
+    color:white;
+}
+.saveMovBTN {
+
+    background-color:#DCB601;
+    color:white;
+}
+.saveMovBTN:hover {
+
+    background-color:#E9C001;
+    color:white;
+}
+.loadMovBTN {
+    text-align:center;
+    background-color:#DCB601;
+    color:white;
+}
+.loadMovBTN:hover {
+
+    background-color:#E9C001;
+    color:white;
+}
+
+/*.BreadCrumb_a {
+    color:blue;
+    display:inline-block;
+     
+}
+.BreadCrumb_a:hover {
+    
+    text-decoration:underline;
+     
+}*/
+#myBreadCrumbsHolder li {
+    display:inline-block;
+    cursor:pointer;
+      color:blue;
+}
+    #myBreadCrumbsHolder li:hover {
+    color:blue;
+    text-decoration:underline;
+    }
+#myBreadCrumbsHolder li:after {
+            content: ">";
+        }
+#myBreadCrumbsHolder li:last-child:after {
+            content: none;
+        }
+.myUserQueAndDistractorCollapsePreviewModalClass {
+    margin-top: 50px;
+margin-right: -36px;
+
+}
+
+.myUserDistractorClass{
+              background-color:black;
+               color: white;
+               display:block;
+               text-align:right;
+               margin-top:5px;
+               width:200px;
+              
+          }
+
+.myUserDistractorPrevireModalClass {
+      background-color:green;
+               color: white;
+               display:block;
+               text-align:right;
+               margin-top:5px;
+               width:180px;
+
+}
+.myUserDistractorClass:hover {
+background-color:green;
+
+color: white;
+}
+h3 {
+color:white;
+padding-right:40px;
+}
+#questionBack  {
+    background-image: url('../images/interactionDiv.png');
+  width: 290px;
+  margin-top: -565px;
+  /* z-index: 9; */
+  position: absolute;
+  height: 560px;
+ 
+ font-family:'Open Sans Hebrew';
+
+}
+#questionBackPreviewModal {
+
+     background-image: url('../images/interactionDiv.png');
+width: 182px;
+margin-top: -220px;
+/* z-index: 9; */
+position: absolute;
+height: 201px;
+font-family: 'Open Sans Hebrew';
+margin-right: 89px;
+}
+.arrow{
+    height:5px;
+    background-color:black;
+    /*position:absolute;*/
+    margin-top:30px;
+}
+
+
+.isLeftArrow .arrowHead {
+               width:18px;
+    height:23px;
+background-image: url('../images/ArrowLeftDir.png');
+
+    position: absolute;
+ margin-top: -158px
+
+}
+.isRightArrow .arrowHead {
+          width:18px;
+    height:23px;
+background-image: url('../images/ArrowRightDir.png');
+
+    position: absolute;
+  margin-top: -158px
+
+}
+.isSelfArrow .arrowHead {
+          width:27px;
+    height:35px;
+background-image: url('../images/ArrowSelftDir.png');
+
+  position: absolute;
+margin-top: -161px;
+    margin-right: -41px !important
+}
+
+.myOpeningTextClass {
+display:none;}
+/*.isFirstScenario .myOpeningTextClass  {
+display:block;
+}*/
+
+.arrow {
+    height: 2px;
+    background-color: #007F88;
+    position: absolute;
+    margin-top: -147px;
+}
+
+.glyphicon.glyphicon-one-fine-full-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-full-dot:before {
+    content:"\25cf";
+    font-size: 3em;
+}
+.glyphicon.glyphicon-one-fine-empty-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-empty-dot:before {
+    content:"\25cb";
+    font-size: 3em;
+}
+.myeditMovGlyphicon {
+  font-size: 15px;
+  margin-right: 89px;
+
+
+}
+.myDeleyeglyphicon {
+          /*background-image: url('../images/delete_ico.png');*/
+    /*width: 17px;
+    height: 19px;*/
+    /*background-repeat:no-repeat;*/
+    cursor:pointer;
+    font-size:20px;
+      margin-top: 8px;
+  margin-right: 5px;
+}
+.myDeleyeglyphicon:hover {
+color:#58585A;
+}
+.myYoutubeIfreamPreview
+{
+border:1px #58585A solid;
+        margin-right:89px;
+             width:400px;
+    height:200px;
+}
+.startPageContainer {
+      background-image: url('../images/decisions-making.jpg');
+      width:1349px;
+      height:800px;
+     
+}
+.loginPopupBackground {
+
+      width: 260px;
+    height: 300px;
+    background-color: #2F2F2D;
+    margin-right: 516px;
+    margin-top: 55px;
+}
+.loginPopupHeadlineColor {
+
+color:white;
+     padding-right: 61px;
+    padding-top: 18px;
+}
+.loginPopupH2HeadlineColor {
+    color:white;
+    font-size:16px;
+}
+.loginPopupH3HeadlineColor {
+
+color:white;
+font-size:14px;
+margin-right: -37px;
+}
+.loginPopupTextInputBack {
+       background-color: #606160;
+    border: none;
+    box-shadow: none;
+    height: 36px;
+    width: 212px;
+        margin-top: -8px;
+        color:white;
+}
+.loginPopupSignUp {
+
+color:white;
+font-size:14px;
+margin-top: -27px;
+    margin-right: 67px;
+    cursor:pointer;
+
+}
+    .loginPopupSignUp:hover {
+    text-decoration:underline;
+    }
+.loginPopupBackgroundAlign {
+
+margin-right:20px;
+}
+ul .loginBtn {
+    display:inline-block;
+}
+.loginBtn {
+background-color:#5BBDA0;
+color:white;
+width: 90px;
+margin-top:5px;
+
+}
+    .loginBtn:hover {
+        background-color:#48B594;
+       color:white;
+    }
+.signUpBtn {
+    background-color:#5BBDA0;
+color:white;
+width: 90px;
+margin-top:5px;
+}
+.editorActivitiesNgGridBackgroung {
+background-color:white;
+}
+.editorActivitiesH1Headline {
+font-size:25px;
+color:#585859;
+margin-top: 0px;
+    padding-top: 10px;
+}
+.addNewActivityBtn {
+    background-color:#CBA801;
+    color:white;
+
+}
+.addNewActivityBtn:hover {
+    background-color:#DCB601;
+        color:white;
+
+}
+.editorActivitiesNgGridAlign {
+margin-right:180px;
+}
+
+.ActivityNameH1 {
+
+color:#585859;
+font-size:25px;
+margin-right:50px;
+}
+
+.modal-header > popupCoustomHeader {
+  background-color:red;
+}
+/*.ScenarioBTNClass:hover {
+    float:left;
+      background-image: url('../images/addScenarioBTNH.png');
+    width: 120px;
+    height: 110px;
+}*/
+.playBtnClass {
+    /*background-image:url('../images/playPriv.png');*/
+    background-color:black;
+    opacity:0.4;
+        width:100px;
+    height:53px;
+    position: absolute;
+  margin-top: -53px;
+  cursor:pointer;
+}
+.playBtnClass:hover {
+    /*background-image: url('../images/playPriv_H.png');*/
+    background-color:black;
+    opacity:0.4;
+    width: 100px;
+    height: 53px;
+}
+.myPlayCircleGlyphiconClass {
+color:white;
+font-size:40px;
+  margin-right: 40px;
+  margin-top: 25px;
+}
+.myPlayCircleGlyphiconClass:hover {
+color:#e5e5e5;
+}
+.scenarioHolder {
+width:120px;
+
+  overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    border: 2px solid transparent; 
+}
+.youtubeoHolder
+{
+background-color:#58585A;
+color:white;
+padding-right:5px;
+ cursor:pointer;
+    width:100px;
+    height: 30px;
+    padding-top: 5px;
+      font-size: 15px;
+}
+.youtubeoHolderForUserSummary
+{
+background-color:#58585A;
+color:white;
+padding-right:5px;
+ cursor:pointer;
+    width:200px;
+    height: 30px;
+    padding-top: 5px;
+      font-size: 15px;
+}
+.youtubeoHolderuserSummary {
+    display:block;
+    margin-top:17px;
+
+
+}
+.userSummaryRowsLi {
+
+       display:block;
+}
+.youtubeoHolderTEXT {
+   text-overflow: ellipsis; 
+    white-space: nowrap; 
+        overflow: hidden;
+    width:90px;
+    position:absolute;
+
+}
+.youtubeoHolderTEXTForUserSmmary {
+   text-overflow: ellipsis; 
+    white-space: nowrap; 
+        overflow: hidden;
+    width:190px;
+    position:absolute;
+
+}
+.userScenariosList {
+   display: inline-block;
+
+position: absolute;
+margin-right: 300px;
+
+margin-top: -18px;
+}
+
+.editorScenariosList {
+     display:inline-block;
+     position: absolute;
+}
+.userSummaryRows {
+
+
+display: inline-block;
+position: absolute;
+
+}
+.userSummaryRowsLi div {
+
+width: 500px;
+height: 100px;
+margin-top: 17px;
+}
+.editorUserDifferences {
+background-color: red;
+width: 500px;
+height: 100px;
+margin-top: 17px;
+
+}
+.circle{
+    /*width:14px;
+    height:14px;
+    background-repeat:no-repeat;
+    background-image:url('../images/distractorBTN.png');*/
+    position:absolute;
+    z-index:2;
+      /*margin-top: 20px;*/
+
+  /*font-size:20px;*/
+  margin-right: -19px;
+    margin-top: -156px;
+}
+
+.isTrue .circle{
+    /*background-image:url('../images/distractorFullBTN.png');
+background-repeat:no-repeat;
+ width:14px;
+    height:14px;
+ border-style:none;*/
+ position:absolute;
+    z-index:2;
+     /*font-size:20px;*/
+     color:#E9C001;
+margin-right: -9px;
+margin-top: 21px;
+}
+  .tooltip.customClass {
+                color: #880000;
+                background-color: #ffff66;
+                box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                z-index:9999999;
+                position:absolute;
+            }
+
+ .distractorDot {
+
+ 	background-color: white;
+     border:2px solid #58585A;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.addingLinkGlyphicon {
+        background-color:#58585A;
+
+}
+.addingLinkGlyphicon:before{
+    content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+
+    font-size:14px;
+    margin-top:2px;
+    margin-right:1px;
+   
+      display:inline-block;
+}
+
+.distractorClickToLinkNewStyle {
+     background-color:#08828B;
+}
+.distractorClickToLinkNewStyle:before {
+ 
+    background-color:#08828B;
+       content:"\e144";
+    color:white;
+      font-family: "Glyphicons Halflings";
+
+    font-size:14px;
+    margin-top:2px;
+    margin-right:2px;
+      display:inline-block;
+
+}
+/*.distractorDot:before{
+  content:"\2b";
+  font-family:"Glyphicons Halflings";
+  line-height:1;
+  color:blue;
+  margin:10px;
+  display:inline-block;
+}*/
+
+/*.glyphicon.glyphicon-one-fine-dot:before .changeGluphiconLinkClass {
+  font-size: 70px;
+}*/
+
+
+.myAnswersSpanClass {
+    border:1px solid #A8A8B7;
+    background-color:white;
+    position:absolute;
+    width:90px;
+   white-space: nowrap; 
+  height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  margin-top: 21px;
+  cursor: pointer;
+  margin-right: 8px;
+  padding-right:5px;
+}
+.myMovTumb {
+margin-right:36px;
+cursor:pointer;
+z-index:3;
+  position:absolute;
+  margin-top:-13px;
+
+}
+.myPlusGlyphicon {
+background-color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  padding-right: 11px;
+ margin-right: 25px;
+    margin-top: 155px;
+  display: block;
+  border: 2px solid;
+  border-radius: 30px 30px 30px 30px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 44;
+}
+.myPlusGlyphicon:hover {
+    
+    color:#DCB601;
+    border:2px solid #DCB601;
+
+}
+.myPancilGlyphicon {
+background-color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  padding-right: 11px;
+  margin-right: 34px;
+  margin-top: 218px;
+  display: block;
+  border: 2px solid;
+  border-radius: 30px 30px 30px 30px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+}
+
+.isChangeColor.myPancilGlyphicon {
+    
+    color:#DCB601;
+    border:#DCB601 2px solid;
+    margin-right:50px;
+    }
+.myLinkGlyphicon {
+  /*background-color: black; TAMAR*/
+  color: white;
+  background-color:#08828B;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  padding-right: 11px;
+margin-right: 25px;
+    margin-top: 155px;
+  display: block;
+  border: 2px solid black;
+  border-radius: 30px 30px 30px 30px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 44;
+}
+
+.myBiglinkBtn_GlyphiconGroup:before {
+z-index:22;
+position:absolute;
+}
+
+.myAnswersLinkSpanClass {
+        cursor:pointer;
+           position:absolute;
+    z-index:3;
+      border:1px solid #A8A8B7;
+    background-color:white;
+   margin-right: 97px;
+  margin-top: 21px;
+       background-image:url('../images/linkBTN.png');
+        width: 22px;
+  height: 22px;
+   background-repeat:no-repeat;
+  
+}
+  
+.myDistractorBTNClass {
+cursor:pointer;
+list-style:none;
+margin-right:20px;
+ margin-top:5px;
+ 
+}
+
+.myDistractorPollClass {
+width: 2px;
+    background-color: #A8A8B7;
+    position: absolute;
+    margin-top: -130px;
+    margin-right: 50px;
+    z-index: 1;
+}
+.isChangeColor.myDistractorPollClass {
+  width: 2px;
+  background-color: #DCB601;
+  position: absolute;
+  margin-top: -45px;
+  margin-right: -2px;
+  z-index: 0;
+
+}
+/*.lilachTraying {
+
+background-color:red;
+
+}*/
+.freezLine {
+background-color:white;
+  /*padding-top: -19px;*/
+  height: 109px;
+white-space: nowrap;
+width:1432px;
+position:absolute;
+top:200px;
+z-index:3;
+margin-top:-149px;
+
+
+}
+.mainMoviesDiv> li {
+    display:inline-block;
+    /*background-color:blue;*/
+    width:100px;
+    margin-right:10px;
+    
+
+}
+
+.addScenarioBTNClass {
+    /*float:left;*/
+      background-image: url('../images/addScenarioBTN.png');
+    width: 100px;
+    height: 80px;
+     cursor:pointer;
+     margin-top:0px;
+     z-index:33333;
+     position:absolute;
+}
+    .addScenarioBTNClass:hover {
+          background-image: url('../images/addScenarioBTNH.png');
+ 
+    }
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+font-family:'Open Sans Hebrew';
+  padding: 0;
+ /*direction:rtl;*/
+ 
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+ /*Responsive: Portrait tablets and up*/ 
+@media screen and (min-width: 768px) {
+  .container {
+
+    /*max-width: 730px;*/
+    width:100%;
+        /*white-space: nowrap;*/
+
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,17 @@
+﻿<div class="modal-content">
+    <div class="modal-header"><h1 ng-model="newActivityHeader">{{newActivityHeader}}</h1></div>
+    <div class="modal-body">
+        <div>
+       <label class="col-md-12">שם התרחיש:</label>
+       <input id="activityName" type="text" ng-model="myActivityName"/>
+            </div>
+        <div>
+       <label class="col-md-12">תיאור:</label>
+       <input id="activityDescription" type="text" ng-model="myActivityDescription"/>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn btn-danger" ng-click="closeNewActivityPopUP(1)">שמור והמשך</div>
+        <div class="btn btn-danger" ng-click="closeNewActivityPopUP(2)">בטל</div>
+    </div>
+    </div>
