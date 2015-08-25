@@ -47,7 +47,7 @@
           width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="btn gridBtnCss" ng-click="grid.appScope.createNewActivity(2)" >'
+          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="btn gridBtnCss" ng-click="grid.appScope.createNewActivity(2,row)" >'
 
         },
         {
@@ -69,7 +69,7 @@
           width: "383",
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
-          displayName: 'שם התרחיש',
+          displayName: 'שם הפעילות',
           cellTemplate:'<div class="ui-grid-cell-contents" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
         },
         {
@@ -134,15 +134,13 @@
     }
 
 
-    $scope.createNewActivity = function (modalNewEditState)
+    $scope.createNewActivity = function (modalNewEditState,row)
     {
         console.log("modalNewEditState = " + modalNewEditState);
         //adding modal to open pop up for configuring new activity
         var modalInstance = $modal.open({
-            windowClass: 'editModalClass',
-            //template:,
-            //templateUrl: 'views/openingMessageModal.html',
-            //controller: "userOpeningMessageCtrl",
+            windowClass: 'editModalClass ourModal',
+          
             templateUrl: 'views/editorNewActivityModal.html',
             controller: "editorNewActivityCtrl",
             resolve: {
@@ -151,17 +149,19 @@
                 },
                 modalNewEditState: function () {
                     return modalNewEditState;
+                },
+                myCurrentRow: function () {
+
+
+                    return row;
+
                 }
             }
 
         });
     }
 
-    //$scope.gotoActivity = function (activity) {
-    //  console.log("lilach: " + activity);
-    //  dataService.currentActivity = activity;
-    //  $location.path("/EditorPage");
-    //}
+
 
     $scope.loadById = function (row) {
       console.log("row.entity :"+row.entity);

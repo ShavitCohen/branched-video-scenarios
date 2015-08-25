@@ -10,27 +10,7 @@
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
 
-              //scope.isyoutubeHolderHoverEnterFunc = function () {
-              //    scope.isyoutubeHolderHover = true;
-              //}
-              //scope.isyoutubeHolderHoverLeaveFunc = function () {
-              //    scope.isyoutubeHolderHover = false;
-              //}
-
-
-              //scope.removeGreenClass = function () {
-              //    $('.distractorDot').hover(function ()
-              //    {
-              //        if (dataService.is_DistractorClicked2Link == false) {
-              //        $(this).removeClass('sceneHoverChildscolor') , $(this).addClass('addingLinkGlyphicon')} });
-              //}
-
-              //scope.addGreenClass = function () {
-              //    $('.distractorDot').hover(function ()
-              //    { $(this).addClass('sceneHoverChildscolor'), $(this).removeClass('addingLinkGlyphicon') });
-              //}
-
-
+             
 
 
               scope.isShowDistractors = false;
@@ -72,7 +52,6 @@
                   //var DistractorsIns = new Distractors();
                   dataService.myCurrentDistractorClicked.original.set("linkTo", scenario.index);
                   dataService.myCurrentDistractorClicked.original.set("linkToScenarioID", scenario.objectId);
-                  console.log("scenario.id = " + scenario.objectId + "taaammmm")
                   //linkToScenarioID
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {

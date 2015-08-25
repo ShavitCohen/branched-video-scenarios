@@ -32,7 +32,7 @@ angular.module('angularFrameworkApp')
           //orig value:
           //$scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId;
 
-        $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId + "?start=" + 5 + '&end=' + 7 + '&version=3';
+        $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " +scenario.videoId;
 
         $scope.loadTheYoutubeUrl(scenario.videoId);
         $scope.myscenarioName = scenario.name;
@@ -101,7 +101,7 @@ angular.module('angularFrameworkApp')
           },
           events: {
               onReady: function () {
-                  player.loadVideoById({ 'videoId': scenario.videoId, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
+                  player.loadVideoById({ 'videoId': myUrlID, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
 
               }
           }

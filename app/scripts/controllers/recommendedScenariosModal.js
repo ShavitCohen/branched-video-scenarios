@@ -2,6 +2,18 @@
   .controller('recommendedScenariosModalCtrl', function ($scope, dataService, $modal, $modalInstance,state) {
       //$scope.scenario = scenario;
       $scope.theActivityHeadline = dataService.currentActivity.attributes.name;
+      if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
+
+          $scope.recommendedMessegeTestStartorEdit = "התחל";
+          $scope.recommendedScenarioModalBodyText = true;
+      }
+      else {
+
+
+          $scope.recommendedMessegeTestStartorEdit = "ערוך";
+          $scope.recommendedScenarioModalBodyText = false;
+
+      }
 
       $scope.settingRecommendedScenarios = function () {
       //הגדרת תרחיש מומלץ

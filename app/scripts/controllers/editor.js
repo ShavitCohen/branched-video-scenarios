@@ -10,7 +10,7 @@
     $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
     function init() {
-
+       
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       Activity = Parse.Object.extend("Activity");
       Scenario = Parse.Object.extend("Scenario");
