@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .controller('editorNewActivityCtrl', function ($scope, $modal, dataService, $modalInstance, modalNewEditState, myCurrentRow, $timeout) {
+  .controller('editorNewActivityCtrl', function ($scope, $modal, dataService, $modalInstance, modalNewEditState, myCurrentRow, $timeout, $location) {
 
 
       if (modalNewEditState == 1) {
@@ -9,7 +9,7 @@
       }
       else if (modalNewEditState == 2) {
           console.log("this is an edit request for existing activity...");
-          
+
 
           for (var i = 0; i < dataService.allActivity.length; i++) {
 
@@ -18,22 +18,22 @@
 
               }
           }
-        
+
           $scope.myActivityName = dataService.currentActivityForEditInGrid.attributes.name;
           $scope.newActivityHeader = "עריכת פעילות " + $scope.myActivityName;
 
           $scope.myActivityDescription = dataService.currentActivityForEditInGrid.attributes.description;
-          
+
 
       }
 
       var Activity = Parse.Object.extend("Activity");
       var activityIns;
       activityIns = new Activity();
-      
 
 
-      $scope.closeNewActivityPopUP = function (myBtnState) { 
+
+      $scope.closeNewActivityPopUP = function (myBtnState) {
           if (myBtnState == 1) {
               if (modalNewEditState == 1) {
                   activityIns.set("name", $scope.myActivityName);
@@ -47,8 +47,8 @@
                   Parse.User.current().save(null, { // שמירה של הפעילות
                       success: function (user) {
                           //getActivities();
-                          console.log("success creating & saving new activity");
-                          $modalInstance.close();
+                        $location.path("/EditorPage/" + activityIns.id);
+                        $modalInstance.close();
                       },
                       error: function (err) {
 
@@ -79,13 +79,13 @@
 
               }
           }
-             
+
           else if (myBtnState == 2) {
               console.log("cancelling changes - no save actions are required...");
 
 
           }
-          
+
 
       }
 
