@@ -76,7 +76,7 @@ angular.module('angularFrameworkApp')
 
 
     $scope.loadTheYoutubeUrl = function (myUrlID) {
-        console.log("called the loadTheYoutubeUrl function...");
+      console.log("called the loadTheYoutubeUrl function...");
       //player = new YT.Player('player', {
       //  //height: '200',
       //  //width: '400',
@@ -93,177 +93,173 @@ angular.module('angularFrameworkApp')
       //    }
       //});
 
-
-      player = new YT.Player('player', {
+      if (!player) {
+        player = new YT.Player('player', {
           playerVars: {
-              'rel': 0,
-              'enablejsapi': 1
+            'rel': 0,
+            'enablejsapi': 1
           },
           events: {
-              onReady: function () {
-                  player.loadVideoById({ 'videoId': myUrlID, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
+            onReady: function () {
+              player.loadVideoById({
+                'videoId': myUrlID,
+                'startSeconds': $scope.myStartTime,
+                'endSeconds': $scope.myEndTime
+              });
 
-              }
+            }
           }
-      });
+        });
+      }
+      else {
+        player.loadVideoById({'videoId': myUrlID, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime});
+      }
 
-    }
 
-    $scope.myPlayerChangeFunc = function (scenario) {
+      $scope.myPlayerChangeFunc = function (scenario) {
         console.log("$scope.myUrlID = " + scenario.videoId);
         //player.loadVideoById(scenario.videoId, $scope.myStartTime, $scope.myEndTime);
-        player.loadVideoById({ 'videoId': scenario.videoId, 'startSeconds': $scope.myStartTime, 'endSeconds': $scope.myEndTime });
+        player.loadVideoById({
+          'videoId': scenario.videoId,
+          'startSeconds': $scope.myStartTime,
+          'endSeconds': $scope.myEndTime
+        });
 
 
-       // player.stopVideo();
-       // $scope.loadTheYoutubeUrl(scenario.videoId);
-    }
+        // player.stopVideo();
+        // $scope.loadTheYoutubeUrl(scenario.videoId);
+      }
 
 
-
-    function onPlayerReady(event) {
+      function onPlayerReady(event) {
         $scope.myVideoDuration = player.getDuration();
         console.log("duration of video = " + player.getDuration());
         //$scope.myStartTime = player.playerVars.startSeconds;
         //$scope.myEndTime = player.playerVars.endSeconds;
-    };
+      };
 
 
-    //$scope.updateMovStartEndTime = function (myChangeRequestID) {
-    //    if (myChangeRequestID == 1) {
-    //        //request for updating start time
-    //        console.log("request to update start time..");
-    //       // $scope.myStartTime = 0;
-    //        //?start=840&end=1240&autoplay=1
-    //    }
-    //    else if (myChangeRequestID == 2) {
-    //        //request for updating end time
-    //        console.log("request to update end time..");
-    //       // $scope.myEndTime = $scope.myVideoDuration;
-    //    }
-    //};
+      //$scope.updateMovStartEndTime = function (myChangeRequestID) {
+      //    if (myChangeRequestID == 1) {
+      //        //request for updating start time
+      //        console.log("request to update start time..");
+      //       // $scope.myStartTime = 0;
+      //        //?start=840&end=1240&autoplay=1
+      //    }
+      //    else if (myChangeRequestID == 2) {
+      //        //request for updating end time
+      //        console.log("request to update end time..");
+      //       // $scope.myEndTime = $scope.myVideoDuration;
+      //    }
+      //};
 
-    /**
-     * This function creates an interaction and assign it to the parent
-     * THe last parameter "successFunctionAfterCreation" should be a function
-     * which will triggered once the creation was successful
-     * @param parent
-     * @param type
-     * @param text
-     * @param successFunctionAfterCreation
-     */
-    function addFirstInteraction(parent,type,text,successFunctionAfterCreation){
-      var Interactions = Parse.Object.extend("Interactions");
-      var InteractionsIns = new Interactions();
-      InteractionsIns.set("type", "singleSelection");
-      InteractionsIns.set("endMessegeText", "");
-      InteractionsIns.set("text", "");
-      InteractionsIns.set("openingMessege", "");
-      InteractionsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות
+      /**
+       * This function creates an interaction and assign it to the parent
+       * THe last parameter "successFunctionAfterCreation" should be a function
+       * which will triggered once the creation was successful
+       * @param parent
+       * @param type
+       * @param text
+       * @param successFunctionAfterCreation
+       */
+      function addFirstInteraction(parent, type, text, successFunctionAfterCreation) {
+        var Interactions = Parse.Object.extend("Interactions");
+        var InteractionsIns = new Interactions();
+        InteractionsIns.set("type", "singleSelection");
+        InteractionsIns.set("endMessegeText", "");
+        InteractionsIns.set("text", "");
+        InteractionsIns.set("openingMessege", "");
+        InteractionsIns.set("parent", parent); // חשוב להגדרת האבא של הפעילות
 
-      parent.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
-      parent.save(null, { // שמירה של הפעילות
-        success: function (scenario) {
+        parent.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
+        parent.save(null, { // שמירה של הפעילות
+          success: function (scenario) {
 
-          successFunctionAfterCreation(scenario);
+            successFunctionAfterCreation(scenario);
 
+
+          }
+
+
+        });
+      }
+
+      $scope.closeModal = function () {
+        $modalInstance.close();
+
+      }
+      $scope.addToJason = function () {
+        var scenarioIns = new Scenario();
+
+        if (state == "new") {
+          scenarioIns.set("name", $scope.myscenarioName);
+          scenarioIns.set("movIndex", myMovIndex);
+          scenarioIns.set("firstScenario", true); // חשוב להגדרת האבא של הפעילות
+          scenarioIns.set("videoId", $scope.myUrlID);
+          scenarioIns.set("startTime", $scope.myStartTime);
+          scenarioIns.set("endTime", $scope.myEndTime);
+          scenarioIns.set("openingMessege", "");
+          scenarioIns.set("parent", dataService.currentActivity); // חשוב להגדרת האבא של הפעילות
+
+          myMovIndex++;
+
+          dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
+          dataService.currentActivity.save(null, { // שמירה של הפעילות
+            success: function (activity) {
+
+              //We are adding the first interaction
+              addFirstInteraction(scenarioIns, "singleSelection", "", function (scenario) {
+                //The first instance creation was successful, and we are adding the video to the array
+                var myScenario = dataService.getScenariosinJsonFormat(scenario);
+                dataService.currentActivity.attributes.scenarios.push(scenario);
+                dataService.currentActivity.scenarios.push(myScenario);
+                $modalInstance.close(myScenario);
+              });
+
+
+            },
+            error: function (obj, error) {
+
+            }
+
+          });
 
 
         }
 
 
-
-      });
-    }
-    $scope.closeModal = function () {
-        $modalInstance.close();
-
-    }
-    $scope.addToJason = function () {
-      var scenarioIns = new Scenario();
-
-      if (state == "new")
-      {
-        scenarioIns.set("name", $scope.myscenarioName);
-        scenarioIns.set("movIndex", myMovIndex);
-        scenarioIns.set("firstScenario", true); // חשוב להגדרת האבא של הפעילות
-        scenarioIns.set("videoId", $scope.myUrlID);
-        scenarioIns.set("startTime", $scope.myStartTime);
-        scenarioIns.set("endTime", $scope.myEndTime);
-        scenarioIns.set("openingMessege", "");
-        scenarioIns.set("parent", dataService.currentActivity); // חשוב להגדרת האבא של הפעילות
-
-        myMovIndex++;
-
-        dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
-        dataService.currentActivity.save(null, { // שמירה של הפעילות
-          success: function (activity) {
-
-            //We are adding the first interaction
-            addFirstInteraction(scenarioIns,"singleSelection","",function(scenario){
-              //The first instance creation was successful, and we are adding the video to the array
-              var myScenario = dataService.getScenariosinJsonFormat(scenario);
-              dataService.currentActivity.attributes.scenarios.push(scenario);
-              dataService.currentActivity.scenarios.push(myScenario);
-              $modalInstance.close(myScenario);
-            });
-
-
-          },
-          error: function (obj, error) {
-
-          }
-
-        });
-
-
-
-      }
-
-
-      else if (state == "edit")
-      {
-          $scope.myUrl = "https://www.youtube.com/iframe_api?wmode=opaque " + scenario.videoId;
+        else if (state == "edit") {
           var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
           var match = $scope.myUrl.match(regExp);
           if (match && match[7].length == 11) {
-              console.log("videoId = " + match[7]);
-              $scope.myUrlID = match[7];
-              //$scope.myUrlID = $scope.youtube_parser($scope.myUrl);
-              scenario.videoId = $scope.myUrlID;
-
-              console.log("video id = " + $scope.myUrlID);
-
-
-              ///כל זה לא עובד לא יודעות למה//
-              //מנסות לעדכן סהכ את הכתובת החדשה וזהו///
-              //אולי לא צריך בכלל לעשות את זה//
+            $scope.myUrlID = match[7];
+            scenario.videoId = $scope.myUrlID;
           }
-        scenario.name = $scope.myscenarioName;
-        scenario.startTime = $scope.myStartTime;
-        scenario.endTime = $scope.myEndTime;
+          scenario.name = $scope.myscenarioName;
+          scenario.startTime = $scope.myStartTime;
+          scenario.endTime = $scope.myEndTime;
 
 
-        scenario.original.set("name", scenario.name);
-        scenario.original.set("videoId", scenario.videoId);
-        scenario.original.set("startTime", scenario.startTime);
-        scenario.original.set("endTime", scenario.endTime);
+          scenario.original.set("name", scenario.name);
+          scenario.original.set("videoId", scenario.videoId);
+          scenario.original.set("startTime", scenario.startTime);
+          scenario.original.set("endTime", scenario.endTime);
 
-        scenario.original.save(null,{
-          success:function(savedScenario){
-            //scenario have been successfully saved to Parse
-            // only then, we close the modal
-            $modalInstance.close();
-          },
-          error:function(err){
+          scenario.original.save(null, {
+            success: function (savedScenario) {
+              //scenario have been successfully saved to Parse
+              // only then, we close the modal
+              $modalInstance.close();
+            },
+            error: function (err) {
 
-          }
-        });
+            }
+          });
+
+
+        }
 
 
       }
-
-
     }
-
   });
