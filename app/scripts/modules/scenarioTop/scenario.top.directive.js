@@ -10,7 +10,7 @@
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
 
-             
+
 
 
               scope.isShowDistractors = false;
@@ -238,6 +238,18 @@
                           },
                           activityScenario: function () {
                               return angular.copy(dataService.currentActivity);
+                          },
+                          headerText:function(){
+                            return "מחיקת תרחיש";
+                          },
+                          bodyText:function(){
+                            return "האם אתה בטוח שתרצה למחוק את התרחיש ואת התוכון שהוגדר עבורו ?";
+                          },
+                          okButtonText:function(){
+                            return "מחק";
+                          },
+                          cancelButtonText:function(){
+                            return "בטל";
                           }
                       }
                   });
@@ -250,9 +262,9 @@
 
 
                         for (var i = 0; i < dataService.currentActivity.scenarios.length; i++) {
-                        
+
                             for (var j = 0; j < dataService.currentActivity.scenarios[i].interactions[0].distractors.length; j++) {
-                              
+
                                 if (dataService.currentActivity.scenarios[i].interactions[0].distractors[j].linkTo == scenario.index) {
 
                                      dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.set("linkTo", null);
@@ -270,11 +282,11 @@
                             }
                         }
                       dataService.currentActivity.remove("scenarios", scenario.original); //removing the distractor form the instructions array
-               
+
                       dataService.currentActivity.save(null, {
                           success: function (scenario) {
-                              
-                       
+
+
                           $timeout(function(){
                             dataService.setCurrentActivity(dataService.currentActivity);
                           },100);
