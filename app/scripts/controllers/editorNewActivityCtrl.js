@@ -1,6 +1,6 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('editorNewActivityCtrl', function ($scope, $modal, dataService, $modalInstance, modalNewEditState, myCurrentRow, $timeout, $location) {
-
+      $scope.myCurrentRow = myCurrentRow;
 
       if (modalNewEditState == 1) {
           console.log("this is a new Activity request...");
@@ -58,17 +58,13 @@
               else if (modalNewEditState == 2) {
 
                   dataService.currentActivityForEditInGrid.set("name", $scope.myActivityName);
-
                   dataService.currentActivityForEditInGrid.set("description", $scope.myActivityDescription);
-
 
                   dataService.currentActivityForEditInGrid.save(null, { // שמירה של הפעילות
                       success: function (user) {
                           //getActivities();
-                          $timeout(function () {
-                             //צריך להוסיף כאן משהו כדי שהטבלה תתרענן אוטומטית
-
-                          }, 100);
+                          $scope.myCurrentRow.entity.name = $scope.myActivityName;
+                          $scope.myCurrentRow.entity.description = $scope.myActivityDescription;
                           $modalInstance.close();
                       },
                       error: function (err) {
