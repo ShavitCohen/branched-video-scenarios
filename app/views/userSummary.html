@@ -1,15 +1,15 @@
 <div class="row marketing">
 
 
-    <div>
+    <div class="myUserSummaryAlign">
+        
        <ol class="userSummaryRows">
 
          <li class="userSummaryRowsLi" ng-repeat="row in dataService.scenarioLengthforSummary"><div class="rowDiv_{{$index}}" ng-class="checkingeditorUserDifferences($index)"></div></li>
 
         </ol>
         
-           
-
+   
             <div class="userSummaryR">
         <h3 class="userSummaryH">Your Scenario</h3>
                 <ol class="userScenariosList">
@@ -19,7 +19,7 @@
 
                         </div>
                         <img ng-src="http://img.youtube.com/vi/{{userScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
-                        <i class="glyphicon glyphicon-arrow-down"></i>
+                        <i class="userSummaryArrow" ng-show="!$last"></i>
 
                     </li>
 
@@ -35,7 +35,7 @@
 
                         </div>
                         <img ng-src="http://img.youtube.com/vi/{{editorScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
-                        <i class="glyphicon glyphicon-arrow-down"></i>
+                        <i class="userSummaryArrow" ng-show="!$last"></i>
 
                     </li>
 

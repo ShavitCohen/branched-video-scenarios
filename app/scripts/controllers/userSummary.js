@@ -8,7 +8,7 @@ angular.module('angularFrameworkApp')
       {
 
 
-var myParseRecommendedScenarios;
+        var myParseRecommendedScenarios;
           var myUserClickesScenarios;
 
           if (dataService.currentActivity.attributes.recommendedScenarios.length >= $index)

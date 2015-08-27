@@ -9,11 +9,26 @@
 color:black;
 font-size:20px;
 }
+.myUserSummaryAlign {
+    margin-top: 20px;
+    margin-right: 90px;
+}
 .userSummaryR {
-    margin-top:10px;
+      margin-top: 20px;
+    /*background-color: pink;*/
+    width: 300px;
+  
+    margin-right: 563px;
+
+    position:absolute;
 }
 .userSummaryL {
-    margin-top:10px;
+    
+    width: 258px;
+    /*background-color: blue;*/
+   
+    margin-right: 241px;
+      position:absolute;
 }
 .gridStyle {
 
@@ -316,15 +331,18 @@ margin-right: -35px;
 }
 .UsermyUserDistractorClass {
 
-   background-color: green;
+  background-color: green;
     color: white;
-    display: block;
+    /* display: block; */
     text-align: right;
-    margin-top: 5px;
-    width: 222px;
+    margin-top: 9px;
+    width: 232px;
     height: 45px;
-    padding-top: 13px;
+    padding-top: 2px;
+    white-space: normal;
 }
+.myUserQueClass h3
+{ white-space: normal;}
 .myUserDistractorClass{
               background-color:black;
                color: white;
@@ -355,15 +373,16 @@ padding-right:40px;
 }
 .UserquestionBack {
   background-image: url('../images/interactionDiv.png');
-  width: 290px;
+  width: 320px;
     margin-top: -578px;
     margin-right: 130px;
   position: absolute;
-  height: 560px;
+  height: 572px;
  
  font-family:'Open Sans Hebrew';
 
 }
+
 #questionBack  {
     background-image: url('../images/interactionDiv.png');
   width: 290px;
@@ -760,11 +779,8 @@ padding-right:5px;
 }
 .userScenariosList {
    display: inline-block;
-
 position: absolute;
-margin-right: 300px;
 
-margin-top: -18px;
 }
 
 .editorScenariosList {
@@ -774,23 +790,43 @@ margin-top: -18px;
 .userSummaryRows {
 
 
-display: inline-block;
-position: absolute;
+/*display: inline-block;
+position: absolute;*/
 
 }
 .userSummaryRowsLi div {
 
-width: 500px;
-height: 100px;
-margin-top: 17px;
 }
 .editorUserDifferences {
-background-color: red;
-width: 500px;
-height: 100px;
-margin-top: 17px;
+width: 540px;
+    height: 117px;
+  margin-top: 232px;
+    position: absolute;
+    margin-right: 232px;
+    border: 9px red solid;
 
 }
+.userSummaryArrow:before
+
+{    
+     content:"\e094";
+    margin-top: 5px;
+    margin-right: 94px;
+        font-size: 25px;
+         font-family: "Glyphicons Halflings";
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .circle{
     /*width:14px;
     height:14px;
@@ -838,6 +874,7 @@ margin-top: 21px;
         background-color:#58585A;
 
 }
+
 .addingLinkGlyphicon:before{
     content:"\e144";
     color:white;
