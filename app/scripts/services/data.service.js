@@ -274,7 +274,8 @@
         currentActivity.scenarios = [];
       }
       for (var i = 0; i < currentActivity.scenarios.length; i++) {
-        var myScenario = currentActivity.scenarios[i];
+          var myScenario = currentActivity.scenarios[i];
+          console.log("myScenario.objectId :"+myScenario.objectId);
         if (myScenario.interactions[0]) {
           myScenario.index = i;
           if (myScenario.interactions[0].distractors[0] && myScenario.interactions[0].distractors.length > 0) {
@@ -364,11 +365,18 @@
         });
 
         angular.forEach(activity.scenarios, function (scenario) {
-            angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-                if (distractor.linkToScenarioID) {
-                    distractor.linkTo = scenariosIndexObj[distractor.linkToScenarioID];
-                }
-            });
+            if (scenario.interactions[0].type == "singleSelection") {
+                console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
+                angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                    if (distractor.linkToScenarioID) {
+                        distractor.linkTo = scenariosIndexObj[distractor.linkToScenarioID];
+                    }
+                });
+            }
+            else {
+                console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
+
+            }
         });
     };
 

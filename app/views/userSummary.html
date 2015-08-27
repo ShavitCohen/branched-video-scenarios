@@ -8,21 +8,10 @@
 
         </ol>
         
-               <ol class="editorScenariosList">
-                    <li class="youtubeoHolderuserSummary" ng-repeat="editorScenario in dataService.currentActivity.attributes.recommendedScenarios">
-                        <div class="youtubeoHolderForUserSummary" >
-                            <div class="youtubeoHolderTEXTForUserSmmary">{{editorScenario.name}}</div>
+           
 
-                        </div>
-                        <img ng-src="http://img.youtube.com/vi/{{editorScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
-                        <i class="glyphicon glyphicon-arrow-down"></i>
-
-                    </li>
-
-                </ol>
-
-                <br />
-
+            <div class="userSummaryR">
+        <h3 class="userSummaryH">Your Scenario</h3>
                 <ol class="userScenariosList">
                     <li class="youtubeoHolderuserSummary" ng-repeat="userScenario in dataService.userClickedScenariosSummary">
                         <div class="youtubeoHolderForUserSummary" >
@@ -35,6 +24,23 @@
                     </li>
 
                 </ol>
+                 </div>
+              <br />
+        <div class="userSummaryL">
+        <h3 class="userSummaryH">Best Scenario</h3>
+            <ol class="editorScenariosList">
+                    <li class="youtubeoHolderuserSummary" ng-repeat="editorScenario in dataService.currentActivity.attributes.recommendedScenarios">
+                        <div class="youtubeoHolderForUserSummary" >
+                            <div class="youtubeoHolderTEXTForUserSmmary">{{editorScenario.name}}</div>
+
+                        </div>
+                        <img ng-src="http://img.youtube.com/vi/{{editorScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
+                        <i class="glyphicon glyphicon-arrow-down"></i>
+
+                    </li>
+
+                </ol>
+            </div>
     </div>
     
 

@@ -4,7 +4,17 @@
     src: url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 }
 
+.userSummaryH {
 
+color:black;
+font-size:20px;
+}
+.userSummaryR {
+    margin-top:10px;
+}
+.userSummaryL {
+    margin-top:10px;
+}
 .gridStyle {
 
  font-family: 'OpenSansHebrew-Regular';

@@ -266,6 +266,7 @@
                             for (var j = 0; j < dataService.currentActivity.scenarios[i].interactions[0].distractors.length; j++) {
 
                                 if (dataService.currentActivity.scenarios[i].interactions[0].distractors[j].linkTo == scenario.index) {
+                                    dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.set("linkToScenarioID", null);
 
                                      dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.set("linkTo", null);
                                     //after setting the distractor with the new values we should save it
