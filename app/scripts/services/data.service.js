@@ -213,12 +213,15 @@
     ];
     data.setArrows = function(){
              angular.forEach(data.currentActivity.scenarios, function(scenario){
-                  angular.forEach(scenario.interactions[0].distractors, function(distractor){
-                      if(distractor.linkTo != undefined && distractor.linkTo!=null){
-                            data.linkInitDistrctors(distractor,scenario);
-                      }
-                    })
-                })
+                 if(scenario.interactions[0]){
+                    angular.forEach(scenario.interactions[0].distractors, function(distractor){
+                        if(distractor.linkTo != undefined && distractor.linkTo!=null){
+                              data.linkInitDistrctors(distractor,scenario);
+                        }
+                      })
+                 }
+              })
+
           };
     data.linkInitDistrctors = function (distractor, scenario) {
 
@@ -333,9 +336,11 @@
       data.isBtnState = false;
 
       angular.forEach(data.currentActivity.scenarios, function (scenario) {
-        angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-          distractor.clickedGreenDistractorToLink = false;
-        })
+        if(scenario.interactions[0]){
+          angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+            distractor.clickedGreenDistractorToLink = false;
+          })
+        }
       })
     };
 
@@ -365,17 +370,19 @@
         });
 
         angular.forEach(activity.scenarios, function (scenario) {
+          if(scenario.interactions[0]){
             if (scenario.interactions[0].type == "singleSelection") {
-                console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
-                angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-                    if (distractor.linkToScenarioID) {
-                        distractor.linkTo = scenariosIndexObj[distractor.linkToScenarioID];
-                    }
-                });
-            }
-            else {
-                console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
+                  console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
+                  angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                      if (distractor.linkToScenarioID) {
+                          distractor.linkTo = scenariosIndexObj[distractor.linkToScenarioID];
+                      }
+                  });
+              }
+              else {
+                  console.log("scenario.interactions[0].type: " + scenario.interactions[0].type);
 
+              }
             }
         });
     };
