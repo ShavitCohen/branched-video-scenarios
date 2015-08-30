@@ -38,6 +38,7 @@
                   console.log(dataService.currentActivity.attributes.recommendedScenarios.length);
               }
 
+              dataService.myRedBack = false;
               $location.path("/userSummary");
 
 

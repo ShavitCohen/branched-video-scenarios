@@ -3,15 +3,16 @@
 
     <div class="myUserSummaryAlign">
         
-       <ol class="userSummaryRows">
+       <!--<ol class="userSummaryRows">
 
-         <li class="userSummaryRowsLi" ng-repeat="row in dataService.scenarioLengthforSummary"><div class="rowDiv_{{$index}}" ng-class="checkingeditorUserDifferences($index)"></div></li>
+         <li class="userSummaryRowsLi" ng-repeat="row in dataService.scenarioLengthforSummary"><div ng-style="{'margin-top':210 + ($index * 10)}" class="rowDiv_{{$index}}" ng-class="checkingeditorUserDifferences($index)"></div></li>
 
-        </ol>
+        </ol>-->
+        <div id="userSummaryRowsLi" ng-style="{'margin-top': 80+(errorIndex * 153)}" ng-class="checkingeditorUserDifferences()"></div>
         
    
             <div class="userSummaryR">
-        <h3 class="userSummaryH">Your Scenario</h3>
+         <div class="userSummaryH">{{YourScenario}} התרחיש שלך</div>
                 <ol class="userScenariosList">
                     <li class="youtubeoHolderuserSummary" ng-repeat="userScenario in dataService.userClickedScenariosSummary">
                         <div class="youtubeoHolderForUserSummary" >
