@@ -1,4 +1,4 @@
-'use strict';
+ï»¿'use strict';
 
 
 angular.module('angularFrameworkApp')
@@ -6,8 +6,8 @@ angular.module('angularFrameworkApp')
       $scope.dataService = dataService;
       $scope.errorIndex = Number(0);
       $scope.additionalHeadererrorIndex = Number(0);
-      $scope.YourScenario = String("äúøçéù ùìê");
-
+      $scope.YourScenario = String("×”×ª×¨×—×™×© ×”×ž×•×ž×œ×¥");
+      
       $scope.checkingeditorUserDifferences = function (errorIndex)
       {
 
@@ -31,31 +31,38 @@ angular.module('angularFrameworkApp')
 
            //   }
 
-              if (myParseRecommendedScenarios != myUserClickesScenarios) {
-                  console.log("myParseRecommendedScenarios name == myUserClickesScenarios name  --> " + myParseRecommendedScenarios + "   &  " + myUserClickesScenarios);
+                  if (myParseRecommendedScenarios != myUserClickesScenarios) {
+                      console.log("myParseRecommendedScenarios name == myUserClickesScenarios name  --> " + myParseRecommendedScenarios + "   &  " + myUserClickesScenarios);
 
-                  if (dataService.myRedBack == false) {
-                      $('#userSummaryRowsLi').addClass('editorUserDifferences');
-                      console.log("adding class...");
-                      console.log("i = " + i);
-                      if (i == 1) {
-                          $scope.additionalHeadererrorIndex = 60;
-                          
+                      if (dataService.myRedBack == false) {
+                          dataService.myCounter++;
+                          console.log("found an error...");
+                          $('#userSummaryRowsLi').addClass('editorUserDifferences');
+                          console.log("adding class...");
+                          console.log("i = " + i);
+                          if (i == 1) {
+                              $scope.additionalHeadererrorIndex = 60;
+
+                          }
+                          else {
+                              $scope.additionalHeadererrorIndex = 0;
+                          }
+
+                          $scope.errorIndex = Number(i);
+                          console.log("$scope.errorIndex = " + $scope.errorIndex);
+                          console.log("$scope.additionalHeadererrorIndex = " + $scope.additionalHeadererrorIndex);
+                          dataService.myRedBack = true;
                       }
-                      else {
-                          $scope.additionalHeadererrorIndex = 0;
-                      }
-                      
-                      $scope.errorIndex = Number(i);
-                      console.log("$scope.errorIndex = " + $scope.errorIndex);
-                      console.log("$scope.additionalHeadererrorIndex = " + $scope.additionalHeadererrorIndex);
-                      dataService.myRedBack = true;
+
                   }
 
-              }
+             
           }
          
-
+          if (dataService.myCounter == 0) {
+              console.log("no errors were found");
+              $scope.eq = "=";
+          }
           //errorIndex
 
           

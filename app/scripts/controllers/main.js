@@ -17,7 +17,7 @@ angular.module('angularFrameworkApp')
       var Scenario;
       var Interactions;
       var Distractors;
-
+      var timerId;
 
       function init() {
           dataService.userClickedScenariosSummary = [];
@@ -58,12 +58,13 @@ angular.module('angularFrameworkApp')
               width: '980',
               videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
               playerVars: {
-                  'rel': 0,
+                  
                   'enablejsapi': 1
               },
               events: {
                   'onReady': $scope.onPlayerReady,
-                  'onStateChange': $scope.onPlayerStateChange
+                  'onStateChange': $scope.onPlayerStateChange,
+                  'onytplayerStateChange': $scope.onPlayerStateChange
               }
           });
 
@@ -105,16 +106,39 @@ angular.module('angularFrameworkApp')
           player.playVideo();
       };
 
-
+     var done = false;
 
       $scope.onPlayerStateChange = function(event) {
           //if (event.data == YT.PlayerState.PLAYING && !done) {
           //    getDurationFunc();
           //}
+          $scope.videoDuration = player.getDuration();
+
+          $scope.videoDuration = $scope.videoDuration - player.getCurrentTime();
+          console.log("$scope.videoDuration :" + $scope.videoDuration);
+          console.log("player.getCurrentTime() :" + player.getCurrentTime());
+
+          if (event.data == YT.PlayerState.PLAYING)
+          {
+              clearTimeout(timerId);
+              timerId=setTimeout(pauseVideo, ($scope.videoDuration - 0.1) * 1000);
+              done = true;
+          }
 
           if (event.data == YT.PlayerState.ENDED) {
+       
+
+
+
+          }
+      }
+      function pauseVideo()
+      {
+         
+              console.log("pause");
+              player.pauseVideo();
               console.log("movie ended");
-              //pauseVideo();
+          //pauseVideo();
               if ($scope.scenario.attributes.interactions[0].attributes.type == "endMessege") {
                   var mySTR = $scope.scenario.attributes.interactions[0].attributes.endMessegeText;
                   //console.log("lilach mySTR: " + mySTR);
@@ -155,12 +179,10 @@ angular.module('angularFrameworkApp')
                   });
 
               }
-
-
-
-          }
+          
+         
+         
       }
-
 
 
 

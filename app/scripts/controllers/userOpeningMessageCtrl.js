@@ -39,6 +39,7 @@
               }
 
               dataService.myRedBack = false;
+              dataService.myCounter = 0;
               $location.path("/userSummary");
 
 

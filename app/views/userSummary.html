@@ -1,4 +1,4 @@
-<div class="row marketing">
+﻿<div class="row marketing">
 
 
     <div class="myUserSummaryAlign">
@@ -12,7 +12,7 @@
         
    
             <div class="userSummaryR">
-         <div class="userSummaryH">{{YourScenario}} ������ ���</div>
+         <h3 class="userSummaryH">תרחיש שלך</h3>
                 <ol class="userScenariosList">
                     <li class="youtubeoHolderuserSummary" ng-repeat="userScenario in dataService.userClickedScenariosSummary">
                         <div class="youtubeoHolderForUserSummary" >
@@ -28,7 +28,7 @@
                  </div>
               <br />
         <div class="userSummaryL">
-        <h3 class="userSummaryH">Best Scenario</h3>
+        <h3 class="userSummaryH2">התרחיש המומלץ&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{eq}}</h3>
             <ol class="editorScenariosList">
                     <li class="youtubeoHolderuserSummary" ng-repeat="editorScenario in dataService.currentActivity.attributes.recommendedScenarios">
                         <div class="youtubeoHolderForUserSummary" >
