@@ -123,7 +123,27 @@ margin-top:-10px;
   height:28px;
 
  }
+.userSummaryPlayBtnGliph {
 
+color:white;
+}
+.userSummaryPlayBtn
+{
+margin-right: 70px;
+position: absolute;
+margin-top: -58px;
+
+ }
+ .youtubeoHolderuserSummary:last-child .userSummaryPlayBtn {
+    
+    margin-right: -132px;
+position: absolute;
+margin-top: 18px;
+    
+    }
+.userSummaryPlayBtn:hover {
+    
+}
 .bottomDivElements {
 margin-top:308px;
 
@@ -772,6 +792,7 @@ padding-right:5px;
        /*margin-top:-370px;*/
        background-color:red;
        margin-right: 272px;
+       opacity: 0.6;
 }
 
 

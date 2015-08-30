@@ -2,7 +2,7 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('userSummaryCtrl', function ($scope, dataService) {
+  .controller('userSummaryCtrl', function ($scope, dataService, $modal) {
       $scope.dataService = dataService;
       $scope.errorIndex = Number(0);
       $scope.additionalHeadererrorIndex = Number(0);
@@ -69,7 +69,20 @@ angular.module('angularFrameworkApp')
 
       }
 
+      $scope.openMovDialog = function (scenario) {
 
+          var modalInstance = $modal.open({
+              windowClass: 'editModalClass ourModal',
+              templateUrl: 'views/userSummaryPreview.html',
+              controller: "userSummaryPreviewCtrl",
+              resolve: {
+                  scenario: function () {
+                      return scenario;
+                  }
+              }
+          });
+
+      }
    
 
   });

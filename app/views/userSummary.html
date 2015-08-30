@@ -20,6 +20,8 @@
 
                         </div>
                         <img ng-src="http://img.youtube.com/vi/{{userScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
+                  <div class="btn btn-danger userSummaryPlayBtn" ng-click="openMovDialog(userScenario)"><i class="glyphicon glyphicon-play userSummaryPlayBtnGliph"></i></div>
+
                         <i class="userSummaryArrow" ng-show="!$last"></i>
 
                     </li>
@@ -36,6 +38,8 @@
 
                         </div>
                         <img ng-src="http://img.youtube.com/vi/{{editorScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
+                    <div class="btn btn-danger userSummaryPlayBtn" ng-click="openMovDialog(editorScenario)"><i class="glyphicon glyphicon-play userSummaryPlayBtnGliph"></i></div>
+
                         <i class="userSummaryArrow" ng-show="!$last"></i>
 
                     </li>

@@ -18,6 +18,7 @@ angular.module('angularFrameworkApp')
       var Interactions;
       var Distractors;
       var timerId;
+      $scope.stateEnd = false;
 
       function init() {
           dataService.userClickedScenariosSummary = [];
@@ -104,6 +105,8 @@ angular.module('angularFrameworkApp')
 
       $scope.startPlayingTest = function () {
           player.playVideo();
+          $scope.stateEnd = false;
+
       };
 
      var done = false;
@@ -125,8 +128,16 @@ angular.module('angularFrameworkApp')
               done = true;
           }
 
-          if (event.data == YT.PlayerState.ENDED) {
-       
+
+          else if (event.data == YT.PlayerState.ENDED  &&  $scope.stateEnd == false) {
+              console.log("123movie ended");
+              console.log("$scope.videoDuration " + $scope.videoDuration);
+
+              var videoDuration2 = Number(player.getCurrentTime() - 1);
+
+              console.log("videoDuration2 " + videoDuration2);
+              player.seekTo(videoDuration2);
+              $scope.stateEnd = true;
 
 
 
@@ -137,7 +148,6 @@ angular.module('angularFrameworkApp')
          
               console.log("pause");
               player.pauseVideo();
-              console.log("movie ended");
           //pauseVideo();
               if ($scope.scenario.attributes.interactions[0].attributes.type == "endMessege") {
                   var mySTR = $scope.scenario.attributes.interactions[0].attributes.endMessegeText;
@@ -203,6 +213,7 @@ angular.module('angularFrameworkApp')
           dataService.userClickedScenariosSummary.push({ 'name': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.name, 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
 
           player.loadVideoById({ 'videoId': dataService.currentActivity.attributes.scenarios[distractor.attributes.linkTo].attributes.videoId });
+          $scope.stateEnd = false;
 
 
       };

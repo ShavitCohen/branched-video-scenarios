@@ -59,6 +59,7 @@ angular
              templateUrl: 'views/userSummary.html',
              controller: "userSummaryCtrl"
          })
+         
       .otherwise({
         redirectTo: '/'
       });
