@@ -1,34 +1,18 @@
 ﻿<div class="row marketing">
 
-
-    <div class="myUserSummaryAlign">
+    <div class="userSummaryContainerDiv">
+           <div class="myUserSummaryAlign">
+               <h1>להלן התרחיש שביצעת במהלך הפעילות <span style="font-weight: bold; color: crimson">"{{dataService.currentActivity.attributes.name}}"</span><br/>אל מול התרחיש המומלץ</h1>
         
        <!--<ol class="userSummaryRows">
 
          <li class="userSummaryRowsLi" ng-repeat="row in dataService.scenarioLengthforSummary"><div ng-style="{'margin-top':210 + ($index * 10)}" class="rowDiv_{{$index}}" ng-class="checkingeditorUserDifferences($index)"></div></li>
 
         </ol>-->
-        <div id="userSummaryRowsLi" ng-style="{'margin-top': 80+(errorIndex * 153)}" ng-class="checkingeditorUserDifferences()"></div>
+        <div ng-show="scenariosAreTheSame" id="userSummaryRowsLi" ng-style="{'margin-top': 80+(errorIndex * 153)}" ng-class="checkingeditorUserDifferences()"></div>
         
    
-            <div class="userSummaryR">
-         <h3 class="userSummaryH">תרחיש שלך</h3>
-                <ol class="userScenariosList">
-                    <li class="youtubeoHolderuserSummary" ng-repeat="userScenario in dataService.userClickedScenariosSummary">
-                        <div class="youtubeoHolderForUserSummary" >
-                            <div class="youtubeoHolderTEXTForUserSmmary">{{userScenario.name}}</div>
-
-                        </div>
-                        <img ng-src="http://img.youtube.com/vi/{{userScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
-                  <div class="btn btn-danger userSummaryPlayBtn" ng-click="openMovDialog(userScenario)"><i class="glyphicon glyphicon-play userSummaryPlayBtnGliph"></i></div>
-
-                        <i class="userSummaryArrow" ng-show="!$last"></i>
-
-                    </li>
-
-                </ol>
-                 </div>
-              <br />
+           
         <div class="userSummaryL">
         <h3 class="userSummaryH2">התרחיש המומלץ&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{eq}}</h3>
             <ol class="editorScenariosList">
@@ -46,7 +30,30 @@
 
                 </ol>
             </div>
+
+               <br />
+
+                <div class="userSummaryR">
+         <h3 class="userSummaryH">תרחיש שלך</h3>
+                <ol class="userScenariosList">
+                    <li class="youtubeoHolderuserSummary" ng-repeat="userScenario in dataService.userClickedScenariosSummary">
+                        <div class="youtubeoHolderForUserSummary" >
+                            <div class="youtubeoHolderTEXTForUserSmmary">{{userScenario.name}}</div>
+
+                        </div>
+                        <img ng-src="http://img.youtube.com/vi/{{userScenario.videoId}}/1.jpg" alt="" height="70"  width="200"/>
+                  <div class="btn btn-danger userSummaryPlayBtn" ng-click="openMovDialog(userScenario)"><i class="glyphicon glyphicon-play userSummaryPlayBtnGliph"></i></div>
+
+                        <i class="userSummaryArrow" ng-show="!$last"></i>
+
+                    </li>
+
+                </ol>
+                 </div>
+             
     </div>
+    </div>
+ 
     
 
 </div>

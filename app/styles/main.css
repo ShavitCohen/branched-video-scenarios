@@ -18,17 +18,14 @@ font-size: 20px;
 text-align: center;
 width: 334px;
 }
-.myUserSummaryAlign {
-    margin-top: 0px;
-    margin-right: 90px;
-}
+
 .userSummaryR {
-      margin-top: 20px;
+     
     /*background-color: pink;*/
     width: 300px;
   
-    margin-right: 563px;
-
+    margin-right: 330px;
+    
     position:absolute;
 }
 .userSummaryL {
@@ -36,8 +33,9 @@ width: 334px;
     /*width: 258px;*/
     /*background-color: blue;*/
    
-    margin-right: 241px;
+    margin-right: 40px;
       position:absolute;
+      margin-top:20px;
 }
 .gridStyle {
 
@@ -365,10 +363,12 @@ margin-right: -35px;
     /* display: block; */
     text-align: right;
     margin-top: 9px;
-    width: 232px;
-    height: 45px;
-    padding-top: 2px;
+    width: 274px;
+    /*height: 45px;*/
+    padding-top: 7px;
     white-space: normal;
+    font-size:15pt;
+    padding-bottom:7px;
 }
 .myUserQueClass h3
 { white-space: normal;}
@@ -379,7 +379,7 @@ margin-right: -35px;
                text-align:right;
                margin-top:5px;
                width:200px;
-              
+              font-size:20pt;
           }
 
 .myUserDistractorPrevireModalClass {
@@ -402,15 +402,35 @@ padding-right:40px;
 }
 .UserquestionBack {
   background-image: url('../images/interactionDiv.png');
-  width: 320px;
+  width: 355px;
     margin-top: -578px;
-    margin-right: 130px;
+    /*margin-right: 130px;*/
   position: absolute;
   height: 572px;
  
  font-family:'Open Sans Hebrew';
 
 }
+
+
+
+
+
+.userSummaryContainerDiv {
+    width: 800px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.myUserSummaryAlign {
+    width: 663px;
+    height: auto;
+    margin: 0px auto;
+        /*margin-top: 0px;
+    margin-right: 90px;*/
+}
+
+
 
 #questionBack  {
     background-image: url('../images/interactionDiv.png');
@@ -530,7 +550,7 @@ color:#58585A;
 .myYoutubeIfreamUser {
 
     border:1px #58585A solid;
-        margin-right:130px;
+        /*margin-right:130px;*/
              width:1020px;
     height:580px;
 }
@@ -543,6 +563,8 @@ border:1px #58585A solid;
 }
 .startPageContainerBody {
    direction:rtl;
+   margin:0px auto;
+   width:1024px;
 }
 .startPageContainer {
       background-image: url('../images/decisions-making.jpg');
@@ -638,6 +660,80 @@ margin-top:-10px;
   margin-right: 500px;
   margin-top: 149px;
 }
+
+    .userStartPasgeAlign h1 {
+        margin-right: -450px;
+background-color: black;
+width: 440px;
+height: 90px;
+font-size: 50pt;
+color: white;
+padding: 5px 15px;
+    }
+
+    .userStartPasgeAlign h2 {
+        margin-right: -450px;
+background-color: black;
+width: 440px;
+height: 50px;
+font-size: 27pt;
+color: white;
+padding: 3px 15px;
+margin-top: -18px;
+    }
+
+.myOpeningDiv {
+background-color: lightgray;
+width: 547px;
+height: 70px;
+margin-top: 50px;
+margin-right: -60px;
+}
+
+.myOpeningDiv .myOpeningDivSecondLayer{
+padding-top:7px;
+padding-right:10px;
+}
+
+.myOpeningDiv h3{
+position: absolute;
+margin-right: -39px;
+display: inline-block;
+margin-top: 10px;
+font-size: 24pt;
+color: black;
+
+}
+
+.myOpeningDiv input {
+height: 55px;
+font-size: 20pt;
+border: 1px solid rgb(169, 169, 169);
+margin-right: 156px;
+}
+
+.myOpeningDiv button {
+height: 53px;
+margin-top: -9px;
+width: 150px;
+font-family: OpenSansHebrew-Regular;
+font-size: 20pt;
+text-align: center;
+padding: 0px 0px!important;
+color: white;
+background-color: black;
+border: none;
+margin-right: 5px;
+
+}
+
+.myOpeningDiv button:hover {
+
+background-color: #58585A;
+
+
+}
+
 .userEnterBTN {
 
         margin-top: -6px;
@@ -655,6 +751,20 @@ margin-top: -27px;
     cursor:pointer;
 
 }
+
+
+.myContainerMainDiv {
+width: 1018px;
+margin: 0 auto;
+/* position: absolute; */
+
+
+}
+
+
+
+
+
     .loginPopupSignUp:hover {
     text-decoration:underline;
     }
@@ -791,10 +901,19 @@ padding-right:5px;
        display:block;
        /*margin-top:-370px;*/
        background-color:red;
-       margin-right: 272px;
+       margin-right: 54px;
        opacity: 0.6;
 }
 
+
+
+.myUserSummaryAlign h1 {
+font-size: 25pt;
+color: #58585A;
+text-align: center;
+width: 800px;
+margin: 50px -70px 10px 50px;
+}
 
 .youtubeoHolderTEXT {
    text-overflow: ellipsis; 
@@ -852,6 +971,7 @@ width: 540px;
     margin-right: 94px;
         font-size: 25px;
          font-family: "Glyphicons Halflings";
+         font-style: normal;
 }
 
 

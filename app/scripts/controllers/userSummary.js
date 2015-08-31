@@ -7,7 +7,7 @@ angular.module('angularFrameworkApp')
       $scope.errorIndex = Number(0);
       $scope.additionalHeadererrorIndex = Number(0);
       $scope.YourScenario = String("התרחיש המומלץ");
-      
+      $scope.scenariosAreTheSame = false;
       $scope.checkingeditorUserDifferences = function (errorIndex)
       {
 
@@ -33,6 +33,7 @@ angular.module('angularFrameworkApp')
 
                   if (myParseRecommendedScenarios != myUserClickesScenarios) {
                       console.log("myParseRecommendedScenarios name == myUserClickesScenarios name  --> " + myParseRecommendedScenarios + "   &  " + myUserClickesScenarios);
+                      $scope.scenariosAreTheSame = true;
 
                       if (dataService.myRedBack == false) {
                           dataService.myCounter++;
