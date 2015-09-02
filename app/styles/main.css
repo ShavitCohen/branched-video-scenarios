@@ -413,7 +413,13 @@ padding-right:40px;
 }
 
 
-
+.isLoginPossibleClass {
+background-color: red;
+color: white;
+font-size: 22px;
+padding-right: 10px;
+margin-top: 8px;
+}
 
 
 .userSummaryContainerDiv {
@@ -730,7 +736,7 @@ margin-right: 5px;
 .myOpeningDiv button:hover {
 
 background-color: #58585A;
-
+color:white;
 
 }
 

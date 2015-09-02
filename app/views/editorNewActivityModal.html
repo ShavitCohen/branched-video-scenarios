@@ -3,11 +3,14 @@
     <div class="modal-body">
         <div>
        <label class="col-md-12">שם הפעילות:</label>
-       <input id="activityName" type="text" ng-model="myActivityName"/>
+       <input id="activityName" type="text" ng-model="myActivityName" maxlength="30"/>
+
             </div>
         <div>
        <label class="col-md-12">תיאור:</label>
-       <input id="activityDescription" type="text" ng-model="myActivityDescription"/></div>
+            <textarea id="activityDescription" type="text" ng-model="myActivityDescription" maxlength="100"></textarea>
+
+        </div>
     </div>
     <div class="modal-footer">
         <div class="btn btn-danger" ng-click="closeNewActivityPopUP(1)">שמור והמשך</div>

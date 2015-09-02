@@ -9,9 +9,10 @@
                     <div class="myOpeningDivSecondLayer">
                         <h3>קוד פעילות:</h3>
                    <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" />
-                <button class="btn btn-warning userEnterBTN" type="button" title="User" ng-click="codeValidate()">כניסה</button>
+                <button class="btn userEnterBTN" type="button" title="User" ng-click="codeValidate(myCaseCode)">כניסה</button>
                     </div>
-                   
+               <div ng-show="!isLoginPossible" class="isLoginPossibleClass">לא ניתן להיכנס, הפעילות טרם הושלמה</div>
+
                 </div>
                 
             </div>

@@ -298,7 +298,6 @@
 
       data.allDistractorsCount = globalDistractorIndex;
     };
-
     data.userClickedScenariosSummary = [];
     data.scenarioLengthforSummary = [];
     data.editorUserDifferences = false;

@@ -74,11 +74,13 @@
 
 
               }
+
           }
 
           else if (myBtnState == 2) {
               console.log("cancelling changes - no save actions are required...");
 
+              $modalInstance.close();
 
           }
 
