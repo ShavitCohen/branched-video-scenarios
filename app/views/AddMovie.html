@@ -42,7 +42,7 @@
 
             <!--<div>{{scenario.myMovName}}</div>-->
             <input class="btn btn-danger" type="button" value="בטל" ng-click="closeModal()" />
-            <div class="btn saveMovBTN" ng-model="movModalBTN" ng-click="addToJason()">{{movModalBTN}}</div>
+            <div class="btn saveMovBTN" ng-model="movModalBTN" ng-click="addToJason()" ng-disabled="isSaved">{{movModalBTN}}</div>
 
 
 

@@ -1,12 +1,13 @@
 ﻿<div class="lilachTraying editorActivitiesNgGridBackgroung">
-
-        <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
-            <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
+        
+        <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 113) + 'px'}">
+       <div class="floating">
+            <div class="ActivityNameH1">{{activityName}}</div>
+             <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
                 הגדר תרחיש מומלץ
                 <i class="glyphicon glyphicon-pencil"></i>
             </div>
-            <h1 class="ActivityNameH1">{{activityName}}</h1>
-
+               </div>
             <ul class="mainMoviesDiv">
                 <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                     <scenario-top scenario="scenario"></scenario-top>
@@ -18,7 +19,7 @@
 
         </div>
 
-        <div class="bottomDivElements" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 150) + 'px'}">
+        <div class="bottomDivElements" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 113) + 'px'}">
             <ul class="mainMoviesDiv">
                 <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
                     <scenario-bottom scenario="scenario"></scenario-bottom>

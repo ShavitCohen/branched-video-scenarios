@@ -12,7 +12,7 @@
 
                 <!--<div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" ng-class="changeArrowBackgroundStyleGrey($event,scenario,$index)" class="arrow sceneHoverChildsBorderLine currArrowClass_{{scenario.movIndex}}">-->
                  <div ng-style="{width:distractor.lineWidth,'margin-right':distractor.lineWidthForMargin * distractor.lineDirection}" ng-class="changeArrowBackgroundStyleGrey($event,scenario,$index)" class="arrow sceneHoverChildsBorderLine currArrowClass_{{scenario.index}}" ng-if="distractor.lineArrowDirection!=2"></div>
-                <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection}" ></div>
+                <div class="arrowHead" ng-style="{'margin-right':distractor.lineWidth * distractor.lineDirection - distractor.myArrowHeadCalc}" ></div>
 
                  <div class="circle"></div>
 <!--           כאן מתחיל הקוד של המסיחים העיגולים-->

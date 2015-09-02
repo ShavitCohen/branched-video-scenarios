@@ -99,12 +99,12 @@ text-decoration:underline;
 
 .recomendedScenariosBtn
           {
-/*float:left;*/
-background-color:#D1AD01;
-color:white;
-    margin-top: 20px;
-    margin-right: 1060px;
-    position: absolute;
+background-color: #D1AD01;
+color: white;
+margin-top: -11px;
+/* margin-right: 369px; */
+display: inline-block;
+
    }
 .recomendedScenariosBtn:hover 
 {
@@ -454,12 +454,7 @@ height: 200px;
 font-family: 'Open Sans Hebrew';
 margin-right: 48px;
 }
-.arrow{
-    height:5px;
-    background-color:black;
-    /*position:absolute;*/
-    margin-top:30px;
-}
+
 
 .breadCrumbsBakClass {
        width: 372px;
@@ -477,7 +472,7 @@ margin-right: 48px;
 background-image: url('../images/ArrowLeftDir.png');
 
     position: absolute;
- margin-top: -158px
+ margin-top: -136px;
 
 }
 .isRightArrow .arrowHead {
@@ -486,7 +481,7 @@ background-image: url('../images/ArrowLeftDir.png');
 background-image: url('../images/ArrowRightDir.png');
 
     position: absolute;
-  margin-top: -158px
+  margin-top: -136px;
 
 }
 .isSelfArrow .arrowHead {
@@ -495,7 +490,7 @@ background-image: url('../images/ArrowRightDir.png');
 background-image: url('../images/ArrowSelftDir.png');
 
   position: absolute;
-margin-top: -161px;
+margin-top: -136px;
     margin-right: -41px !important
 }
 
@@ -509,7 +504,7 @@ display:block;
     height: 2px;
     background-color: #007F88;
     position: absolute;
-    margin-top: -147px;
+    margin-top: -125px;
 }
 
 .glyphicon.glyphicon-one-fine-full-dot {
@@ -568,7 +563,7 @@ border:1px #58585A solid;
    width:1024px;
    height:100px;
 }
-img  {
+img.bg  {
      /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
@@ -825,11 +820,18 @@ margin-top: 0px;
 
 .ActivityNameH1 {
 
-color:#585859;
-font-size:25px;
-margin-right:50px;
+color: #585859;
+font-size: 25px;
+margin-right: 50px;
+display: inline-block;
+margin-left: 15px;
 }
+.floating {
+   
+    position: absolute;
+margin-top: -78px;
 
+}
 .modal-header > popupCoustomHeader {
   background-color:red;
 }
@@ -1001,7 +1003,7 @@ width: 540px;
 
   /*font-size:20px;*/
   margin-right: -19px;
-    margin-top: -156px;
+    margin-top: -134px;
 }
 
 .isTrue .circle{
@@ -1110,7 +1112,7 @@ background-color: white;
   padding-top: 12px;
   padding-right: 11px;
  margin-right: 25px;
-    margin-top: 155px;
+    margin-top: 178px;
   display: block;
   border: 2px solid;
   border-radius: 30px 30px 30px 30px;
@@ -1157,7 +1159,7 @@ background-color: white;
   padding-top: 12px;
   padding-right: 11px;
 margin-right: 25px;
-    margin-top: 155px;
+    margin-top: 178px;
   display: block;
   border: 2px solid black;
   border-radius: 30px 30px 30px 30px;
@@ -1218,14 +1220,14 @@ background-color:red;
 }*/
 .freezLine {
 background-color:white;
-  /*padding-top: -19px;*/
-  height: 109px;
+padding-top: 85px;
+height: 170px;
 white-space: nowrap;
-width:1432px;
-position:absolute;
-top:200px;
-z-index:3;
-margin-top:-149px;
+width: 1432px;
+position: absolute;
+top: 200px;
+z-index: 3;
+margin-top: -150px
 
 
 }

@@ -237,24 +237,29 @@
             //distractor.connectionLength * distractor.lineDirection
 
             if (data.connectionLength < 0) {
-                distractor.lineWidth = data.connectionLength * (-125);
+                distractor.lineWidth = data.connectionLength * (-110);
+                distractor.lineWidth = distractor.lineWidth + 10;
                 distractor.lineDirection = -1;
                 distractor.lineArrowDirection = 0;
                 distractor.lineWidthForMargin = distractor.lineWidth;
+                console.log("distractor.linkTo = " + distractor.linkTo + " ,  scenario.index = " + scenario.index + " -->  data.connectionLength = " + data.connectionLength + "   & distractor.lineWidth = " + distractor.lineWidth);
+                distractor.myArrowHeadCalc = 0
 
             }
 
             else if (data.connectionLength > 0) {
-                distractor.lineWidth = data.connectionLength * 100;
-
+                distractor.lineWidth = data.connectionLength * 110;
+                distractor.lineWidth = distractor.lineWidth - 10;
 
                 distractor.lineDirection = 1;
                 distractor.lineArrowDirection = 1;
                 distractor.lineWidthForMargin = 0;
+                distractor.myArrowHeadCalc = 16;
 
             }
             else if (data.connectionLength == 0) {
                 distractor.lineArrowDirection = 2;
+                distractor.myArrowHeadCalc = 0;
             }
 
         }

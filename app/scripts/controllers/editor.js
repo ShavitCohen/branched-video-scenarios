@@ -94,7 +94,7 @@
     //  $scope.dataService.setDistractorsIndex();
 
     $scope.openAddMovieDialog = function (scenario) {
-
+        dataService.closeAllBtns();
       var modalInstance = $modal.open({
           windowClass: 'editModalClass ourModal',
         //template:,

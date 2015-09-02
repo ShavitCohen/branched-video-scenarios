@@ -15,6 +15,8 @@ angular.module('angularFrameworkApp')
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       //debugger;
       Scenario = Parse.Object.extend("Scenario");
+      $scope.isSaved = false;
+      console.log("init---$scope.isSaved = " + $scope.isSaved);
 
     }
 
@@ -191,6 +193,8 @@ angular.module('angularFrameworkApp')
 
       
       $scope.addToJason = function () {
+          $scope.isSaved = true;
+          console.log("addToJason---$scope.isSaved = " + $scope.isSaved);
         var scenarioIns = new Scenario();
 
         if (state == "new") {
