@@ -55,6 +55,8 @@
                   //linkToScenarioID
                   dataService.myCurrentDistractorClicked.original.save(null, {
                       success: function (distractor) {
+                          dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                       },
                       error: function (obj, error) {
                       }
@@ -136,6 +138,8 @@
                               //after setting the distractor with the new values we should save it
                               distractor.original.save(null, {
                                   success: function (distractor) {
+                                      dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                                       //The distractor have been updated.
                                   },
                                   error: function (obj, error) {
@@ -149,6 +153,8 @@
 
                       interaction.original.save(null, { // שמירה של הפעילות
                           success: function (interaction) {
+                              dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                               dataService.setDistractorsIndex(dataService.currentActivity);
                               scope.$parent.$parent.$digest(); // this refresh the view of the parent of the directive (the parent that holds both .top and .bottom)
                           },
@@ -271,7 +277,9 @@
                                      dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.set("linkTo", null);
                                     //after setting the distractor with the new values we should save it
                                      dataService.currentActivity.scenarios[i].interactions[0].distractors[j].original.save(null, {
-                                        success: function (distractor) {
+                                         success: function (distractor) {
+                                             dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                                             //The distractor have been updated.
                                         },
                                         error: function (obj, error) {
@@ -286,6 +294,7 @@
 
                       dataService.currentActivity.save(null, {
                           success: function (scenario) {
+                              dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
 
                           $timeout(function(){

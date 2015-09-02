@@ -181,6 +181,7 @@ angular.module('angularFrameworkApp')
         parent.add("interactions", InteractionsIns); // הוספת הפעילות למערך הפעילויות
         parent.save(null, { // שמירה של הפעילות
           success: function (scenario) {
+              dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
             successFunctionAfterCreation(scenario);
 
@@ -212,6 +213,7 @@ angular.module('angularFrameworkApp')
           dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
           dataService.currentActivity.save(null, { // שמירה של הפעילות
             success: function (activity) {
+                dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
               //We are adding the first interaction
               addFirstInteraction(scenarioIns, "singleSelection", "", function (scenario) {
@@ -255,7 +257,9 @@ angular.module('angularFrameworkApp')
             success: function (savedScenario) {
               //scenario have been successfully saved to Parse
               // only then, we close the modal
-              $modalInstance.close();
+                $modalInstance.close();
+                dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
             },
             error: function (err) {
 

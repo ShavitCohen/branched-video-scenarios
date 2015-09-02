@@ -7,26 +7,19 @@
         <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
     </div>
     <div class="modal-body">
-        <div class="row">
-            <label class="col-md-12">שם הסצינה</label>
-        </div>
-        <div class="row">
+            <h2 class="modalheadlineH2">שם הסצינה:</h2>
 
-            <input class="col-md-8 col-md-offset-1 form-control" id="SceneName" type="text" ng-model="myscenarioName" maxlength="20" />
-        </div>
-        <div class="row">
-            <label class="col-md-12">קישור לסרטון ב-Youtube</label>
-        </div>
-        <div class="row">
-            <input id="youtubeURL" class="col-md-8 col-md-offset-1 form-control" type="text" ng-model="myUrl" />
-            <input class="col-md-1 btn loadMovBTN" id="Button1" type="button" value="טען" ng-click="youtube_parser(myUrl)" />
+            <input class="form-control" id="SceneName" type="text" ng-model="myscenarioName" maxlength="20" />
+            <h2 class="modalheadlineH2">קישור לסרטון ב-Youtube:</h2>
+            <input id="youtubeURL" class="form-control" type="text" ng-model="myUrl" />
+            <input style="display: inline-block;" class="btn loadMovBTN" id="Button1" type="button" value="טען" ng-click="youtube_parser(myUrl)" />
 
-        </div>
-        <div class="row">
             <div>
-                <div id="player" class="myYoutubeIfreamPreview col-md-8 col-md-offset-1"></div>
+                <div id="player" class="myYoutubeIfreamPreview" >
+                    <input class="placeHolderYoutubePreClass" type="text" placeholder="תצוגה מקדימה"/>
+
+                </div>
             </div>
-        </div>
         <!-- ירד זמנית לשלב הערכה -->
         <!--<div class="row">
             <input id="myEndTimeTXT" class="col-md-3 col-md-offset-1 form-control " type="number" ng-model="myEndTime" ng-change="myPlayerChangeFunc(scenario)"/>
@@ -38,7 +31,7 @@
         
     </div>
     <div class="modal-footer">
-        <div class="col-md-6 col-md-offset-7">
+        <div style="float:left;">
 
             <!--<div>{{scenario.myMovName}}</div>-->
             <input class="btn btn-danger" type="button" value="בטל" ng-click="closeModal()" />

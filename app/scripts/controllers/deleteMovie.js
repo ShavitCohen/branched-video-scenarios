@@ -101,6 +101,7 @@ angular.module('angularFrameworkApp')
               dataService.currentActivity.add("scenarios", scenarioIns); // הוספת הפעילות למערך הפעילויות
               dataService.currentActivity.save(null, { // שמירה של הפעילות
                   success: function (activity) {
+                      dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
                       var Interactions = Parse.Object.extend("Interactions");
 
@@ -115,6 +116,7 @@ angular.module('angularFrameworkApp')
                       scenarioIns.save(null, { // שמירה של הפעילות
                           success: function (scenario) {
                             //  dataService.currentScenario = scenarioIns;
+                              dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
                               var Distractors = Parse.Object.extend("Distractors");
 
@@ -131,6 +133,8 @@ angular.module('angularFrameworkApp')
 
                               InteractionsIns.save(null, { // שמירה של הפעילות
                                   success: function (interaction) {
+                                      dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                                       debugger;
 
                                   },
@@ -179,7 +183,9 @@ angular.module('angularFrameworkApp')
             scenario.original.set("endTime", scenario.endTime);
 
             scenario.original.save(null,{
-              success:function(savedScenario){
+                success: function (savedScenario) {
+                    dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
                 //scenario have been successfully saved to Parse
                 // only then, we close the modal
                 $modalInstance.close();

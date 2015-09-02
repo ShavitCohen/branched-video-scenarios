@@ -10,7 +10,7 @@
     $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
     function init() {
-       
+
       // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
       Activity = Parse.Object.extend("Activity");
       Scenario = Parse.Object.extend("Scenario");
@@ -44,7 +44,8 @@
       query.include(["scenarios.interactions.distractors"]);
       query.first({
         success: function (activity) {
-          //debugger;
+            //debugger;
+
           dataService.setCurrentActivity(activity);
           $scope.activityName = dataService.currentActivity.attributes.name;
           $scope.$digest();

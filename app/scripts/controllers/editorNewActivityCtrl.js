@@ -47,6 +47,7 @@
                   Parse.User.current().save(null, { // שמירה של הפעילות
                       success: function (user) {
                           //getActivities();
+
                         $location.path("/EditorPage/" + activityIns.id);
                         $modalInstance.close();
                       },

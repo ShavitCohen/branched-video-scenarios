@@ -284,7 +284,7 @@ width:500px;
 .addOptionBTN {
 background-color:#58585A;
 color:white;
-margin-right:15px;
+margin-right:3px;
 }
 .addOptionBTN:hover {
 background-color:#69696B;
@@ -305,6 +305,14 @@ color:white;
     background-color:#E9C001;
     color:white;
 }
+.modalheadlineH2 {
+    font-size: 13pt;
+font-weight: bold;
+color:#007F88;
+margin-left:5px;
+}
+
+
 .saveMovBTN {
 
     background-color:#DCB601;
@@ -548,6 +556,21 @@ display:block;
 .myDeleyeglyphicon:hover {
 color:#58585A;
 }
+.placeHolderYoutubePreClass {
+    
+font-size: 45pt;
+width: 100%;
+text-align: center;
+height: 100%;
+
+}
+
+#youtubeURL {
+    width: 414px;
+    float: right;
+    display: inline-block;
+    margin-left: 5px;
+}
 .myYoutubeIfreamUser {
 
     border:1px #58585A solid;
@@ -557,10 +580,10 @@ color:#58585A;
 }
 .myYoutubeIfreamPreview
 {
-border:1px #58585A solid;
-        margin-right:48px;
-             width:370px;
-    height:200px;
+border:1px solid #ccc;
+     margin-right: 0px;
+width: 465px;
+height: 200px;
 }
 .startPageContainerBody {
    direction:rtl;

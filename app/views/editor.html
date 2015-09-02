@@ -2,6 +2,7 @@
         
         <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 113) + 'px'}">
        <div class="floating">
+           <div>נשמר לאחרונה ב:{{dataService.myCurrentTime}}</div>
             <div class="ActivityNameH1">{{activityName}}</div>
              <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
                 הגדר תרחיש מומלץ
