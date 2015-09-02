@@ -1,13 +1,17 @@
-﻿<div class="lilachTraying editorActivitiesNgGridBackgroung">
+﻿
+<div class="lilachTraying editorActivitiesNgGridBackgroung">
         
         <div class="freezLine" ng-style="{width:((dataService.currentActivity.scenarios.length + 1) * 113) + 'px'}">
+
        <div class="floating">
-           <div>נשמר לאחרונה ב:{{dataService.myCurrentTime}}</div>
+
             <div class="ActivityNameH1">{{activityName}}</div>
              <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
                 הגדר תרחיש מומלץ
                 <i class="glyphicon glyphicon-pencil"></i>
             </div>
+           <div class="myCurrentTimeClass">נשמר לאחרונה ב:{{dataService.myCurrentTime}}</div>
+
                </div>
             <ul class="mainMoviesDiv">
                 <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">

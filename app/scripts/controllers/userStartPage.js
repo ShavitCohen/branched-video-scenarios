@@ -16,7 +16,7 @@
 
               var query = new Parse.Query(Activity);
               //query.equalTo("parent", Parse.User.current());
-              query.equalTo("code", myCaseCode);//למה הוא מקבל את הערך כמחרוזת ולא כמספר
+              query.equalTo("code", $scope.myCaseCode);//למה הוא מקבל את הערך כמחרוזת ולא כמספר
 
 
               query.include("scenarios");
@@ -26,6 +26,15 @@
                   success: function (activity) {
                       //debugger;
                       dataService.currentActivity = activity;
+                      if (dataService.currentActivity==undefined)
+                      {
+                       $timeout(function () {
+                           $scope.isLoginPossible = false,
+                       $scope.userNotification = "לא קיים קוד כזה"
+
+
+                      }, 300);
+                      }
                       var scenarios = activity.attributes.scenarios;
                       if (scenarios != undefined && scenarios.length > 0) {
                           $scope.scenarios = scenarios;
@@ -40,11 +49,12 @@
 
                               dataService.currentActivity.scenarios = arr;
 
-                             
+
 
                           });
 
                       }
+                    
                       angular.forEach(dataService.currentActivity.scenarios, function (scenario) {
                           if (scenario.interactions[0] && scenario.interactions[0].type != "endMessege") {
                               angular.forEach(scenario.interactions[0].distractors, function (distractor) {
@@ -60,10 +70,14 @@
                           myLoginValidation++;
                       }
                       if (myLoginValidation > 0) {
+
                           $timeout(function () {
-                              $scope.isLoginPossible = false;
+                              $scope.isLoginPossible = false,
+                                $scope.userNotification="לא ניתן להיכנס, הפעילות טרם הושלמה"
+
 
                           }, 300);
+
                       }
                       else {
                           $scope.isLoginPossible = true;
@@ -75,7 +89,7 @@
 
                   },
                   error: function (error) {
-
+                      
                   }
               });
 

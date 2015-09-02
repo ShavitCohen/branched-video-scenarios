@@ -18,7 +18,16 @@ font-size: 20px;
 text-align: center;
 width: 334px;
 }
+.myCurrentTimeClass {
+        margin-right: 52px;
+    background-color: #007F88;
+    color: white;
+    font-weight: bold;
+    width: 176px;
+    padding-right: 6px;
+    margin-top: 10px;
 
+}
 .userSummaryR {
      
     /*background-color: pink;*/
@@ -64,9 +73,12 @@ background-color:white;
 }
 
 .gridBtnCss {
-margin-right:15px;
-margin-top:5px;
-
+margin-right: 8px;
+    margin-top: -6px;
+    cursor: pointer;
+    box-shadow:none;
+    font-size:20px;
+    color:#58585A;
 /*background-image:url('../img/delete_ico.png');*/
 /*height:19px;
 width:17px;*/

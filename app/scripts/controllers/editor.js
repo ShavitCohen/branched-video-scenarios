@@ -11,7 +11,8 @@
 
     function init() {
 
-      // console.log(" dataService.currentActivity " + dataService.currentActivity.myID);
+        dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
       Activity = Parse.Object.extend("Activity");
       Scenario = Parse.Object.extend("Scenario");
       Interactions = Parse.Object.extend("Interactions");

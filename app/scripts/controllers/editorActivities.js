@@ -18,7 +18,8 @@
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
 
-          cellTemplate: '<img src="images/delete_ico.png" alt="delete_ico" class="gridBtnCss" ng-click="myDeleteFunc()">'
+          cellTemplate: '<div class="btn gridBtnCss" ng-click="myDeleteFunc()"><i class="glyphicon glyphicon-trash" </i></div>'
+           
 
         },
         {
@@ -27,9 +28,9 @@
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           displayName: 'צפייה',
-          cellTemplate: '<img src="images/PreviewTV_small.png" alt="preview" class="gridBtnCss" ng-click="myWatchFunc()" >'
-          //cellTemplate: '<img src="img/watch_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myWatchFunc()" >'
+          cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-eye-open" </i></div>'
 
+            
         },
         {
           field: 'duplicate',
@@ -37,8 +38,7 @@
           width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="images/DuplicateFile_small.png" alt="duplicate" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
-          //cellTemplate: '<img src="img/duplicate_ico.png" alt="watch_ico" class="gridBtnCss" ng-click="myDuplicateFunc()" >'
+          cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-duplicate" </i></div>'
 
         },
         {
@@ -47,7 +47,7 @@
           width: "62",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
-          cellTemplate: '<img src="images/EditPencil_small.png" alt="edit" class="btn gridBtnCss" ng-click="grid.appScope.createNewActivity(2,row)" >'
+          cellTemplate: '<div ng-click="grid.appScope.createNewActivity(2,row)" class="btn gridBtnCss"><i class="glyphicon glyphicon-edit" alt="edit"</i></div>'
 
         },
         {
@@ -78,7 +78,8 @@
           headerClass: 'deleteHeader',
          
           displayName: 'פרסום',
-          cellTemplate: '<img src="images/UploadShare_small.png" alt="upload" class="gridBtnCss" ng-click="myPubFunc()" >'
+          cellTemplate: '<div class="btn gridBtnCss" ng-click="myPubFunc()"><i class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
+
 
           //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
         }]

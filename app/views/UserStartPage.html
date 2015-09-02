@@ -8,10 +8,12 @@
                 <div class="myOpeningDiv">
                     <div class="myOpeningDivSecondLayer">
                         <h3>קוד פעילות:</h3>
-                   <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" />
-                <button class="btn userEnterBTN" type="button" title="User" ng-click="codeValidate(myCaseCode)">כניסה</button>
+                        <form name="myForm">
+                            <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" required />
+                            <button class="btn userEnterBTN" type="button" title="User" ng-disabled="myForm.$invalid" ng-click="codeValidate(mycasecode)">כניסה</button>
+                        </form>
                     </div>
-               <div ng-show="!isLoginPossible" class="isLoginPossibleClass">לא ניתן להיכנס, הפעילות טרם הושלמה</div>
+               <div ng-show="!isLoginPossible" class="isLoginPossibleClass">{{userNotification}}</div>
 
                 </div>
                 
