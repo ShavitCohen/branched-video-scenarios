@@ -1,6 +1,8 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('userStartPage', function ($scope, $location, dataService) {
 
+      
+    
       $scope.codeValidate = function () {
           console.log($scope.myCaseCode)
 

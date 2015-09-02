@@ -2,6 +2,8 @@
   .controller('startCtrl', function ($scope, $location, dataService, $timeout) {
       $scope.yourSignUpRequstAccepted = false;
 
+     
+      
 
       $scope.toggleToSignUpSignIn = function (state) {
           if (state == true) {

@@ -74,6 +74,11 @@ angular.module('angularFrameworkApp')
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
 
+    $scope.closeModal = function () {
+        console.log("closing modal...");
+        $modalInstance.close();
+
+    }
 
     $scope.loadTheYoutubeUrl = function (myUrlID) {
       console.log("called the loadTheYoutubeUrl function...");
@@ -184,10 +189,7 @@ angular.module('angularFrameworkApp')
         });
       }
 
-      $scope.closeModal = function () {
-        $modalInstance.close();
-
-      }
+      
       $scope.addToJason = function () {
         var scenarioIns = new Scenario();
 

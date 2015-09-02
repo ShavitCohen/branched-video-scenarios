@@ -21,12 +21,12 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/StartPage', {
           templateUrl: 'views/StartPage.html',
           controller:"startCtrl"
       })
       
-      .when('/userStartPage', {
+      .when('/', {
           templateUrl: 'views/userStartPage.html',
           controller: "userStartPage"
       })
