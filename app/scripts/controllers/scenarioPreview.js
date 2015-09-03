@@ -61,8 +61,8 @@ angular.module('angularFrameworkApp')
 
 
           player = new YT.Player('player', {
-              height: '200',
-              width: '368',
+              height: '247',
+              width: '464',
               videoId: scenario.videoId,
               startSeconds: 5,
               endSeconds: 8,

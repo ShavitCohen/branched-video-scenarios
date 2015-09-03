@@ -372,8 +372,16 @@ margin-left:5px;
             content: none;
         }
 .myUserQueAndDistractorCollapsePreviewModalClass {
-    margin-top: 32px;
+   
 margin-right: -35px;
+
+}
+.firstScenarioIndicator_hidden {
+
+display:none;
+}
+.firstScenarioIndicator_show {
+display:block;
 
 }
 .UsermyUserDistractorClass {
@@ -391,7 +399,14 @@ margin-right: -35px;
     padding-bottom:7px;
 }
 .myUserQueClass h3
-{ white-space: normal;}
+{ 
+    white-space: normal;
+
+    color: white;
+padding-right: 44px;
+font-size: 14pt !important;
+
+}
 .myUserDistractorClass{
               background-color:black;
                color: white;
@@ -403,12 +418,17 @@ margin-right: -35px;
           }
 
 .myUserDistractorPrevireModalClass {
-      background-color:green;
-               color: white;
-               display:block;
-               text-align:right;
-               margin-top:5px;
-               width:180px;
+background-color: green;
+color: #fff;
+text-align: right;
+margin-top: 6px;
+width: 163px;
+padding-top: 2px;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+font-size: 11pt;
+padding-bottom: 2px;
 
 }
 .myUserDistractorClass:hover {
@@ -419,6 +439,7 @@ color: white;
 h3 {
 color:white;
 padding-right:40px;
+font-size:14pt;
 }
 .UserquestionBack {
   background-image: url('../images/interactionDiv.png');
@@ -471,25 +492,25 @@ margin-top: 8px;
 }
 #questionBackPreviewModal {
 
-     background-image: url('../images/interactionDiv.png');
+background-image: url('../images/interactionDiv.png');
 width: 182px;
-margin-top: -271px;
+margin-top: -296px;
 /* z-index: 9; */
-position: absolute;
-height: 200px;
+position: relative;
+min-height: 237px;
 font-family: 'Open Sans Hebrew';
-margin-right: 48px;
+margin-right: 1px;
 }
 
 
 .breadCrumbsBakClass {
-       width: 372px;
-    margin-right: 48px;
-    background-color: #e5e5e5;
-    margin-top: 13px;
-    padding-right: 9px;
-   
-    padding-top: 5px;
+  width: 463px;
+margin-right: 2px;
+background-color: #e5e5e5;
+margin-top: 57px;
+padding-right: 6px;
+padding-top: 5px;
+padding-bottom: 5px;
 }
 
 .isLeftArrow .arrowHead {

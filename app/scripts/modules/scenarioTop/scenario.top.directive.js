@@ -9,9 +9,32 @@
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);
               scope.dataService = dataService;
+              
+             
 
+              //function init() {
 
+              //    if (dataService.currentActivity.scenarios[0].original.id)
+              //    {
+              //        if (scope.scenario.original.id == dataService.currentActivity.scenarios[0].original.id) {
+              //            $('.firstScenarioIndicator' + dataService.myCounterLoop).removeClass('firstScenarioIndicator_hidden');
+              //            // dataService.firstScenarioIndicator = true;
+              //            $('.firstScenarioIndicator' + dataService.myCounterLoop).addClass('firstScenarioIndicator_show');
+              //            dataService.myCounterLoop++;
+              //            console.log("flag is set to true");
+                          
+              //        }
+              //        else {
 
+              //            //    dataService.firstScenarioIndicator = false;
+              //            $('.firstScenarioIndicator' + dataService.myCounterLoop).removeClass('firstScenarioIndicator_hidden');
+              //            console.log("flag is set to false");
+              //            dataService.myCounterLoop++;
+              //        }
+              //    }
+                  
+              //}
+              //init();
 
               scope.isShowDistractors = false;
 

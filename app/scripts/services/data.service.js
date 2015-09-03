@@ -323,15 +323,16 @@
     //הפעילות עלינו אנחנו עובדים
     data.currentActivity;
 
-
+    data.firstScenarioIndicator = false;
     data.currentScenarioId;
     //מערך גייסון שיכיל את הטבלאות נתונים מהפארס
     data.selectedActivityDataarr = [];
     data.selectedActivity_Scnarios_Dataarr = [];
     data.selectedActivityScenario_Interactions_Dataarr = [];
     data.selectedActivityScenarioInteractions_Distaractors_Dataarr = [];
-
-
+    data.myCounterLoop = 0;
+    console.log("creating myCounterLoop...");
+    data.errorIndex = 0;
 
     data.closeAllBtns = function() {
 

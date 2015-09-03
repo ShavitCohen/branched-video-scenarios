@@ -4,44 +4,57 @@
 angular.module('angularFrameworkApp')
   .controller('userSummaryCtrl', function ($scope, dataService, $modal) {
       $scope.dataService = dataService;
-      $scope.errorIndex = Number(0);
+      $scope.errorIndexHTML = 0;
       $scope.additionalHeadererrorIndex = Number(0);
       $scope.YourScenario = String("התרחיש המומלץ");
       $scope.scenariosAreTheSame = false;
-      $scope.checkingeditorUserDifferences = function (errorIndex)
+      dataService.myCounter = 1;
+      dataService.errorIndex = 0;
+
+      $scope.checkingeditorUserDifferences = function ()
       {
 
 
         var myParseRecommendedScenarios;
           var myUserClickesScenarios;
-
+          console.log("checking if no errors were found... dataService.errorIndex = " + dataService.errorIndex + "  && dataService.myRedBack = " + dataService.myRedBack + "  &&   dataService.myCounter = " + dataService.myCounter)
          
-          for (var i = 0; i < dataService.scenarioLengthforSummary.length; i++) {
+          //for (var i = 0; i < dataService.scenarioLengthforSummary.length; i++) {
 
            //   if (dataService.currentActivity.attributes.recommendedScenarios.length >= dataService.scenarioLengthforSummary.length) {
-                  myParseRecommendedScenarios = dataService.currentActivity.attributes.recommendedScenarios[i].name;
-                  console.log("recommended name = " + dataService.currentActivity.attributes.recommendedScenarios[i].name);
 
-           //   }
+          if (dataService.currentActivity.attributes.recommendedScenarios[dataService.myCounter]) {
 
-            //  if (dataService.userClickedScenariosSummary.length >= dataService.scenarioLengthforSummary.length) {
+              myParseRecommendedScenarios = dataService.currentActivity.attributes.recommendedScenarios[dataService.myCounter].name;
+              console.log("recommended name = " + dataService.currentActivity.attributes.recommendedScenarios[dataService.myCounter].name);
+          }
+          else {
+              myParseRecommendedScenarios = "undefined";
+              console.log("myParseRecommendedScenarios = undefined");
+          }
 
-                  myUserClickesScenarios = dataService.userClickedScenariosSummary[i].name;
-                  console.log("user click name = " + dataService.userClickedScenariosSummary[i].name);
-
-           //   }
+          if (dataService.userClickedScenariosSummary[dataService.myCounter]) {
+              myUserClickesScenarios = dataService.userClickedScenariosSummary[dataService.myCounter].name;
+              console.log("user click name = " + dataService.userClickedScenariosSummary[dataService.myCounter].name);
+              console.log("checking if no errors were found... dataService.errorIndex = " + dataService.errorIndex + "  && dataService.myCounter = " + dataService.myCounter + "  && dataService.myRedBack = " + dataService.myRedBack + "  &&   dataService.myCounter = " + dataService.myCounter)
+          }
+          else {
+              myUserClickesScenarios = "undefined";
+              console.log("myUserClickesScenarios = undefined");
+          }
+         
 
                   if (myParseRecommendedScenarios != myUserClickesScenarios) {
                       console.log("myParseRecommendedScenarios name == myUserClickesScenarios name  --> " + myParseRecommendedScenarios + "   &  " + myUserClickesScenarios);
                       $scope.scenariosAreTheSame = true;
 
                       if (dataService.myRedBack == false) {
-                          dataService.myCounter++;
+                          dataService.errorIndex++;
                           console.log("found an error...");
                           $('#userSummaryRowsLi').addClass('editorUserDifferences');
                           console.log("adding class...");
-                          console.log("i = " + i);
-                          if (i == 1) {
+                          console.log("dataService.myCounter = " + dataService.myCounter);
+                          if (dataService.myCounter == 1) {
                               $scope.additionalHeadererrorIndex = 60;
 
                           }
@@ -49,8 +62,8 @@ angular.module('angularFrameworkApp')
                               $scope.additionalHeadererrorIndex = 0;
                           }
 
-                          $scope.errorIndex = Number(i);
-                          console.log("$scope.errorIndex = " + $scope.errorIndex);
+                          $scope.errorIndexHTML = dataService.myCounter;
+                          console.log("$scope.errorIndex = " + $scope.errorIndexHTML);
                           console.log("$scope.additionalHeadererrorIndex = " + $scope.additionalHeadererrorIndex);
                           dataService.myRedBack = true;
                       }
@@ -58,14 +71,15 @@ angular.module('angularFrameworkApp')
                   }
 
              
-          }
+       //   }
          
-          if (dataService.myCounter == 0) {
+                  console.log("123checking if no errors were found... dataService.errorIndex = " + dataService.errorIndex + "  &&  dataService.myCounter = " + dataService.myCounter + "  && dataService.myRedBack = " + dataService.myRedBack + "  &&   dataService.myCounter = " + dataService.myCounter)
+          if (Number(dataService.errorIndex) == 0) {
               console.log("no errors were found");
               $scope.eq = "=";
           }
           //errorIndex
-
+          dataService.myCounter++;
           
 
       }

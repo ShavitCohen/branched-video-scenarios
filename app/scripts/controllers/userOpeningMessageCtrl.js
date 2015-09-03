@@ -39,7 +39,12 @@
               }
 
               dataService.myRedBack = false;
-              dataService.myCounter = 0;
+              dataService.myCounter = 1;
+              $scope.errorIndex = 0;
+              dataService.errorIndex = 0;
+              console.log(" going to summary pagedataService.errorIndex = " + dataService.errorIndex);
+
+
               $location.path("/userSummary");
 
 

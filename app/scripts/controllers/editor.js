@@ -10,7 +10,7 @@
     $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
     function init() {
-
+        dataService.myCounterLoop = 0;
         dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
       Activity = Parse.Object.extend("Activity");
