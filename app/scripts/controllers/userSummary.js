@@ -2,7 +2,7 @@
 
 
 angular.module('angularFrameworkApp')
-  .controller('userSummaryCtrl', function ($scope, dataService, $modal) {
+  .controller('userSummaryCtrl', function ($scope, dataService, $modal, $timeout, $location) {
       $scope.dataService = dataService;
       $scope.errorIndexHTML = 0;
       $scope.additionalHeadererrorIndex = Number(0);
@@ -10,7 +10,14 @@ angular.module('angularFrameworkApp')
       $scope.scenariosAreTheSame = false;
       dataService.myCounter = 1;
       dataService.errorIndex = 0;
+      $scope.startOver = function () {
 
+
+          $timeout(function () {
+              $location.path("/MainPage/" + dataService.currentActivity.attributes.code);
+          }, 300);
+
+      }
       $scope.checkingeditorUserDifferences = function ()
       {
 
