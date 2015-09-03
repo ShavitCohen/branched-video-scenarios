@@ -22,8 +22,7 @@ width: 334px;
         margin-right: 52px;
     background-color: #007F88;
     color: white;
-    font-weight: bold;
-    width: 176px;
+    width: 168px;
     padding-right: 6px;
     margin-top: 10px;
 
@@ -374,6 +373,8 @@ margin-left:5px;
 .myUserQueAndDistractorCollapsePreviewModalClass {
    
 margin-right: -35px;
+display: block;
+margin-top: 58px;
 
 }
 .firstScenarioIndicator_hidden {
@@ -494,20 +495,20 @@ margin-top: 8px;
 
 background-image: url('../images/interactionDiv.png');
 width: 182px;
-margin-top: -296px;
+margin-top: -219px;
 /* z-index: 9; */
-position: relative;
-min-height: 237px;
+/* min-height: 237px; */
 font-family: 'Open Sans Hebrew';
 margin-right: 1px;
+height: 209px;
 }
 
 
 .breadCrumbsBakClass {
-  width: 463px;
+width: 463px;
 margin-right: 2px;
 background-color: #e5e5e5;
-margin-top: 57px;
+margin-top: 10px;
 padding-right: 6px;
 padding-top: 5px;
 padding-bottom: 5px;

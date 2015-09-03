@@ -10,13 +10,6 @@
             <div id="player"></div>
 
         </div>
-        <div ng-show="ifIsRecommended" id="myBreadCrumbsHolder" >
-            <ul class="breadCrumbsBakClass">
-                <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.name}}</li>
-            </ul>
-
-        </div>
-
         <div id="questionBackPreviewModal" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapsePreviewModalClass">
                 <h3 class="myUserQueClass">{{myTempScenario.interactionText}}</h3>
@@ -29,6 +22,14 @@
 
             </div>
     </div>
+        <div ng-show="ifIsRecommended" id="myBreadCrumbsHolder" >
+            <ul class="breadCrumbsBakClass">
+                <li ng-repeat="breadcrumbScenario in previewBreadcrumbsArray" ng-click="breadCrumbClick(breadcrumbScenario, $index)">{{breadcrumbScenario.name}}</li>
+            </ul>
+
+        </div>
+
+        
     </div>
     <div class="modal-footer">
        
