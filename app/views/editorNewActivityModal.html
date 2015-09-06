@@ -1,19 +1,28 @@
 ﻿<div class="modal-content">
-    <div class="modal-header modal-title"><h1 ng-model="newActivityHeader">{{newActivityHeader}}</h1></div>
+    <div class="modal-header">
+    
+        <h1 class="modal-title" ng-model="newActivityHeader">{{newActivityHeader}}</h1>
+    </div>
     <div class="modal-body">
         <div>
-       <label class="col-md-12">שם הפעילות:</label>
-       <input id="activityName" type="text" ng-model="myActivityName" maxlength="30"/>
+            <h2 class="modalheadlineH2">שם הפעילות:</h2>
+
+
+
+
+            <input id="activityName" class="form-control" type="text" ng-model="myActivityName" maxlength="30" />
 
             </div>
         <div>
-       <label class="col-md-12">תיאור:</label>
-            <textarea id="activityDescription" type="text" ng-model="myActivityDescription" maxlength="100"></textarea>
+            <h2 class="modalheadlineH2">תיאור:</h2>
+            <textarea id="activityDescription" class="form-control"  type="text" ng-model="myActivityDescription" maxlength="100"></textarea>
 
         </div>
     </div>
     <div class="modal-footer">
-        <div class="btn btn-danger" ng-click="closeNewActivityPopUP(1)">שמור והמשך</div>
-        <div class="btn btn-danger" ng-click="closeNewActivityPopUP(2)">בטל</div>
-    </div>
+        <div style="float: left;">
+            <div class="btn btn-danger" ng-click="closeNewActivityPopUP(2)">בטל</div>
+            <div class="btn saveInteractionBTN" ng-click="closeNewActivityPopUP(1)">שמור והמשך</div>
+
+        </div>
     </div>

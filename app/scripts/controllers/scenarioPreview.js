@@ -64,8 +64,6 @@ angular.module('angularFrameworkApp')
               height: '247',
               width: '464',
               videoId: scenario.videoId,
-              startSeconds: 5,
-              endSeconds: 8,
               playerVars: {
                   'rel': 0,
                   'enablejsapi': 1
@@ -248,9 +246,7 @@ angular.module('angularFrameworkApp')
         //player.loadVideoById({ 'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId });
               myCurrentPlaybackScenarioIndex++;
           player.loadVideoById({
-              'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId,
-              'startSeconds': 5,
-              'endSeconds': 8
+              'videoId': dataService.currentActivity.scenarios[distractor.linkTo].videoId
           });
 
 
@@ -275,9 +271,7 @@ angular.module('angularFrameworkApp')
         $scope.myTempScenario = previewBreadCrumbsNewArray[$index];
         //player.loadVideoById({ 'videoId': scenario.videoId });
         player.loadVideoById({
-            'videoId': scenario.videoId,
-            'startSeconds': 5,
-            'endSeconds': 8
+            'videoId': scenario.videoId
         });
     }
 

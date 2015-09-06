@@ -38,11 +38,11 @@
           user.set("email", $scope.LoginEmailAdress);
 
           // other fields can be set just like with Parse.Object
-          user.set("phone", "415-392-0202");
+       //  user.set("phone", "415-392-0202");
 
           user.signUp(null, {
               success: function (user) {
-                 
+                  $scope.userLoginNotification = "הרשמתך נקלטה בהצלחה! לחץ להתחברות";
                   $timeout(function () {
                       $scope.yourSignUpRequstAccepted = true;
                   }, 300);
@@ -50,10 +50,14 @@
 
               },
               error: function (user, error) {
+                  $scope.userLoginNotification = "כתובת הדואל תפוסה";
+                  $timeout(function () {
+                      $scope.yourSignUpRequstAccepted = true;
+                  }, 300);
                   // Show the error message somewhere and let the user try again.
                   handleParseError(error);
 
-                  alert("Error: " + error.code + " " + error.message);
+                  //alert("Error: " + error.code + " " + error.message);
 
               }
           });
@@ -75,7 +79,10 @@
 
               },
               error: function (user, error) {
-                  // The login failed. Check error to see why.
+                  $scope.userLoginNotification = "כתובת הדואל או הסיסמה שגויים";
+                  $timeout(function () {
+                      $scope.yourSignUpRequstAccepted = true;
+                  }, 300);                  // The login failed. Check error to see why.
                   handleParseError(error);
                   debugger;
               }

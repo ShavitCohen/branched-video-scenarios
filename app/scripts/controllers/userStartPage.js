@@ -30,7 +30,7 @@
                       {
                        $timeout(function () {
                            $scope.isLoginPossible = false,
-                       $scope.userNotification = "לא קיים קוד כזה"
+                       $scope.userNotification = "קוד זה אינו קיים"
 
 
                       }, 300);

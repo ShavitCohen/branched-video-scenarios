@@ -18,8 +18,7 @@
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
 
-          cellTemplate: '<div class="btn gridBtnCss" ng-click="myDeleteFunc()"><i class="glyphicon glyphicon-trash" </i></div>'
-           
+          cellTemplate: '<div class="btn gridBtnCss" ng-click="grid.appScope.myDeleteFunc(row)"><i class="glyphicon glyphicon-trash" </i></div>'
 
         },
         {
@@ -70,7 +69,7 @@
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
           displayName: 'שם הפעילות',
-          cellTemplate:'<div class="ui-grid-cell-contents" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
+          cellTemplate:'<div class="ui-grid-cell-contents enterToActivity" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
         },
         {
           field: 'published',
@@ -92,6 +91,14 @@
     function init() {
       dataService.checkifEditorisLoggedin();
       getActivities();
+    }
+
+
+    $scope.myDeleteFunc=function(row)
+    {
+   
+   //deleteActivity
+
     }
 
     function setDataForUiGrid(results){

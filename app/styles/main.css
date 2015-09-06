@@ -83,7 +83,11 @@ margin-right: 8px;
 width:17px;*/
 }
 .gridBtnCss:hover {
-opacity:0.8;
+
+color:#08828B;
+}
+.enterToActivity:hover {
+cursor:pointer;
 }
 
 .deleteHeader {
@@ -371,10 +375,16 @@ margin-left:5px;
             content: none;
         }
 .myUserQueAndDistractorCollapsePreviewModalClass {
-   
-margin-right: -35px;
-display: block;
-margin-top: 58px;
+ margin-right: 0px;
+    /* display: block; */
+    /* margin-top: 58px; */
+    /* HEIGHT: 252PX; */
+    /*BACKGROUND-COLOR: RED;*/
+    WIDTH: 214PX;
+    POSITION: ABSOLUTE;
+    margin-top: 19px;
+    HEIGHT: 248PX;
+    background-image: url('../images/interactionDiv.png');
 
 }
 .firstScenarioIndicator_hidden {
@@ -385,19 +395,36 @@ display:none;
 display:block;
 
 }
+.activityCode {
+padding-right: 37px;
+}
+.openingMSGToolTip {
+   
+    margin-top: -28px;
+    position: absolute;
+    margin-right: 107px;
+    color: #007F88;
+
+}
 .UsermyUserDistractorClass {
 
-  background-color: green;
-    color: white;
-    /* display: block; */
+
+        background-color: green;
+    color: #fff;
     text-align: right;
     margin-top: 9px;
     width: 274px;
-    /*height: 45px;*/
     padding-top: 7px;
     white-space: normal;
-    font-size:15pt;
-    padding-bottom:7px;
+    font-size: 15pt;
+    padding-bottom: 7px;
+ 
+}
+.aboutUsTextClass {
+    text-align:center;
+    font-size:14pt;
+
+
 }
 .myUserQueClass h3
 { 
@@ -430,6 +457,7 @@ white-space: nowrap;
 overflow: hidden;
 font-size: 11pt;
 padding-bottom: 2px;
+margin-right: -30px;
 
 }
 .myUserDistractorClass:hover {
@@ -438,9 +466,9 @@ background-color:green;
 color: white;
 }
 h3 {
-color:white;
-padding-right:40px;
-font-size:14pt;
+    color: white;
+    padding-right: 9px;
+    font-size: 14pt;
 }
 .UserquestionBack {
   background-image: url('../images/interactionDiv.png');
@@ -493,14 +521,15 @@ margin-top: 8px;
 }
 #questionBackPreviewModal {
 
-background-image: url('../images/interactionDiv.png');
+/*background-image: url('../images/interactionDiv.png');
 width: 182px;
-margin-top: -219px;
-/* z-index: 9; */
-/* min-height: 237px; */
+
+ z-index: 9; 
+ min-height: 237px; 
 font-family: 'Open Sans Hebrew';
-margin-right: 1px;
+margin-right: 1px;*/
 height: 209px;
+margin-top: -219px;
 }
 
 
@@ -508,7 +537,7 @@ height: 209px;
 width: 463px;
 margin-right: 2px;
 background-color: #e5e5e5;
-margin-top: 10px;
+margin-top: 68px;
 padding-right: 6px;
 padding-top: 5px;
 padding-bottom: 5px;
@@ -880,7 +909,12 @@ margin-top: 0px;
 .editorActivitiesNgGridAlign {
     margin-right:25px;
 }
-
+.ui-grid-icon-angle-down:before {
+content:none;
+}
+ui-grid-header-viewport {
+font-size:12pt;
+}
 .ActivityNameH1 {
 
 color: #585859;
