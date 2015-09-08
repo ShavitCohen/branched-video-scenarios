@@ -7,6 +7,7 @@
         <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
     </div>
     <div class="modal-body">
+        <div class="editMovModalAlign">
             <h2 class="modalheadlineH2">שם הסצינה:</h2>
 
             <input class="form-control" id="SceneName" type="text" ng-model="myscenarioName" maxlength="20" />
@@ -15,21 +16,21 @@
             <input style="display: inline-block;" class="btn loadMovBTN" id="Button1" type="button" value="טען" ng-click="youtube_parser(myUrl)" />
 
             <div>
-                <div id="player" class="myYoutubeIfreamPreview" >
-                    <input class="placeHolderYoutubePreClass" type="text" placeholder="תצוגה מקדימה"/>
+                <div id="player" class="myYoutubeIfreamPreview">
+                    <input class="placeHolderYoutubePreClass" type="text" placeholder="תצוגה מקדימה" />
 
                 </div>
             </div>
-        <!-- ירד זמנית לשלב הערכה -->
-        <!--<div class="row">
+            <!-- ירד זמנית לשלב הערכה -->
+            <!--<div class="row">
             <input id="myEndTimeTXT" class="col-md-3 col-md-offset-1 form-control " type="number" ng-model="myEndTime" ng-change="myPlayerChangeFunc(scenario)"/>
 
             <input id="myStartTimeTXT" class="col-md-3 col-md-offset-4 form-control" type="number" ng-model="myStartTime" ng-change="myPlayerChangeFunc(scenario)"/>
 
 
         </div>-->
-        
-    </div>
+
+        </div>
     <div class="modal-footer">
         <div style="float:left;">
 
@@ -41,5 +42,5 @@
 
         </div>
     </div>
-
+        </div>
 </div>

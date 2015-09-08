@@ -1,22 +1,24 @@
-﻿       <img alt="" src="../images/decision-makingUser.jpg" class="bg"/>
+﻿       <img alt="" src="../images/road.jpg" class="bg" />
 
     <div class="startPageContainerBody">
         <div class="row marketing UserstartPageContainer">
             <div class="userStartPasgeAlign">
-                <h1>inTree@ctive</h1>
-                <h2>תרחישי וידאו אינטראקטיביים</h2>
-                <div class="myOpeningDiv">
-                    <div class="myOpeningDivSecondLayer">
-                        <h3 class="activityCode">קוד פעילות:</h3>
-                        <form name="myForm">
-                            <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" required />
-                            <button class="btn userEnterBTN" type="button" title="User" ng-disabled="myForm.$invalid" ng-click="codeValidate(mycasecode)">כניסה</button>
-                        </form>
+                <div class="myHeadlinesDiv">
+                    <h1>inTree@ctive</h1>
+                    <h2>תרחישי וידאו אינטראקטיביים</h2>
                     </div>
-               <div ng-show="!isLoginPossible" class="isLoginPossibleClass">{{userNotification}}</div>
+                    <div class="myOpeningDiv">
+                        <div class="myOpeningDivSecondLayer">
+                            <h3 class="activityCode">קוד פעילות:</h3>
+                            <form name="myForm">
+                                <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" required />
+                                <div class="btn userEnterBTN"  ng-disabled="myForm.$invalid" ng-click="codeValidate(mycasecode)">כניסה</div>
+                            </form>
+                        </div>
+                        <div ng-show="!isLoginPossible" class="isLoginPossibleClass">{{userNotification}}</div>
+
+                    </div>
 
                 </div>
-                
-            </div>
              </div>
         </div>

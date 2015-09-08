@@ -5,64 +5,65 @@
       <h1 class="modal-title" ng-model="headlingOfAddScene">{{headlingOfAddScene}}</h1>
 
     </div>
-    <div class="modal-body">
+      <div class="modal-body">
+          <div class="editMovModalAlign">
+
+              <h2 class="modalheadlineH2" ng-show="isfirstScenario" class="">הודעת פתיחה</h2><div class="openingMSGToolTip"><i ng-show="isfirstScenario" class="glyphicon glyphicon-question-sign" tooltip-placement="right" tooltip="הודעת הפתיחה תופיע למשתמש בתחילת הפעילות"></i></div>
+              <textarea style="margin-bottom:30px;" ng-show="isfirstScenario" class="form-control " id="openingMSG" rows="3" maxlength="100" required ng-model="scenarioInteraction.openingMessege"></textarea>
+
+              <div>
+                  <h2 class="modalheadlineH2" style="display:inline-block">סוג האינטראקציה:</h2>
 
 
-          <h2 class="modalheadlineH2" ng-show="isfirstScenario" class="">הודעת פתיחה</h2><div class="openingMSGToolTip"><i class="glyphicon glyphicon-question-sign" tooltip-placement="top" tooltip="הודעת הפתיחה תופיע למשתמש בתחילת הפעילות"></i></div>
-          <textarea style="margin-bottom:30px;" ng-show="isfirstScenario" class="form-control " id="openingMSG" rows="3" maxlength="100" required ng-model="scenarioInteraction.openingMessege"></textarea>
-    
-        <div>
-        <h2 class="modalheadlineH2" style="display:inline-block">סוג האינטראקציה:</h2>
-        
-
-        <input type="radio"  name="interactionType" id="singleSelection" value="singleSelection" ng-model="scenario.interactions[0].type" ng-change="CheckboxSelectedFunc()">
-  
-       
-        <label for="singleSelection">חד ברירה</label>
+                  <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="scenario.interactions[0].type" ng-change="CheckboxSelectedFunc()">
 
 
-        <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type"  ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()" >
-
-        <label for="endMessege">הודעת סיום</label>
-       
-        </div>
-        <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום:</h2>
-          
-          <textarea ng-show="whiceInteactionTypeE" class="form-control" id="endMSGText" rows="3" cols="50" maxlength="100" ng-model="scenarioInteraction.endMessegeText" ng-show="whiceInteactionTypeE"></textarea>
-
-        <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">תוכן השאלה:</h2>
-          <textarea ng-show="whiceInteactionTypeS" class="form-control" id="questionText" rows="3" cols="50" maxlength="50" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeS"></textarea>
-        <div ng-show="whiceInteactionTypeS">
-                <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">
-                    אפשרויות בחירה:
-                </h2>
-
-            <div ng-repeat="answer in scenarioInteraction.distractors" ng-show="whiceInteactionTypeS">
-                    <!--{{scenarioInteraction.distractors}}-->
-                    <!--<input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">-->
-
-                    <textarea style="width: 438px; float: right;" ng-show="whiceInteactionTypeS" class="form-control" id="option1Text" rows="1" maxlength="40" ng-model="answer.text"></textarea>
-                    <div style="display:inline-block; float: right;" ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,scenarioInteraction.distractors)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
+                  <label for="singleSelection">חד ברירה</label>
 
 
+                  <input type="radio" name="interactionType" id="endMessege" value="endMessege" ng-model="scenario.interactions[0].type" ng-disabled="{{isDisabled}}" ng-change="CheckboxSelectedFunc()">
 
-            </div>
+                  <label for="endMessege">הודעת סיום</label>
+
+              </div>
+              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום:</h2>
+
+              <textarea ng-show="whiceInteactionTypeE" class="form-control" id="endMSGText" rows="3" cols="50" maxlength="100" ng-model="scenarioInteraction.endMessegeText" ng-show="whiceInteactionTypeE"></textarea>
+
+              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">תוכן השאלה:</h2>
+              <textarea ng-show="whiceInteactionTypeS" class="form-control" id="questionText" rows="3" cols="50" maxlength="50" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeS"></textarea>
+              <div ng-show="whiceInteactionTypeS">
+                  <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">
+                      אפשרויות בחירה:
+                  </h2>
+
+                  <div ng-repeat="answer in scenarioInteraction.distractors" ng-show="whiceInteactionTypeS">
+                      <!--{{scenarioInteraction.distractors}}-->
+                      <!--<input ng-show="whiceInteactionTypeS" type="radio" class="col-md-1 col-md-offset-3" name="optionsRadios" id="option1" ng-model="answer.isRightAnswer" ng-value="true">-->
+
+                      <textarea style="width: 438px; float: right;" ng-show="whiceInteactionTypeS" class="form-control" id="option1Text" rows="1" maxlength="40" ng-model="answer.text"></textarea>
+                      <div style="display:inline-block; float: right;" ng-show="whiceInteactionTypeS" ng-click="deleteAnswer($index,scenarioInteraction.distractors)"><i class="glyphicon glyphicon-trash myDeleyeglyphicon"></i></div>
 
 
 
-                <div ng-show="whiceInteactionTypeS" id="addOption" class="btn addOptionBTN" ng-click="addAnswer(scenarioInteraction)"><i class="glyphicon glyphicon-plus"></i>הוספת אפשרות</div>
-            </div>
+                  </div>
 
 
 
-    </div>
-    <div class="modal-footer">
-      <div style="float: left;">
-        <input class="btn btn-danger" id="delete" type="button" value="בטל" ng-click="cancel()" />
-        <div class="btn saveInteractionBTN" ng-disabled="form.$valid" ng-click="closeModal()">{{editModalBTN}}</div>
+                  <div ng-show="whiceInteactionTypeS" id="addOption" class="btn addOptionBTN" ng-click="addAnswer(scenarioInteraction)">הוספת אפשרות <i class="glyphicon glyphicon-plus"></i></div>
+              </div>
 
+
+
+          </div>
+          <div class="modal-footer">
+              <div style="float: left;">
+                  <input class="btn btn-danger" id="delete" type="button" value="בטל" ng-click="cancel()" />
+                  <div class="btn saveInteractionBTN" ng-disabled="form.$valid" ng-click="closeModal()">{{editModalBTN}}</div>
+
+              </div>
+          </div>
       </div>
-    </div>
   </div>
 
 </form>

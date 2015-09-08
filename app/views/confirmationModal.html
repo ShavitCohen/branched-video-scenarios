@@ -1,15 +1,17 @@
 <div class="modal-content">
-    <div class="modal-header modal-title"><h1>{{headerText}}</h1></div>
+    <div class="modal-header">
+        <h1 class="modal-title">{{headerText}}</h1>
+    </div>
     <div class="modal-body">
         {{bodyText}}
     </div>
     <div class="modal-footer">
-        <div>
-            <input class="btn btn-primary" type="button" value="{{cancelButtonText}}" ng-click="closeModal(false)" />
-            <input class="btn btn-danger" type="button" value="{{okButtonText}}" ng-click="closeModal(true)" />
-        </div>
+        <div style="float: left;">
+            <input class="btn btn-danger" type="button" value="{{cancelButtonText}}" ng-click="closeModal(false)" />
+            <input class="btn saveInteractionBTN" type="button" value="{{okButtonText}}" ng-click="closeModal(true)" />
+            </div>
 
-    </div>
+        </div>
 </div>
 
 

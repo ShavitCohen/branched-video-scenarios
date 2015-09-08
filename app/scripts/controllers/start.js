@@ -44,13 +44,15 @@
               success: function (user) {
                   $scope.userLoginNotification = "הרשמתך נקלטה בהצלחה! לחץ להתחברות";
                   $timeout(function () {
-                      $scope.yourSignUpRequstAccepted = true;
+                      $scope.yourSignUpRequstAccepted = true, $scope.signInorSignUpSelected = false;
+
                   }, 300);
                   // Hooray! Let them use the app now.
 
               },
               error: function (user, error) {
-                  $scope.userLoginNotification = "כתובת הדואל תפוסה";
+                  $scope.userLoginNotification = "כתובת הדואר האלקטרוני תפוסה";
+                  
                   $timeout(function () {
                       $scope.yourSignUpRequstAccepted = true;
                   }, 300);
@@ -79,7 +81,7 @@
 
               },
               error: function (user, error) {
-                  $scope.userLoginNotification = "כתובת הדואל או הסיסמה שגויים";
+                  $scope.userLoginNotification = "כתובת הדואר האלקטרוני או הסיסמה שגויים";
                   $timeout(function () {
                       $scope.yourSignUpRequstAccepted = true;
                   }, 300);                  // The login failed. Check error to see why.
