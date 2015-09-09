@@ -102,8 +102,48 @@
    
     $scope.myDeleteFunc=function(row)
     {
-   
-   //deleteActivity
+        var modalInstance = $modal.open({
+            windowClass: 'editModalClass ourModal',
+            //template:,
+            templateUrl: 'views/conformaitionActivityDeleteModal.html',
+            controller: "conformaitionActivityDeleteModalCtrl",
+            resolve: {
+                row: function () {
+                    return row;
+                },
+                state: function () {
+                    return "deleteActivity";
+                }
+            }
+        });
+
+        modalInstance.result.then(function (val) {
+            //לא עובד
+            if (val == true) {
+            //    if (row.entity.original) {
+                   
+                   
+            //        Parse.User.current().remove("activities", row.entity.original);
+
+            //        Parse.User.current().save(null, {
+            //            success: function (activity) {
+            //                console.log("מחקתיייייייייי");
+            //            },
+            //            error: function (obj, error) {
+
+            //            }
+            //        })
+            //    }
+
+            //}
+            //else {
+            //    //בטל
+            //    console.log("myVal: " + val);
+            //}
+        //});
+
+
+
 
     }
     $scope.logOutFunc = function () {
