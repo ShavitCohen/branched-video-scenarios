@@ -118,29 +118,28 @@
         });
 
         modalInstance.result.then(function (val) {
-            //לא עובד
             if (val == true) {
-            //    if (row.entity.original) {
+                if (row.entity.original) {
                    
-                   
-            //        Parse.User.current().remove("activities", row.entity.original);
+                   //נסיון למחוק פעילות - לא עובד
+                    //Parse.User.current().remove("activities", row.entity.original);
 
-            //        Parse.User.current().save(null, {
-            //            success: function (activity) {
-            //                console.log("מחקתיייייייייי");
-            //            },
-            //            error: function (obj, error) {
+                    //Parse.User.current().save(null, {
+                    //    success: function (activity) {
+                    //        console.log("מחקתיייייייייי");
+                    //    },
+                    //    error: function (obj, error) {
 
-            //            }
-            //        })
-            //    }
+                    //    }
+                    //})
+                }
 
-            //}
-            //else {
-            //    //בטל
-            //    console.log("myVal: " + val);
-            //}
-        //});
+            }
+            else {
+                //בטל
+                console.log("myVal: " + val);
+            }
+        });
 
 
 
