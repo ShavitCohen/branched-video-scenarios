@@ -70,11 +70,11 @@
           //user:email@example.com
           //pass:1234
           Parse.User.logIn($scope.LoginEmailAdress, $scope.LoginPassword, {
+
               success: function (user) {
                   // Do stuff after successful login.
-
                 $timeout(function(){
-                  $location.path("/editorActivities")
+                    $location.path("/editorActivities/");
                 },300);
 
 

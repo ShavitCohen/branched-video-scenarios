@@ -211,6 +211,8 @@
         ]
       }
     ];
+
+  
     data.setArrows = function(){
              angular.forEach(data.currentActivity.scenarios, function(scenario){
                  if(scenario.interactions[0]){

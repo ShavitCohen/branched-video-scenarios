@@ -3,6 +3,97 @@
     font-family: OpenSansHebrew-Regular;
     src: url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 }
+.logOutUserNameClassGrid  {
+     display: block;
+    position: fixed;
+    background-color: lightgray;
+    font-size: 12pt;
+    margin-top: 0px;
+    margin-right: 1069px;
+    z-index: 1030;
+    color: gray;
+    width: 164px;
+    text-align: left;
+    height: 29px;
+    padding-top: 9px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.logOutBTNClassGrid {
+     position: fixed;
+    background-color: lightgray;
+    font-size: 12pt;
+    margin-top: 0px;
+    margin-right: 1233px;
+    z-index: 1030;
+    color: gray;
+    width: 219px;
+    text-align: center;
+    height: 29px;
+    padding-top: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    
+    width: 67px;
+
+}
+    .logOutBTNClassGrid:hover {
+       text-decoration:underline;
+    cursor:pointer;
+    
+    }
+.logOutUserNameClass{
+
+    display: block;
+    position: fixed;
+    background-color: lightgray;
+    font-size: 12pt;
+    margin-top: -258px;
+    margin-right: 1070px;
+    z-index: 1030;
+    color: gray;
+    width: 164px;
+    text-align: left;
+    height: 29px;
+    padding-top: 9px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 8px;
+    padding-left: 8px;
+
+}
+
+  .logOutBTNClass {
+   
+    position: fixed;
+    background-color: lightgray;
+    font-size: 12pt;
+   
+    margin-right: 1234px;
+    z-index: 1030;
+    color: gray;
+    width: 219px;
+    text-align: center;
+    height: 29px;
+    padding-top: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    margin-top: -258px;
+    width: 67px;
+    }
+    .logOutBTNClass:hover {
+    text-decoration:underline;
+    cursor:pointer;
+    }
 .editMovModalAlign {
 margin-top:-30px;
 font-size:12pt;

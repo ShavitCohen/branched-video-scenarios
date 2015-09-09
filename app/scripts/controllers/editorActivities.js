@@ -1,7 +1,7 @@
 ﻿angular.module('angularFrameworkApp')
   .controller('editorActivitiesCtrl', function ($scope, dataService, $modal, $location) {
     var Activity = Parse.Object.extend("Activity");
-
+    $scope.myCourrentUser = Parse.User.current().attributes.email;
     init();
 
     var activityIns;
@@ -84,6 +84,11 @@
         }]
     };
 
+
+    var myLoginValidation = 0;
+  
+
+
     $scope.getProperty = function( row,property ) {
       return row.entity[property];
     };
@@ -91,13 +96,19 @@
     function init() {
       dataService.checkifEditorisLoggedin();
       getActivities();
+   
     }
 
-
+   
     $scope.myDeleteFunc=function(row)
     {
    
    //deleteActivity
+
+    }
+    $scope.logOutFunc = function () {
+        Parse.User.logOut();
+        $location.path("/StartPage");
 
     }
 
@@ -129,6 +140,7 @@
         success: function (results) {
           $scope.activities = results;
           dataService.allActivity = results;
+
           $scope.activitiesData = setDataForUiGrid(results);
           $scope.$digest();
 
