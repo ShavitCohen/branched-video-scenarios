@@ -53,6 +53,7 @@ angular.module('angularFrameworkApp')
 
                   if (myParseRecommendedScenarios != myUserClickesScenarios) {
                       console.log("myParseRecommendedScenarios name == myUserClickesScenarios name  --> " + myParseRecommendedScenarios + "   &  " + myUserClickesScenarios);
+                      $scope.eq = "";
                       $scope.scenariosAreTheSame = true;
 
                       if (dataService.myRedBack == false) {
