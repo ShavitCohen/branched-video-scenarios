@@ -15,7 +15,7 @@
                </div>
             <ul class="mainMoviesDiv">
                 <li class="myscene" ng-repeat="scenario in dataService.currentActivity.scenarios" ng-mouseenter="scenario.hoverYellowSceneElements = true" ng-mouseleave="scenario.hoverYellowSceneElements = false">
-                    <scenario-top scenario="scenario"></scenario-top>
+                    <scenario-top scenario="scenario" index="$index"></scenario-top>
                 </li>
                 <li class="btn addScenarioBTNClass" ng-click="openAddMovieDialog(scenario)">
                     <i class="glyphicon glyphicon-plus-sign myPlusAddScaenBTN"></i>הוסף סצינה

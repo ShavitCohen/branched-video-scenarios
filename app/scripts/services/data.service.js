@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .factory('dataService', function () {
+  .factory('dataService', function ($q) {
     //פונקציה גלובלית שתעבוד אל מול דפים שונים
     var data = {};
 
@@ -404,6 +404,12 @@
       }
     }
 
+    
+
+    var Activity = Parse.Object.extend("Activity");
+    //var Scenario = Parse.Object.extend("Scenario");
+    //var Interactions = Parse.Object.extend("Interactions");
+    //var Distractors = Parse.Object.extend("Distractors");
     data.checkifEditorisLoggedin=function(){
 
       var currentUser = Parse.User.current();
@@ -416,7 +422,30 @@
     }
 
 
+    data.getScenarios = function (activityId) {
+        var deffered = $q.defer();
 
+        var query = new Parse.Query(Activity);
+          query.equalTo("parent", Parse.User.current());
+          query.equalTo("objectId", activityId);
+
+
+          query.include("scenarios");
+          query.include(["scenarios.interactions"]);
+          query.include(["scenarios.interactions.distractors"]);
+          query.first({
+              success: function (activity) {
+                  //debugger;
+                  data.setCurrentActivity(activity);
+                  deffered.resolve(activity);
+              },
+              error: function (error) {
+
+              }
+          });
+
+          return deffered.promise;
+      }
 
 
 

@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .controller('editorActivitiesCtrl', function ($scope, dataService, $modal, $location) {
+  .controller('editorActivitiesCtrl', function ($scope, dataService, $modal, $location, $timeout) {
     var Activity = Parse.Object.extend("Activity");
     $scope.myCourrentUser = Parse.User.current().attributes.email;
     init();
@@ -21,40 +21,65 @@
           cellTemplate: '<div class="btn gridBtnCss" ng-click="grid.appScope.myDeleteFunc(row)"><i class="glyphicon glyphicon-trash" </i></div>'
 
         },
-        {
-          field: 'watch',
-          width: "62",
-          cellClass: 'deleteCell',
-          headerClass: 'deleteHeader',
-          displayName: 'צפייה',
-          cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-eye-open" </i></div>'
+           {
+               field: 'edit',
+               displayName: 'עריכה',
+               width: "62",
+               cellClass: 'deleteCell',
+               headerClass: 'deleteHeader',
+               cellTemplate: '<div ng-click="grid.appScope.createNewActivity(2,row)" class="btn gridBtnCss"><i class="glyphicon glyphicon-edit" alt="edit"</i></div>'
+
+           },
+        //{
+        //  field: 'watch',
+        //  width: "62",
+        //  cellClass: 'deleteCell',
+        //  headerClass: 'deleteHeader',
+        //  displayName: 'צפייה',
+        //  cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-eye-open" </i></div>'
 
             
-        },
-        {
-          field: 'duplicate',
-          displayName: 'שכפול',
-          width: "62",
-          cellClass: 'deleteCell',
-          headerClass: 'deleteHeader',
-          cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-duplicate" </i></div>'
+        //},
+        //{
+        //  field: 'duplicate',
+        //  displayName: 'שכפול',
+        //  width: "62",
+        //  cellClass: 'deleteCell',
+        //  headerClass: 'deleteHeader',
+        //  cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-duplicate" </i></div>'
 
-        },
-        {
-          field: 'edit',
-          displayName: 'עריכה',
-          width: "62",
-          cellClass: 'deleteCell',
-          headerClass: 'deleteHeader',
-          cellTemplate: '<div ng-click="grid.appScope.createNewActivity(2,row)" class="btn gridBtnCss"><i class="glyphicon glyphicon-edit" alt="edit"</i></div>'
+        //},
+         
+        
+          {
+              field: 'published',
+              cellClass: 'deleteCell',
+              headerClass: 'deleteHeader',
 
-        },
+              displayName: 'פרסום',
+              cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.publishActivity(row.entity)"><i ng-class={"isPublished":row.entity.published} class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
+
+
+              //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
+          },
+              //{
+              //    field: 'published',
+              //    cellClass: 'deleteCell',
+              //    headerClass: 'deleteHeader',
+              //    width: "230",
+              //    displayName: 'סטאטוס פרסום'
+
+
+              //    //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
+              //},
         {
           field: 'code',
           width: "82",
           cellClass: 'codeCell',
           headerClass: 'deleteHeader',
           displayName: 'קוד גישה'
+
+
         }, {
           field: 'description',
           width: "464",
@@ -62,6 +87,7 @@
           headerClass: 'deleteHeader',
           displayName: 'תיאור'
         },
+     
         {
           field: 'name',
 
@@ -71,17 +97,7 @@
           displayName: 'שם הפעילות',
           cellTemplate:'<div class="ui-grid-cell-contents enterToActivity" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
         },
-        {
-          field: 'published',
-          cellClass: 'deleteCell',
-          headerClass: 'deleteHeader',
-         
-          displayName: 'פרסום',
-          cellTemplate: '<div class="btn gridBtnCss" ng-click="myPubFunc()"><i class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
-
-
-          //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
-        }]
+     ]
     };
 
 
@@ -98,8 +114,57 @@
       getActivities();
    
     }
-
    
+    $scope.publishActivity = function (activity)
+    {
+        dataService.getScenarios(activity.myID)
+        .then(function (completeActivity) {
+            
+            var isActivityComplete = true;
+            angular.forEach(dataService.currentActivity.scenarios, function (scenario) {
+                if (scenario.interactions[0] && scenario.interactions[0].type != "endMessege") {
+                    angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                        if (distractor.linkTo == null) {
+                            isActivityComplete = false;
+                        }
+                    })
+                }
+            })
+
+            var isRecommendedScenario = true;
+
+            //בדיקה האם הוגדר תרחיש מומלץ
+            if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
+
+                isRecommendedScenario = false;
+            }
+            if (isRecommendedScenario && isActivityComplete) {
+
+
+                dataService.currentActivity.set("published", true);
+
+                dataService.currentActivity.save(null, { // שמירה של הפעילות
+                    success: function () {
+
+                        activity.published = true;
+                        $scope.$digest();
+                    },
+                    error: function (err) {
+
+                    }
+                });
+
+
+            }
+            else {
+
+
+
+            }
+        })
+
+
+    }
     $scope.myDeleteFunc=function(row)
     {
         var modalInstance = $modal.open({
@@ -121,7 +186,19 @@
             if (val == true) {
                 if (row.entity.original) {
                    
-                   //נסיון למחוק פעילות - לא עובד
+                    row.entity.original.destroy({
+                        success: function (myObject) {
+                            $timeout(function () {
+                                $scope.activitiesData.splice(row.entity.index, 1);
+                            },0)
+                            
+                        },
+                        error: function (myObject, error) {
+                            // The delete failed.
+                            // error is a Parse.Error with an error code and message.
+                        }
+                    });
+
                     //Parse.User.current().remove("activities", row.entity.original);
 
                     //Parse.User.current().save(null, {
@@ -153,15 +230,18 @@
 
     function setDataForUiGrid(results){
       var arr = [];
-      angular.forEach(results,function(result){
+      angular.forEach(results,function(result,index){
         var obj = {};
         obj.name = result.attributes.name;
         obj.code = result.attributes.code;
-
+        obj.index = index;
         obj.myID = result.id;
         obj.original = result;
         console.log("obj.myID " + obj.myID);
         obj.description = result.attributes.description;
+        obj.published = result.attributes.published;
+
+        
         arr.push(obj);
       });
       return arr;

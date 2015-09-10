@@ -11,6 +11,8 @@
       Scenario = Parse.Object.extend("Scenario");
       Interactions = Parse.Object.extend("Interactions");
       Distractors = Parse.Object.extend("Distractors");
+
+
       $scope.codeValidate = function (myCaseCode) {
            myLoginValidation = 0;
 
@@ -25,16 +27,32 @@
               query.first({
                   success: function (activity) {
                       //debugger;
-                      dataService.currentActivity = activity;
-                      if (dataService.currentActivity==undefined)
-                      {
-                       $timeout(function () {
-                           $scope.isLoginPossible = false,
-                       $scope.userNotification = "קוד זה אינו קיים"
+                      if (activity == undefined) {
+                          $timeout(function () {
+                              $scope.isLoginPossible = false,
+                          $scope.userNotification = "קוד זה אינו קיים"
 
 
-                      }, 300);
+                          }, 0);
+
                       }
+                      else { 
+                      if (activity.attributes.published) {
+                          $timeout(function () {
+                              $location.path("/MainPage/" + $scope.myCaseCode);
+                          }, 0);
+                          // נכנסים לפעילות
+                      } else {
+                          $scope.isLoginPossible = false;
+
+                          $timeout(function () {
+                              $scope.userNotification = "הפעילות טרם פורסמה";
+                          }, 0);
+
+                      }
+                      }
+                      dataService.currentActivity = activity;
+                
                       var scenarios = activity.attributes.scenarios;
                       if (scenarios != undefined && scenarios.length > 0) {
                           $scope.scenarios = scenarios;
@@ -54,42 +72,18 @@
                           });
 
                       }
-                    
-                      angular.forEach(dataService.currentActivity.scenarios, function (scenario) {
-                          if (scenario.interactions[0] && scenario.interactions[0].type != "endMessege") {
-                              angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-                                  if (distractor.linkTo == null) {
-                                      myLoginValidation++;
-                                  }
-                              })
-                          }
-                      })
+            
+                      //else {
+                      //    $scope.isLoginPossible = true;
 
-                      if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
-                      
-                          myLoginValidation++;
-                      }
-                      if (myLoginValidation > 0) {
-
-                          $timeout(function () {
-                              $scope.isLoginPossible = false,
-                                $scope.userNotification="לא ניתן להיכנס, הפעילות טרם הושלמה"
-
-
-                          }, 300);
-
-                      }
-                      else {
-                          $scope.isLoginPossible = true;
-
-                          $timeout(function () {
-                              $location.path("/MainPage/" + $scope.myCaseCode);
-                          }, 300);
-                      }
+                      //    $timeout(function () {
+                      //        $location.path("/MainPage/" + $scope.myCaseCode);
+                      //    }, 300);
+                      //}
 
                   },
                   error: function (error) {
-                      
+                   
                   }
               });
 

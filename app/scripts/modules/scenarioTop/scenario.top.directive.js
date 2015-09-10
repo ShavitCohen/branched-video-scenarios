@@ -4,7 +4,8 @@
           restrict: 'E',
           templateUrl: "scripts/modules/scenarioTop/scenario.top.view.html",
           scope: {
-              scenario: "="
+              scenario: "=",
+              index:"="
           },
           link: function (scope, element, attrs) {
               scope.shavit = JSON.stringify(scope.data);

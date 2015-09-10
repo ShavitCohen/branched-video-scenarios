@@ -2,10 +2,7 @@
   .controller('editorCtrl', function ($scope, dataService, $modal, $routeParams, $location) {
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
       var myMovIndex = 0;
-      var Activity;
-      var Scenario;
-      var Interactions;
-      var Distractors;
+    
       $scope.myCourrentUser = Parse.User.current().attributes.email;
       $scope.selectedActivity_Scnarios_Dataarr1 = [];
 
@@ -13,12 +10,11 @@
           dataService.myCounterLoop = 0;
           dataService.myCurrentTime = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 
-          Activity = Parse.Object.extend("Activity");
-          Scenario = Parse.Object.extend("Scenario");
-          Interactions = Parse.Object.extend("Interactions");
-          Distractors = Parse.Object.extend("Distractors");
+         dataService.getScenarios($routeParams.id)
+          .then(function (activity) {
+              $scope.activityName = dataService.currentActivity.attributes.name;
+          });
 
-          getScenarios($routeParams.id);
 
           var freezLineTop = $('.freezLine').css('top');
           $(window).on('scroll', function () {
@@ -38,28 +34,28 @@
 
       }
 
-      function getScenarios(activityId) {
-          var query = new Parse.Query(Activity);
-          query.equalTo("parent", Parse.User.current());
-          query.equalTo("objectId", activityId);
+      //function getScenarios(activityId) {
+      //    var query = new Parse.Query(Activity);
+      //    query.equalTo("parent", Parse.User.current());
+      //    query.equalTo("objectId", activityId);
 
 
-          query.include("scenarios");
-          query.include(["scenarios.interactions"]);
-          query.include(["scenarios.interactions.distractors"]);
-          query.first({
-              success: function (activity) {
-                  //debugger;
+      //    query.include("scenarios");
+      //    query.include(["scenarios.interactions"]);
+      //    query.include(["scenarios.interactions.distractors"]);
+      //    query.first({
+      //        success: function (activity) {
+      //            //debugger;
 
-                  dataService.setCurrentActivity(activity);
-                  $scope.activityName = dataService.currentActivity.attributes.name;
-                  $scope.$digest();
-              },
-              error: function (error) {
+      //            dataService.setCurrentActivity(activity);
+      //            $scope.activityName = dataService.currentActivity.attributes.name;
+      //            $scope.$digest();
+      //        },
+      //        error: function (error) {
 
-              }
-          });
-      }
+      //        }
+      //    });
+      //}
 
 
 

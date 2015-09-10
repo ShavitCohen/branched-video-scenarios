@@ -1,8 +1,5 @@
-/*@font-face:url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
- @font-face {
-    font-family: OpenSansHebrew-Regular;
-    src: url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
-}
+@import "http://fonts.googleapis.com/earlyaccess/opensanshebrew.css";
+
 .logOutUserNameClassGrid  {
      display: block;
     position: fixed;
@@ -165,7 +162,6 @@ width: 334px;
 }
 .gridStyle {
 
- font-family: 'OpenSansHebrew-Regular';
   
   border: 1px solid rgb(212,212,212);
   width: 1300px;
@@ -190,15 +186,17 @@ background-color:white;
 }
 
 .gridBtnCss {
-margin-right: 8px;
+    margin-right: 8px;
     margin-top: -6px;
     cursor: pointer;
-    box-shadow:none;
-    font-size:20px;
-    color:#58585A;
-/*background-image:url('../img/delete_ico.png');*/
-/*height:19px;
-width:17px;*/
+    box-shadow: none;
+    font-size: 14pt;
+    color: gray;
+}
+.isPublished {
+
+color:green;
+
 }
 .gridBtnCss:hover {
 
@@ -1343,6 +1341,7 @@ margin-top: 21px;
                 z-index:9999999;
                 position:absolute;
             }
+
 
  .distractorDot {
 
