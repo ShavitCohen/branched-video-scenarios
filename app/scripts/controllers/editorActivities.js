@@ -11,6 +11,13 @@
       data: "activitiesData",
 
       columnDefs: [
+          {
+              field: 'updatedAt',
+              width: "200",
+              cellClass: 'deleteCell',
+              headerClass: 'deleteHeader',
+              displayName: 'תאריך שינוי אחרון'
+          },
         {
           field: 'myDel',
           displayName: 'מחיקה',
@@ -51,17 +58,7 @@
         //},
          
         
-          {
-              field: 'published',
-              cellClass: 'deleteCell',
-              headerClass: 'deleteHeader',
-
-              displayName: 'פרסום',
-              cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.publishActivity(row.entity)"><i ng-class={"isPublished":row.entity.published} class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
-
-
-              //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
-          },
+     
               //{
               //    field: 'published',
               //    cellClass: 'deleteCell',
@@ -82,7 +79,7 @@
 
         }, {
           field: 'description',
-          width: "464",
+          width: "394",
           cellClass: 'deleteCell',
           headerClass: 'deleteHeader',
           displayName: 'תיאור'
@@ -91,12 +88,23 @@
         {
           field: 'name',
 
-          width: "383",
+          width: "423",
           cellClass: 'nameCell',
           headerClass: 'deleteHeader',
           displayName: 'שם הפעילות',
           cellTemplate:'<div class="ui-grid-cell-contents enterToActivity" ng-click="grid.appScope.loadById(row)">{{grid.appScope.getProperty(row,"name")}}</div>'
         },
+             {
+                 field: 'published',
+                 cellClass: 'deleteCell',
+                 headerClass: 'deleteHeader',
+                 width: "60",
+                 displayName: 'פרסום',
+                 cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.publishActivity(row.entity)"><i ng-class={"isPublished":row.entity.published} class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
+
+
+                 //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
+             },
      ]
     };
 
@@ -119,26 +127,56 @@
     {
         dataService.getScenarios(activity.myID)
         .then(function (completeActivity) {
-            
-            var isActivityComplete = true;
+            if (completeActivity.attributes.published == true) {
+                dataService.currentActivity.set("published", false);
+
+                dataService.currentActivity.save(null, { // שמירה של הפעילות
+                    success: function () {
+
+                        activity.published = false;
+                        $scope.$digest();
+                    },
+                    error: function (err) {
+
+                    }
+                });
+
+            }
+            else { 
+                dataService.isActivityComplete = true;
+                if (dataService.currentActivity.scenarios.length == 0) {
+                    dataService.isActivityComplete = false;
+
+
+                }
+              
             angular.forEach(dataService.currentActivity.scenarios, function (scenario) {
                 if (scenario.interactions[0] && scenario.interactions[0].type != "endMessege") {
+                    if (scenario.interactions[0].distractors.length==0) {
+                        dataService.isActivityComplete = false;
+
+                        
+                    }
                     angular.forEach(scenario.interactions[0].distractors, function (distractor) {
+                     
                         if (distractor.linkTo == null) {
-                            isActivityComplete = false;
+                            dataService.isActivityComplete = false;
                         }
                     })
                 }
+            
             })
+      
+     
 
-            var isRecommendedScenario = true;
+            dataService.isRecommendedScenario = true;
 
             //בדיקה האם הוגדר תרחיש מומלץ
             if (dataService.currentActivity.attributes.recommendedScenarios == undefined) {
 
-                isRecommendedScenario = false;
+                dataService.isRecommendedScenario = false;
             }
-            if (isRecommendedScenario && isActivityComplete) {
+            if (dataService.isRecommendedScenario && dataService.isActivityComplete) {
 
 
                 dataService.currentActivity.set("published", true);
@@ -158,9 +196,17 @@
             }
             else {
 
+                var modalInstance = $modal.open({
+                    windowClass: 'editModalClass ourModal',
+                    //template:,
+                    templateUrl: 'views/publishedNotificationModal.html',
+                    controller: "publishedNotificationModalCtrl"
+              
+                });
 
-
+              
             }
+        }
         })
 
 
@@ -199,16 +245,7 @@
                         }
                     });
 
-                    //Parse.User.current().remove("activities", row.entity.original);
-
-                    //Parse.User.current().save(null, {
-                    //    success: function (activity) {
-                    //        console.log("מחקתיייייייייי");
-                    //    },
-                    //    error: function (obj, error) {
-
-                    //    }
-                    //})
+                    
                 }
 
             }
@@ -239,6 +276,7 @@
         obj.original = result;
         console.log("obj.myID " + obj.myID);
         obj.description = result.attributes.description;
+        obj.updatedAt = result.updatedAt;
         obj.published = result.attributes.published;
 
         

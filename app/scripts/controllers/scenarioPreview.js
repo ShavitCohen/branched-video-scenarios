@@ -320,6 +320,7 @@ angular.module('angularFrameworkApp')
         });
 
     }
+   
       $scope.exitPreviewModal = function ()
       {
 
