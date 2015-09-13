@@ -37,7 +37,10 @@
                   dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios;
                   console.log(dataService.currentActivity.attributes.recommendedScenarios.length);
               }
-
+              else if (dataService.userClickedScenariosSummary.length == dataService.currentActivity.attributes.recommendedScenarios.length) {
+                  dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios;
+                  console.log(dataService.currentActivity.attributes.recommendedScenarios.length);
+              }
               dataService.myRedBack = false;
               dataService.myCounter = 1;
               $scope.errorIndex = 0;
