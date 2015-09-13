@@ -4,14 +4,14 @@
     </div>
     <div class="userSummaryContainerDiv">
            <div class="myUserSummaryAlign">
-               <h1>להלן התרחיש שביצעת במהלך הפעילות <span  style="font-weight: bold; color: crimson">"{{dataService.currentActivity.attributes.name}}"</span><br/>אל מול התרחיש המומלץ</h1>
+               <h1>להלן התרחיש שביצעת במהלך הפעילות <span  style="font-weight: bold; color: crimson">"{{dataService.currentActivity.attributes.name}}"</span><br/>אל מול התרחיש המומלץ&nbsp<i class="glyphicon glyphicon-question-sign" tooltip-placement="left" tooltip="הסימון האדום משמעותו המיקום בו התרחישים השתנו"></i></h1>
         
        <!--<ol class="userSummaryRows">
 
          <li class="userSummaryRowsLi" ng-repeat="row in dataService.scenarioLengthforSummary"><div ng-style="{'margin-top':210 + ($index * 10)}" class="rowDiv_{{$index}}" ng-class="checkingeditorUserDifferences($index)"></div></li>
 
         </ol>-->
-               <div ng-show="scenariosAreTheSame" id="userSummaryRowsLi" ng-style="{'margin-top': 80+(errorIndexHTML * 153)}" ng-class="checkingeditorUserDifferences()"></div>
+               <div ng-show="scenariosAreTheSame" id="userSummaryRowsLi" ng-style="{'margin-top': 80+(errorIndexHTML * 153)}" ></div>
         
    
            

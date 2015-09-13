@@ -59,9 +59,12 @@ angular.module('angularFrameworkApp')
               width: '980',
               videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
               playerVars: {
-                  
-                  'enablejsapi': 1
-              },
+                
+                  'rel': 0,
+                  'showinfo': 0,
+                  'fs': 0
+                 
+                            },
               events: {
                   'onReady': $scope.onPlayerReady,
                   'onStateChange': $scope.onPlayerStateChange,
@@ -124,7 +127,7 @@ angular.module('angularFrameworkApp')
           if (event.data == YT.PlayerState.PLAYING)
           {
               clearTimeout(timerId);
-              timerId=setTimeout(pauseVideo, ($scope.videoDuration - 0.1) * 1000);
+              timerId=setTimeout(pauseVideo, ($scope.videoDuration) * 1000);
               done = true;
           }
 
@@ -133,7 +136,7 @@ angular.module('angularFrameworkApp')
               console.log("123movie ended");
               console.log("$scope.videoDuration " + $scope.videoDuration);
 
-              var videoDuration2 = Number(player.getCurrentTime() - 1);
+              var videoDuration2 = Number(player.getCurrentTime());
 
               console.log("videoDuration2 " + videoDuration2);
               player.seekTo(videoDuration2);

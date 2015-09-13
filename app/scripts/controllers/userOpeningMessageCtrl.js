@@ -30,15 +30,15 @@
 
               if (dataService.userClickedScenariosSummary.length > dataService.currentActivity.attributes.recommendedScenarios.length) {
                   //the user clicked on MORE scenarios then the Recommended scenarios by Editor
-                  dataService.scenarioLengthforSummary = dataService.userClickedScenariosSummary;
+                  dataService.scenarioLengthforSummary = dataService.userClickedScenariosSummary.length;
                   console.log(dataService.userClickedScenariosSummary.length);
               }
               else if (dataService.userClickedScenariosSummary.length < dataService.currentActivity.attributes.recommendedScenarios.length) {
-                  dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios;
+                  dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios.length;
                   console.log(dataService.currentActivity.attributes.recommendedScenarios.length);
               }
               else if (dataService.userClickedScenariosSummary.length == dataService.currentActivity.attributes.recommendedScenarios.length) {
-                  dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios;
+                  dataService.scenarioLengthforSummary = dataService.currentActivity.attributes.recommendedScenarios.length;
                   console.log(dataService.currentActivity.attributes.recommendedScenarios.length);
               }
               dataService.myRedBack = false;
