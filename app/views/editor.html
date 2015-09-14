@@ -6,10 +6,10 @@
        <div class="floating">
 
             <div class="ActivityNameH1">{{activityName}}</div>
-             <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)">
-                הגדר תרחיש מומלץ
-                <i class="glyphicon glyphicon-pencil"></i>
-            </div>
+           <div class="btn recomendedScenariosBtn" ng-click="recommendedScenariosOpenTheModal(scenario)" tooltip-placement="left" tooltip="התרחיש המומלץ הוא המשוב למשתמש וחובה להגדירו">
+               הגדר תרחיש מומלץ
+               <i class="glyphicon glyphicon-pencil"></i>
+           </div>
            <div class="myCurrentTimeClass">נשמר לאחרונה ב:{{dataService.myCurrentTime}}</div>
 
                </div>

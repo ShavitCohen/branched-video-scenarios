@@ -76,7 +76,6 @@
           headerClass: 'deleteHeader',
           displayName: 'קוד גישה'
 
-
         }, {
           field: 'description',
           width: "394",
@@ -100,7 +99,7 @@
                  headerClass: 'deleteHeader',
                  width: "60",
                  displayName: 'פרסום',
-                 cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.publishActivity(row.entity)"><i ng-class={"isPublished":row.entity.published} class="glyphicon glyphicon-cloud-upload" alt="upload" </i></div>'
+                 cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.publishActivity(row.entity)"><i ng-class={"isPublished":row.entity.published} class="glyphicon glyphicon-cloud-upload" alt="upload"  tooltip-placement="left" tooltip="אחרי פרסום הפעילות, יש לספק למשתמשים קוד גישה" </i></div>'
 
 
                  //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'

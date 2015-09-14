@@ -12,7 +12,7 @@
               <textarea style="margin-bottom:30px;" ng-show="isfirstScenario" class="form-control " id="openingMSG" rows="3" maxlength="100" required ng-model="scenarioInteraction.openingMessege"></textarea>
 
               <div>
-                  <h2 class="modalheadlineH2" style="display:inline-block">סוג האינטראקציה:</h2>
+                  <h2 class="modalheadlineH2" style="display:inline-block">סוג האינטראקציה</h2>
 
 
                   <input type="radio" name="interactionType" id="singleSelection" value="singleSelection" ng-model="scenario.interactions[0].type" ng-change="CheckboxSelectedFunc()">
@@ -26,15 +26,15 @@
                   <label for="endMessege">הודעת סיום</label>
 
               </div>
-              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום:</h2>
+              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeE">תוכן הודעת הסיום</h2>
 
               <textarea ng-show="whiceInteactionTypeE" class="form-control" id="endMSGText" rows="3" cols="50" maxlength="100" required ng-model="scenarioInteraction.endMessegeText" ng-show="whiceInteactionTypeE"></textarea>
 
-              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">תוכן השאלה:</h2>
+              <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">תוכן השאלה</h2>
               <textarea ng-show="whiceInteactionTypeS" class="form-control" id="questionText" rows="3" cols="50" maxlength="50" ng-model="scenarioInteraction.text" ng-show="whiceInteactionTypeS"></textarea>
               <div ng-show="whiceInteactionTypeS">
                   <h2 class="modalheadlineH2" ng-show="whiceInteactionTypeS">
-                      אפשרויות בחירה:
+                      אפשרויות בחירה
                   </h2>
 
                   <div ng-repeat="answer in scenarioInteraction.distractors" ng-show="whiceInteactionTypeS">

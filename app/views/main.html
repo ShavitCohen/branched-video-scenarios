@@ -4,7 +4,7 @@
 
         <div class="UserquestionBack" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapseClass">
-                <h3 class="myUserQueClassUser" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
+                <h3 class="myUserQueClassUser2" ng-model="myUserQueText">{{scenario.attributes.interactions[0].attributes.text}}</h3>
                 <ul><li class="UsermyUserDistractorClass btn btn success" ng-repeat="distractor in scenario.attributes.interactions[0].attributes.distractors" ng-click="gotoNextMovie(distractor)">{{distractor.attributes.text}}</li></ul>
             </div>
 

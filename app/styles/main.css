@@ -583,6 +583,18 @@ padding-right: 37px;
     font-weight: bold;
 
 }
+.myUserQueClassUser2
+{ 
+      white-space: normal;
+    color: white;
+    margin-right: 32px;
+    font-size: 14pt !important;
+    font-weight: bold;
+    display: block;
+    width: 300px;
+
+
+}
 .myUserDistractorClass{
               background-color:black;
                color: white;
