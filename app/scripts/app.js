@@ -25,9 +25,9 @@ angular
           templateUrl: 'views/StartPage.html',
           controller:"startCtrl"
       })
-      
+
       .when('/', {
-          templateUrl: 'views/userStartPage.html',
+          templateUrl: 'views/UserStartPage.html',
           controller: "userStartPage"
       })
        .when('/aboutUsModal', {
@@ -59,7 +59,7 @@ angular
              templateUrl: 'views/userSummary.html',
              controller: "userSummaryCtrl"
          })
-         
+
       .otherwise({
         redirectTo: '/'
       });
