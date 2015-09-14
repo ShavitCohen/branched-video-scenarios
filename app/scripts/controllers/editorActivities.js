@@ -45,7 +45,7 @@
         //  displayName: 'צפייה',
         //  cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-eye-open" </i></div>'
 
-            
+
         //},
         //{
         //  field: 'duplicate',
@@ -56,9 +56,9 @@
         //  cellTemplate: '<div class="btn gridBtnCss" ng-click="myWatchFunc()"><i class="glyphicon glyphicon-duplicate" </i></div>'
 
         //},
-         
-        
-     
+
+
+
               //{
               //    field: 'published',
               //    cellClass: 'deleteCell',
@@ -83,7 +83,7 @@
           headerClass: 'deleteHeader',
           displayName: 'תיאור'
         },
-     
+
         {
           field: 'name',
 
@@ -109,7 +109,7 @@
 
 
     var myLoginValidation = 0;
-  
+
 
 
     $scope.getProperty = function( row,property ) {
@@ -119,9 +119,9 @@
     function init() {
       dataService.checkifEditorisLoggedin();
       getActivities();
-   
+
     }
-   
+
     $scope.publishActivity = function (activity)
     {
         dataService.getScenarios(activity.myID)
@@ -141,32 +141,32 @@
                 });
 
             }
-            else { 
+            else {
                 dataService.isActivityComplete = true;
                 if (dataService.currentActivity.scenarios.length == 0) {
                     dataService.isActivityComplete = false;
 
 
                 }
-              
+
             angular.forEach(dataService.currentActivity.scenarios, function (scenario) {
                 if (scenario.interactions[0] && scenario.interactions[0].type != "endMessege") {
                     if (scenario.interactions[0].distractors.length==0) {
                         dataService.isActivityComplete = false;
 
-                        
+
                     }
                     angular.forEach(scenario.interactions[0].distractors, function (distractor) {
-                     
+
                         if (distractor.linkTo == null) {
                             dataService.isActivityComplete = false;
                         }
                     })
                 }
-            
+
             })
-      
-     
+
+
 
             dataService.isRecommendedScenario = true;
 
@@ -200,10 +200,10 @@
                     //template:,
                     templateUrl: 'views/publishedNotificationModal.html',
                     controller: "publishedNotificationModalCtrl"
-              
+
                 });
 
-              
+
             }
         }
         })
@@ -230,13 +230,14 @@
         modalInstance.result.then(function (val) {
             if (val == true) {
                 if (row.entity.original) {
-                   
+
                     row.entity.original.destroy({
                         success: function (myObject) {
                             $timeout(function () {
                                 $scope.activitiesData.splice(row.entity.index, 1);
+                              $scope.activitiesData = resetArrayIndexes($scope.activitiesData);
                             },0)
-                            
+
                         },
                         error: function (myObject, error) {
                             // The delete failed.
@@ -244,7 +245,7 @@
                         }
                     });
 
-                    
+
                 }
 
             }
@@ -257,6 +258,13 @@
 
 
 
+    }
+
+    function resetArrayIndexes(arr){
+      angular.forEach(arr,function(item,index){
+        item.index = index;
+      })
+      return arr;
     }
     $scope.logOutFunc = function () {
         Parse.User.logOut();
@@ -278,7 +286,7 @@
         obj.updatedAt = result.updatedAt;
         obj.published = result.attributes.published;
 
-        
+
         arr.push(obj);
       });
       return arr;
@@ -316,7 +324,7 @@
         //adding modal to open pop up for configuring new activity
         var modalInstance = $modal.open({
             windowClass: 'editModalClass ourModal',
-          
+
             templateUrl: 'views/editorNewActivityModal.html',
             controller: "editorNewActivityCtrl",
             resolve: {
