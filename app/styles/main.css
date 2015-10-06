@@ -1707,7 +1707,18 @@ font-family:'Open Sans Hebrew';
   margin-top:0 !important;
 }
 .embeddingStrip{
-  background-color: red;
-  height: 100px;
-  margin-top: -10px;
+    font-size:16pt;
+    padding-right:10px;
+background-color:#007F88;
+    margin-top: -4px;
+    position: absolute;
+    width: 1020px;
+    color:white;
+    height:50px;
+    padding-top:10px;
+    padding-bottom:10px;
+   
 }
+    .embeddingStrip a {
+    color:white;
+    }
