@@ -1,6 +1,9 @@
-<div style="background-color:black;" class="bg">
+<div class="bg userScreen">
     <div class="myContainerMainDiv">
         <div id="player" class="myYoutubeIfreamUser"></div>
+      <div ng-if="isEmbedding" class="embeddingStrip">
+        Strip
+      </div>
 
         <div class="UserquestionBack" ng-show="isEndMovie">
             <div class="myUserQueAndDistractorCollapseClass">
@@ -10,5 +13,4 @@
 
         </div>
     </div>
-
 </div>

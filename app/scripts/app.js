@@ -21,15 +21,17 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/', {
+        templateUrl: 'views/UserStartPage.html',
+        controller: "userStartPage"
+      })
+
       .when('/StartPage', {
           templateUrl: 'views/StartPage.html',
           controller:"startCtrl"
       })
 
-      .when('/', {
-          templateUrl: 'views/UserStartPage.html',
-          controller: "userStartPage"
-      })
+
        .when('/aboutUsModal', {
            templateUrl: 'views/aboutUsModal.html',
            controller: "aboutUsModalCtrl"
@@ -41,6 +43,11 @@ angular
       .when('/MainPage/:id', {
           templateUrl: 'views/main.html',
           controller: "MainCtrl"
+      })
+
+      .when('/MainPage/:id?isEmbedding', {
+        templateUrl: 'views/main.html',
+        controller: "MainCtrl"
       })
 
       .when('/SummaryPage', {

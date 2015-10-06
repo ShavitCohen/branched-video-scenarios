@@ -104,6 +104,17 @@
 
                  //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
              },
+        {
+          field: 'embed',
+          cellClass: 'deleteCell',
+          headerClass: 'deleteHeader',
+          width: "60",
+          displayName: 'הטמע',
+          cellTemplate: '<div class="btn gridBtnCss"  ng-click="grid.appScope.embedActivity(row.entity)"><i class="glyphicon glyphicon-console" alt="embed"  tooltip-placement="left" tooltip="קבל קוד להטמעת הפעילות"> </i></div>'
+
+
+          //cellTemplate: '<input type="checkbox" ng-model="row.entity.pub" ng-click="toggle(row.entity.name,row.entity.pub)">'
+        },
      ]
     };
 
@@ -121,6 +132,10 @@
       getActivities();
 
     }
+
+    $scope.embedActivity = function(activity){
+      console.log("<iframe id='inTreeActive' frameborder='0' width='1020' height='675' src='http://intreeactive.telem-hit.net/MainPage/" + activity.code + "?isEmbedding=true'></iframe>");
+    };
 
     $scope.publishActivity = function (activity)
     {

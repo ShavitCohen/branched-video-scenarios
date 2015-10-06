@@ -8,8 +8,11 @@
  * Controller of the angularFrameworkApp
  */
 angular.module('angularFrameworkApp')
-  .controller('MainCtrl', function ($scope, dataService, $modal, $routeParams) {
+  .controller('MainCtrl', function ($scope, dataService, $modal, $routeParams,$rootScope) {
 
+    if($routeParams.isEmbedding == "true"){
+      $rootScope.isEmbedding = true;
+    }
 
       $scope.dataService = dataService; //הזרקת המידע של הדטה סלתוך הסקופ שיעבוד עם HTML
       var myMovIndex = 0;
@@ -59,11 +62,11 @@ angular.module('angularFrameworkApp')
               width: '980',
               videoId: dataService.currentActivity.attributes.scenarios[0].attributes.videoId,
               playerVars: {
-                
+
                   'rel': 0,
                   'showinfo': 0,
                   'fs': 0
-                 
+
                             },
               events: {
                   'onReady': $scope.onPlayerReady,
@@ -148,7 +151,7 @@ angular.module('angularFrameworkApp')
       }
       function pauseVideo()
       {
-         
+
               console.log("pause");
               player.pauseVideo();
           //pauseVideo();
@@ -192,9 +195,9 @@ angular.module('angularFrameworkApp')
                   });
 
               }
-          
-         
-         
+
+
+
       }
 
 
