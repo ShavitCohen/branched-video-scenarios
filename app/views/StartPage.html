@@ -3,14 +3,14 @@
 <div class="startPageContainerBody">
     <div class="row marketing UserstartPageContainer">
         <a class="hitLogo" href="http://www.hit.ac.il/" target="_blank"></a>
-        <div class="userStartPasgeAlign" style="height:350px;">
+        <div class="userStartPasgeAlign" style="height:360px;">
             <div class="myHeadlinesDiv">
                 <h1 ng-show="!signInorSignUpSelected">התחברות</h1>
                 <h1 ng-show="signInorSignUpSelected">הרשמה</h1>
                 <div class="myOpeningDivSecondLayer">
                     <h3 class="activityCode">הקלד כתובת דוא"ל:</h3>
                     <input type="text" class="loginPopupTextInputBack" ng-model="LoginEmailAdress" />
-                    <h2 class="activityCode">הקלד סיסמה</h2>
+                    <h3 class="activityCode">הקלד סיסמה:</h3>
                     <input type="password" class="loginPopupTextInputBack" ng-model="LoginPassword" />
                     <ul>
                         <li class="btn loginBtn" ng-click="login()" ng-show="!signInorSignUpSelected">התחברות</li>
