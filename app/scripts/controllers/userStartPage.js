@@ -1,5 +1,5 @@
 ﻿angular.module('angularFrameworkApp')
-  .controller('userStartPage', function ($scope, $location, dataService,$timeout) {
+  .controller('userStartPage', function ($scope, $location, dataService, $timeout, $modal) {
       var Activity;
       var Scenario;
       var Interactions;
@@ -12,7 +12,13 @@
       Interactions = Parse.Object.extend("Interactions");
       Distractors = Parse.Object.extend("Distractors");
 
-
+      $scope.openAboutUsModal = function () {
+          var modalInstance = $modal.open({
+              windowClass: 'editModalClass ourModal',
+              templateUrl: 'views/aboutUsModal.html',
+              controller: 'aboutUsModalCtrl'
+          });
+      }
       $scope.codeValidate = function (myCaseCode) {
            myLoginValidation = 0;
 

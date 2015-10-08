@@ -2,24 +2,25 @@
 
     <div class="startPageContainerBody">
         <div class="row marketing UserstartPageContainer">
+            <a class="hitLogo" href="http://www.hit.ac.il/" target="_blank"></a>
             <div class="userStartPasgeAlign">
                 <div class="myHeadlinesDiv">
                     <h1>inTree@ctive</h1>
-                    <h2>תרחישי וידאו אינטראקטיביים</h2>
-                    </div>
-                    <div class="myOpeningDiv">
-                        <div class="myOpeningDivSecondLayer">
-                            <h3 class="activityCode">קוד פעילות:</h3>
-                            <form name="myForm">
-                                <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" required />
-                                <div class="btn userEnterBTN"  ng-disabled="myForm.$invalid" ng-click="codeValidate(mycasecode)">כניסה</div>
-                            </form>
-                        </div>
-                        <div ng-show="!isLoginPossible" class="isLoginPossibleClass">{{userNotification}}</div>
-
-                    </div>
-
+                    <h2>מערכת ליצירת תרחישי וידאו אינטראקטיביים</h2>
                 </div>
+                <div class="myOpeningDiv">
+                    <div class="myOpeningDivSecondLayer">
+                        <h3 class="activityCode">קוד פעילות:</h3>
+                        <form name="myForm">
+                            <input type="number" ng-model="myCaseCode" class="loginPopupTextInputBack" placeholder="הקלד קוד" required />
+                            <div class="btn userEnterBTN" ng-disabled="myForm.$invalid" ng-click="codeValidate(mycasecode)">כניסה</div>
+                        </form>
+                    </div>
+                    <div ng-show="!isLoginPossible" class="isLoginPossibleClass">{{userNotification}}</div>
+                    <div class="creditLine"><a href="http://www.hit.ac.il/telem/overview" target="_blank">המחלקה לטכנולוגיות למידה</a> |<span class="myAboutUsBTN" ng-click="openAboutUsModal()">אודות</span></div>
+                </div>
+
+            </div>
              </div>
         </div>       
 
